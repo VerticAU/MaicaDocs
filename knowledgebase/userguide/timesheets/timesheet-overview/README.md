@@ -15,5 +15,5 @@ A [Timesheet](../../getting-started/maica-key-concepts/timesheet.md) is a record
 [Timesheet Entries](create-a-timesheet-entry.md) are used to track the hours worked by a [Resource](../../getting-started/maica-key-concepts/resource.md) for a particular service within a particular Appointment as part of Maica. They can also be created manually for any additional requirements.&#x20;
 
 {% hint style="info" %}
-Timesheet Entries in Maica are automatically generated after an `Appointment` is `Completed`. This can be configured on a `Resource` record by setting the `Timesheet Management` dropdown to `Enabled` , or within your `Maica Settings`. To learn more, click here.&#x20;
+Timesheet Entries in Maica are automatically generated after an `Appointment` is `Completed`. This can be configured on a `Resource`  record by setting the `Timesheet Management` dropdown to `Enabled` , or within your `Maica Settings`. To learn more, [click here](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/timesheet-generation).&#x20;
 {% endhint %}
