@@ -180,6 +180,7 @@
 * [Claiming Overview](support-at-home/claiming-overview/README.md)
   * [Claiming Process](support-at-home/claiming-overview/claiming-process.md)
 * [Care Recipient Sync](support-at-home/care-recipient-sync.md)
+* [Care Recipient Sync](support-at-home/care-recipient-sync-1.md)
 
 ## Mobile Worker App
 

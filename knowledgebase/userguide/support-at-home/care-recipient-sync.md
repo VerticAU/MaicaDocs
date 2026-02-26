@@ -1,5 +1,7 @@
 ---
 description: Learn about the Care Recipient Sync under Support at Home within Maica
+hidden: true
+noIndex: true
 ---
 
 # Care Recipient Sync
