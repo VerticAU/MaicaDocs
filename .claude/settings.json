@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Bash(*)",
+      "WebFetch",
+      "WebFetch(*)",
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(curl -s \"https://hub.docker.com/v2/repositories/makeplane/plane-backend/tags/?page_size=5&ordering=-last_updated\")",
+      "mcp__playwright__*",
+      "WebSearch",
+      "Read(//Users/streetsteve/**)",
+      "Bash(wc:*)",
+      "Bash(find:*)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/modules/shared/**)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/modules/plane/**)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/modules/timetracker/**)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/modules/mcp/**)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/modules/migration/**)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/modules/awards/**)",
+      "Read(//Users/streetsteve/Documents/GitHub/plane/terraform/**)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/private/tmp"
+    ]
+  }
+}
