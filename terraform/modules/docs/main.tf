@@ -98,6 +98,8 @@ resource "aws_iam_user_policy" "s3_access" {
           "${aws_s3_bucket.raw.arn}/*",
           aws_s3_bucket.vector.arn,
           "${aws_s3_bucket.vector.arn}/*",
+          "arn:aws:s3:::${var.name_prefix}-tfstate",
+          "arn:aws:s3:::${var.name_prefix}-tfstate/*",
         ]
       }
     ]
