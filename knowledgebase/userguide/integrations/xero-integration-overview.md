@@ -23,6 +23,13 @@ Syncing with Xero also requires your Support Items to be configured correctly. P
 
 The Invoice Sync Process outlines the stages of Invoicing Syncing within **Maica** and Xero, as well as the outcomes of the process.&#x20;
 
+{% hint style="success" %}
+Please note that Xero recommended limits of Invoice Line Item records associated with an Invoice:&#x20;
+
+* Per Invoice: Xero recommends keeping invoices to no more than 50 line items. Exceeding this number may lead to issues with invoice loading times and overall system performance.
+* Monthly Volume: For optimal performance, Xero suggests a monthly limit of approximately 1,000 sales invoices, each containing around 10 line items. This guideline helps maintain system efficiency and responsiveness.
+{% endhint %}
+
 {% hint style="info" %}
 For clarity, any _Italic_ text in the description refers to a record in Xero, and any standard text refers to a record in **Maica**.&#x20;
 {% endhint %}
