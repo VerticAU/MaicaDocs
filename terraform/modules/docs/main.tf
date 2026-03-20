@@ -127,3 +127,61 @@ resource "aws_iam_user_policy" "bedrock_access" {
     ]
   })
 }
+
+# --- IAM: Terraform Management Policy ---
+# Uses a managed policy (6144 byte limit) instead of inline (2048 byte limit)
+
+resource "aws_iam_policy" "terraform_management" {
+  name = "${var.name_prefix}-terraform-management"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid      = "S3Mgmt"
+        Effect   = "Allow"
+        Action   = ["s3:Get*", "s3:Put*", "s3:List*", "s3:CreateBucket", "s3:DeleteBucket"]
+        Resource = ["arn:aws:s3:::${var.name_prefix}-*"]
+      },
+      {
+        Sid    = "IAMMgmt"
+        Effect = "Allow"
+        Action = [
+          "iam:GetUser", "iam:CreateUser", "iam:DeleteUser", "iam:TagUser",
+          "iam:GetUserPolicy", "iam:PutUserPolicy", "iam:DeleteUserPolicy", "iam:ListUserPolicies",
+          "iam:ListAccessKeys", "iam:CreateAccessKey", "iam:DeleteAccessKey",
+          "iam:GetRole", "iam:CreateRole", "iam:DeleteRole", "iam:TagRole", "iam:PassRole",
+          "iam:GetRolePolicy", "iam:PutRolePolicy", "iam:DeleteRolePolicy", "iam:ListRolePolicies",
+          "iam:ListAttachedRolePolicies", "iam:ListAttachedUserPolicies", "iam:ListInstanceProfilesForRole",
+          "iam:GetPolicy", "iam:CreatePolicy", "iam:DeletePolicy",
+          "iam:GetPolicyVersion", "iam:CreatePolicyVersion", "iam:DeletePolicyVersion",
+          "iam:ListPolicyVersions", "iam:AttachUserPolicy", "iam:DetachUserPolicy",
+        ]
+        Resource = [
+          "arn:aws:iam::${var.account_id}:user/${var.name_prefix}-*",
+          "arn:aws:iam::${var.account_id}:role/${var.name_prefix}-*",
+          "arn:aws:iam::${var.account_id}:policy/${var.name_prefix}-*",
+        ]
+      },
+      {
+        Sid      = "S3Vectors"
+        Effect   = "Allow"
+        Action   = ["s3vectors:*"]
+        Resource = "*"
+      },
+      {
+        Sid      = "Bedrock"
+        Effect   = "Allow"
+        Action   = ["bedrock:*KnowledgeBase*", "bedrock:*DataSource*", "bedrock:TagResource", "bedrock:UntagResource", "bedrock:ListTagsForResource"]
+        Resource = ["arn:aws:bedrock:us-east-1:${var.account_id}:knowledge-base/*"]
+      },
+    ]
+  })
+
+  tags = var.common_tags
+}
+
+resource "aws_iam_user_policy_attachment" "terraform_management" {
+  user       = aws_iam_user.github_actions.name
+  policy_arn = aws_iam_policy.terraform_management.arn
+}
