@@ -27,11 +27,3 @@ jobs:
           aws s3 sync knowledgebase/ s3://${{ secrets.S3_RAW_BUCKET }}/knowledgebase/ \
             --delete \
             --no-progress
-
-      - name: Sync markdown to vector S3 bucket
-        run: |
-          aws s3 sync knowledgebase/ s3://${{ secrets.S3_VECTOR_BUCKET }}/knowledgebase/ \
-            --delete \
-            --exclude "*" \
-            --include "*.md" \
-            --no-progress

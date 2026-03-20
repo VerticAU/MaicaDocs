@@ -13,8 +13,8 @@ variable "account_id" {
   type        = string
 }
 
-variable "vector_bucket_arn" {
-  description = "ARN of the S3 vector bucket"
+variable "raw_bucket_arn" {
+  description = "ARN of the S3 raw document bucket (Bedrock data source)"
   type        = string
 }
 

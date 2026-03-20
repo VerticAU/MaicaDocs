@@ -1,6 +1,6 @@
 # =============================================================================
 # Docs Module
-# S3 Buckets (raw + vector), IAM User for GitHub Actions
+# S3 Bucket (raw), IAM User for GitHub Actions
 # =============================================================================
 
 # --- S3: Raw Document Bucket ---
@@ -29,38 +29,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "raw" {
 
 resource "aws_s3_bucket_public_access_block" "raw" {
   bucket                  = aws_s3_bucket.raw.id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
-
-# --- S3: Vector Bucket (Bedrock Data Source) ---
-
-resource "aws_s3_bucket" "vector" {
-  bucket = "${var.name_prefix}-vector-${var.account_id}"
-
-  tags = merge(var.common_tags, { Name = "${var.name_prefix}-vector" })
-}
-
-resource "aws_s3_bucket_versioning" "vector" {
-  bucket = aws_s3_bucket.vector.id
-  versioning_configuration {
-    status = "Enabled"
-  }
-}
-
-resource "aws_s3_bucket_server_side_encryption_configuration" "vector" {
-  bucket = aws_s3_bucket.vector.id
-  rule {
-    apply_server_side_encryption_by_default {
-      sse_algorithm = "AES256"
-    }
-  }
-}
-
-resource "aws_s3_bucket_public_access_block" "vector" {
-  bucket                  = aws_s3_bucket.vector.id
   block_public_acls       = true
   block_public_policy     = true
   ignore_public_acls      = true
@@ -96,8 +64,6 @@ resource "aws_iam_user_policy" "s3_access" {
         Resource = [
           aws_s3_bucket.raw.arn,
           "${aws_s3_bucket.raw.arn}/*",
-          aws_s3_bucket.vector.arn,
-          "${aws_s3_bucket.vector.arn}/*",
           "arn:aws:s3:::${var.name_prefix}-tfstate",
           "arn:aws:s3:::${var.name_prefix}-tfstate/*",
         ]

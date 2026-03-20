@@ -3,14 +3,9 @@ output "raw_bucket_id" {
   value       = aws_s3_bucket.raw.id
 }
 
-output "vector_bucket_id" {
-  description = "Vector S3 bucket name"
-  value       = aws_s3_bucket.vector.id
-}
-
-output "vector_bucket_arn" {
-  description = "Vector S3 bucket ARN"
-  value       = aws_s3_bucket.vector.arn
+output "raw_bucket_arn" {
+  description = "Raw S3 bucket ARN"
+  value       = aws_s3_bucket.raw.arn
 }
 
 output "iam_access_key_id" {

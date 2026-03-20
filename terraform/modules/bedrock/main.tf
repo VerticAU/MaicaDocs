@@ -1,5 +1,5 @@
 # =============================================================================
-# Bedrock Module (us-east-1)
+# Bedrock Module
 # Knowledge Base with S3 Vectors storage
 # =============================================================================
 
@@ -17,6 +17,10 @@ resource "aws_s3vectors_index" "docs" {
   dimension          = 1024
   data_type          = "float32"
   distance_metric    = "cosine"
+
+  metadata_configuration {
+    non_filterable_metadata_keys = ["AMAZON_BEDROCK_TEXT", "AMAZON_BEDROCK_METADATA", "text"]
+  }
 
   tags = var.common_tags
 }
@@ -57,8 +61,8 @@ resource "aws_iam_role_policy" "bedrock_kb_s3" {
           "s3:ListBucket",
         ]
         Resource = [
-          var.vector_bucket_arn,
-          "${var.vector_bucket_arn}/*",
+          var.raw_bucket_arn,
+          "${var.raw_bucket_arn}/*",
         ]
       },
       {
@@ -136,7 +140,7 @@ resource "aws_bedrockagent_data_source" "s3" {
   data_source_configuration {
     type = "S3"
     s3_configuration {
-      bucket_arn         = var.vector_bucket_arn
+      bucket_arn         = var.raw_bucket_arn
       inclusion_prefixes = ["knowledgebase/"]
     }
   }
