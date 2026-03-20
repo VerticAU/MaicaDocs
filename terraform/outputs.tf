@@ -22,12 +22,12 @@ output "iam_secret_access_key" {
 
 output "bedrock_kb_id" {
   description = "Bedrock Knowledge Base ID"
-  value       = module.docs.bedrock_kb_id
+  value       = module.bedrock.bedrock_kb_id
 }
 
 output "bedrock_ds_id" {
   description = "Bedrock Data Source ID"
-  value       = module.docs.bedrock_ds_id
+  value       = module.bedrock.bedrock_ds_id
 }
 
 output "github_secrets_setup" {
@@ -36,10 +36,10 @@ output "github_secrets_setup" {
     Add these secrets to GitHub repo Settings > Secrets and variables > Actions:
     1. AWS_ACCESS_KEY_ID     = (run: terraform output -raw iam_access_key_id)
     2. AWS_SECRET_ACCESS_KEY = (run: terraform output -raw iam_secret_access_key)
-    3. AWS_REGION            = ${var.aws_region}
+    3. AWS_REGION            = us-east-1
     4. S3_RAW_BUCKET         = ${module.docs.raw_bucket_id}
     5. S3_VECTOR_BUCKET      = ${module.docs.vector_bucket_id}
-    6. BEDROCK_KB_ID         = ${module.docs.bedrock_kb_id}
-    7. BEDROCK_DS_ID         = ${module.docs.bedrock_ds_id}
+    6. BEDROCK_KB_ID         = ${module.bedrock.bedrock_kb_id}
+    7. BEDROCK_DS_ID         = ${module.bedrock.bedrock_ds_id}
   EOT
 }

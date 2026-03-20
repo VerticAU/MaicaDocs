@@ -20,7 +20,7 @@ variable "project_name" {
 variable "bedrock_embedding_model_arn" {
   description = "ARN of the Bedrock embedding model for the knowledge base"
   type        = string
-  default     = "arn:aws:bedrock:ap-southeast-2::foundation-model/amazon.titan-embed-text-v2:0"
+  default     = "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v2:0"
 }
 
 variable "bedrock_kb_description" {

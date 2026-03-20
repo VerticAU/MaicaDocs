@@ -18,12 +18,7 @@ variable "account_id" {
   type        = string
 }
 
-variable "bedrock_embedding_model_arn" {
-  description = "ARN of the Bedrock embedding model"
-  type        = string
-}
-
-variable "bedrock_kb_description" {
-  description = "Description for the Bedrock Knowledge Base"
+variable "bedrock_kb_id" {
+  description = "Bedrock Knowledge Base ID (for IAM policy)"
   type        = string
 }

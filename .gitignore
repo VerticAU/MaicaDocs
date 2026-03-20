@@ -1,8 +1,12 @@
-.terraform/
+# Playwright MCP
+.playwright-mcp/
+
+# Terraform
+**/.terraform/
 *.tfstate
 *.tfstate.backup
 *.tfvars
-!terraform.tfvars.example
+!*.tfvars.example
 .terraform.lock.hcl
 tfplan
 *.tfplan
@@ -12,3 +16,6 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+
+# OS
+.DS_Store
