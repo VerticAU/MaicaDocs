@@ -22,8 +22,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-southeast-2
 
-      - name: Sync to raw S3 bucket
+      - name: Sync markdown to raw S3 bucket
         run: |
           aws s3 sync knowledgebase/ s3://${{ secrets.S3_RAW_BUCKET }}/knowledgebase/ \
             --delete \
+            --exclude "*" \
+            --include "*.md" \
             --no-progress
