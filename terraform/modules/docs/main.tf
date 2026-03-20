@@ -121,7 +121,7 @@ resource "aws_iam_user_policy" "bedrock_access" {
           "bedrock:ListIngestionJobs",
         ]
         Resource = [
-          "arn:aws:bedrock:us-east-1:${var.account_id}:knowledge-base/${var.bedrock_kb_id}",
+          "arn:aws:bedrock:ap-southeast-2:${var.account_id}:knowledge-base/${var.bedrock_kb_id}",
         ]
       }
     ]
@@ -173,7 +173,7 @@ resource "aws_iam_policy" "terraform_management" {
         Sid      = "Bedrock"
         Effect   = "Allow"
         Action   = ["bedrock:*KnowledgeBase*", "bedrock:*DataSource*", "bedrock:TagResource", "bedrock:UntagResource", "bedrock:ListTagsForResource"]
-        Resource = ["arn:aws:bedrock:us-east-1:${var.account_id}:knowledge-base/*"]
+        Resource = ["arn:aws:bedrock:ap-southeast-2:${var.account_id}:knowledge-base/*"]
       },
     ]
   })

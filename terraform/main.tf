@@ -4,9 +4,6 @@
 
 module "bedrock" {
   source = "./modules/bedrock"
-  providers = {
-    aws = aws.us_east_1
-  }
 
   name_prefix = local.name_prefix
   common_tags = local.common_tags
