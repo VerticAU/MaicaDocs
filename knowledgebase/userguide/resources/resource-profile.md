@@ -83,6 +83,72 @@ The table below outlines the attribute fields related to the `Resource` Record T
 | `Number of Clients`      | Roll-Up Summary         | Derived from the number of associated Resource Participants.                                                                                                                                                                      |
 | `Schedule Notification`  | Picklist                | Indicates if and how often the Resource is emailed their Appointment Schedule                                                                                                                                                     |
 
+### Scheduling Information & Overtime Validation&#x20;
+
+The `Scheduling Information` section of the `Resource` profile holds the fields that govern how **Maica** manages and enforces working hour limits for a worker. These fields are used across scheduling, broadcasting, and the Optimisation Engine to ensure workers are rostered within their agreed or award-based limits.
+
+The fields available in this section are described below:
+
+| Field                                    | Description                                                                                                                                                                  |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Daily Hours Limit`                      | The maximum number of hours a worker can be scheduled in any single day. Used by the Smart Selection Filter and Optimiser to assess availability.                            |
+| `Weekly Hours Limit`                     | The maximum number of hours a worker can be scheduled in any single week. Used by the Optimiser's Workload scoring and the Smart Selection Filter.                           |
+| `Fortnightly Hours Limit`                | The maximum number of hours a worker can be scheduled within a fixed 14-day fortnight, aligned to a Monday-start period. Used in Overtime Validation.                        |
+| `Weekly Hours Minimum`                   | The minimum number of hours a worker should be scheduled each week. Used by the Smart Selection Filter to surface workers who have capacity.                                 |
+| `Fortnightly Hours Minimum`              | The minimum number of hours a worker should be scheduled across a fortnight.                                                                                                 |
+| `Minimum Hours Gap Between Working Days` | The minimum required rest period (in hours) between the end of a worker's last shift on one day and the start of their first shift on the next. Used in Overtime Validation. |
+| `Maximum Consecutive Days On`            | The maximum number of consecutive calendar days a worker can be rostered for any counted work. A single day with zero hours resets the count. Used in Overtime Validation.   |
+
+#### How These Fields Are Used Across Maica?
+
+**Optimisation Engine & Broadcasting**
+
+When the [Resource Optimiser](https://knowledge.maica.com.au/maica-knowledge-base/the-planner/resource-optimiser) runs — whether as an automated optimisation or a broadcast — it scores each candidate Resource based on their current workload and availability. The `Weekly Hours Limit` directly informs the Workload scoring category, which evaluates how much capacity a worker has remaining in their week relative to the hours required by the Appointment or Shift. Workers closer to their limit will score lower for workload, meaning better-suited candidates are prioritised automatically.
+
+The same logic applies when Broadcasting — only Resources with sufficient capacity relative to their limits are surfaced as viable candidates.
+
+**Overtime Validation**
+
+When scheduling a worker — through the Planner, auto-fill, Shift Offers, or any other method — **Maica** automatically checks whether the proposed shift would cause the assigned `Resource` to exceed any of their overtime thresholds. If a breach is detected, Maica will either prevent the assignment from proceeding or prompt an authorised user to acknowledge and override the breach before continuing.
+
+Overtime validation runs when an `Appointment Resource` record is created, or when an existing one is updated in a way that changes start or end times or transitions from a non-counted to a counted status.
+
+The four overtime thresholds enforced are:
+
+| Threshold                            | Field                                    | Description                                                                                                                                          |
+| ------------------------------------ | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Maximum Hours Per Day**            | `Daily Hours Limit`                      | Maximum hours within any rolling 24-hour window. Includes paid travel time.                                                                          |
+| **Maximum Hours Per Fortnight**      | `Fortnightly Hours Limit`                | Maximum hours within a fixed Monday-start 14-day period. Includes paid travel time.                                                                  |
+| **Minimum Gap Between Working Days** | `Minimum Hours Gap Between Working Days` | Minimum rest required between the last shift on one day and the first shift on the next. Does not apply to multiple shifts on the same calendar day. |
+| **Maximum Consecutive Days On**      | `Maximum Consecutive Days On`            | Maximum consecutive calendar days with any counted work. A single day with no work resets the count.                                                 |
+
+**Counted statuses** — the following `Appointment Resource` statuses are included in overtime tallies:&#x20;
+
+* Scheduled
+* Confirmed&#x20;
+* Accepted
+
+{% hint style="info" %}
+Withdrawn, Declined, and Cancelled are excluded.
+{% endhint %}
+
+**Validation Outcomes:**
+
+**No breach** — the assignment proceeds as normal.
+
+**Breach detected — override required** — one or more thresholds would be exceeded, but the breaches are overridable. A modal appears titled _Overtime conditions breached_, listing each breached metric with current totals, proposed totals, and the applicable threshold. From here, you can either:
+
+* **Cancel** — dismiss the modal without saving
+* **Acknowledge & Override** — confirm awareness of the breach and proceed. This option is only visible to users with the overtime override permission.
+
+**Breach detected — blocked** — one or more thresholds would be exceeded and are not overridable. The assignment cannot proceed.
+
+{% hint style="info" %}
+If you do not see the **Acknowledge & Override** option when a breach is detected, you do not have the required permission. Contact your system administrator
+{% endhint %}
+
+When a user attempts to set an `Appointment Resource` status to **Confirmed** where breaches exist and no override has been recorded, the same rules apply — users with the override permission will see the acknowledgement modal, and users without it will be blocked with the message: _You do not have permission to confirm when overtime conditions are breached._
+
 ## Resource Related Lists
 
 In addition to the standard attributes described above, **Maica** also provides a variety of related information to further manage the configuration of a `Resource`.

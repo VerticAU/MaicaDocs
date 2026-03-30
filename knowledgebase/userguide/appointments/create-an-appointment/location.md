@@ -67,7 +67,53 @@ In order for Maica to successfully detect and change Timezones, a Google API Key
 | A user views an Appointment created in a different zone | ✅ Maica shows the time adjusted to the viewer’s local timezone (e.g. Planner, Quick Info). |
 | Location is updated post-save                           | ✅ System re-evaluates and prompts to apply new timezone via modal.                         |
 
-## Google Maps Integration
+## Appointment Travel
+
+Before Maica can calculate travel time and kilometres for an appointment, it needs to know how the travel origin/destination and sequence (Previous/Next Appointment) are determined.. This is controlled by the **Travel Mechanism** setting, found in **Settings →** [**Travel Management**](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/travel-management).
+
+There are two options:
+
+<table><thead><tr><th width="153.580078125">Mechanism</th><th>Description</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Origins and destinations are set manually by the user on each individual appointment. Maica uses the <code>Previous/Next Appointment Timespan (Days)</code> setting to determine how far back and forward it looks when suggesting a previous or next appointment as an origin or destination.</td></tr><tr><td><strong>Sequential</strong></td><td>Maica automatically determines the origin and destination for each appointment in a worker's day based on the order of their schedule. Travel is calculated between consecutive appointments within a defined time gap. No manual origin/destination setup is required.</td></tr></tbody></table>
+
+### Default&#x20;
+
+When the Travel Mechanism is set to **Default**, users open each appointment and manually configure the origin and destination via the Travel Management component. Maica uses the `Previous/Next Appointment Timespan (Days)` setting to define how far back or forward it looks when presenting a previous or next appointment as a suggested origin or destination.
+
+This setting is measured in **days** and is visible in Travel Management settings when the Default mechanism is selected. It is hidden when Sequential is active.
+
+#### Sequential
+
+When the Travel Mechanism is set to **Sequential**, Maica automatically links each appointment to the one before and after it in a worker's schedule, and calculates travel between those linked appointments using [Google Maps](location.md#google-maps-integration). This removes the need for manual origin/destination management and ensures travel predictions stay accurate as the schedule changes.
+
+Travel is calculated only **between** appointments in a sequence — no travel is calculated to the first appointment of the day or from the last.&#x20;
+
+{% hint style="info" %}
+This aligns with industry standard conditions where travel to and from the start and end of a worker's day is not billable or payable.
+{% endhint %}
+
+When a schedule change occurs — for example, an appointment is added, moved, or cancelled — Maica automatically recalculates the affected travel legs in the background. Because this runs asynchronously, a Planner refresh may be needed to see updated values.
+
+{% hint style="success" %}
+When Sequential is active, travel values on individual appointments are read-only and cannot be manually overridden.
+{% endhint %}
+
+{% hint style="info" %}
+A Google Maps API key must be configured in **Settings → Maps Management** for Sequential Travel to calculate distance and time correctly. If the API key is not present, Maica will display a warning in Travel Management settings.
+{% endhint %}
+
+{% hint style="info" %}
+**Travel Sequence Gap (Hours)**
+
+The `Travel Sequence Gap (Hours)` setting is visible only when the Sequential mechanism is selected. It defines the **maximum time gap** between two consecutive appointments for Maica to treat them as part of the same sequence.
+
+If the gap between two appointments exceeds this value, they are treated as separate sequences — meaning no travel is calculated between them, and the later appointment is treated as the first of a new sequence (with no incoming travel).
+
+This allows a single worker to have **multiple sequences in one day**. For example, if the gap is set to 2 hours and a worker has a morning block and an afternoon block with a 3-hour break between them, each block is treated as its own independent sequence.\
+\
+To configure your Travel Sequence Gap, head to [Travel Management](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/travel-management) in the Maica Settings.&#x20;
+{% endhint %}
+
+### Google Maps Integration
 
 **Maica** integrates with Google Maps to determine travel times.&#x20;
 
@@ -79,14 +125,9 @@ The Google Maps integration will display on all Location Selection Options that 
 
 <figure><img src="../../.gitbook/assets/google maps integration location.png" alt="" width="563"><figcaption></figcaption></figure>
 
-When determining your **Appointment Travel Time Breakdown**, you have three options for both the origin (**1. from which travel will be started**) and the destination (**2. to which travel will complete**) of your [Appointment](../../getting-started/maica-key-concepts/appointment.md). These options are shown in the table below:
+When determining your **Appointment Travel Time Breakdown** for Default travel (not Sequential), you have three options for both the origin (**1. from which travel will be started**) and the destination (**2. to which travel will complete**) of your [Appointment](../../getting-started/maica-key-concepts/appointment.md). These options are shown in the table below:
 
-| Travel Option	              | Description                                                                                                                                                  |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Previous/Next Appointment` | This is either the previous Appointment (in cases where travel is to an Appointment) or the next Appointment (in cases where travel is from an Appointment). |
-| `Home Address`              | This is the address on the Salesforce User profile linked to the Resource record.                                                                            |
-| `Primary Location`          | This is a lookup on the Resource record which is associated with a location containing an address.                                                           |
-| `Current Location`          | The current location of the Resource (User) using **Maica**                                                                                                  |
+<table><thead><tr><th width="286.8564453125">Travel Option	</th><th>Description </th></tr></thead><tbody><tr><td><code>Previous/Next Appointment</code></td><td>This is either the previous Appointment (in cases where travel is to an Appointment) or the next Appointment (in cases where travel is from an Appointment).</td></tr><tr><td><code>Home Address</code></td><td>This is the address on the Salesforce User profile linked to the Resource record.</td></tr><tr><td><code>Primary Location</code> </td><td>This is a lookup on the Resource record which is associated with a location containing an address.</td></tr><tr><td><code>Current Location</code> </td><td>The current location of the Resource (User) using <strong>Maica</strong></td></tr></tbody></table>
 
 ### Travel Alert
 
