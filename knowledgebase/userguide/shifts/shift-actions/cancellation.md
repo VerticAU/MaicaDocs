@@ -16,7 +16,9 @@ When [Shifts](../../getting-started/maica-key-concepts/shift.md) are cancelled, 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-08-06 at 1.39.48 pm.png" alt="" width="466"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-If you select to cancel the selected **Shift** only, then Maica will remove this **Shift** from the Recurring Schedule and effectively turn this **Shift** into a single **Shift** with all changes reflected.
+If you select to cancel the selected **Shift** only, then Maica will remove this **Shift** from the Recurring Schedule and effectively turn this **Shift** into a single **Shift** with all changes reflected.\
+\
+To learn more about cancellations within a Schedule, [click here](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/recurring-schedules#cancelling-a-schedule).&#x20;
 {% endhint %}
 
 ## Cancellation Reason&#x20;

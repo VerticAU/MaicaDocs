@@ -16,7 +16,9 @@ When [Appointments](../../getting-started/maica-key-concepts/appointment.md) are
 <figure><img src="../../.gitbook/assets/Screenshot 2024-08-06 at 1.39.48 pm.png" alt="" width="466"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-If you select to cancel the selected **Appointment** only, then Maica will remove this **Appointment** from the Recurring Schedule and effectively turn this **Appointment** into a single **Appointment** with all changes reflected.
+If you select to cancel the selected **Appointment** only, then Maica will remove this **Appointment** from the Recurring Schedule and effectively turn this **Appointment** into a single **Appointment** with all changes reflected.\
+\
+To learn more about cancellations within a Schedule, [click here](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/recurring-schedules#cancelling-a-schedule).&#x20;
 {% endhint %}
 
 ## Cancellation Requested Date
