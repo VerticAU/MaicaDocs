@@ -24,6 +24,11 @@ If you are looking for an overview of how `Contacts` work in Salesforce, [Trailh
 * [Payment Methods](../../invoices/invoice-actions/process-an-invoice.md)
 * [Active Schedule](./#active-schedule)
 * [Upcoming Schedule](./#upcoming-schedule)
+* [Meet Me](../meet-me.md)
+
+{% hint style="info" %}
+To learn more about Meet Me, Maica's AI Participant Summary, please [click here](../meet-me.md).&#x20;
+{% endhint %}
 
 ## Participant Record Summary Components
 

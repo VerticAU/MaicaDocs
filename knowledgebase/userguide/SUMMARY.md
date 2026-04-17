@@ -36,6 +36,7 @@
     * [Create Service Booking](participants/participant-profile/ndis-funding/create-service-booking.md)
     * [Manage Service Booking](participants/participant-profile/ndis-funding/manage-service-booking.md)
   * [Home Care Package Funding](participants/participant-profile/home-care-package-funding.md)
+* [Meet Me](participants/meet-me.md)
 * [Billable Participant Notes](participants/billable-participant-notes/README.md)
   * [Take a Note](participants/billable-participant-notes/take-a-note.md)
   * [Custom Fields](participants/billable-participant-notes/custom-fields.md)
