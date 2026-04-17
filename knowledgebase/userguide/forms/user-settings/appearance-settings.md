@@ -46,5 +46,5 @@ Appearance preferences are stored per user — each team member can choose their
 {% hint style="info" %}
 These app-level appearance settings affect the **Maica Forms interface** (your builder, dashboard, and admin views). They do **not** affect the look of your published public forms.
 
-To style the forms that respondents see, use the [per-form appearance settings](file:///1414204/forms/appearance.md) in the form builder.
+To style the forms that respondents see, use the [per-form appearance settings](../forms-overview/appearance.md) in the form builder.
 {% endhint %}
