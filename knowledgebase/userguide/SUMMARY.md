@@ -207,6 +207,30 @@
 * [Xero Integration Overview](integrations/xero-integration-overview.md)
 * [Stripe Integration Overview](integrations/stripe-integration-overview.md)
 
+## Forms
+
+* [Jump to: Forms](forms/jump-to-forms.md)
+* [Logging In](forms/logging-in.md)
+* [The Dashboard](forms/the-dashboard.md)
+* [Forms Overview](forms/forms-overview/README.md)
+  * [Building a Form](forms/forms-overview/building-a-form.md)
+  * [Managing a Form](forms/forms-overview/managing-a-form.md)
+  * [Field Types & Settings](forms/forms-overview/field-types-and-settings.md)
+  * [Conditional Logic](forms/forms-overview/conditional-logic.md)
+  * [Appearance](forms/forms-overview/appearance.md)
+  * [Publishing](forms/forms-overview/publishing.md)
+  * [Viewing Submissions](forms/forms-overview/viewing-submissions.md)
+* [User Settings](forms/user-settings/README.md)
+  * [Appearance Settings](forms/user-settings/appearance-settings.md)
+  * [Recycle Bin](forms/user-settings/recycle-bin.md)
+* [forms-kb](forms/forms-kb/README.md)
+  * [admin](forms/forms-kb/admin/README.md)
+    * [managing access](forms/forms-kb/admin/managing-access.md)
+    * [submission settings](forms/forms-kb/admin/submission-settings.md)
+    * [salesforce integration](forms/forms-kb/admin/salesforce-integration.md)
+    * [connecting](forms/forms-kb/admin/connecting.md)
+    * [disconnecting](forms/forms-kb/admin/disconnecting.md)
+
 ## Troubleshooting
 
 * [General Troubleshooting](troubleshooting/general-troubleshooting.md)
