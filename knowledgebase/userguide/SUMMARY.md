@@ -207,7 +207,7 @@
 * [Xero Integration Overview](integrations/xero-integration-overview.md)
 * [Stripe Integration Overview](integrations/stripe-integration-overview.md)
 
-## Forms
+## Forms&#x20;
 
 * [Jump to: Forms](forms/jump-to-forms.md)
 * [Logging In](forms/logging-in.md)
@@ -223,13 +223,6 @@
 * [User Settings](forms/user-settings/README.md)
   * [Appearance Settings](forms/user-settings/appearance-settings.md)
   * [Recycle Bin](forms/user-settings/recycle-bin.md)
-* [forms-kb](forms/forms-kb/README.md)
-  * [admin](forms/forms-kb/admin/README.md)
-    * [managing access](forms/forms-kb/admin/managing-access.md)
-    * [submission settings](forms/forms-kb/admin/submission-settings.md)
-    * [salesforce integration](forms/forms-kb/admin/salesforce-integration.md)
-    * [connecting](forms/forms-kb/admin/connecting.md)
-    * [disconnecting](forms/forms-kb/admin/disconnecting.md)
 
 ## Troubleshooting
 

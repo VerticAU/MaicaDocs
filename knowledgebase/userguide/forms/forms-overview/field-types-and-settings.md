@@ -66,7 +66,7 @@ See [Conditional Logic](conditional-logic.md) for full details on showing and hi
 
 #### Salesforce Tab
 
-See [Salesforce Integration](../forms-kb/admin/salesforce-integration.md) for details on mapping fields to Salesforce objects.
+See [Salesforce Integration](/broken/spaces/9selzjEx6KX7RYEawAVr/pages/dd163f826e957acd9b69764f6f7e2d9b435f0e12) for details on mapping fields to Salesforce objects.
 
 #### Hidden Field Values
 
@@ -81,3 +81,7 @@ Hidden fields appear in submissions and can be mapped to Salesforce fields.
 For **SF Related List** fields (requires Salesforce connection):
 
 <table><thead><tr><th width="221.34375">Setting</th><th>Description</th></tr></thead><tbody><tr><td><strong>Source object</strong></td><td>The Salesforce object to query child records from (e.g. Contact)</td></tr><tr><td><strong>Display fields</strong></td><td>Which fields to show as columns in the selection table</td></tr><tr><td><strong>Column labels</strong></td><td>Override the column header names</td></tr><tr><td><strong>Show column headers</strong></td><td>Toggle the header row on/off</td></tr><tr><td><strong>Filter (WHERE clause)</strong></td><td>SOQL WHERE expression to filter records (e.g. <code>Status__c = 'Active'</code>)</td></tr><tr><td><strong>Selection mode</strong></td><td>Single (radio) or Multiple (checkboxes)</td></tr><tr><td><strong>Related object</strong></td><td>Junction object to create when a selection is made</td></tr><tr><td><strong>Primary field</strong></td><td>Lookup field on the junction object pointing to the main record</td></tr><tr><td><strong>Selected field</strong></td><td>Lookup field on the junction object pointing to the selected record</td></tr><tr><td><strong>Linked action ID</strong></td><td>Which action step creates the primary record (for chaining)</td></tr><tr><td><strong>Additional fields</strong></td><td>Extra fields to set on the junction object (static, form field, lookup, date)</td></tr><tr><td><strong>Prevent duplicates</strong></td><td>Check a field for existing records before creating a new junction</td></tr></tbody></table>
+
+{% hint style="info" %}
+To learn more about the Salesforce Integration in Maica Forms, [click here](/broken/spaces/9selzjEx6KX7RYEawAVr/pages/dd163f826e957acd9b69764f6f7e2d9b435f0e12).&#x20;
+{% endhint %}
