@@ -85,8 +85,6 @@
   * [Running the Optimiser](the-planner/resource-optimiser/running-the-optimiser.md)
   * [Broadcasting Overview](the-planner/resource-optimiser/broadcasting-overview.md)
   * [Running a Broadcast](the-planner/resource-optimiser/running-a-broadcast.md)
-  * [Page 1](the-planner/resource-optimiser/page-1/README.md)
-    * [resource optimiser kb revised](the-planner/resource-optimiser/page-1/resource-optimiser-kb-revised.md)
 
 ## Schedule Manager&#x20;
 
