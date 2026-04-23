@@ -171,7 +171,7 @@ The **Matching Score Importance Level** determines how much influence each categ
 
 The categories are defined below:&#x20;
 
-<table><thead><tr><th width="125.71875">Category</th><th>Description</th></tr></thead><tbody><tr><td><strong>Skills</strong></td><td>Measures how many of the required Skills a Resource has compared with the total Skills needed. </td></tr><tr><td><strong>Availability</strong></td><td>Checks whether the Resource has enough Available hours on the relevant day to cover the Appointment or Shift. Any existing usage or unavailability is subtracted from the daily limit, and the remaining time is compared against the requirement. The resulting score is weighted by the Availability percentage.</td></tr><tr><td><strong>Workload</strong></td><td>Evaluates weekly capacity by comparing the required minutes for the Appointment or Shift plus the Resource’s current scheduled hours against their weekly limit. The result is scaled by the Workload importance percentage.</td></tr><tr><td><strong>Attributes</strong></td><td>Counts how many requested Attributes a Resource satisfies (for example, gender, language, or experience).</td></tr><tr><td><strong>Travel</strong></td><td>Scores proximity by comparing the Resource’s distance to the Appointment location against the closest candidate. Resources co-located or nearest to the site receive the highest score, weighted by the Travel importance percentage.</td></tr></tbody></table>
+<table><thead><tr><th width="125.71875">Category</th><th>Description</th></tr></thead><tbody><tr><td><strong>Skills</strong></td><td>Measures how many of the required Skills a Resource has compared with the total Skills needed. </td></tr><tr><td><strong>Availability</strong></td><td>Checks whether the Resource has enough Available hours on the relevant day to cover the Appointment or Shift. Any existing usage or unavailability is subtracted from the daily limit, and the remaining time is compared against the requirement. The resulting score is weighted by the Availability percentage.</td></tr><tr><td><strong>Workload</strong></td><td>Evaluates weekly capacity by comparing the required minutes for the Appointment or Shift plus the Resource’s current scheduled hours against their fortnightly limit. The result is scaled by the Workload importance percentage.</td></tr><tr><td><strong>Attributes</strong></td><td>Counts how many requested Attributes a Resource satisfies (for example, gender, language, or experience).</td></tr><tr><td><strong>Travel</strong></td><td>Scores proximity by comparing the Resource’s distance to the Appointment location against the closest candidate. Resources co-located or nearest to the site receive the highest score, weighted by the Travel importance percentage.</td></tr></tbody></table>
 
 {% hint style="info" %}
 For example, if _Attributes_ and _Skills_ are set to 40% each, and _Travel_ is set to 0%, the Optimiser will focus almost entirely on matching qualities and skill requirements, ignoring distance as a factor.
@@ -184,6 +184,115 @@ Please note, weighting does not filter Resources — it influences _how strongly
 #### Only use allocated Resources&#x20;
 
 This Setting restricts Optimisation to Resources who already have a defined relationship with the Participant. Meaning, only Resources who are a [Participant Resource](../../participants/participant-profile/#participant-resources) to the allocated Participants on the Appointment or Shift will be considered.&#x20;
+
+#### How Travel Scoring Works
+
+The **Travel** category within the Matching Score evaluates how close each Resource is to the Appointment location. It is one of the most valued scoring categories for organisations with mobile workforces, as it directly impacts travel time, cost, and scheduling efficiency.
+
+This section explains the full mechanics of the Travel score, including prerequisites, how each Resource's origin location is determined, and how the final score is calculated.
+
+#### Prerequisites
+
+For Travel scoring to be active, the following must be true:
+
+{% stepper %}
+{% step %}
+**The Appointment must have a Location set**
+
+This can be a Location record, a Participant Location, or a Manual Entry address. Without a destination address, the system has no reference point to measure distance and **all Resources will receive a Travel score of 0%**.
+{% endstep %}
+
+{% step %}
+**A valid Google API Key must be configured**
+
+This must be configured in Settings > Maps Management. The system geocodes the Appointment address using Google to obtain latitude and longitude coordinates.
+{% endstep %}
+
+{% step %}
+**The Travel importance percentage must be greater than 0%**
+
+This must be set in the Matching Score Importance Level settings. If set to 0%, Travel is excluded from the overall score entirely.
+{% endstep %}
+{% endstepper %}
+
+{% hint style="warning" %}
+If you open the Resource Finder or Optimiser before setting a Location on the Appointment, the Travel score will not be calculated. Always set the Location first, then proceed to Resource selection.
+{% endhint %}
+
+#### How the Appointment Location is Resolved
+
+The system resolves the Appointment's destination address based on its **Location Type**:
+
+| Location Type            | Address Source                                                                                                                                           |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Location**             | The address from the linked Location record. If the Location record has no address stored, Maica queries the record directly for its `Location Address`. |
+| **Participant Location** | The `Participant Location` field on the Appointment.                                                                                                     |
+| **Manual Entry**         | A concatenation of the `Street`, `City`, `State`, and `Postal Code` fields on the Appointment.                                                           |
+
+Once resolved, the address is sent to Google's geocoding service to obtain precise latitude and longitude coordinates. If this geocoding call fails or the address cannot be resolved, Travel scoring is skipped for the entire run.
+
+#### How Each Resource's Origin Location is Determined
+
+Each Resource's starting location is determined by the **Default Origin/Destination Order** setting, found in **Settings > Maps Management**. This setting defines a prioritised list of location sources. The system tries each option in order and uses the **first one that resolves to a valid geolocation** for that Resource.
+
+The configurable options are:
+
+<table><thead><tr><th width="70.92578125" align="center">Priority</th><th width="221.095703125">Option</th><th width="146.650390625">Label</th><th>Description</th></tr></thead><tbody><tr><td align="center">1</td><td><code>appointmentAddress</code></td><td><strong>Previous/Next Appointment</strong></td><td>The location of the Resource's most recent Appointment <em>earlier on the same day</em> as the new Appointment. This reflects where the Resource will actually be coming from in a back-to-back scheduling scenario. The system queries the Resource's Appointment Resources for the closest prior appointment on that calendar day.</td></tr><tr><td align="center">2</td><td><code>primaryLocationAddress</code></td><td><strong>Primary Location</strong></td><td>The geolocation of the Resource's linked Primary Location record (e.g. their usual office, hub, or base).</td></tr><tr><td align="center">3</td><td><code>homeAddress</code></td><td><strong>Home Address</strong></td><td>The geolocation stored directly on the Resource record (sourced from their address fields).</td></tr><tr><td align="center">4</td><td><code>currentLocation</code></td><td><strong>Current Location</strong></td><td>The Resource's live browser-based GPS location. <strong>Note:</strong> This option is only available in the client-side Travel Management modal and is <strong>not used</strong> in server-side scoring within the Resource Finder or Optimiser.</td></tr></tbody></table>
+
+The **default priority order** is: `appointmentAddress > primaryLocationAddress > homeAddress > currentLocation`.
+
+{% hint style="info" %}
+The priority order is fully configurable. For example, if your organisation always wants to measure distance from the Resource's Primary Location regardless of their daily schedule, you can reorder the list in Maps Management to place `primaryLocationAddress` first.
+{% endhint %}
+
+{% hint style="warning" %}
+If none of the configured options resolve to a valid geolocation for a given Resource (e.g. no same-day prior appointment, no Primary Location, and no Home Address on record), that Resource will display **"Location not found"** and will not receive a Travel score.
+{% endhint %}
+
+**Example:** A Resource has a confirmed Appointment at "SIL - Armadale" earlier in the day, and their Primary Location is "Senses Hub - Burswood". Using the default origin order, the system will use the Armadale appointment location as their origin (since `appointmentAddress` is first in priority), rather than the Burswood hub. If there were no same-day prior appointment, it would fall back to the Burswood hub location instead.
+
+#### How the Travel Score is Calculated
+
+The Travel score uses a **relative scoring model**. Rather than scoring Resources against a fixed distance threshold, it compares all Resources against each other:
+
+{% stepper %}
+{% step %}
+**Calculate distance**
+
+The system calculates the **straight-line distance in kilometres** between each Resource's resolved origin and the Appointment's geocoded location.
+{% endstep %}
+
+{% step %}
+**Identify the closest Resource**
+
+It identifies the **minimum distance** (the closest Resource).
+{% endstep %}
+
+{% step %}
+**Calculate the score**
+
+Each Resource is scored as a ratio: `Score = Minimum Distance / Resource Distance`.
+{% endstep %}
+{% endstepper %}
+
+This means:
+
+* The **closest Resource** always receives **100%** for Travel.
+* A Resource **twice as far** as the closest receives **50%**.
+* A Resource **co-located** with the Appointment (distance = 0) receives **100%**.
+* A Resource with no resolvable location receives **no score** and displays "Location not found".
+
+The resulting percentage is then multiplied by the **Travel importance weighting** to determine its contribution to the overall matching score.
+
+**Example:**
+
+<table><thead><tr><th width="145.3330078125">Resource</th><th align="center">Distance to Appointment</th><th align="center">Travel Score</th></tr></thead><tbody><tr><td>Worker A</td><td align="center">5 km (closest)</td><td align="center">100%</td></tr><tr><td>Worker B</td><td align="center">10 km</td><td align="center">50%</td></tr><tr><td>Worker C</td><td align="center">25 km</td><td align="center">20%</td></tr><tr><td>Worker D</td><td align="center">Location not found</td><td align="center">No score</td></tr></tbody></table>
+
+If the Travel importance is set to **20%**, Worker A contributes 20% to their overall score from Travel, Worker B contributes 10%, and Worker C contributes 4%.
+
+{% hint style="info" %}
+The Travel score is especially useful when combined with other criteria. For example, setting Skills to 40%, Availability to 30%, Workload to 10%, and Travel to 20% gives a balanced view where proximity is considered but does not override qualifications and availability.
+{% endhint %}
 
 ### Resource Column&#x20;
 
