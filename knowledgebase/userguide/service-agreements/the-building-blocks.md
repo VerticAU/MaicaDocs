@@ -99,3 +99,7 @@ Each Agreement Item contains Funding Information and Support Item Information. T
 {% hint style="info" %}
 Use the next few articles to learn how to apply Maica Service Agreements to specific use cases like Home Care Packages and NDIS.
 {% endhint %}
+
+{% hint style="success" %}
+Agreement Item Funding Rollover is managed automatically by **Maica** based on your organisation's rollover settings. To learn more about how unspent funds are rolled over between agreement periods, see [Agreement Item Funding Rollover](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/agreement-item-funding-rollover) in the Administration Guide.
+{% endhint %}
