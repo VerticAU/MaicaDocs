@@ -109,6 +109,11 @@ This view makes it easy to see if funding is being used as expected or if adjust
 The Budget Trend Analysis calculations are supported by fields on the Plan, Service Agreement, and Agreement Item. For technical details about how these values are derived, see the Admin Guide for [Budget Trend Analysis](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/support-at-home/budget-trend-analysis).
 {% endhint %}
 
+{% hint style="warning" %}
+If the Estimated Expenditure in the Budget Trend Analysis appears significantly higher than expected, this may be caused by Agreement Items where the Quantity was edited manually in the table row rather\
+than through the Manage Agreement Item modal. To learn more, see [Agreement Item Quantity](../../agreement-item-quantity.md)
+{% endhint %}
+
 ## Validation&#x20;
 
 ### Appointment Service Validation for Support at Home&#x20;

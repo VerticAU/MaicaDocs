@@ -162,6 +162,7 @@
   * [Support at Home Agreements](service-agreements/agreement-management/support-at-home-agreements.md)
 * [Agreement Item Calculation](service-agreements/agreement-item-calculation.md)
 * [Calculate Total Committed](service-agreements/calculate-total-committed.md)
+* [Agreement Item Quantity](service-agreements/agreement-item-quantity.md)
 
 ## Invoices
 
