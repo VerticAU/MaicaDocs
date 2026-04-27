@@ -95,7 +95,7 @@ The Budget Trend Analysis helps is a visual tool at the top of the Manage Servic
 
 For each quarter in the Care Recipient’s Plan, the component displays a **tile** showing:
 
-* **Available Funding** – the total approved funding for that quarter.
+* **Available Funding** – the approved funding available for that quarter, based on Plan Budgets active within the quarter's date range. For the first period, this reflects the current Remaining Amount of all overlapping active Plan Budgets. For subsequent periods, the balance carries forward from the previous period's projected unspent balance.
 * **Estimated Expenditure** – the projected cost of services scheduled in that quarter.
 * **Remaining Funding** – the difference between available funding and estimated expenditure.
 
