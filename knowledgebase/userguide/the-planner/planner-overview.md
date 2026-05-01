@@ -10,13 +10,23 @@ In **Maica**, the Planner is the primary location for Rostering and Scheduling. 
 
 ## Planner Function Overview
 
-The Planner offers multiple [**Views**](planner-views-and-modes/) and [**Modes**](planner-views-and-modes/), and includes key [**Actions**](planner-actions/) such as Managing Unavailability and Appointment Optimisation. The Planner also offers the ability for you to apply [**Filters**](planner-filter/) to refine and customise your view.&#x20;
+The Planner offers multiple [**Views**](planner-views-and-modes/) and [**Modes**](planner-views-and-modes/), and includes key [**Actions**](planner-actions/) such as Managing Unavailability and Resource Optimisation. The Planner also offers the ability for you to apply [**Filters**](planner-filter/) to refine and customise your view.&#x20;
 
 For further information on the Planner functions, please click here:&#x20;
 
 * [Planner Views & Modes](planner-views-and-modes/)
 * [Planner Actions](planner-actions/)
 * [Planner Filter](planner-filter/)
+
+{% hint style="info" %}
+For optimal Planner performance, keep your dataset within the following thresholds:
+
+* Total Appointments or Shifts in the period: up to 1,500
+* Busiest single day: up to 250 Appointments or Shifts on one day
+* Scope size (resources, participants, etc.): up to 2,000 (larger scopes add extra load pressure)
+
+To stay within these limits, please utilise the Planner Filters
+{% endhint %}
 
 ## Appearance Guide
 
