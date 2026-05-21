@@ -10,58 +10,67 @@ The Basic Details tab captures the basic details of the [Shift](../../getting-st
 
 <table><thead><tr><th width="222">Captured Information	</th><th>Description</th></tr></thead><tbody><tr><td><a href="../../getting-started/maica-key-concepts/resource.md">Resource(s) </a></td><td>This allows for the selection of <a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a> by simply typing a name of a Resource (or multiple) or by clicking on the <code>Filter</code> icon which allows for <a href="../../appointments/create-an-appointment/smart-selection-filter.md">Smart Selection</a> of <a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a>.</td></tr><tr><td><a href="../../getting-started/maica-key-concepts/asset.md">Asset(s) </a></td><td>This allows for the selection of <a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a> by simply typing a name of a Asset (or multiple) or by clicking on the <code>Filter</code> icon which allows for <a href="../../appointments/create-an-appointment/smart-selection-filter.md">Smart Selection</a> of <a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a>.</td></tr><tr><td>Date &#x26; Time Details </td><td>The date and time details are pre-populated from the <a href="../../the-planner/planner-overview.md">Planner</a> so there is nothing to do for the user. </td></tr><tr><td>Shift Service </td><td>This allows for the selection of Shift Service(s). You can add an Shift Service by typing the name of the service, or by using any key words configured within the service. For example: If you were adding <strong>Support Coordination</strong>, you could type <strong>Support Coordination</strong>, or, <strong>advice</strong>. </td></tr><tr><td>Claim Type</td><td>This allows for the selection of a Claim Type by selecting one from the provided dropdown list. </td></tr><tr><td>Time Zone</td><td>When creating a new Shift, the <strong>timezone is automatically set</strong> <strong>&#x26; displayed</strong> based on the <strong>Salesforce user’s current browser timezone.</strong> This occurs before a Location is selected.</td></tr></tbody></table>
 
-### Auto Check-In for Appointments Within a Shift
+### Autocomplete Appointments for Linked Appointments
 
-In addition to the details capture above, when a Shift, Maica allows you to determine how Appointments within that Shift should be checked in. This is especially useful when working with Shifts that contain multiple Appointments, Maica allows the option for those Appointments to be checked in automatically when the Shift itself is checked in via the Desktop & Mobile Care Worker App.
+In addition to the details captured above, when creating a Shift Maica allows you to determine how the Appointments linked to that Shift are processed alongside it. This is especially useful when working with Shifts that contain multiple Appointments. When the option is enabled, linked Appointments are automatically checked in, checked out, and completed in step with the parent Shift, rather than requiring each Appointment to be actioned individually.
 
-This behaviour is controlled by a toggle at the **Shift level** and is designed to simplify the mobile check-in experience for long or continuous Shifts while still allowing appointment-level control where required. To learn more, see below.&#x20;
+This behaviour is controlled by the **Autocomplete Appointments** toggle on the Shift record. It is designed to simplify both mobile check-in and check-out workflows for long or continuous Shifts, and Quick Complete workflows in the Planner, while still allowing Appointment-level control where required. To learn more, see below.
 
-### Configuring Auto Check-In on a Shift
+### Configuring Autocomplete Appointments on a Shift
 
-When creating or editing a Shift, you can determine how Appointments within that Shift should be checked in via the toggle within the Basic Details stage.
+When creating or editing a Shift, you can determine how the linked Appointments are processed via the **Autocomplete Appointments** toggle within the Basic Details stage.
 
-* If **Auto Check-In for Appointments** is enabled:
-  * Appointments linked to the Shift will be checked in automatically when the Shift is checked in on the Mobile Care Worker App.
-* If the setting is disabled:
-  * Appointments must be checked in individually, even if the Shift itself is checked in.
+* When the toggle is **enabled**:
+  * Linked Appointments are automatically checked in, checked out, and completed in step with the Shift.
+  * The **Check In** and **Check Out** buttons on the linked Appointment records are disabled, because the cascade handles those actions on behalf of the user.
+* When the toggle is **disabled**:
+  * Linked Appointments must be checked in, checked out, and completed individually, even if the Shift itself is actioned.
 
 {% hint style="info" %}
-This setting is applied **per Shift**, allowing flexibility based on how services are delivered.
+This setting is applied **per Shift**, allowing flexibility based on how services are delivered. By default, **Autocomplete Appointments** is set to enabled when a new Shift is created.
 {% endhint %}
 
-### How Check-In Works for Appointments
+### How Autocomplete Works for Linked Appointments
 
-#### Auto Check-In Enabled
+Autocomplete Appointments triggers on three actions on the parent Shift: check-in on the Mobile Care Worker App, check-out on the Mobile Care Worker App, and Quick Complete from the Planner.
 
-When a care worker checks in to the Shift on the Mobile Care Worker App:
+#### Autocomplete Enabled
 
-* All Appointments linked to the Shift are automatically checked in
-* Appointment check-in times use the **scheduled Appointment check-in and check-out times**
-* No additional action is required by the care worker at the Appointment level
+When a Shift has the **Autocomplete Appointments** toggle enabled:
 
-#### Auto Check-In Disabled
+* **On Shift check-in (Mobile Care Worker App):** each linked Appointment is automatically checked in. Appointment check-in times use the scheduled Appointment check-in and check-out times.
+* **On Shift check-out (Mobile Care Worker App):** each linked Appointment is automatically checked out, completing the Appointment with the scheduled times.
+* **On Shift Quick Complete (Planner):** the cascade processes any pending check-in and check-out actions on each linked Appointment in a background batch, moving the Appointments to **Completed** status. Appointments already in **Completed**, **Cancelled**, or **Under Review** status are excluded from the cascade.
 
-When auto check-in is not enabled:
+In all three cases, the **Check In** and **Check Out** buttons on the linked Appointment records remain disabled, since the cascade handles those actions on behalf of the user.
 
-* Checking in to the Shift does not check in linked Appointments
-* Care workers must check in to each Appointment individually
-* This behaviour matches standard Appointment-level check-in requirements
+#### Autocomplete Disabled
+
+When the **Autocomplete Appointments** toggle is disabled:
+
+* Checking in or out of the Shift does not check in or out the linked Appointments. Care workers must check in and out of each Appointment individually.
+* Quick Completing the Shift does not cascade to linked Appointments. Each Appointment must be completed separately.
+* This behaviour matches standard Appointment-level workflows.
 
 {% hint style="info" %}
-This approach reduces repeated actions for care workers when:
+The autocomplete approach reduces repeated actions for care workers when:
 
-* A Shift contains multiple Appointments
-* Appointments are delivered continuously across a single Shift period
+* A Shift contains multiple Appointments.
+* Appointments are delivered continuously across a single Shift period.
 
-At the same time, it maintains full control for scenarios where Appointment-level check-ins are still required for compliance or operational reasons.
+At the same time, it maintains full control for scenarios where Appointment-level actions are still required for compliance or operational reasons.
 {% endhint %}
 
 ### Example Scenarios
 
-* A Shift is scheduled from **9:00am–3:00pm** with three linked Appointments and auto check-in enabled.\
-  The care worker checks in once to the Shift, and all three Appointments are checked in automatically.
-* A Shift contains multiple Appointments but auto check-in is not enabled.\
-  The care worker must check in to each Appointment individually, even after checking in to the Shift.
+* A Shift is scheduled from **9:00am to 3:00pm** with three linked Appointments and Autocomplete Appointments enabled.\
+  The care worker checks in once to the Shift on the Mobile Care Worker App, and all three Appointments are checked in automatically. The same applies when the care worker checks out.
+* A Shift has Autocomplete Appointments enabled, and a Coordinator clicks **Quick Complete** on the Shift in the Planner.\
+  The Shift moves to **Completed** immediately. The three linked Appointments are queued for completion via a background batch, with check-in and check-out actions applied automatically.
+* A Shift has Autocomplete Appointments enabled, but one of the linked Appointments is already in **Cancelled** status.\
+  The cascade processes the other linked Appointments and leaves the cancelled one untouched.
+* A Shift contains multiple Appointments but Autocomplete Appointments is not enabled.\
+  The care worker must check in, check out, and complete each Appointment individually, even after actioning the Shift itself.
 
 ## Things to look out for: Basic Details&#x20;
 

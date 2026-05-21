@@ -226,3 +226,53 @@ From here, you can select Broadcast in the bottom right to trigger the Broadcast
 Now you are ready to configure the rest of your Broadcast.&#x20;
 
 This is a handy way to manually determine some or all of the Resources receiving an offer for any particular Shift with clear visibility of their Optimisation Score.&#x20;
+
+### Cancelling a Broadcast
+
+Sometimes a Broadcast needs to be retracted before it completes. This might happen if the configuration was set incorrectly, if circumstances have changed, or if you want to start over with different parameters. Maica allows you to cancel an active Broadcast directly from the Resource Optimiser without manually withdrawing each Resource one at a time.
+
+#### Cancelling from the Optimiser
+
+Let's assume our **Tuesday, 18 June** Shift from earlier examples has an active Broadcast with 2 Pending offers and 1 Accepted offer, but we have realised the Expiration Window was set too short and want to start over with a longer window.
+
+From the Optimiser, select the Shift. When the selected rows include one or more active Broadcasts, the **Broadcast** button displays a dropdown with two options:
+
+* **New Broadcast**: start a new Broadcast for the selected records
+* **Cancel Broadcast**: retract the currently active Broadcast on the selected records
+
+Click **Cancel Broadcast**, then click **Confirm** on the Optimiser to commit the cancellation.
+
+{% hint style="info" %}
+As with all Resource Optimiser actions, the cancellation is staged in the Optimiser interface and only commits when you click **Confirm**. You can review or undo the cancellation up until that point.
+{% endhint %}
+
+{% hint style="info" %}
+When no active Broadcasts are present in the selection, the **Broadcast** button continues to behave as before with no dropdown shown.
+{% endhint %}
+
+#### What happens when a Broadcast is cancelled?
+
+Once the cancellation is confirmed:
+
+* All Resources in **Pending** or **Accepted** status on the affected records are moved to **Withdrawn**.
+* The following Broadcast fields are cleared on each affected Appointment or Shift: Offer Method, Offer Count, Broadcast Configuration, Broadcast Ends, and Expiration Window.
+* The records are no longer marked as having a Live Broadcast.
+
+After cancellation, the records are back in the same state as if no Broadcast had been initiated. You can configure and start a new Broadcast, manually assign Resources via the Find Resource Modal, or take any other action available in the Optimiser.
+
+{% hint style="info" %}
+Withdrawal notifications are **not** sent to Resources when a Broadcast is cancelled. The cancellation is silent from the Resource's perspective, even for Resources who had already Accepted the offer. This avoids generating "withdrawal" alerts for Resources whose offers were retracted as part of a Scheduler-initiated correction.
+{% endhint %}
+
+{% hint style="success" %}
+Cancel Broadcast also works as a bulk action. If you select multiple Appointments or Shifts with active Broadcasts, cancelling applies to all of them in a single step.
+{% endhint %}
+
+#### Example scenarios
+
+* You started a Broadcast with the wrong Expiration Window and need to retract it before workers respond.\
+  Open the Optimiser, select the Shift, click **Broadcast → Cancel Broadcast**, then **Confirm**. All offers are withdrawn and you can immediately configure a new Broadcast with the corrected window.
+* A Broadcast has 2 Accepted Resources and 3 Pending offers, but circumstances have changed and you no longer need the Shift filled this way.\
+  Cancel the Broadcast to move all 5 Resources to **Withdrawn** and clear the Broadcast configuration on the Shift. You can then re-broadcast with different parameters or assign Resources directly.
+* You have 12 Appointments with active Broadcasts that all need to be cancelled because of a scheduling change at the Participant level.\
+  Select all 12 in the Optimiser, click **Broadcast → Cancel Broadcast** once, then **Confirm**. The cancellation applies to all 12 in a single bulk action.
