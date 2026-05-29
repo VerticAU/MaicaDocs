@@ -226,6 +226,12 @@
   * [Appearance Settings](forms/user-settings/appearance-settings.md)
   * [Recycle Bin](forms/user-settings/recycle-bin.md)
 
+## Alerts
+
+* [Maica Alerts Overview](alerts/maica-alerts-overview.md)
+* [Creating and Managing Alerts](alerts/creating-and-managing-alerts.md)
+* [Alert Fields Reference](alerts/alert-fields-reference.md)
+
 ## Troubleshooting
 
 * [General Troubleshooting](troubleshooting/general-troubleshooting.md)

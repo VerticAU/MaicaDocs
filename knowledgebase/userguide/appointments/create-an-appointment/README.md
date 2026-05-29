@@ -1,5 +1,5 @@
 ---
-description: Learn about the process of creating a new Appointment.
+description: Learn about the process of creating a new Appointment within Maica
 ---
 
 # Create an Appointment
