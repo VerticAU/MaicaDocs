@@ -1,0 +1,153 @@
+# Table of contents
+
+* [Welcome to Maica Administration](README.md)
+
+## Getting Started
+
+* [Check your Salesforce Hosting](getting-started/check-your-salesforce-hosting.md)
+* [Licence Agreement](https://docs.google.com/document/d/1da8mBGOeMmA9Vlt6DyNh45y9rOMGrPIbR6WJaTnO5Ps/edit?usp=sharing)
+* [The Maica Release Process](getting-started/the-maica-release-process.md)
+* [Find your Maica Edition](getting-started/find-your-maica-edition.md)
+* [The Implementation Process](getting-started/the-implementation-process.md)
+
+## Data
+
+* [Data Objects](data/data-objects/README.md)
+  * [Agreement Item](data/data-objects/agreement-item.md)
+  * [Appointment](data/data-objects/appointment.md)
+  * [Availability](data/data-objects/availability.md)
+  * [Booking Item](data/data-objects/booking-item.md)
+  * [Checklist](data/data-objects/checklist.md)
+  * [Client Note](data/data-objects/client-note.md)
+  * [Connection](data/data-objects/connection.md)
+  * [Contact](data/data-objects/contact.md)
+  * [Delivery Activity](data/data-objects/delivery-activity.md)
+  * [Funding](data/data-objects/funding.md)
+  * [Funding Item](data/data-objects/funding-item.md)
+  * [Invoice](data/data-objects/invoice.md)
+  * [Invoice Line Item](data/data-objects/invoice-line-item.md)
+  * [Location](data/data-objects/location.md)
+  * [Log](data/data-objects/log.md)
+  * [Payment Request](data/data-objects/payment-request.md)
+  * [Preference](data/data-objects/preference.md)
+  * [Price List](data/data-objects/price-list.md)
+  * [Price List Entry](data/data-objects/price-list-entry.md)
+  * [Resource](data/data-objects/resource.md)
+  * [Resource Participant](data/data-objects/resource-participant.md)
+  * [Service Agreement](data/data-objects/service-agreement.md)
+  * [Service Agreement Leave](data/data-objects/service-agreement-leave.md)
+  * [Service Agreement Statement](data/data-objects/service-agreement-statement.md)
+  * [Service Booking](data/data-objects/service-booking.md)
+  * [Shift](data/data-objects/shift.md)
+  * [Support Category](data/data-objects/support-category.md)
+  * [Support Item](data/data-objects/support-item.md)
+  * [Timesheet](data/data-objects/timesheet.md)
+  * [Timesheet Entry](data/data-objects/timesheet-entry.md)
+  * [Unavailability](data/data-objects/unavailability.md)
+* [Permission Sets](data/permission-sets.md)
+* [Permission Groups & Sets](data/permission-groups-and-sets/README.md)
+  * [Permission Set Groups Overview](data/permission-groups-and-sets/permission-set-groups-overview.md)
+* [Reference Data](data/reference-data/README.md)
+  * [Reference Data Template](data/reference-data/reference-data-template.md)
+  * [Import Template](data/reference-data/import-template.md)
+* [Data Import Utility](data/data-import-utility/README.md)
+  * [NDIS Support Catalogue](data/data-import-utility/ndis-support-catalogue.md)
+  * [Data Import Flows](data/data-import-utility/data-import-flows.md)
+
+## System Processes
+
+* [Billing Invoice Generation](system-processes/billing-invoice-generation.md)
+* [Timesheet Generation](system-processes/timesheet-generation.md)
+* [Recurring Schedules](system-processes/recurring-schedules.md)
+* [Travel Claiming and Expenses](system-processes/travel-claiming-and-expenses.md)
+* [Public Holiday Configuration](system-processes/public-holiday-configuration.md)
+* [Configuring Maica Components](system-processes/configuring-maica-components/README.md)
+  * [Appointment Services](system-processes/configuring-maica-components/appointment-services.md)
+  * [Support Items](system-processes/configuring-maica-components/support-items.md)
+  * [Support Categories](system-processes/configuring-maica-components/support-categories.md)
+  * [Overnight and 24 Hour Availability](system-processes/configuring-maica-components/overnight-and-24-hour-availability.md)
+* [Total Committed Calculation](system-processes/total-committed-calculation.md)
+* [End Service Agreement](system-processes/end-service-agreement.md)
+* [Maica's Optimisation Engine](system-processes/maicas-optimisation-engine.md)
+* [Agreement Item Funding Rollover](system-processes/agreement-item-funding-rollover.md)
+
+***
+
+* [Enable Maica Actions](enable-maica-actions.md)
+* [Maica Timezone Management](maica-timezone-management.md)
+* [Create a New Participant Note Template](create-a-new-participant-note-template.md)
+* [Agreement Item Funding Rollover](agreement-item-funding-rollover.md)
+
+## Mobile Worker App&#x20;
+
+* [Getting Started with the Mobile App](mobile-worker-app/getting-started-with-the-mobile-app.md)
+
+## Forms
+
+* [Form Submission Settings](forms/form-submission-settings.md)
+* [Managing Access](forms/managing-access.md)
+* [Connecting to Salesforce](forms/connecting-to-salesforce.md)
+* [Salesforce Integration](forms/salesforce-integration.md)
+* [Disconnecting from Salesforce](forms/disconnecting-from-salesforce.md)
+
+## Support at Home
+
+* [Claiming Process](support-at-home/claiming-process.md)
+* [Care Management Budget Sync](support-at-home/care-management-budget-sync.md)
+* [Bulk Synchronisations for Support at Home](support-at-home/bulk-synchronisations-for-support-at-home.md)
+* [Care Recipient Sync](support-at-home/care-recipient-sync.md)
+* [Care Recipient Sync](support-at-home/care-recipient-sync-1.md)
+* [Budget Trend Analysis](support-at-home/budget-trend-analysis.md)
+* [Multiple Service Provider ID Support](support-at-home/multiple-service-provider-id-support.md)
+
+## Integrations
+
+* [Create a Site](integrations/create-a-site.md)
+* [Xero Integration](integrations/xero-integration/README.md)
+  * [Support Item Configuration](integrations/xero-integration/support-item-configuration.md)
+* [Stripe Integration](integrations/stripe-integration.md)
+* [NDIS Notifications](integrations/ndis-notifications.md)
+
+## Settings
+
+* [General Settings](settings/general-settings.md)
+* [Agreement Management](settings/agreement-management/README.md)
+  * [Renewal Management](settings/agreement-management/renewal-management.md)
+  * [Renewal Management](settings/agreement-management/renewal-management-1.md)
+  * [Agreement Item Rollover](settings/agreement-management/agreement-item-rollover.md)
+  * [Price List Update](settings/agreement-management/price-list-update.md)
+* [Claim Management](settings/claim-management/README.md)
+  * [NDIS](settings/claim-management/ndis/README.md)
+    * [Handle BPR Results & Remittance Files](settings/claim-management/ndis/handle-bpr-results-and-remittance-files.md)
+    * [BPR File Import Flows](settings/claim-management/ndis/bpr-file-import-flows.md)
+  * [Other](settings/claim-management/other.md)
+* [Invoice Management](settings/invoice-management.md)
+* [Integration Management](settings/integration-management/README.md)
+  * [NDIS Integration](settings/integration-management/ndis-integration.md)
+  * [Stripe Integration](settings/integration-management/stripe-integration.md)
+  * [Xero Integration](settings/integration-management/xero-integration.md)
+* [Connections Management](settings/connections-management/README.md)
+  * [General Settings](settings/connections-management/general-settings.md)
+  * [Reciprocal Settings](settings/connections-management/reciprocal-settings.md)
+* [Planner Management](settings/planner-management.md)
+* [AI Management](settings/ai-management/README.md)
+  * [Meet Me Configuration](settings/ai-management/meet-me-configuration.md)
+  * [Meet Me Administration](settings/ai-management/meet-me-administration.md)
+* [Statement Management](settings/statement-management.md)
+* [Rostering Management](settings/rostering-management.md)
+* [Service Management](settings/service-management.md)
+* [Timesheet Management](settings/timesheet-management.md)
+* [Validation Management](settings/validation-management.md)
+* [Travel Management](settings/travel-management.md)
+* [Billing Management](settings/billing-management.md)
+* [Maps Management](settings/maps-management.md)
+* [Mobile Management](settings/mobile-management.md)
+* [Scheduled Jobs](settings/scheduled-jobs.md)
+* [Support at Home](settings/support-at-home.md)
+* [Participant Notes](settings/participant-notes.md)
+* [Upcoming Appointments](settings/upcoming-appointments.md)
+
+## Security&#x20;
+
+* [PRODA B2B Device Keys — Configuration and Rotation](security/proda-b2b-device-keys-configuration-and-rotation.md)
+* [Xero Webhook Signing Key — Configuration](security/xero-webhook-signing-key-configuration.md)
