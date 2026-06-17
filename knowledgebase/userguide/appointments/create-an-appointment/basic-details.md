@@ -61,9 +61,10 @@ This alert will show in the instance where the selected Resource(s) have a Roste
 
 * `Appointment`: This means Appointments can be scheduled at any time for a Resource provided it is within any active Availability record(s) if these exist. If no Availability record(s) exist, Appointments can be created at any time.
 * `Shift`: This means Appointments can only be scheduled within a Shift that a Resource is part of and it is within any active Availability record(s) if these exist. If no Availability record(s) exist, Appointments still must fall within a Shift that the Resource is assigned to.
+* `Dynamic`: The Resource can be assigned to both Shifts and standalone Appointments, subject to overlap and availability rules. For the Shift basic-details article, also update the resolution guidance so it reads that you must select Resource(s) set to a Roster Mode of `Shift` or `Dynamic` during the time of the proposed Shift.
 {% endhint %}
 
-In order to resolve this alert, you **must** select Resource(s) that are set to a Roster Mode of `Appointment` during the time of the proposed Appointment, or, if they are set to `Shift`, the proposed Appointment must be scheduled during an active Shift for the allocated Resource(s).
+In order to resolve this alert, you **must** select Resource(s) that are set to a Roster Mode of `Appointment` or `Dynamic` during the time of the proposed Appointment, or, if they are set to `Shift`, the proposed Appointment must be scheduled during an active Shift for the allocated Resource(s).
 
 You can set a Resource(s) Roster Mode on their [Resource Profile](../../resources/resource-profile.md), [Availability Records](../../resources/resource-profile.md), or by using a [Global Setting](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/rostering-management) in your Maica organisation for all Resource(s). To learn more, click the links.&#x20;
 
