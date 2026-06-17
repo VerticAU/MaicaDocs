@@ -27,13 +27,13 @@ Whilst each Record Type may have different attributes, both Record Types share t
 
 The table below outlines the attribute fields related to the `Asset` Record Type.
 
-| Field Name            | Field Type  | Notes                                                                                          |
-| --------------------- | ----------- | ---------------------------------------------------------------------------------------------- |
-| `ID Number`           | Text        | The Asset Number used to identify the Resource.                                                |
-| `Type`                | Picklist    | Picklist of any default or custom Asset Types                                                  |
-| `Appointment Service` | Lookup      | Lookup of [Appointment Service ](../getting-started/maica-key-concepts/appointment-service.md) |
-| `Active`              | Checkbox    | Indicates if the Resource record is Active and available within Maica                          |
-| `Default Quantity`    | Number      |                                                                                                |
+| Field Name            | Field Type  | Notes                                                                                         |
+| --------------------- | ----------- | --------------------------------------------------------------------------------------------- |
+| `ID Number`           | Text        | The Asset Number used to identify the Resource.                                               |
+| `Type`                | Picklist    | Picklist of any default or custom Asset Types                                                 |
+| `Appointment Service` | Lookup      | Lookup of [Appointment Service](../getting-started/maica-key-concepts/appointment-service.md) |
+| `Active`              | Checkbox    | Indicates if the Resource record is Active and available within Maica                         |
+| `Default Quantity`    | Number      |                                                                                               |
 
 {% hint style="info" %}
 All standard **Maica** Picklist fields can be extended to suit your needs. To learn more, click [here](https://trailhead.salesforce.com/content/learn/modules/picklist_admin/picklist_admin_start).&#x20;
@@ -270,18 +270,14 @@ When an Unavailability Record is created, Maica will automatically remove the as
 
 ## Roster Mode Overview
 
-As mentioned above, `Roster Mode` in **Maica** is used to define the behaviour and validation applied when scheduling `Appointments` for a `Resource`. When selecting a `Roster Mode` for a `Resource` or `Availability`, there are two selectable options. These are:&#x20;
+`Roster Mode` defines how a `Resource` is scheduled in **Maica**: through `Shifts`, through standalone `Appointments`, or both. You can set it on the `Resource` record using the **Roster Mode** field, and you can set a different mode for a specific period on an Availability record.
 
-* `Appointment`: This means Appointments can be scheduled at any time for a Resource provided it is within any active Availability record(s) if these exist. If no Availability record(s) exist, Appointments can be created at any time.
-* `Shift`: This means Appointments can only be scheduled within a Shift that a Resource is part of and it is within any active Availability record(s) if these exist. If no Availability record(s) exist, Appointments still must fall within a Shift that the Resource is assigned to.
+There are three modes:
 
-For example, if your `Resource` was in `Shift Mode`, then you can only schedule an `Appointment` for them during their assigned `Shifts`. If they have a `Shift` from 9 AM to 1 PM, you can only schedule `Appointments` within that window. Even if they are available for the entire day, you cannot schedule outside their `Shift` times.
-
-Additionally, if your `Resource` is in `Appointment Mode` during a period of `Availability`, you could not assign them to a `Shift` during that same period. A `Resource` must be in Shift Mode in order to be assigned a `Shift`.&#x20;
+* `Appointment`: the Resource is scheduled through standalone Appointments and cannot be assigned to a Shift.
+* `Shift`: the Resource is scheduled through Shifts, and any Appointment booked for them must fall within one of their Shifts.
+* `Dynamic`: the Resource can be assigned to both Shifts and standalone Appointments.
 
 {% hint style="info" %}
-It is important to note that if a `Resource` has a `Roster Mode` set on their Resource Record that is different to the `Roster Mode` set for a specific `Availability` Record, the `Availability` Record Mode will take precedent during the `Availability` period. \
-\
-If No `Availability` Records are found and the `Roster Mode` is not set on the `Resource` Record: the `Roster Mode` for the `Resource` will be defined by the `Global Roster Mode` setting. This is configurable in the **Maica** [Rostering Management](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/rostering-management) settings.&#x20;
+For the full detail, including how **Maica** resolves the mode when the Resource and an Availability record differ, and how Roster Mode interacts with overlap rules, see [Roster Mode](resource-roster-mode.md).
 {% endhint %}
-

@@ -57,6 +57,7 @@
 ## Resources
 
 * [Resource Profile](resources/resource-profile.md)
+* [Resource Roster Mode](resources/resource-roster-mode.md)
 * [Offboarding a Resource](resources/offboarding-a-resource.md)
 
 ## The Planner&#x20;
@@ -239,3 +240,8 @@
 ## ANNOUNCEMENTS
 
 * [Support at Home Legislation](announcements/support-at-home-legislation.md)
+
+***
+
+* [KB\_update\_resource profile\_trimmed roster mode section](kb_update_resource-profile_trimmed-roster-mode-section.md)
+* [KB\_update\_resource profile\_trimmed roster mode section](kb_update_resource-profile_trimmed-roster-mode-section-1.md)
