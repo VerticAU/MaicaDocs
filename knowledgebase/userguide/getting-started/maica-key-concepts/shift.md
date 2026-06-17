@@ -14,7 +14,7 @@ A Shift, whilst similar to [Appointments](appointment.md), is the principal way 
 * Recurrance if the Shift is a repeating service being delivered
 
 {% hint style="info" %}
-You can learn how to create Shifts [here](/broken/pages/zNYLCCfkOlI0IqQ3sOvl).
+You can learn how to create Shifts [here](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts).
 {% endhint %}
 
 ### Purpose

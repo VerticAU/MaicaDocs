@@ -4,7 +4,7 @@ description: Learn about how Maica manages Incidents
 
 # Incident Management
 
-**Incidents** in **Maica** allow you to record, track, and manage any event that affects the safety, wellbeing, or care of a Participant, Resource, or Environment. Incidents can be entered directly by Care Workers through the [Maica Mobile App](/broken/pages/rdjmp4Zyv79t4qwgsg6I) or created later by office-based staff.
+**Incidents** in **Maica** allow you to record, track, and manage any event that affects the safety, wellbeing, or care of a Participant, Resource, or Environment. Incidents can be entered directly by Care Workers through the [Maica Mobile App](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/mobile-worker-app) or created later by office-based staff.
 
 This article outlines how to create an Incident, what information is captured, and how the Incident progresses through the management process.
 

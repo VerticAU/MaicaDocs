@@ -33,11 +33,11 @@ We encourage you to follow the sequence outlined below as this will guide you th
 ### Learn how to use the Maica Solution
 
 * [Participant Profile](../participants/participant-profile/)
-* [Appointment Overview](/broken/pages/qWrsJvyquHTBgREf1QDj)
-* [Shift Overview](/broken/pages/zNYLCCfkOlI0IqQ3sOvl)
-* [Service Agreement Overview](/broken/pages/wxJ2vLb9g5F8oURBcdI3)
+* [Appointment Overview](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/appointments)
+* [Shift Overview](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts)
+* [Service Agreement Overview](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/service-agreements)
 * [Planner Overview](../the-planner/planner-overview.md)
-* [Invoicing Overview](/broken/pages/netEfvz1FiuVutemmhAg)
+* [Invoicing Overview](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/invoices)
 * [Salesforce Reporting](https://help.salesforce.com/s/articleView?id=sf.analytics_overview.htm\&type=5)
 
 ### Learn how to extend the underlying Salesforce Platform

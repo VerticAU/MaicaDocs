@@ -281,3 +281,23 @@ There are three modes:
 {% hint style="info" %}
 For the full detail, including how **Maica** resolves the mode when the Resource and an Availability record differ, and how Roster Mode interacts with overlap rules, see [Roster Mode](resource-roster-mode.md).
 {% endhint %}
+
+### Allow Overlap
+
+By default, **Maica** can prevent a Resource from being added to an Appointment or Shift that overlaps another Appointment or Shift they are already assigned to. This is controlled organisation-wide by the **Allow Resource Overlap** setting (see [Service Management](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/service-management) in the Administration Guide).
+
+The **Allow Overlap** checkbox on the `Resource` record provides a per-Resource exception. When **Allow Overlap** is enabled on a Resource, that Resource is excluded from overlap conflict checks even when overlap enforcement is active for your organisation. This suits Resources who legitimately work across concurrent Appointments, such as supervisors, on-call coordinators, or pool Resources, without relaxing enforcement for everyone else.
+
+When enabled, the override applies wherever Maica checks for Resource overlap:
+
+* When scheduling or submitting Appointments and Shifts
+* When searching for available Resources, including in the **Resource Optimiser**
+* When a Resource accepts a Broadcast offer
+
+{% hint style="info" %}
+**Allow Overlap** is unchecked by default, so your existing overlap enforcement is unchanged until you enable it on a Resource.
+{% endhint %}
+
+{% hint style="warning" %}
+**Allow Overlap** applies to time overlaps only. Roster Mode validation and availability rules continue to apply. The override covers overlaps of the same type, meaning Appointment against Appointment, or Shift against Shift.
+{% endhint %}

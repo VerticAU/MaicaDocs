@@ -97,5 +97,5 @@ When the `Total Remaining` or the `Appointment Cost` amounts are shown in **red*
 
 ### 2. No Service Agreement
 
-When the budget data does not show, it means that there is no [Service Agreement](/broken/pages/wxJ2vLb9g5F8oURBcdI3) for the selected [Participant(s)](../../getting-started/maica-key-concepts/participant.md).&#x20;
+When the budget data does not show, it means that there is no [Service Agreement](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/service-agreements) for the selected [Participant(s)](../../getting-started/maica-key-concepts/participant.md).&#x20;
 

@@ -9,7 +9,7 @@ description: Learn about the Resource Optimiser in Maica
 The **Resource Optimiser** is a tool within the Maica Planner used to identify and fill unfilled Appointments or Shifts using Maica's Optimisation Engine using either an [Optimisation Run](running-the-optimiser.md) or [Broadcast](broadcasting-overview.md).&#x20;
 
 {% hint style="info" %}
-Please note, you can also access the Resource Optimiser from the [Schedule Manager](/broken/pages/rwGPTuIt7r0qSDOdrmX7).&#x20;
+Please note, you can also access the Resource Optimiser from the [Schedule Manager](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/schedule-manager).&#x20;
 {% endhint %}
 
 It consolidates all Appointment and Shift records requiring Optimisation/Filling into a single screen, allowing users to review, run, and confirm Resource allocations efficiently.&#x20;

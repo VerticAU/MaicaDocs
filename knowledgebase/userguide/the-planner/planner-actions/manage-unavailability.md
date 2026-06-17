@@ -6,7 +6,7 @@ description: Learn about how Resources can manage their Unavailability within Ma
 
 ## What does the Manage Unavailability Tool do?
 
-Maica supports the management of Unavailability records which essentially mark any given [Resource](/broken/pages/4q3WtyUGzX83jJhpjEHo) as not available for inclusion into an [Appointment](/broken/pages/qWrsJvyquHTBgREf1QDj) or [Shift](/broken/pages/zNYLCCfkOlI0IqQ3sOvl).&#x20;
+Maica supports the management of Unavailability records which essentially mark any given [Resource](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/resources) as not available for inclusion into an [Appointment](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/appointments) or [Shift](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts).&#x20;
 
 The Manage Unavailability Tool essentially allows you to manage and create these records directly from the [Planner](../planner-overview.md), as demonstrated below.&#x20;
 

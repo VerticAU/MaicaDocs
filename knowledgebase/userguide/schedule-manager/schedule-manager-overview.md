@@ -6,7 +6,7 @@ description: Learn about the Schedule Manager within Maica
 
 ## What is the Schedule Manager?&#x20;
 
-In **Maica**, the Schedule Manager is a dedicated tool for managing [Appointments](/broken/pages/qWrsJvyquHTBgREf1QDj) and [Shifts](/broken/pages/zNYLCCfkOlI0IqQ3sOvl) in a data table view.&#x20;
+In **Maica**, the Schedule Manager is a dedicated tool for managing [Appointments](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/appointments) and [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) in a data table view.&#x20;
 
 It functions in a similar way to the [Planner](../the-planner/planner-overview.md), offering the same filters and tools, but in a list-style layout with additional bulk actions. This enables you to view and manage hundreds of records at once, configure which fields are displayed, and perform bulk actions such as status changes, cancellations, quick completes and resource allocations.
 
