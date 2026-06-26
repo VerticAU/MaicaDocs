@@ -12,7 +12,7 @@ The solution is made up of the following building blocks.
 
 | Building block                        | What it provides                                                                                                                                                                                                        |
 | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Data model**                        | A set of new custom objects plus new fields on existing objects. See [The RACS Data Model](/broken/pages/d04b3744458b77b9e756f54b8ac07979daf2e05f).                                                                     |
+| **Data model**                        | A set of new custom objects plus new fields on existing objects. See [The RACS Data Model](the-racs-data-model.md).                                                                                                     |
 | **Billing engine and scheduled Apex** | A daily billing engine (`RAC_BillingEngine`), an annual financial year reset (`RAC_FinancialYearReset`), the indexation engine, and the scheduled fee rate check batch. These generate invoices and keep rates current. |
 | **Manage RACS Agreement component**   | A custom Lightning Web Component with three tabs (Fees, RAD/RAC, Accommodation) for configuring fees, managing accommodation deposits, and relocating residents.                                                        |
 | **Services Australia integration**    | Apex classes that submit care and supplement events, sync resident data inbound, and report accommodation balances through the Business-to-Government (B2G) API suite.                                                  |
@@ -50,8 +50,3 @@ Some areas are deliberately not part of RACS. Knowing these avoids confusion dur
 | **Some notification automations**          | Recipient, channel, and content of alerts are implementation-specific and cannot be reliably packaged, so they are left to implementation. |
 | **Mobile app incident presentation**       | How SIRS fields appear in the mobile app is a separate product decision.                                                                   |
 | **Profile-based security**                 | All access is via permission sets, in line with the Maica convention.                                                                      |
-
-## Related articles
-
-* [The RACS Data Model](/broken/pages/d04b3744458b77b9e756f54b8ac07979daf2e05f) - the objects, relationships, and key fields.
-* [Architectural Principles](/broken/pages/80fdd5ba0d11b1cd0a57cfc9c19e52625d593d8e) - the design boundaries and conventions behind the build.
