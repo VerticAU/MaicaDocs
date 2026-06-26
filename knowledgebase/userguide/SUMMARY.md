@@ -185,6 +185,36 @@
 * [Care Recipient Sync](support-at-home/care-recipient-sync.md)
 * [Care Recipient Sync](support-at-home/care-recipient-sync-1.md)
 
+## Residential Aged Care
+
+* [Welcome to Residential Aged Care](residential-aged-care/welcome-to-residential-aged-care.md)
+* [Introduction to the RACs Solution](residential-aged-care/introduction-to-the-racs-solution.md)
+* [Key Concepts and Terminology](residential-aged-care/key-concepts-and-terminology.md)
+* [Understanding Fee and Accommodation Arrangements](residential-aged-care/understanding-fee-and-accommodation-arrangements.md)
+* [The Manage RACs Agreement component](residential-aged-care/the-manage-racs-agreement-component/README.md)
+  * [Configuring Resident Fees tab](residential-aged-care/the-manage-racs-agreement-component/configuring-resident-fees-tab.md)
+  * [Managing RAD/RAC Accommodation Deposits tab](residential-aged-care/the-manage-racs-agreement-component/managing-rad-rac-accommodation-deposits-tab.md)
+  * [Relocating a Resident Accommodation tab](residential-aged-care/the-manage-racs-agreement-component/relocating-a-resident-accommodation-tab.md)
+* [Admitting a Resident](residential-aged-care/admitting-a-resident.md)
+* [Managing Residential Respite Care](residential-aged-care/managing-residential-respite-care.md)
+* [Managing Temporary Leave](residential-aged-care/managing-temporary-leave.md)
+* [Exiting a Resident or recording a death](residential-aged-care/exiting-a-resident-or-recording-a-death.md)
+* [Refunding Lump Sum Deposits](residential-aged-care/refunding-lump-sum-deposits.md)
+* [Residential Care Fee types explained](residential-aged-care/residential-care-fee-types-explained.md)
+* [How Resident Billing works](residential-aged-care/how-resident-billing-works.md)
+* [Fee Treatment during Leave](residential-aged-care/fee-treatment-during-leave.md)
+* [Fee Adjustments and Corrections](residential-aged-care/fee-adjustments-and-corrections.md)
+* [How Maica connects to Services Australia](residential-aged-care/how-maica-connects-to-services-australia/README.md)
+  * [Submitting Care and Supplement Events](residential-aged-care/how-maica-connects-to-services-australia/submitting-care-and-supplement-events.md)
+  * [Keeping Care Recipient data in Sync](residential-aged-care/how-maica-connects-to-services-australia/keeping-care-recipient-data-in-sync.md)
+  * [Reporting RAD/RAC balances](residential-aged-care/how-maica-connects-to-services-australia/reporting-rad-rac-balances.md)
+* [Reconciling Payments](residential-aged-care/reconciling-payments.md)
+* [Reporting Obligations Overview](residential-aged-care/reporting-obligations-overview/README.md)
+  * [24/7 Registered Nurse Coverage](residential-aged-care/reporting-obligations-overview/24-7-registered-nurse-coverage.md)
+  * [Quarterly financial Report QFR Data](residential-aged-care/reporting-obligations-overview/quarterly-financial-report-qfr-data.md)
+  * [Managing SIRS Notifications](residential-aged-care/reporting-obligations-overview/managing-sirs-notifications.md)
+  * [APCS RAD/RAC Ledger Export](residential-aged-care/reporting-obligations-overview/apcs-rad-rac-ledger-export.md)
+
 ## Mobile Worker App
 
 * [Installing the Mobile App](mobile-worker-app/installing-the-mobile-app.md)

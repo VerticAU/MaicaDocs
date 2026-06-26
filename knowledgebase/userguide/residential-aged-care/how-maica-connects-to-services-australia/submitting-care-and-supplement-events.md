@@ -1,0 +1,60 @@
+# Submitting Care and Supplement Events
+
+## Overview
+
+Several actions you take for a resident need to be reported to Services Australia, from admitting them, to recording supplements like oxygen, to electing into the new means testing arrangements. Maica sends each of these as an event. This article gives an overview of the events you can submit and points to the detailed steps for each.
+
+{% hint style="info" %}
+Every event you submit follows the same status lifecycle once it reaches Services Australia. For how held, rejected, and failed events are handled, see [How MAICA Connects to Services Australia](/broken/pages/b4e12063bbfefb35f82fc584f1197977dddbb52c).
+{% endhint %}
+
+## Care period events
+
+These events define a resident's care period and are the most operationally important.
+
+| Event         | When you submit it                                                                                                                                                                     |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Entry**     | When a resident enters care. The entry distinguishes permanent from respite, and submitting it is a prerequisite for the resident to receive government subsidy from their entry date. |
+| **Departure** | When a resident permanently leaves or passes away.                                                                                                                                     |
+| **Leave**     | When a resident takes a period of temporary leave.                                                                                                                                     |
+
+You submit each of these from the resident's record using the relevant action. For the full steps, see [Admitting a Resident](/broken/pages/5385ca19705917c171946ca1f497729b34029bc9), [Exiting a Resident or Recording a Death](/broken/pages/a543febf8462ce6c484efc9cba426381258f5c9e), and [Managing Temporary Leave](/broken/pages/e2d29da517c17c62f95973e35b3f36c9715d3422).
+
+## Supplement events
+
+Supplement events tell Services Australia about clinical or accommodation circumstances that affect the resident's subsidy.
+
+| Event               | Purpose                                                                                                                                                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Oxygen**          | Notifies Services Australia of an oxygen therapy requirement. A supporting document can be attached.                                                                                                                                 |
+| **Enteral feeding** | Notifies Services Australia of an enteral feeding requirement. A supporting document can be attached.                                                                                                                                |
+| **Extra service**   | Notifies Services Australia that a resident is in an extra service room. This event is submitted automatically as part of relocating a resident into or out of an extra service room; the room's ward type drives the event content. |
+
+{% hint style="info" %}
+The extra service event is raised for you during a room move rather than submitted on its own. See [Relocating a Resident](/broken/pages/a51358241ebfe00297d727b89344dc9263425c8a). Its end date is not inclusive, meaning the resident's extra service status ends the day before the end date sent to Services Australia.
+{% endhint %}
+
+## Recording a means testing opt-in
+
+A resident can formally elect to opt in to the means testing arrangements that apply from 1 November 2025. You record this election in Maica and submit it to Services Australia, attaching the resident's completed opt-in election form (the AC022 form).
+
+When Services Australia accepts the opt-in, Maica updates the resident automatically:
+
+1. The resident's funding record is marked as opted in, with the effective date recorded.
+2. This automatically updates the resident's fee arrangement to the 1 November 2025 arrangement.
+3. All of the resident's Service Agreements reflect the new arrangement straight away, with no manual changes needed.
+
+{% hint style="warning" %}
+This automatic update happens only when Services Australia accepts the opt-in. If the election is still held, or is later rejected or deleted, the resident's fee arrangement is not changed.
+{% endhint %}
+
+## What happens after you submit
+
+Once submitted, each event is recorded against the resident and carries its Services Australia status. Most events return as Held first while Services Australia reviews them, then move to Accepted. You can monitor and refresh these statuses, and retry any submission that failed to send, as described in [How MAICA Connects to Services Australia](/broken/pages/b4e12063bbfefb35f82fc584f1197977dddbb52c).
+
+## Related articles
+
+* [How MAICA Connects to Services Australia](/broken/pages/b4e12063bbfefb35f82fc584f1197977dddbb52c)
+* [Admitting a Resident](/broken/pages/5385ca19705917c171946ca1f497729b34029bc9)
+* [Managing Temporary Leave](/broken/pages/e2d29da517c17c62f95973e35b3f36c9715d3422)
+* [Relocating a Resident](/broken/pages/a51358241ebfe00297d727b89344dc9263425c8a)
