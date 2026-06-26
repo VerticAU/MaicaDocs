@@ -28,7 +28,7 @@ For capped fee types, the engine asks the Cap Service to evaluate the proposed c
 | **MTCF**              | An annual cap (per-resident, see below) and a lifetime cap.                                                                              |
 | **RAD/RAC Retention** | A duration gate: no retention after the retention expiry date. The amount itself is capped by the Retention Service.                     |
 
-The cap values themselves are configured on the [RACS Configuration tab](/broken/pages/197e457e0e854e6755740e8cebce947deccfc9a3) and documented in [Caps and Duration Settings](/broken/pages/6b76d91d9a4d5f7b9ea3091e9fcd23a36506ef99).
+The cap values themselves are configured on the [RACS Configuration tab](../the-racs-configuration-tab/) and documented in [Caps and Duration Settings](../the-racs-configuration-tab/caps-and-duration-settings.md).
 
 {% hint style="info" %}
 There is no daily monetary cap. Daily rates are simply applied to the number of chargeable days in each period by the period calculator. The caps that exist are annual, lifetime, and duration based.
@@ -47,11 +47,5 @@ The MTCF annual cap does not follow the financial year. Each resident has their 
 Billing on the day a resident departs is handled by the departure process rather than the standard daily cycle. The governing principle is that fees which depend on a government subsidy are not charged for the departure day, because no subsidy is payable for it. Self-funded charges, such as the Basic Daily Fee and a self-funded Daily Accommodation Payment, may still apply.
 
 {% hint style="info" %}
-The full departure sequence, including refund timing and interest, is covered in [Exiting a Resident or Recording a Death](/broken/pages/b4d7ff7bcce192023ce1f3cee62b5e54b882bbad).
+The full departure sequence, including refund timing and interest, is covered in [Exiting a Resident or Recording a Death](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/exiting-a-resident-or-recording-a-death).
 {% endhint %}
-
-## Related articles
-
-* [Billing Engine Architecture](/broken/pages/eb4c82d7ef134026f106b3ea0549260dac90b573)
-* [Caps and Duration Settings](/broken/pages/6b76d91d9a4d5f7b9ea3091e9fcd23a36506ef99)
-* [Residential Care Fee Types Explained](/broken/pages/b5bdbc8055a557ed4f6f0ddabcc173bceeb9a3e5)

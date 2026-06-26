@@ -3,12 +3,12 @@
 Outbound events are how Maica notifies Services Australia of what is happening to a resident: when they enter and leave care, when they take leave, when they need clinical supplements, and when they elect to opt in to the newer means testing arrangements. Every outbound event is stored on the Aged Care Event record and submitted through the residential care events integration. This article describes each event, the fields it carries, and the rules that govern it.
 
 {% hint style="info" %}
-All outbound events share the same record model, status lifecycle, versioning, and resilience behaviour. For that shared framework, see [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748). This article focuses on what is specific to each event.
+All outbound events share the same record model, status lifecycle, versioning, and resilience behaviour. For that shared framework, see [Integration architecture and event lifecycle](./). This article focuses on what is specific to each event.
 {% endhint %}
 
 ## Before you submit
 
-An active PRODA connection for Aged Care must be in place before any event can be submitted. See [PRODA Authentication and Setup](/broken/pages/11c8628b3cd606acae37d9b8d3c66d983d1615e8).
+An active PRODA connection for Aged Care must be in place before any event can be submitted. See [PRODA Authentication and Setup](proda-authentication-and-setup.md).
 
 For an **entry** event, the user first runs a care recipient search against Services Australia to locate and confirm the resident's record. That search returns a temporary access key that Maica includes with the entry submission to link the event to the correct Services Australia record. Departure and leave events do not need this step, because the resident's identity is already established through the accepted entry.
 
@@ -91,7 +91,7 @@ The leave types are:
 If no end date is submitted, Services Australia treats the leave as open-ended. Maica sends an explicit end date when the resident returns. An accepted leave event can be updated, both to correct details and to apply the routine return-from-leave end date.
 {% endhint %}
 
-Before a leave event is created, Maica can check the resident's remaining entitlement through the leave and respite balance reads, so available days are confirmed before submission. Those inbound reads are covered in [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749).
+Before a leave event is created, Maica can check the resident's remaining entitlement through the leave and respite balance reads, so available days are confirmed before submission. Those inbound reads are covered in [Inbound data APIs](inbound-data-apis.md).
 
 ## Supplement events
 
@@ -147,9 +147,3 @@ The opt-in downstream update is immediate. Once Services Australia accepts the e
 ## How outbound events behave
 
 Every event in this article supports the same set of operations: create the event, read it back, update it (which sends a new version), and delete it. Updates and deletes use the stored event ID and ETag for concurrency control, and each accepted update creates a new version. Whether an action is available at a given moment depends on the event's status, and the guided forms only offer the actions that the current status allows.
-
-## Related articles
-
-{% hint style="info" %}
-For the shared record model and status lifecycle, see [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748). For reading data back from Services Australia, including leave and respite balances, see [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749). For the day-to-day workflow, see [Submitting care and supplement events](/broken/pages/dd954ffd94a5610b557023f9c41e90f710ea9724) in the User Guide.
-{% endhint %}

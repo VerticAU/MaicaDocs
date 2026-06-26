@@ -5,7 +5,7 @@ The **Combination** payment method is for residents who pay part of their accomm
 This article explains how the Combination method is wired, how the DAP portion is calculated, when it is recalculated, and the important difference in where the interest rate comes from depending on what triggered the change. It is written for administrators and power users.
 
 {% hint style="info" %}
-This article builds on [The Lump Sum Account Model](/broken/pages/64b4343810e7f34b807b481415f327eb40ba0f32) and the draw-down behaviour described in [Retention and Drawdown Logic](/broken/pages/00db959b0884a9d98bf314b0f344a35bb3974ea7).
+This article builds on [The Lump Sum Account Model](./) and the draw-down behaviour described in [Retention and Drawdown Logic](retention-and-drawdown-logic.md).
 {% endhint %}
 
 ## What the Combination method represents
@@ -97,11 +97,3 @@ The user-led path uses the per-resident rate stored on the agreement, while the 
 {% endhint %}
 
 If the engine cannot find an MPIR value on any Setting record, it does not fail the draw-down. It skips the DAP recalculation and writes a log noting that the rate is not configured, so the draw-down still completes and the gap is visible to administrators.
-
-## Related articles
-
-* [The Lump Sum Account Model](/broken/pages/64b4343810e7f34b807b481415f327eb40ba0f32)
-* [Retention and Drawdown Logic](/broken/pages/00db959b0884a9d98bf314b0f344a35bb3974ea7)
-* [Rate Configuration](/broken/pages/42b4e9886132e33d96e417c735cec4de6ada97ff)
-* [Fee Type Processing Rules](/broken/pages/3a1f6579724d27299299d7b2178feb8a073abbc5)
-* [Managing RAD/RAC Accommodation Deposits](/broken/pages/b7e65968bd4c1a4e37d0e5ac7cf2f45022b6673b)

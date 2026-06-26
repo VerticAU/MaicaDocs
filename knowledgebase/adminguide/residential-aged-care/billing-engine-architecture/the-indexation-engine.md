@@ -2,7 +2,7 @@
 
 Several residential aged care rates are reindexed by the government twice a year, on 20 March and 20 September. The indexation engine is the tool that applies those new rates to every resident's active Agreement Items in one pass, so administrators do not have to re-rate items by hand. It is implemented as the `RAC_IndexationEngine` Apex class.
 
-Unlike the daily [billing engine](/broken/pages/eb4c82d7ef134026f106b3ea0549260dac90b573), the indexation engine is run on demand rather than on a schedule. The administrator first updates the published indexation values on the RACS Configuration tab, then runs the engine to push those values onto the Agreement Items.
+Unlike the daily billing engine, the indexation engine is run on demand rather than on a schedule. The administrator first updates the published indexation values on the RACS Configuration tab, then runs the engine to push those values onto the Agreement Items.
 
 ## How it is triggered
 
@@ -40,9 +40,3 @@ Not every fee is indexed by this engine. The following are deliberately left alo
 {% hint style="info" %}
 A skipped item is not an error. The engine records why each item was skipped (for example, DAC excluded, already indexed today, or fee type out of scope) so you can confirm the run did what you expected.
 {% endhint %}
-
-## Related articles
-
-* [Rate Configuration](/broken/pages/54de3d6cb34bdee7cda39a178ee4fc0d8ec88ee1)
-* [Billing Engine Architecture](/broken/pages/eb4c82d7ef134026f106b3ea0549260dac90b573)
-* [Scheduling and Manual Rate Changes](/broken/pages/247282d7aaca99e45a7944ad084d99ed1d4632a6)

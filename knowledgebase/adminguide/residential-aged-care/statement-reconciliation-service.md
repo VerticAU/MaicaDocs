@@ -5,7 +5,7 @@ Services Australia's payment statement reports what it actually paid or recovere
 This article explains what the service does, when it runs, and how it avoids double-adjusting a period already corrected elsewhere. It is written for administrators and power users who support billing and reconciliation.
 
 {% hint style="info" %}
-This service is the counterpart to the [Fee adjustment service](/broken/pages/3dadfb7123f8f0314bfadb9f69d5576f4eb436c3). The fee adjustment service corrects charges from Maica's own rate change data; this service corrects them against the figures Services Australia reports. Each is aware of the other so the same period is never adjusted twice.
+This service is the counterpart to the [Fee adjustment service](fee-adjustment-service.md). The fee adjustment service corrects charges from Maica's own rate change data; this service corrects them against the figures Services Australia reports. Each is aware of the other so the same period is never adjusted twice.
 {% endhint %}
 
 ## What the service does
@@ -30,7 +30,7 @@ There are two ways the service runs.
 When the claim for a month is approved and the payment statement breakdown has been synced, the service runs as the final reconciliation step, provided the **Automate statement reconciliation** setting is switched on. It runs within the same claim sync process and does not make its own calls to Services Australia.
 
 {% hint style="info" %}
-The automatic behaviour is controlled by an automation toggle in the RACS configuration. See [Automation toggles](/broken/pages/26b7ece765f60db0f5ac838324f5fe5acc9a6be1). When the toggle is off, reconciliation does not run automatically and can be run manually instead.
+The automatic behaviour is controlled by an automation toggle in the RACS configuration. See [Automation toggles](the-racs-configuration-tab/automation-toggles.md). When the toggle is off, reconciliation does not run automatically and can be run manually instead.
 {% endhint %}
 
 ### Manually for a single resident
@@ -53,13 +53,3 @@ Some payment types cannot be mapped to a single fee with certainty. Where a paym
 ## Re-running is safe
 
 If the claim sync is retried on a month that has already been reconciled, the service does not create duplicate adjustments. The check against existing adjustments naturally prevents a second reconciliation of the same period, so providers can safely re-run the claim sync without distorting resident balances.
-
-## Related articles
-
-{% hint style="info" %}
-* [Fee adjustment service](/broken/pages/3dadfb7123f8f0314bfadb9f69d5576f4eb436c3)
-* [Inbound data APIs](/broken/pages/4c49b5c46f0ee250ac8f4a2b38373b2ced8c2827)
-* [Automation toggles](/broken/pages/26b7ece765f60db0f5ac838324f5fe5acc9a6be1)
-* [Reconciling payments](/broken/pages/6281b122b6478080cb81d0d281ab25b18e9835b5)
-* [The RACS data model](/broken/pages/30b853dd63a9c8969b77b1e308dcd9ec9af6e1fa)
-{% endhint %}

@@ -1,6 +1,6 @@
 # Rate Configuration
 
-Two sections of the [RACS Configuration tab](/broken/pages/425f2a6d17b7eb7a5f380a671cb339e66a2a2b2f) hold the published rates and indexation values that the billing and indexation engines read. The **Interest Rates** section changes every quarter; the **Indexed Rates and Supplements** section changes twice a year at indexation. Keeping these values current is the administrator's responsibility, and the engines use whatever is stored here at the time they run.
+Two sections of the [RACS Configuration tab](./) hold the published rates and indexation values that the billing and indexation engines read. The **Interest Rates** section changes every quarter; the **Indexed Rates and Supplements** section changes twice a year at indexation. Keeping these values current is the administrator's responsibility, and the engines use whatever is stored here at the time they run.
 
 {% hint style="info" %}
 Enter each rate exactly as the government publishes it. For a percentage rate, type the published figure (for example, enter `7.78` for a rate of 7.78%).
@@ -20,7 +20,7 @@ The MPIR stored here is the rate used for **new** agreements. The MPIR that appl
 {% endhint %}
 
 {% hint style="info" %}
-When a departure refund is processed, the BIR current in this field is captured against the resident's Lump Sum Account and used to calculate any late refund interest. For how that interest is calculated, see [Refunding Lump Sum Deposits](/broken/pages/b988d0822e0bafd1b76f4bcbdebdca49813b33dd).
+When a departure refund is processed, the BIR current in this field is captured against the resident's Lump Sum Account and used to calculate any late refund interest. For how that interest is calculated, see [Refunding Lump Sum Deposits](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/refunding-lump-sum-deposits).
 {% endhint %}
 
 ## Indexed rates and supplements (March and September)
@@ -45,10 +45,4 @@ Entering a value on this tab does not recalculate anything by itself. The stored
 * The **indexation engine** reads the BDF standard rate and the DAP index number at each indexation date.
 * The **departure process** captures the BIR when a refund is processed.
 
-For the mechanics of indexation, see [The Indexation Engine](/broken/pages/109dd317557b401faa35b4a4bdeba9810f2993d3).
-
-## Related articles
-
-* [The RACS Configuration Tab](/broken/pages/425f2a6d17b7eb7a5f380a671cb339e66a2a2b2f)
-* [Caps and Duration Settings](/broken/pages/0314c256bb7a5275c47d5f5d3e53350aa42fcc1b)
-* [Residential Care Fee Types Explained](/broken/pages/b84cff7184ec5d018d96f9f3b5ddc68ea5592fbc)
+For the mechanics of indexation, see [The Indexation Engine](../billing-engine-architecture/the-indexation-engine.md).

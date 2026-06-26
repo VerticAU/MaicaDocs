@@ -13,7 +13,7 @@ The **Accommodation Balance** data model (the record, its fields and access perm
 Accommodation balance reporting is a monthly reporting action, not a real-time or per-transaction one. The balance movements that occur during the month (a deposit, a top-up, a drawdown, a refund) are tracked internally by the billing engine as lump sum transactions. The accommodation balance submission is a separate, deliberate month-end step that communicates the closing balance position to Services Australia.
 
 {% hint style="info" %}
-The lump sum account and its transactions are the provider's internal financial ledger. The accommodation balance submission is the external monthly report. To understand the ledger side, see [The lump sum account model](/broken/pages/212ab65f31f4af79b48b7880f2e61010cf5b98cf).
+The lump sum account and its transactions are the provider's internal financial ledger. The accommodation balance submission is the external monthly report. To understand the ledger side, see [The lump sum account model](../the-lump-sum-account-model/).
 {% endhint %}
 
 ## The accommodation balance record
@@ -47,7 +47,7 @@ The **Submission Status** field tracks where a balance report is in its lifecycl
 | **Deleted**   | The submission was deleted at Services Australia.                           |
 
 {% hint style="info" %}
-Services Australia itself recognises only two outcomes for a balance, reflected in **SA Status**: **Accepted** and **Deleted**. There is no held or superseded state for accommodation balances, unlike the event APIs. For the event status model, see [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748).
+Services Australia itself recognises only two outcomes for a balance, reflected in **SA Status**: **Accepted** and **Deleted**. There is no held or superseded state for accommodation balances, unlike the event APIs. For the event status model, see [Integration architecture and event lifecycle](./).
 {% endhint %}
 
 ## The monthly submission workflow
@@ -80,15 +80,5 @@ Residents who do not require a balance (for example a supported resident with no
 {% endhint %}
 
 {% hint style="info" %}
-For the claim finalisation step that this gate protects, see the Claims section of [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749). For the resident-facing view of balances and refunds, see [Refunding lump sum deposits](/broken/pages/403c967aebea2c36b1e44d0fd0c8cdf57806e3c6) in the User Guide.
-{% endhint %}
-
-## Related articles
-
-{% hint style="info" %}
-* [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749)
-* [Care recipient details sync](/broken/pages/c958c702ee0b989ea5eecb838d8b3f25157c2131)
-* [Outbound event APIs](/broken/pages/2c1f22c01f8e5c2c22e06fd075cee6c0a1ea11bc)
-* [The lump sum account model](/broken/pages/212ab65f31f4af79b48b7880f2e61010cf5b98cf)
-* [The RACS data model](/broken/pages/656667b08c1afdd99c5a41b5c4d4b46fe607db42)
+For the claim finalisation step that this gate protects, see the Claims section of [Inbound data APIs](inbound-data-apis.md). For the resident-facing view of balances and refunds, see [Refunding lump sum deposits](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/refunding-lump-sum-deposits) in the User Guide.
 {% endhint %}

@@ -3,7 +3,7 @@
 Residential Aged Care Services (RACS) is delivered as part of the Maica platform and builds on the configuration and permission model that already governs the rest of Maica. Before you configure rates, admit residents, or connect to Services Australia, confirm that the package, platform, access, and baseline configuration prerequisites described here are in place.
 
 {% hint style="info" %}
-For a wider view of how RACS is packaged and where it sits in the Maica architecture, see [RACS Solution Overview](/broken/pages/422b93e2a98a5c35db214fdc1d2576d1b1cd53b8).
+For a wider view of how RACS is packaged and where it sits in the Maica architecture, see [RACS Solution Overview](racs-solution-overview/).
 {% endhint %}
 
 ## Package architecture
@@ -73,11 +73,5 @@ If no active Billing Setting record exists, the RACS Configuration tab cannot lo
 The RACS features that exchange data with Services Australia (entry, departure, leave, and supplement events, inbound data syncs, and claims) require a working PRODA connection and the associated integration configuration. Set this up before using any Services Australia dependent feature.
 
 {% hint style="info" %}
-PRODA and integration setup is covered in [PRODA Authentication and Setup](/broken/pages/c9d1c1f26c027fbc39143fdf2bc8eefb8bc98db8). Features that do not touch Services Australia (such as internal billing and fee configuration) do not require it.
+PRODA and integration setup is covered in [PRODA Authentication and Setup](integration-architecture-and-event-lifecycle/proda-authentication-and-setup.md). Features that do not touch Services Australia (such as internal billing and fee configuration) do not require it.
 {% endhint %}
-
-## Related articles
-
-* [The RACS Configuration Tab](/broken/pages/fd2ae121a12e8b0367c63eb0410635dba566858b)
-* [The RACS Data Model](/broken/pages/30b853dd63a9c8969b77b1e308dcd9ec9af6e1fa)
-* [How Maica Connects to Services Australia](/broken/pages/dc86dbcf05950f265a19d3efeca3a3be97a6d132)

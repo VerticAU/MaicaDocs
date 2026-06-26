@@ -5,7 +5,7 @@ The Quarterly Financial Report (QFR) is submitted four times a year through GPMS
 This article explains how the two reports are configured and where their data comes from. It is written for administrators who set up reporting.
 
 {% hint style="info" %}
-For the full set of reporting obligations and which ones Maica supports, see [Reporting capability matrix](/broken/pages/efe6cc4b66d9e57081be81f7fb8483813e396fba).
+For the full set of reporting obligations and which ones Maica supports, see [Reporting capability matrix](./).
 {% endhint %}
 
 ## Occupancy report
@@ -55,10 +55,3 @@ The report is built as a standard report grouped by leave type and quarter. No c
 {% hint style="warning" %}
 These reports support manual GPMS entry. They do not submit to GPMS, and the provider remains responsible for transcribing the figures into the portal within the QFR deadline.
 {% endhint %}
-
-## Related articles
-
-* [Reporting capability matrix](/broken/pages/efe6cc4b66d9e57081be81f7fb8483813e396fba)
-* [24/7 RN coverage check configuration](/broken/pages/1d23374dc0ce9447e24028908de6193b46f7533a)
-* [Managing temporary leave](/broken/pages/acdc9653def3c6948184e2bdbba44fb152f53ceb)
-* [The RACS data model](/broken/pages/d7be69b5f2100d0d8a11db0ec4f4f0af5de424b0)

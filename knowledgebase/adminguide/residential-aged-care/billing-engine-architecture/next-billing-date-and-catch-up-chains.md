@@ -36,7 +36,7 @@ On each run, the engine derives the period to bill from the item's frequency. It
 Monthly periods are aligned to the calendar month so consecutive months stay contiguous with no gaps or overlaps. Periods are then clamped to the item's start and end dates so billing never extends outside the agreement, and the engine refuses to re-bill any day on or before the **Last Billed Period End**.
 
 {% hint style="info" %}
-Leave can reduce the chargeable days within a derived period. Respite and Social leave suspend billing; Hospital, Transition, and Emergency leave do not. See [Fee Treatment During Leave](/broken/pages/7e2833b5906ff68097278ffa5d8e9b3920fc6168).
+Leave can reduce the chargeable days within a derived period. Respite and Social leave suspend billing; Hospital, Transition, and Emergency leave do not. See [Fee Treatment During Leave](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/fee-treatment-during-leave).
 {% endhint %}
 
 ### The in-advance guardrail
@@ -62,9 +62,3 @@ If the chain reaches the depth limit before the backlog is cleared, the engine l
 {% hint style="warning" %}
 Items in a `Failed` state are excluded from the catch-up count. This prevents a persistently failing item from consuming chain capacity and starving legitimately overdue items. If you see the depth-limit warning repeatedly, review Agreement Items that are overdue or failed for a configuration problem.
 {% endhint %}
-
-## Related articles
-
-* [Billing Engine Architecture](/broken/pages/eb4c82d7ef134026f106b3ea0549260dac90b573)
-* [Fee Type Processing Rules](/broken/pages/5037a7f02b6ddebf4821a864cd892b5d5de65d9a)
-* [Fee Treatment During Leave](/broken/pages/7e2833b5906ff68097278ffa5d8e9b3920fc6168)

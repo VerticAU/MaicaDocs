@@ -1,6 +1,6 @@
 # Automation Toggles
 
-The **Automation** section of the [RACS Configuration tab](/broken/pages/425f2a6d17b7eb7a5f380a671cb339e66a2a2b2f) holds two toggles that control whether scheduled background processes are allowed to run. Both are checkboxes, both default to **off**, and both should be left off until the process they control has been validated against test data.
+The **Automation** section of the [RACS Configuration tab](./) holds two toggles that control whether scheduled background processes are allowed to run. Both are checkboxes, both default to **off**, and both should be left off until the process they control has been validated against test data.
 
 {% hint style="danger" %}
 Turn these toggles on only after you have validated the automated process against test residents or test claims. Enabling automation before the process has been checked can apply rate changes or generate adjustment invoices across live residents without review.
@@ -19,7 +19,7 @@ This toggle controls how resident fee rate changes published by Services Austral
 **When off:** the scheduling controls are hidden, and fee rate changes must be applied manually using the **Check Fee Rates** button on each agreement.
 
 {% hint style="info" %}
-Turning the toggle on makes the batch job schedulable; it does not start the job. You still configure the schedule on the Billing Settings Schedules tab. For how the rate check works, see [Fee Detection and Rate Updates](/broken/pages/50d5363a72ba709e63aab607c6beccf7f25fd823).
+Turning the toggle on makes the batch job schedulable; it does not start the job. You still configure the schedule on the Billing Settings Schedules tab. For how the rate check works, see [Fee Detection and Rate Updates](../billing-engine-architecture/fee-detection-and-rate-updates.md).
 {% endhint %}
 
 ## Automate Statement Reconciliation
@@ -35,11 +35,5 @@ This toggle controls whether reconciliation adjustments are generated automatica
 **When off:** reconciliation must be run manually for each affected Funding Item using the **Run Reconciliation** quick action.
 
 {% hint style="info" %}
-For the reconciliation logic itself, see [Statement Reconciliation Service](/broken/pages/f747e31383574f1036f39b722816c99896abb5a4).
+For the reconciliation logic itself, see [Statement Reconciliation Service](../statement-reconciliation-service.md).
 {% endhint %}
-
-## Related articles
-
-* [The RACS Configuration Tab](/broken/pages/425f2a6d17b7eb7a5f380a671cb339e66a2a2b2f)
-* [Fee Detection and Rate Updates](/broken/pages/50d5363a72ba709e63aab607c6beccf7f25fd823)
-* [Statement Reconciliation Service](/broken/pages/f747e31383574f1036f39b722816c99896abb5a4)

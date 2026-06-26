@@ -129,9 +129,3 @@ If the device is not activated or has expired, every aged care API call will fai
 ### Diagnostic logging
 
 Detailed PRODA request and response logging is gated by a permission set (`Maica_PRODA_Debug`). Assign it only when investigating an authentication problem, since it records request and response detail for troubleshooting.
-
-## Related articles
-
-{% hint style="info" %}
-For how authenticated calls flow to and from Services Australia and how event statuses progress, see [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748). For the objects that store PRODA configuration alongside the wider solution, see [The RACS data model](/broken/pages/656667b08c1afdd99c5a41b5c4d4b46fe607db42). For the day-to-day user view of submitting events, see [Working with Services Australia](/broken/pages/5525c59fd0f4fb5b762ca3f9c0619a1ccef35814) in the User Guide.
-{% endhint %}

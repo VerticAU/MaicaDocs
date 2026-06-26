@@ -5,7 +5,7 @@ The lump sum account model is the financial ledger that Maica uses to track a re
 This article describes both objects, their relationship, and the fields that drive them. It is written for administrators and power users who configure, report on, or support the residential aged care solution.
 
 {% hint style="info" %}
-For the day-to-day workflow that creates and maintains these records, see the user guide article [Managing RAD/RAC Accommodation Deposits](/broken/pages/3a9c405f6e4149d4aa9488eee039810763cc4d6d). For the wider object map, see [The RACS Data Model](/broken/pages/30b853dd63a9c8969b77b1e308dcd9ec9af6e1fa).
+For the day-to-day workflow that creates and maintains these records, see the user guide article [Managing RAD/RAC Accommodation Deposits](/broken/pages/3a9c405f6e4149d4aa9488eee039810763cc4d6d). For the wider object map, see [The RACS Data Model](../racs-solution-overview/the-racs-data-model.md).
 {% endhint %}
 
 ## How the two objects fit together
@@ -96,7 +96,7 @@ These refund fields are populated by the system, not through the RAD/RAC tab, an
 | **Total Interest Paid** (`maica_cc__Total_Interest_Paid__c`)    | Currency, read only | The total refund interest paid on departure, combining base and overdue interest. Zero or blank where the refund was paid on time.                                                                                                                               | Total interest paid to the resident on refund of their lump sum. Calculated at the time the refund date is recorded.                           |
 
 {% hint style="info" %}
-Refund calculation and the snapshotting of interest rates are owned by the Departure Processor. They are covered in the user guide articles on [Exiting a Resident](/broken/pages/191cea96725cd40638f9e10d517b056e9d74cec6) and [Refunding Lump Sum Deposits](/broken/pages/bb5c298a891e100bdc8d6434c134d2c0b85ef2ae).
+Refund calculation and the snapshotting of interest rates are owned by the Departure Processor. They are covered in the user guide articles on [Exiting a Resident](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/exiting-a-resident-or-recording-a-death) and [Refunding Lump Sum Deposits](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/refunding-lump-sum-deposits).
 {% endhint %}
 
 ## The Lump Sum Transaction object
@@ -130,18 +130,18 @@ Three fields work together to keep the ledger readable and reconcilable:
 
 The Transaction Type picklist classifies each movement and, by convention, signals whether the Amount is an inflow or an outflow.
 
-| Type                  | Direction          | Created by                  | Notes                                                                                                                                                |
-| --------------------- | ------------------ | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Initial Payment`     | Inflow (positive)  | User                        | The first lump sum payment. Sets the account to Active and seeds the retention dates.                                                                |
-| `Additional Payment`  | Inflow (positive)  | User                        | A later top-up payment, up to the agreed room price.                                                                                                 |
-| `Retention Deduction` | Outflow (negative) | Billing engine              | A legislated retention amount deducted from the deposit. See [Retention and Drawdown Logic](/broken/pages/514043520086cbbd83d0d8f527e1bd5f357a36ae). |
-| `Draw-Down`           | Outflow (negative) | Billing engine or user      | Funds drawn from the deposit to settle a fee (automatic) or returned for another reason (user).                                                      |
-| `DAP Adjustment`      | Either             | System                      | An adjustment relating to the DAP portion.                                                                                                           |
-| `Refund`              | Outflow (negative) | User or Departure Processor | A partial refund while in care, or the final exit refund.                                                                                            |
-| `Transfer In`         | Inflow (positive)  | System                      | A deposit transferred into this account.                                                                                                             |
-| `Transfer Out`        | Outflow (negative) | System                      | A deposit transferred out of this account.                                                                                                           |
-| `Adjustment`          | Either             | User                        | A manual correction to the ledger.                                                                                                                   |
-| `Interest`            | Inflow (positive)  | System                      | Refund interest applied to the account.                                                                                                              |
+| Type                  | Direction          | Created by                  | Notes                                                                                                                         |
+| --------------------- | ------------------ | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `Initial Payment`     | Inflow (positive)  | User                        | The first lump sum payment. Sets the account to Active and seeds the retention dates.                                         |
+| `Additional Payment`  | Inflow (positive)  | User                        | A later top-up payment, up to the agreed room price.                                                                          |
+| `Retention Deduction` | Outflow (negative) | Billing engine              | A legislated retention amount deducted from the deposit. See [Retention and Drawdown Logic](retention-and-drawdown-logic.md). |
+| `Draw-Down`           | Outflow (negative) | Billing engine or user      | Funds drawn from the deposit to settle a fee (automatic) or returned for another reason (user).                               |
+| `DAP Adjustment`      | Either             | System                      | An adjustment relating to the DAP portion.                                                                                    |
+| `Refund`              | Outflow (negative) | User or Departure Processor | A partial refund while in care, or the final exit refund.                                                                     |
+| `Transfer In`         | Inflow (positive)  | System                      | A deposit transferred into this account.                                                                                      |
+| `Transfer Out`        | Outflow (negative) | System                      | A deposit transferred out of this account.                                                                                    |
+| `Adjustment`          | Either             | User                        | A manual correction to the ledger.                                                                                            |
+| `Interest`            | Inflow (positive)  | System                      | Refund interest applied to the account.                                                                                       |
 
 ### Source: system versus user
 
@@ -160,15 +160,7 @@ In the transaction history on the RAD/RAC tab, system-generated entries are visu
 
 Two paths write to the ledger, and they never overlap on the same movement type.
 
-* **The billing engine** creates Retention Deduction and automatic Draw-Down transactions as part of the nightly run. These carry a Source of System (Billing Engine), link back to the Invoice Line Item that triggered them, and (for draw-downs) link to the settling Payment. The mechanics are covered in [Retention and Drawdown Logic](/broken/pages/514043520086cbbd83d0d8f527e1bd5f357a36ae).
+* **The billing engine** creates Retention Deduction and automatic Draw-Down transactions as part of the nightly run. These carry a Source of System (Billing Engine), link back to the Invoice Line Item that triggered them, and (for draw-downs) link to the settling Payment. The mechanics are covered in [Retention and Drawdown Logic](retention-and-drawdown-logic.md).
 * **Users** create Initial Payment, Additional Payment, user Draw-Down, and Refund transactions through the RAD/RAC tab. Users cannot create Retention Deduction transactions, and automatic draw-downs are never initiated by hand.
 
 In both cases the write is atomic: the new transaction and the updated account balance are committed together, so the ledger and the **Current Balance** can never drift apart.
-
-## Related articles
-
-* [Retention and Drawdown Logic](/broken/pages/514043520086cbbd83d0d8f527e1bd5f357a36ae)
-* [Combination Method Configuration](/broken/pages/c1150e74abef180a5e38066e351cc11d028ec785)
-* [Billing Engine Architecture](/broken/pages/170009e26cd689a891c1e2bc9c746f59018f9ee0)
-* [The RACS Data Model](/broken/pages/30b853dd63a9c8969b77b1e308dcd9ec9af6e1fa)
-* [Managing RAD/RAC Accommodation Deposits](/broken/pages/3a9c405f6e4149d4aa9488eee039810763cc4d6d)

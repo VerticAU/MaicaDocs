@@ -5,7 +5,7 @@ The Annual Prudential Compliance Statement (APCS) requires providers to account 
 This article explains where to find the tool, what to select, and how to read the ledger it produces. It is written for administrators.
 
 {% hint style="info" %}
-For where this sits among the provider's reporting obligations, see [Reporting capability matrix](/broken/pages/efe6cc4b66d9e57081be81f7fb8483813e396fba).
+For where this sits among the provider's reporting obligations, see [Reporting capability matrix](./).
 {% endhint %}
 
 ## Where to find it
@@ -64,12 +64,5 @@ The last three columns are the refund compliance view. Together they let the aud
 {% endhint %}
 
 {% hint style="info" %}
-For how refunds are recorded against a resident, see [Refunding lump sum deposits](/broken/pages/357d25b821f5c8ba1468f16bed70818bf365a006) in the User Guide. For the underlying ledger, see [The lump sum account model](/broken/pages/af8f4e5058cb358aaec98e76a8aa17d5b3721b99).
+For how refunds are recorded against a resident, see [Refunding lump sum deposits](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/refunding-lump-sum-deposits) in the User Guide. For the underlying ledger, see [The lump sum account model](../the-lump-sum-account-model/).
 {% endhint %}
-
-## Related articles
-
-* [Reporting capability matrix](/broken/pages/efe6cc4b66d9e57081be81f7fb8483813e396fba)
-* [Accommodation balance reporting](/broken/pages/5b1ff06d0ff9e7fe74168bbb6e0a24610e8a5fc8)
-* [The lump sum account model](/broken/pages/af8f4e5058cb358aaec98e76a8aa17d5b3721b99)
-* [The RACS data model](/broken/pages/d7be69b5f2100d0d8a11db0ec4f4f0af5de424b0)

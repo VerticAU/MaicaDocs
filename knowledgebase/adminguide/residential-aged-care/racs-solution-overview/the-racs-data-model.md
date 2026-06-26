@@ -106,7 +106,3 @@ The signed `maica_cc__Amount__c` field is the authoritative figure for balance c
 This article covers the key fields. The complete field-by-field configuration, including every new field and its metadata, is maintained in the RACS configuration reference and the billing engine schema specification.
 {% endhint %}
 
-## Related articles
-
-* [RACS Solution Overview](/broken/pages/b358dde558c2606758113e1f04bae46677b2d2e7) - the components that act on this data model.
-* [Architectural Principles](/broken/pages/55698378b3d45b4aac5777bcae9e27e834e02285) - why the model is shaped the way it is.

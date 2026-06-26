@@ -3,7 +3,7 @@
 Maica integrates with Services Australia across the full residential aged care lifecycle: notifying entries, departures, and leave, reporting supplement needs, recording means testing elections, and pulling back claims, fee, and balance data. This article explains the shape of those integrations, the unified record that backs every outbound event, and the status lifecycle each event moves through.
 
 {% hint style="info" %}
-All of these integrations authenticate through PRODA. If the connection is not yet set up, see [PRODA Authentication and Setup](/broken/pages/0bd875cf4f4bf5e248c25ca8da0bb3389f932fbc) first.
+All of these integrations authenticate through PRODA. If the connection is not yet set up, see [PRODA Authentication and Setup](proda-authentication-and-setup.md) first.
 {% endhint %}
 
 ## How the integration is structured
@@ -29,7 +29,7 @@ Inbound integrations are read-only. Maica calls a Services Australia endpoint, r
 
 ## The Aged Care Event record
 
-Every outbound event is stored on a single object, the Aged Care Event (`maica_cc__Aged_Care_Event__c`). The event category determines which fields apply, so one object serves entries, departures, leave, and supplement events alike. The table below lists the fields that drive the framework itself. The category-specific fields are covered in [Outbound event APIs](/broken/pages/21031d2b4842d142039472c2b3cddaf8876c3333).
+Every outbound event is stored on a single object, the Aged Care Event (`maica_cc__Aged_Care_Event__c`). The event category determines which fields apply, so one object serves entries, departures, leave, and supplement events alike. The table below lists the fields that drive the framework itself. The category-specific fields are covered in [Outbound event APIs](outbound-event-apis.md).
 
 | Field                        | API name                      | Description                                                                                                                                                       |
 | ---------------------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -80,9 +80,3 @@ Because the record is saved before the callout, a failed submission is always re
 ## Concurrency and versioning
 
 When Maica creates an event, Services Australia returns an event ID and an ETag, which Maica stores on the Aged Care Event. Any later update or delete sends that ETag back in the `if-match` header. If the record changed elsewhere since Maica last read it, the ETag no longer matches and the change is refused, which prevents one channel from silently overwriting another's update. Each accepted update increments the version number, so the full history of an event is preserved.
-
-## Related articles
-
-{% hint style="info" %}
-For the individual outbound events and their fields, see [Outbound event APIs](/broken/pages/21031d2b4842d142039472c2b3cddaf8876c3333). For reading data back from Services Australia, see [Inbound data APIs](/broken/pages/899a842a20f6596ce625a974971c039ecc2a5945). For the everyday user workflow, see [Working with Services Australia](/broken/pages/dc86dbcf05950f265a19d3efeca3a3be97a6d132) in the User Guide.
-{% endhint %}

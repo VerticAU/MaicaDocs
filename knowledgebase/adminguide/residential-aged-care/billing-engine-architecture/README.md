@@ -2,7 +2,7 @@
 
 The residential billing engine is the scheduled process that turns each resident's configured fees into invoices, statements, and accommodation drawdowns every day, without manual intervention. It is implemented as the `RAC_BillingEngine` Apex class and is the heart of residential aged care billing in Maica.
 
-This article explains how the engine is structured: what it processes, the services it orchestrates, and the lifecycle of a single billing run. The rules it applies are covered in the companion articles on [Next Billing Date and Catch-Up Chains](/broken/pages/4ca8ec4613fda5b50f7a24b4b2ae8ff807112fb9) and [Fee Type Processing Rules](/broken/pages/27e677a18ba079a9c44cd0e2e146f89f90d27aad).
+This article explains how the engine is structured: what it processes, the services it orchestrates, and the lifecycle of a single billing run. The rules it applies are covered in the companion articles on [Next Billing Date and Catch-Up Chains](/broken/pages/4ca8ec4613fda5b50f7a24b4b2ae8ff807112fb9) and [Fee Type Processing Rules](fee-type-processing-rules.md).
 
 ## What the engine does
 
@@ -11,7 +11,7 @@ The engine is a daily, scheduled, batched orchestrator. On each run it walks eve
 Technically, `RAC_BillingEngine` is a Salesforce `Batchable`, `Schedulable`, and `Stateful` class. A few properties follow from that design:
 
 * **Scheduled and batched.** A daily scheduled run starts a fresh batch. The batch processes Agreement Items in chunks of **20** at a time, each chunk with its own governor limits.
-* **Callout-free.** The engine never calls Services Australia. Fee rate callouts are separate scheduled job (see [Fee Detection and Rate Updates](/broken/pages/55527ec89ab9403d039d236b438679074d7e9f30)).
+* **Callout-free.** The engine never calls Services Australia. Fee rate callouts are separate scheduled job (see [Fee Detection and Rate Updates](fee-detection-and-rate-updates.md)).
 * **Stateful counters.** The engine keeps running totals (items completed, items failed, statements touched, chain depth) across all chunks so the run can report a tidy summary at the end.
 
 {% hint style="info" %}
@@ -91,11 +91,4 @@ If an item fails, its **Billing Status** is set to `Failed` and an error Log rec
 
 ## Automatic and manual runs
 
-The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area. Either way, the same pipeline executes; the only difference is what starts it. For scheduling and manual rate changes, see [Scheduling and Manual Rate Changes](/broken/pages/658f4c7ad9f77cc8834a36a588dc22e6e754c894).
-
-## Related articles
-
-* [Next Billing Date and Catch-Up Chains](/broken/pages/4ca8ec4613fda5b50f7a24b4b2ae8ff807112fb9)
-* [Fee Type Processing Rules](/broken/pages/27e677a18ba079a9c44cd0e2e146f89f90d27aad)
-* [How Resident Billing Works](/broken/pages/88835ff49ad70eb4b6cb02811c54c84a90904112)
-* [The RACS Data Model](/broken/pages/30b853dd63a9c8969b77b1e308dcd9ec9af6e1fa)
+The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area. Either way, the same pipeline executes; the only difference is what starts it. For scheduling and manual rate changes, see [Scheduling and Manual Rate Changes](scheduling-and-manual-rate-changes.md).

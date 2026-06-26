@@ -5,7 +5,7 @@ Providers must report 24/7 registered nurse (RN) coverage to GPMS each month, co
 This article explains how the coverage check is calculated, how to run it, and how to read and use the result. It is written for administrators and facility managers.
 
 {% hint style="info" %}
-The coverage result also reflects the registered nurse eligibility that arrives in the monthly claim. This check is the provider's own coverage calculation for GPMS reporting; for the eligibility returned with the claim, see [Inbound data APIs](/broken/pages/b4be395b86720f94e7ab5eeaa756b489f3111300).
+The coverage result also reflects the registered nurse eligibility that arrives in the monthly claim. This check is the provider's own coverage calculation for GPMS reporting; for the eligibility returned with the claim, see [Inbound data APIs](../integration-architecture-and-event-lifecycle/inbound-data-apis.md).
 {% endhint %}
 
 ## How coverage is calculated
@@ -58,12 +58,3 @@ A facility in Modified Monash category 5, 6, or 7 with 30 or fewer operational b
 ## Using the result for GPMS
 
 The coverage record gives the facility manager everything needed for the monthly GPMS entry: the pass or fail result, the total RN and gap hours, and the gap detail to investigate any misses. GPMS submissions are due by the 7th of the following month. After completing the entry, tick **GPMS Submitted** and record the date, so Maica holds a simple compliance trail. The check does not submit to GPMS directly.
-
-## Related articles
-
-{% hint style="info" %}
-* [Reporting capability matrix](/broken/pages/efe6cc4b66d9e57081be81f7fb8483813e396fba)
-* [QFR report configuration](/broken/pages/89bd1007b38bb0f77edf9228da0a3147182bf20d)
-* [Inbound data APIs](/broken/pages/b4be395b86720f94e7ab5eeaa756b489f3111300)
-* [The RACS data model](/broken/pages/d7be69b5f2100d0d8a11db0ec4f4f0af5de424b0)
-{% endhint %}

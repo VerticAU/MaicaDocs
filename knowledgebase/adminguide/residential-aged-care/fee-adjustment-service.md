@@ -5,7 +5,7 @@ When a fee rate change takes effect on a date that falls inside a period that ha
 This article explains what the service does, when it runs, and how the adjustment is calculated. It is written for administrators and power users who support the billing process.
 
 {% hint style="info" %}
-This service works hand in hand with the [Statement reconciliation service](/broken/pages/36b4e31e818e8dcc47d2d155e2951f173c7be0e8). Together they keep the two ways a rate can be corrected (a detected or manual rate change, and a payment statement reconciliation) from adjusting the same period twice.
+This service works hand in hand with the [Statement reconciliation service](statement-reconciliation-service.md). Together they keep the two ways a rate can be corrected (a detected or manual rate change, and a payment statement reconciliation) from adjusting the same period twice.
 {% endhint %}
 
 ## What the service does
@@ -30,16 +30,12 @@ There are two ways the service is triggered. Both follow the same calculation lo
 When a rate change is applied to an agreement item (for example following a detected government rate change), the fee update process creates the new agreement item and then invokes the adjustment service for any billing already stamped at the old rate inside the window. The same happens when a fee ceases: the service is invoked with an effective new rate of zero, producing a full credit for any billing after the cessation date.
 
 {% hint style="info" %}
-For how rate changes are detected and applied, see [Fee detection and rate updates](/broken/pages/2abecadcc9f12bb16ff2adabc0d5a551fe0d6bd1).
+For how rate changes are detected and applied, see [Fee detection and rate updates](billing-engine-architecture/fee-detection-and-rate-updates.md).
 {% endhint %}
 
 ### After a manual rate change
 
 When a provider records a rate change in the **Manage RACS Agreement** component and the new agreement item's start date is earlier than the period last billed on the previous item, the save handler invokes the same adjustment service. This lets providers generate adjustments from manually entered rate changes, not only from changes detected from Services Australia.
-
-{% hint style="info" %}
-For the component itself, see [Managing service agreements](/broken/pages/3d36bff3072d43fda17a495af748f01aab210478) in the User Guide.
-{% endhint %}
 
 ## How the adjustment is calculated
 
@@ -60,12 +56,3 @@ Because the service excludes prior Rate Adjustment line items and nets off exist
 ## What this service does not do
 
 The fee adjustment service works entirely on existing Maica data. It does not call Services Australia, it does not create or end-date agreement items (that is the fee update process), and it does not perform cap validation or leave counting. Its single responsibility is to calculate and raise the adjustment for an already-billed period.
-
-## Related articles
-
-{% hint style="info" %}
-* [Statement reconciliation service](/broken/pages/36b4e31e818e8dcc47d2d155e2951f173c7be0e8)
-* [Fee detection and rate updates](/broken/pages/2abecadcc9f12bb16ff2adabc0d5a551fe0d6bd1)
-* [Fee adjustments and corrections](/broken/pages/77e031e847876deeb9c449926ded764b2414ac32)
-* [The RACS data model](/broken/pages/30b853dd63a9c8969b77b1e308dcd9ec9af6e1fa)
-{% endhint %}

@@ -4,7 +4,7 @@ The residential billing processes are designed to run automatically on a schedul
 
 ## Scheduled runs
 
-Two RACS processes are intended to run on a schedule, each gated by an automation toggle on the [RACS Configuration tab](/broken/pages/2b656a6ab4739aa11d813d1f9fd43403d818e278):
+Two RACS processes are intended to run on a schedule, each gated by an automation toggle on the [RACS Configuration tab](../the-racs-configuration-tab/):
 
 | Process                                            | What it does                                                        | Cadence                                                                    |
 | -------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -13,7 +13,7 @@ Two RACS processes are intended to run on a schedule, each gated by an automatio
 
 RACS scheduled jobs are managed from the **Schedules** tab in the Billing Settings area, using the same controls as other packaged Maica batch jobs (run time, frequency, start date). Each RACS job appears there when its matching automation toggle is turned on, so the toggle is the control point: turn it on to schedule the job, turn it off to stop it.
 
-The billing engine has a daily schedule and works through its backlog using the catch-up chain (see [Next Billing Date and Catch-Up Chains](/broken/pages/ef7bb09bb16a1797a10879c96acf6e9351f74225)). The fee rate check does no work at all while its toggle is off, even if a schedule exists, so administrators can leave a schedule in place and use the toggle to switch detection on and off.
+The billing engine has a daily schedule and works through its backlog using the catch-up chain (see [Next Billing Date and Catch-Up Chains](next-billing-date-and-catch-up-chains.md)). The fee rate check does no work at all while its toggle is off, even if a schedule exists, so administrators can leave a schedule in place and use the toggle to switch detection on and off.
 
 {% hint style="info" %}
 Both engines can also be triggered ad-hoc from the settings area when you need a run immediately rather than waiting for the next scheduled time.
@@ -49,10 +49,3 @@ The action enforces a few rules before it will apply the change:
 {% hint style="info" %}
 Reducing a Means Tested Care Fee rate shows an advisory before you submit, because the retrospective adjustment will generate a credit for periods already billed at the higher rate. The Change Rate action is not available on deactivated rows.
 {% endhint %}
-
-## Related articles
-
-* [Billing Engine Architecture](/broken/pages/eb4c82d7ef134026f106b3ea0549260dac90b573)
-* [Fee Detection and Rate Updates](/broken/pages/00f1b0d9faeba17b0f70015ea26a19d2371cef8d)
-* [Automation Toggles](/broken/pages/2b656a6ab4739aa11d813d1f9fd43403d818e278)
-* [Fee Adjustments and Corrections](/broken/pages/6bcf8b5079188e58eebb1ea7debc38a0c34d6675)

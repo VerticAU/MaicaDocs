@@ -5,7 +5,7 @@ The care recipient details sync is the foundational inbound integration for ever
 This article explains what the sync brings in, the ways it can be run, how you can tell when it last ran, and the conditions it must satisfy before a resident can be admitted. It is written for administrators and power users.
 
 {% hint style="info" %}
-The care recipient details sync is one of the inbound reads described in [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749). That article covers the full set of reads; this article covers the care recipient sync workflow specifically.
+The care recipient details sync is one of the inbound reads described in [Inbound data APIs](inbound-data-apis.md). That article covers the full set of reads; this article covers the care recipient sync workflow specifically.
 {% endhint %}
 
 ## What the sync retrieves
@@ -23,7 +23,7 @@ The sync calls Services Australia for a single care recipient and receives that 
 The sync is read-only. It never writes data back to Services Australia.
 
 {% hint style="info" %}
-Services Australia identity and demographic data is written to the resident's funding profile rather than to the **Contact** record, which holds the provider's own view of the person. The resident's name and date of birth entered at intake are not overwritten by the sync. To understand this separation, see [The RACS data model](/broken/pages/656667b08c1afdd99c5a41b5c4d4b46fe607db42).
+Services Australia identity and demographic data is written to the resident's funding profile rather than to the **Contact** record, which holds the provider's own view of the person. The resident's name and date of birth entered at intake are not overwritten by the sync. To understand this separation, see [The RACS data model](../racs-solution-overview/the-racs-data-model.md).
 {% endhint %}
 
 ## How the sync runs
@@ -49,7 +49,7 @@ A bulk sync issues a Services Australia call for the residents it covers. Run it
 Before a monthly claim is processed, the claim workflow refreshes the residents in that Claim Batch so the classification and approval data used for the claim is current at the point it matters most. This happens automatically as part of the claim process; you do not run it separately.
 
 {% hint style="info" %}
-For the monthly claim itself, see the Claims section of [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749).
+For the monthly claim itself, see the Claims section of [Inbound data APIs](inbound-data-apis.md).
 {% endhint %}
 
 ## Checking the sync result
@@ -83,21 +83,11 @@ If these conditions are not met, the entry event is blocked and you are prompted
 {% endhint %}
 
 {% hint style="info" %}
-For the admission workflow itself, see [Admitting a resident](/broken/pages/84650b45b18e1c87a1cb54071ef77f7b26b3216b) in the User Guide, and [Outbound event APIs](/broken/pages/2c1f22c01f8e5c2c22e06fd075cee6c0a1ea11bc) for how the entry event is submitted.
+For the admission workflow itself, see [Admitting a resident](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/admitting-a-resident) in the User Guide, and [Outbound event APIs](outbound-event-apis.md) for how the entry event is submitted.
 {% endhint %}
 
 ## Open item
 
 {% hint style="warning" %}
 **Approved services for residential approvals (OI-001):** It has not been confirmed whether Services Australia populates the approved services array for residential (`RESI`) approvals in the care recipient details response. If it does, the way approved services are stored may need to be revisited. Confirm the behaviour with Services Australia and the engineering team before relying on approved service data for residential residents.
-{% endhint %}
-
-## Related articles
-
-{% hint style="info" %}
-* [Inbound data APIs](/broken/pages/aabc92088719079e52e4997519fdb6d2663d4749)
-* [Accommodation balance reporting](/broken/pages/312d41e3a4c4b35526a37d62a402d9a0f0f271c9)
-* [Outbound event APIs](/broken/pages/2c1f22c01f8e5c2c22e06fd075cee6c0a1ea11bc)
-* [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748)
-* [The RACS data model](/broken/pages/656667b08c1afdd99c5a41b5c4d4b46fe607db42)
 {% endhint %}

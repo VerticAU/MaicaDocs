@@ -2,13 +2,13 @@
 
 When Services Australia recalculates a resident's means tested or income tested fees, the provider needs to apply the new rate and correct any amounts already billed at the old rate. The fee detection process automates this: it polls Services Australia per resident, detects rate changes and cessations, and applies them through the same add-only update path used everywhere in RACS.
 
-This is distinct from indexation. Indexation applies government-published standard rates to everyone at once (see [The Indexation Engine](/broken/pages/3ed372f3dda1121e094267f1d68e251488927b9d)); fee detection applies per-resident rate changes that Services Australia calculates from each resident's means assessment.
+This is distinct from indexation. Indexation applies government-published standard rates to everyone at once (see [The Indexation Engine](the-indexation-engine.md)); fee detection applies per-resident rate changes that Services Australia calculates from each resident's means assessment.
 
 ## The fee rate callout
 
 The fee rate check is implemented as the `RAC_ResidentFeeCalloutBatch` class. It is a scheduled, batched, callout-capable process that runs one Agreement Item per chunk, so each transaction can make its own outbound call to Services Australia.
 
-It is gated by the **Automate Resident Fee Rate Updates** toggle on the [RACS Configuration tab](/broken/pages/2b656a6ab4739aa11d813d1f9fd43403d818e278). When the toggle is off, the batch does no work and records a log entry confirming it was blocked, so administrators can keep a schedule in place and use the toggle as the on/off control.
+It is gated by the **Automate Resident Fee Rate Updates** toggle on the [RACS Configuration tab](../the-racs-configuration-tab/). When the toggle is off, the batch does no work and records a log entry confirming it was blocked, so administrators can keep a schedule in place and use the toggle as the on/off control.
 
 ### Scope
 
@@ -37,7 +37,7 @@ When a change or cessation is detected, the update is applied by the `RAC_FeeUpd
 * **Cessation.** The current item is end-dated at the cessation date, no successor is created, and a full credit is generated for any periods billed beyond the cessation.
 
 {% hint style="info" %}
-The same update logic backs the manual Apply Changes flow that runs from the **Check Fee Rates** button, and the single-item [Change Rate action](/broken/pages/247282d7aaca99e45a7944ad084d99ed1d4632a6). The retrospective correction itself is handled by the fee adjustment service; see [Fee Adjustment Service](/broken/pages/89fa64995643cb2152d136c621ff72e5010a3815).
+The same update logic backs the manual Apply Changes flow that runs from the **Check Fee Rates** button, and the single-item Change Rate action. The retrospective correction itself is handled by the fee adjustment service; see [Fee Adjustment Service](../fee-adjustment-service.md).
 {% endhint %}
 
 ## Fees excluded from automated detection
@@ -53,10 +53,3 @@ In addition, an individual Service Agreement can be marked as excluded from auto
 {% hint style="warning" %}
 The per-Service-Agreement exclusion control is part of the RACS rollout. Confirm its availability and exact field name in your installed package version.
 {% endhint %}
-
-## Related articles
-
-* [The Indexation Engine](/broken/pages/3ed372f3dda1121e094267f1d68e251488927b9d)
-* [Scheduling and Manual Rate Changes](/broken/pages/247282d7aaca99e45a7944ad084d99ed1d4632a6)
-* [Automation Toggles](/broken/pages/2b656a6ab4739aa11d813d1f9fd43403d818e278)
-* [How Maica Connects to Services Australia](/broken/pages/b670aa7ed42f40262b8bec92309e0b46a3c6e4d9)

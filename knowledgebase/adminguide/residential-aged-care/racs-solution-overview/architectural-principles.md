@@ -51,8 +51,3 @@ Some objects must be managed through Maica's user interface components rather th
 ### The government integration boundary
 
 Where Services Australia provides a Business-to-Government (B2G) API, Maica integrates directly, for example for entry, departure, and supplement events, resident data sync, claims, and accommodation balance reporting. Where no API exists, Maica provides the data the provider needs and the provider completes the submission in the relevant portal. SIRS notifications and the APCS component of the Annual Financial Report both follow this pattern: Maica holds and outputs the data, and the provider keys it into the government portal.
-
-## Related articles
-
-* [RACS Solution Overview](/broken/pages/b358dde558c2606758113e1f04bae46677b2d2e7) - the components these principles apply to.
-* [The RACS Data Model](/broken/pages/9a76e6e18ad33772975693d38d55aab075ba568a) - the objects and relationships that embody these principles.

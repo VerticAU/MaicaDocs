@@ -5,7 +5,7 @@ Alongside the event APIs that send data to Services Australia, the residential a
 This article explains what each inbound read provides, where the data lands in Maica, and when it runs. It is written for administrators who need to understand the data flow behind the resident record and the monthly claim.
 
 {% hint style="info" %}
-For the authentication and gateway headers shared by every Services Australia call, see [PRODA authentication and setup](/broken/pages/11c8628b3cd606acae37d9b8d3c66d983d1615e8). For the overall data flow and event status model, see [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748).
+For the authentication and gateway headers shared by every Services Australia call, see [PRODA authentication and setup](proda-authentication-and-setup.md). For the overall data flow and event status model, see [Integration architecture and event lifecycle](./).
 {% endhint %}
 
 ## How inbound reads work
@@ -19,7 +19,7 @@ Three characteristics are common to all inbound reads:
 * **They record when they last ran.** The reads that run on a schedule or on demand stamp a last-synchronised date and time so you can see how current the data is.
 
 {% hint style="info" %}
-The Care Recipient Details read is the backbone of the resident-level inbound data and has its own dedicated workflow. See [Care recipient details sync](/broken/pages/c958c702ee0b989ea5eecb838d8b3f25157c2131) for how the manual, scheduled and bulk refreshes work.
+The Care Recipient Details read is the backbone of the resident-level inbound data and has its own dedicated workflow. See [Care recipient details sync](care-recipient-details-sync.md) for how the manual, scheduled and bulk refreshes work.
 {% endhint %}
 
 ## Resident-level reads
@@ -31,7 +31,7 @@ These reads return data about an individual resident and are scoped by the resid
 The Fee Summary read returns the government-published fees and contributions that apply to a resident for a given fee type. It is the reference point for the means-tested amounts that Services Australia has determined for that resident.
 
 {% hint style="warning" %}
-By design, the means-tested amounts used in resident billing are entered into Maica manually from the resident's fee advice letter (the SA457), not applied automatically from this read. The Fee Summary read provides the government reference figures; the rates that drive billing are set on the resident's fee arrangement. See [Configuring resident fees](/broken/pages/7862e629688299ea6c52ab3f7db2a8347ac39308) in the User Guide.
+By design, the means-tested amounts used in resident billing are entered into Maica manually from the resident's fee advice letter (the SA457), not applied automatically from this read. The Fee Summary read provides the government reference figures; the rates that drive billing are set on the resident's fee arrangement. See [Configuring resident fees](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/the-manage-racs-agreement-component/configuring-resident-fees-tab) in the User Guide.
 {% endhint %}
 
 ### Medicare Details
@@ -57,7 +57,7 @@ Two related reads return the resident's remaining entitlement days:
 These reads are typically run before recording a leave or respite period, so that the available balance can be checked before an event is submitted.
 
 {% hint style="info" %}
-For how leave and respite are recorded and how the balances are used day to day, see [Managing temporary leave](/broken/pages/5f608491def1bbc82a1bb0dd39df6884229db675) and [Managing residential respite care](/broken/pages/92c214a4338a72a6fa86b12995e778ea80f77232) in the User Guide.
+For how leave and respite are recorded and how the balances are used day to day, see [Managing temporary leave](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/managing-temporary-leave) and [Managing residential respite care](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/managing-residential-respite-care) in the User Guide.
 {% endhint %}
 
 ## Claim and payment reads
@@ -83,11 +83,11 @@ When a claim reaches an approved state, the confirmed data is written across sev
 | **AN-ACC Classification**        | The resident-level AN-ACC classifications confirmed for payment                                                            |
 
 {% hint style="info" %}
-The Claims read and finalisation run as part of the monthly Claim Batch workflow. For the resident-facing view of claiming, see [How resident billing works](/broken/pages/df9f368152eb608bbfdb2ea1a881084596bfb686). Accommodation balances must be submitted before a claim can be finalised; see [Accommodation balance reporting](/broken/pages/312d41e3a4c4b35526a37d62a402d9a0f0f271c9).
+The Claims read and finalisation run as part of the monthly Claim Batch workflow. For the resident-facing view of claiming, see [How resident billing works](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/how-resident-billing-works). Accommodation balances must be submitted before a claim can be finalised; see [Accommodation balance reporting](accommodation-balance-reporting.md).
 {% endhint %}
 
 {% hint style="warning" %}
-Registered nurse eligibility is returned inside the Claims response and written to the Claim Batch. This is distinct from the separate 24/7 registered nurse coverage check that providers run for their own GPMS reporting; see [24/7 RN coverage check configuration](/broken/pages/ccb02b19747b6e796660afbfa1fbf42a061a47de).
+Registered nurse eligibility is returned inside the Claims response and written to the Claim Batch. This is distinct from the separate 24/7 registered nurse coverage check that providers run for their own GPMS reporting; see [24/7 RN coverage check configuration](../reporting-capability-matrix/24-7-rn-coverage-check-configuration.md).
 {% endhint %}
 
 ### Payment statements
@@ -100,7 +100,7 @@ Two reads provide the read-only financial settlement view once Services Australi
 These reads are used to reconcile what Services Australia actually paid against the invoices and claim data held in Maica. The payment statement response also carries resident-level balance figures (remaining respite and social leave) that are sourced from this read rather than from the claim.
 
 {% hint style="info" %}
-For how the payment settlement data is matched back to invoices, see [Reconciling payments](/broken/pages/6f38c848ff0643e57f80296eca86b133db9e3438) in the User Guide and [Statement reconciliation service](/broken/pages/ff0666b299024c83b48f4460bd46bbd65f4e1703).
+For how the payment settlement data is matched back to invoices, see [Reconciling payments](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/reconciling-payments) in the User Guide and [Statement reconciliation service](../statement-reconciliation-service.md).
 {% endhint %}
 
 ## Service-level summary reads
@@ -118,11 +118,3 @@ Inbound data supports the resident record and the downstream processes:
 * **The resident record** reflects current Medicare details, leave and respite balances, and confirmed funding.
 * **The monthly claim** is reconciled against the confirmed subsidy and the actual payments.
 * **Reporting** draws on the confirmed claim and service data for the Quarterly Financial Report and registered nurse reporting.
-
-## Related articles
-
-* [Care recipient details sync](/broken/pages/c958c702ee0b989ea5eecb838d8b3f25157c2131)
-* [Accommodation balance reporting](/broken/pages/312d41e3a4c4b35526a37d62a402d9a0f0f271c9)
-* [Outbound event APIs](/broken/pages/2c1f22c01f8e5c2c22e06fd075cee6c0a1ea11bc)
-* [Integration architecture and event lifecycle](/broken/pages/9f898474e0009cdc10b82cd848599da2a1977748)
-* [The RACS data model](/broken/pages/656667b08c1afdd99c5a41b5c4d4b46fe607db42)

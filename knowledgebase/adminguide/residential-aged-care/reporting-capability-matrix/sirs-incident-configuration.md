@@ -71,9 +71,3 @@ These feed the packaged **SIRS Compliance Dashboard**, which shows the operation
 {% hint style="warning" %}
 The reports and dashboard help providers monitor and meet their notification deadlines, but they do not submit anything to the ACQSC. The notification itself must be lodged manually in the My Aged Care portal, and the result recorded back on the incident.
 {% endhint %}
-
-## Related articles
-
-* [Reporting capability matrix](/broken/pages/efe6cc4b66d9e57081be81f7fb8483813e396fba)
-* [Managing SIRS notifications](/broken/pages/9f1604f9658cd8cbcf07202a6245668d5bcd9cb4)
-* [The RACS data model](/broken/pages/d7be69b5f2100d0d8a11db0ec4f4f0af5de424b0)

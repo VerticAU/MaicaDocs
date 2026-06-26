@@ -2,7 +2,7 @@
 
 The Residential Aged Care Services (RACS) solution is the set of objects, automation, user interface components, and Services Australia integrations that together support running a residential aged care home in Maica. This article gives administrators a map of how the solution is put together and what it does and does not cover.
 
-If you are new to the solution, the Introduction to the RACS Solution in the User Guide is a gentler starting point. This article assumes familiarity with Salesforce and the Maica platform.
+If you are new to the solution, the [Introduction to the RACS Solution](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/introduction-to-the-racs-solution) in the User Guide is a gentler starting point. This article assumes familiarity with Salesforce and the Maica platform.
 
 ## Architecture and packaging
 

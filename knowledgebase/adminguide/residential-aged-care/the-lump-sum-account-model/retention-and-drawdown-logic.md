@@ -5,7 +5,7 @@ Two automated mechanisms reduce a resident's lump sum balance over the life of t
 This article explains how both services calculate their amounts, the records they create, and how they avoid ever pushing a balance below zero. It is written for administrators and power users who need to understand or support the billing engine's treatment of lump sum accounts.
 
 {% hint style="info" %}
-Both services depend on the objects described in [The Lump Sum Account Model](/broken/pages/64b4343810e7f34b807b481415f327eb40ba0f32), and both are driven by the billing engine covered in [Billing Engine Architecture](/broken/pages/a45d130dba1117c83b040866430cbc117789f738).
+Both services depend on the objects described in [The Lump Sum Account Model](./), and both are driven by the billing engine covered in [Billing Engine Architecture](../billing-engine-architecture/).
 {% endhint %}
 
 ## Retention
@@ -98,7 +98,7 @@ If any of the four writes fails, the whole set is rolled back to the savepoint a
 
 ### DAP recalculation after a draw-down
 
-For a resident on the Combination payment method, reducing the balance changes the daily DAP they owe. After a successful draw-down, the service recalculates the DAP portion. This step is non-blocking: it runs in its own protected block, and if it fails it writes an error log rather than rolling back the draw-down that already succeeded. The detail of the recalculation, including the formula and where the rate is sourced, is covered in [Combination Method Configuration](/broken/pages/9fdbcef8349b60024e7330e99be2e0a541572473).
+For a resident on the Combination payment method, reducing the balance changes the daily DAP they owe. After a successful draw-down, the service recalculates the DAP portion. This step is non-blocking: it runs in its own protected block, and if it fails it writes an error log rather than rolling back the draw-down that already succeeded. The detail of the recalculation, including the formula and where the rate is sourced, is covered in [Combination Method Configuration](combination-method-configuration.md).
 
 ## How the two mechanisms compare
 
@@ -114,11 +114,3 @@ For a resident on the Combination payment method, reducing the balance changes t
 | Cumulative field updated | Cumulative Retention Amount.                                        | Cumulative Draw-Down Amount.                                     |
 
 In both cases the balance can be reduced but never taken below zero, and every movement is written to the ledger with a System (Billing Engine) source so it is clearly distinguished from user-led entries.
-
-## Related articles
-
-* [The Lump Sum Account Model](/broken/pages/64b4343810e7f34b807b481415f327eb40ba0f32)
-* [Combination Method Configuration](/broken/pages/9fdbcef8349b60024e7330e99be2e0a541572473)
-* [Billing Engine Architecture](/broken/pages/a45d130dba1117c83b040866430cbc117789f738)
-* [Fee Type Processing Rules](/broken/pages/3a1f6579724d27299299d7b2178feb8a073abbc5)
-* [Rate Configuration](/broken/pages/42b4e9886132e33d96e417c735cec4de6ada97ff)
