@@ -4,7 +4,7 @@
 
 When a resident takes temporary leave, their place is held and their care continues to be billed, but the type and length of leave can change what the government pays and, in some cases, what the resident owes. This article explains how each leave type affects fees so you know what to expect on the resident's invoices.
 
-This is the fees-focused companion to the lifecycle article on recording leave. For how to enter a leave period and track leave balances, see [Managing Temporary Leave](/broken/pages/aa739a1299f19108b3d786ba1ed279905521f8c6).
+This is the fees-focused companion to the lifecycle article on recording leave. For how to enter a leave period and track leave balances, see [Managing Temporary Leave](managing-temporary-leave.md).
 
 ## How leave affects billing
 
@@ -33,16 +33,9 @@ A few situations change a resident's fees but are not detected or applied by the
 * **Social leave beyond 52 days.** Once a resident passes their annual social leave entitlement, the subsidy stops for the additional days. The resident's fees continue, but you should be aware of the subsidy position when reconciling payments.
 
 {% hint style="warning" %}
-Changing a fee rate part way through a period that has already been billed creates a correction. Maica handles this for you when you update the rate. See [Fee Adjustments and Corrections](/broken/pages/9820261882849bd053865dec0176f94d467f8e42).
+Changing a fee rate part way through a period that has already been billed creates a correction. Maica handles this for you when you update the rate. See [Fee Adjustments and Corrections](fee-adjustments-and-corrections.md).
 {% endhint %}
 
 {% hint style="danger" %}
 You cannot charge a fee to reserve a resident's place in order to make up for a subsidy reduction during leave. Only the fees the resident already pays continue.
 {% endhint %}
-
-## Related articles
-
-* [Managing Temporary Leave](/broken/pages/aa739a1299f19108b3d786ba1ed279905521f8c6)
-* [How Resident Billing Works](/broken/pages/e7403245d83efff4f1d3d64bea06a5b7f91ae203)
-* [Fee Adjustments and Corrections](/broken/pages/9820261882849bd053865dec0176f94d467f8e42)
-* [Residential Care Fee Types Explained](/broken/pages/2dfabdf23a3b379b80e94f355d751406b08e6a63)

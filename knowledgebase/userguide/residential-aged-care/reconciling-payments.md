@@ -16,7 +16,7 @@ Two sources come together in reconciliation:
 Reconciliation compares the two. Where Maica's charges do not match the authorised amount, it creates a reconciliation adjustment so the resident's account lines up with what Services Australia authorised.
 
 {% hint style="info" %}
-The payment data that reconciliation works from is read in from Services Australia. For how that inbound data arrives, see [Keeping Care Recipient Data in Sync](/broken/pages/b9411857230206c30d9170c168a3956eb5367a5f).
+The payment data that reconciliation works from is read in from Services Australia. For how that inbound data arrives, see [Keeping Care Recipient Data in Sync](how-maica-connects-to-services-australia/keeping-care-recipient-data-in-sync.md).
 {% endhint %}
 
 ## Running reconciliation
@@ -35,15 +35,9 @@ Reconciliation is safe to re-run. If a resident has already been reconciled, the
 {% endhint %}
 
 {% hint style="warning" %}
-Reconciliation and fee rate corrections are aware of each other. If a rate change has already corrected part of a period, reconciliation only adjusts what remains, so the same period is never corrected twice. See [Fee Adjustments and Corrections](/broken/pages/0145a07d159d2529c5ba4e6d572985378a23ae93).
+Reconciliation and fee rate corrections are aware of each other. If a rate change has already corrected part of a period, reconciliation only adjusts what remains, so the same period is never corrected twice. See [Fee Adjustments and Corrections](fee-adjustments-and-corrections.md).
 {% endhint %}
 
 ## When something cannot be reconciled
 
 If Maica cannot resolve a particular amount, for example because it cannot match it to a charge, it records that case for review rather than stopping. The rest of the reconciliation still completes. Your billing team can review these logged cases and resolve them manually.
-
-## Related articles
-
-* [Keeping Care Recipient Data in Sync](/broken/pages/b9411857230206c30d9170c168a3956eb5367a5f)
-* [How Resident Billing Works](/broken/pages/cf080bfa8621f328a07609c4bc408b6a25743692)
-* [Fee Adjustments and Corrections](/broken/pages/0145a07d159d2529c5ba4e6d572985378a23ae93)

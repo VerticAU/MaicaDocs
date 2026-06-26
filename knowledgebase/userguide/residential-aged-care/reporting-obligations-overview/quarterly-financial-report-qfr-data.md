@@ -36,9 +36,3 @@ The leave utilisation report summarises the leave residents took during the quar
 {% hint style="success" %}
 Because the leave report is built from the leave you record against residents, keeping leave records accurate and up to date is what makes the quarterly figures correct. See [Managing Temporary Leave](/broken/pages/dc566af39fdbb6f4bc9b601e83526a05bf5128e8).
 {% endhint %}
-
-## Related articles
-
-* [Reporting Obligations Overview](/broken/pages/127cfa01211d2a0b958957b2ea15cf00bef844a2)
-* [Managing Temporary Leave](/broken/pages/dc566af39fdbb6f4bc9b601e83526a05bf5128e8)
-* [24/7 Registered Nurse Coverage](/broken/pages/50e0c83efc4f35122a8f082e6762b5ad799c5ab4)

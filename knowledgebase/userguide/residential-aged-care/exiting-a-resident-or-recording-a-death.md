@@ -19,7 +19,7 @@ The **Manage Departure** action sits at the top right of the resident's Service 
 3. The departure modal opens at the first step.
 
 {% hint style="info" %}
-The same **Manage Departure** action is used twice in a resident's exit: first to process the departure (the steps below), and later to record the refund payment once you have paid the deposit back. When you reopen the action after a departure has been processed, it takes you straight to the refund step. See [Refunding Lump Sum Deposits](/broken/pages/773a6f302166b6d765262334183d83bd067d75ee).
+The same **Manage Departure** action is used twice in a resident's exit: first to process the departure (the steps below), and later to record the refund payment once you have paid the deposit back. When you reopen the action after a departure has been processed, it takes you straight to the refund step. See [Refunding Lump Sum Deposits](refunding-lump-sum-deposits.md).
 {% endhint %}
 
 ## Processing a departure
@@ -114,7 +114,7 @@ A death is recorded the same way as any other departure: open **Manage Departure
 For a death there is usually no advance notice, so the deposit refund is initially set to fall due 14 days after the departure date. Under the aged care rules, however, the refund of a deceased resident's deposit is not actually due until probate or letters of administration have been granted. When you have sighted the grant of probate, update the refund due date on the lump sum deposit so the refund timeframe and any interest are calculated correctly.
 
 {% hint style="info" %}
-Until probate is sighted, leave the refund as outstanding. The base interest that accrues on the refund still applies from the day after departure, and is calculated when you finally record the refund payment. See [Refunding Lump Sum Deposits](/broken/pages/773a6f302166b6d765262334183d83bd067d75ee).
+Until probate is sighted, leave the refund as outstanding. The base interest that accrues on the refund still applies from the day after departure, and is calculated when you finally record the refund payment. See [Refunding Lump Sum Deposits](refunding-lump-sum-deposits.md).
 {% endhint %}
 
 ## What happens after a departure
@@ -122,10 +122,3 @@ Until probate is sighted, leave the refund as outstanding. The base interest tha
 Processing the departure closes the resident's care and accommodation finances, but it does not, on its own, mark the lump sum deposit as fully refunded. The deposit stays open with a refund amount and a refund due date recorded against it.
 
 The deposit is only finalised when you record the actual refund payment, which is a separate step you complete once the money has been paid back. That step also works out any interest owed to the resident or their estate.
-
-## Related articles
-
-* [Refunding Lump Sum Deposits](/broken/pages/773a6f302166b6d765262334183d83bd067d75ee)
-* [Admitting a Resident](/broken/pages/6ca2d331c11e1e1fe5f2f0ab4154c7cbcb2bfe5b)
-* [Managing Temporary Leave](/broken/pages/6d77d33db2b7bbdaaabf747f9e4fd941e00632da)
-* [Managing RAD/RAC Accommodation Deposits](/broken/pages/5029be4ff8a685c62fd0783b757adb02aced860f)

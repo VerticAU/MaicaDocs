@@ -16,7 +16,7 @@ Some information is sent from Maica to Services Australia (outbound), and some i
 | **Services Australia to Maica (inbound)**  | Care recipient details, fee determinations, Medicare details, leave and respite balances, service and occupancy data, the 24/7 registered nurse supplement, claims, and payment statements. |
 
 {% hint style="info" %}
-Outbound submissions are described in [Submitting Care and Supplement Events](/broken/pages/6cc4589345e7aff9fc48849303f5238f88850d15). Inbound data is described in [Keeping Care Recipient Data in Sync](/broken/pages/5d3c888b7de70636a2c32bcc39e8359b6dd410d7).
+Outbound submissions are described in [Submitting Care and Supplement Events](submitting-care-and-supplement-events.md). Inbound data is described in [Keeping Care Recipient Data in Sync](keeping-care-recipient-data-in-sync.md).
 {% endhint %}
 
 ## The event lifecycle
@@ -54,10 +54,3 @@ Because failures are non-blocking, you never have to halt resident operations be
 ## Keeping statuses up to date
 
 Event statuses are kept current in two ways. A daily status check runs automatically and refreshes the status of held events (your administrator can set the time it runs). You can also refresh an event's status on demand from the event record when you need the latest position immediately.
-
-## Related articles
-
-* [Submitting Care and Supplement Events](/broken/pages/6cc4589345e7aff9fc48849303f5238f88850d15)
-* [Keeping Care Recipient Data in Sync](/broken/pages/5d3c888b7de70636a2c32bcc39e8359b6dd410d7)
-* [Reporting RAD/RAC Balances](/broken/pages/dada85396b8bee89784f4f7eeb77f68a51996a2e)
-* [Admitting a Resident](/broken/pages/6246fc9317d4a4032ed206ad966d9c5374d63d05)

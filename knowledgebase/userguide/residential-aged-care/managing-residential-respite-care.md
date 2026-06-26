@@ -4,7 +4,7 @@ Residential respite care is short-term residential care that gives an older pers
 
 ## Respite entries
 
-A respite entry is recorded the same way as a permanent entry, using the **Submit Entry Event** action on the resident's Funding record, with the entry type set to Respite. A respite entry includes a planned departure date, which you can update later if the stay changes. The full entry process is covered in [Admitting a Resident](/broken/pages/6ca2d331c11e1e1fe5f2f0ab4154c7cbcb2bfe5b).
+A respite entry is recorded the same way as a permanent entry, using the **Submit Entry Event** action on the resident's Funding record, with the entry type set to Respite. A respite entry includes a planned departure date, which you can update later if the stay changes. The full entry process is covered in [Admitting a Resident](admitting-a-resident.md).
 
 Eligible people are entitled to **63 days** of subsidised respite per financial year. This can be extended by up to **21 days** with approval from an Aged Care Assessor.
 
@@ -50,9 +50,3 @@ The temporary leave provisions that apply to permanent residents do not apply to
 * **Hospital admission, intending to return:** the place is held, the respite subsidy and Basic Daily Fee continue, and the booking fee is not refunded.
 * **Hospital admission, not returning:** the respite episode ends, the booking fee is refunded, and the service agreement ceases.
 * **Short non-hospital absences:** limited to one night at a time, with the subsidy and Basic Daily Fee continuing and the place held.
-
-## Related articles
-
-* [Admitting a Resident](/broken/pages/6ca2d331c11e1e1fe5f2f0ab4154c7cbcb2bfe5b)
-* [Managing Temporary Leave](/broken/pages/6d77d33db2b7bbdaaabf747f9e4fd941e00632da)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028)

@@ -66,8 +66,3 @@ From 1 November 2025, a resident's fee arrangement changes **only** by an active
 {% endhint %}
 
 The opt-in itself is submitted to Services Australia as an event. To learn how that submission works, see the Services Australia section of the guide, specifically the article on recording a means testing opt-in.
-
-## Where to go next
-
-* [Key Concepts and Terminology](/broken/pages/50a5a6afb7f4185c3c305e16f06ea60fbc860af7) - definitions for the fee types referenced above.
-* [Introduction to the RACS Solution](/broken/pages/1f62d4df30d703fd4443fdd37bef8a70ebada71a) - how the Funding and Service Agreement records relate.

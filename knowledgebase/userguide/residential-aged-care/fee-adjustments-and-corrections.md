@@ -43,10 +43,3 @@ After an adjustment is created, you can review it on the resident's account. Loo
 {% hint style="success" %}
 If the rate change has no effect on already-billed periods, for example because nothing had been billed yet at the old rate, Maica makes no correction and simply applies the new rate going forward. Seeing no adjustment in that situation is expected.
 {% endhint %}
-
-## Related articles
-
-* [How Resident Billing Works](/broken/pages/e7403245d83efff4f1d3d64bea06a5b7f91ae203)
-* [Residential Care Fee Types Explained](/broken/pages/2dfabdf23a3b379b80e94f355d751406b08e6a63)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028)
-* [Fee Treatment During Leave](/broken/pages/af82bc27f308c38a5dd0edf790bbff84cc983528)

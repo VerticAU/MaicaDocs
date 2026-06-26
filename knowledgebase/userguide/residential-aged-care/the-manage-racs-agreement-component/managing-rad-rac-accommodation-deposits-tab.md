@@ -6,7 +6,7 @@ Not every resident has a deposit. Residents who pay daily only, or who are fully
 
 ## Order of operations: fees first
 
-For a resident who will pay a deposit, configure the Daily Accommodation Payment item on the [Fees tab](/broken/pages/a8f207d7c8347974147453ac94cecde562855aa9) **before** you create the lump sum account. The account links automatically to the active daily accommodation payment item, and that item must already exist.
+For a resident who will pay a deposit, configure the Daily Accommodation Payment item on the Fees tab **before** you create the lump sum account. The account links automatically to the active daily accommodation payment item, and that item must already exist.
 
 {% hint style="warning" %}
 If you try to create a lump sum account before a Daily Accommodation Payment item exists on the Fees tab, Maica blocks the setup and asks you to configure the fee item first. Set up the payment item at the full room price initially, since the lump sum amount may not be known yet.
@@ -89,9 +89,3 @@ Every balance movement is a Lump Sum Transaction. The transaction types are:
 {% hint style="info" %}
 Retention deductions are created automatically by the billing engine, never recorded by hand. The engine applies the retention timing rules and stops deductions once the retention period ends. The account summary shows the retention expiry date so you can see when retention will cease.
 {% endhint %}
-
-## Related articles
-
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/a8f207d7c8347974147453ac94cecde562855aa9)
-* [Relocating a Resident (Accommodation Tab)](/broken/pages/8159cf3281b3f449f9544c2d2b3013d8332116dc)
-* [The Manage RACS Agreement Component](/broken/pages/77d88ed7b33d92dacd001e0cf1b212175adffd9d)

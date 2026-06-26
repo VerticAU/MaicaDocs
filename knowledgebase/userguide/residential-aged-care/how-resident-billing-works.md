@@ -23,7 +23,7 @@ For each item due, the engine:
 Fee items can be billed daily, weekly, fortnightly, or monthly, and most residents have several items running side by side, for example a Basic Daily Fee item, a means tested fee item, and an accommodation item all billing in parallel.
 
 {% hint style="info" %}
-The billing engine is general purpose. It does not have separate logic hard-coded for every fee; instead it reads the fee type on each item and applies the right rules from there. That is why setting the correct fee type when you configure an item matters. See [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028).
+The billing engine is general purpose. It does not have separate logic hard-coded for every fee; instead it reads the fee type on each item and applies the right rules from there. That is why setting the correct fee type when you configure an item matters. See [Configuring Resident Fees (Fees Tab)](the-manage-racs-agreement-component/configuring-resident-fees-tab.md).
 {% endhint %}
 
 ## Invoices and invoice lines
@@ -52,10 +52,3 @@ An administrator can also trigger an extra billing run on demand from the Maica 
 {% hint style="warning" %}
 If a single fee item cannot be billed, the engine marks just that item as failed and records a log entry, then carries on with the rest. It does not stop the whole run. Your billing team can find failed items by filtering on the billing status and reviewing the logs.
 {% endhint %}
-
-## Related articles
-
-* [Residential Care Fee Types Explained](/broken/pages/2dfabdf23a3b379b80e94f355d751406b08e6a63)
-* [Fee Treatment During Leave](/broken/pages/af82bc27f308c38a5dd0edf790bbff84cc983528)
-* [Fee Adjustments and Corrections](/broken/pages/9820261882849bd053865dec0176f94d467f8e42)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028)

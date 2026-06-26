@@ -53,9 +53,3 @@ The coverage check tells you whether you met the requirement; you still report i
 {% hint style="success" %}
 The coverage check answers "did we meet the requirement?" The registered nurse supplement summary that Maica reads back from Services Australia answers "did Services Australia agree, and did they pay us?" Both appear on the Location record so you have the full picture.
 {% endhint %}
-
-## Related articles
-
-* [Reporting Obligations Overview](/broken/pages/127cfa01211d2a0b958957b2ea15cf00bef844a2)
-* [Quarterly Financial Report (QFR) Data](/broken/pages/4ae15b420c0c92b8e57100cca5693ba6a3a5e2e8)
-* [Keeping Care Recipient Data in Sync](/broken/pages/2294317fb8aeece802d888c350f85d34ee5e3b24)

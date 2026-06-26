@@ -21,18 +21,11 @@ None of these obligations has a direct system-to-system submission from Maica. E
 
 For each obligation there is a dedicated article that walks through what Maica produces and how to use it:
 
-* For the monthly registered nurse coverage result and how to use it for GPMS, see [24/7 Registered Nurse Coverage](/broken/pages/049d6e7b5d51e64cd886775881bf03d6071b527b).
-* For the quarterly occupancy and leave figures, see [Quarterly Financial Report (QFR) Data](/broken/pages/2f00dd58eb69cb50b2caafdba6c04270b0eac6f3).
-* For the annual RAD/RAC ledger your auditor needs, see [APCS RAD/RAC Ledger Export](/broken/pages/114cd282c3e94b06b956f5c215cf0a1d6681c92f).
-* For managing serious incidents and their notification deadlines, see [Managing SIRS Notifications](/broken/pages/6a524fc39bc793aad35b6f4ea6609e42fb5efd5c).
+* For the monthly registered nurse coverage result and how to use it for GPMS, see [24/7 Registered Nurse Coverage](24-7-registered-nurse-coverage.md).
+* For the quarterly occupancy and leave figures, see [Quarterly Financial Report (QFR) Data](quarterly-financial-report-qfr-data.md).
+* For the annual RAD/RAC ledger your auditor needs, see [APCS RAD/RAC Ledger Export](apcs-rad-rac-ledger-export.md).
+* For managing serious incidents and their notification deadlines, see [Managing SIRS Notifications](managing-sirs-notifications.md).
 
 {% hint style="warning" %}
 Because the final submission to each portal is a manual step, the deadlines remain your responsibility. Maica gives you the data and, for SIRS, tracks the notification deadline, but it cannot lodge the report on your behalf.
 {% endhint %}
-
-## Related articles
-
-* [24/7 Registered Nurse Coverage](/broken/pages/049d6e7b5d51e64cd886775881bf03d6071b527b)
-* [Quarterly Financial Report (QFR) Data](/broken/pages/2f00dd58eb69cb50b2caafdba6c04270b0eac6f3)
-* [APCS RAD/RAC Ledger Export](/broken/pages/114cd282c3e94b06b956f5c215cf0a1d6681c92f)
-* [Managing SIRS Notifications](/broken/pages/6a524fc39bc793aad35b6f4ea6609e42fb5efd5c)

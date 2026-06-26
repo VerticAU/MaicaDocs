@@ -99,9 +99,3 @@ Each item in the list has row actions for ongoing maintenance.
 {% hint style="warning" %}
 If you reduce the rate on a Means Tested Care Fee item and the resident has already been charged at the higher rate, you may need to refund the difference. Maica shows a reminder but does not calculate the refund. Process any refund as a credit note or a negative invoice line item on the relevant invoice.
 {% endhint %}
-
-## Related articles
-
-* [The Manage RACS Agreement Component](/broken/pages/77d88ed7b33d92dacd001e0cf1b212175adffd9d)
-* [Managing RAD/RAC Accommodation Deposits (RAD/RAC Tab)](/broken/pages/eba2692cc2330709f775c204bd49dc3ba4c1bba9)
-* [Understanding Fee and Accommodation Arrangements](/broken/pages/161bd53a89b9cf679d1cea93d11624a0b61f662a)

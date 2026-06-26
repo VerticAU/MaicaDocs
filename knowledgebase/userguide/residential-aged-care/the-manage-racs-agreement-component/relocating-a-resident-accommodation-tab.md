@@ -50,9 +50,3 @@ Most room moves are entirely internal and are not reported to Services Australia
 {% hint style="info" %}
 When a move takes a resident into or out of an extra service room, Maica notifies Services Australia through the Extra Service Event as part of the move. This notification is non-blocking: if it fails, the room move in Maica still completes and you are prompted to retry the notification separately. Moves between standard rooms are not reported to Services Australia.
 {% endhint %}
-
-## Related articles
-
-* [Managing RAD/RAC Accommodation Deposits (RAD/RAC Tab)](/broken/pages/eba2692cc2330709f775c204bd49dc3ba4c1bba9)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/a8f207d7c8347974147453ac94cecde562855aa9)
-* [The Manage RACS Agreement Component](/broken/pages/77d88ed7b33d92dacd001e0cf1b212175adffd9d)

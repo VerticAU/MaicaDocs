@@ -14,7 +14,7 @@ There are two types of entry, and you choose the type when you record the entry.
 | **Respite**   | A planned short stay. The entry includes a planned departure date, though that date can be updated later. |
 
 {% hint style="info" %}
-The entry date is inclusive for payment, which means government subsidy begins on the entry date itself. Respite care has its own fee and balance rules, covered in [Managing Residential Respite Care](/broken/pages/677832a8fc3e620af17d9c1abcd2b8635153fff6).
+The entry date is inclusive for payment, which means government subsidy begins on the entry date itself. Respite care has its own fee and balance rules, covered in [Managing Residential Respite Care](managing-residential-respite-care.md).
 {% endhint %}
 
 ## Recording the entry in Maica
@@ -47,9 +47,3 @@ Services Australia responds with an event identifier and a status. Maica records
 {% endhint %}
 
 For more on how event statuses work and what to do with a held or rejected event, see the Working with Services Australia section of the guide.
-
-## Related articles
-
-* [Managing Residential Respite Care](/broken/pages/677832a8fc3e620af17d9c1abcd2b8635153fff6)
-* [Understanding Fee and Accommodation Arrangements](/broken/pages/2bcc18eafba856acca0c5471e1fbbc091d342119)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028)

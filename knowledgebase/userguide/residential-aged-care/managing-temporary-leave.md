@@ -5,7 +5,7 @@ Temporary leave is when a permanent resident temporarily stops receiving care wh
 This article covers the leave types, how to record a leave period, how each leave type affects fees, and how leave balances work.
 
 {% hint style="info" %}
-Temporary leave applies to permanent residents. Respite residents are not covered by the leave provisions. Absences during a respite stay are handled by agreement, as described in [Managing Residential Respite Care](/broken/pages/677832a8fc3e620af17d9c1abcd2b8635153fff6).
+Temporary leave applies to permanent residents. Respite residents are not covered by the leave provisions. Absences during a respite stay are handled by agreement, as described in [Managing Residential Respite Care](managing-residential-respite-care.md).
 {% endhint %}
 
 ## Leave types
@@ -58,9 +58,3 @@ Some leave types consume an annual balance and some do not.
 | **Emergency**       | No                                           |
 
 Leave balances are synced from Services Australia, reset on 1 July each year, and transfer with the resident if they change providers.
-
-## Related articles
-
-* [Managing Residential Respite Care](/broken/pages/677832a8fc3e620af17d9c1abcd2b8635153fff6)
-* [Admitting a Resident](/broken/pages/6ca2d331c11e1e1fe5f2f0ab4154c7cbcb2bfe5b)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028)

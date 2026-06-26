@@ -43,9 +43,3 @@ If the gate check lists outstanding residents, resolve them before finalising:
 {% hint style="success" %}
 Most outstanding balances are cleared simply by re-running the month-end report. The manual submission action is there for the occasional resident that needs to be handled on their own.
 {% endhint %}
-
-## Related articles
-
-* [How MAICA Connects to Services Australia](/broken/pages/b4e12063bbfefb35f82fc584f1197977dddbb52c)
-* [Managing RAD/RAC Accommodation Deposits](/broken/pages/ecc2254913dd0f416cd9d0d648641ed77a7233fb)
-* [Reconciling Payments](/broken/pages/38a5ab3d89004eb97623dfa15a7c9a8b5597d327)

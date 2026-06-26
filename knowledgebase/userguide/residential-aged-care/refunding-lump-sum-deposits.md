@@ -7,7 +7,7 @@ When a resident leaves your service or passes away, any lump sum accommodation d
 This article covers when a refund is due, how interest is calculated, and how to record the payment in Maica.
 
 {% hint style="warning" %}
-**Prerequisites:** The resident's departure must already be processed through the **Manage Departure** action, so that the refund amount and refund due date are recorded against the deposit. See [Exiting a Resident or Recording a Death](/broken/pages/52e1b40f1a1927baf1ad1439323a71b5370e1e2d).
+**Prerequisites:** The resident's departure must already be processed through the **Manage Departure** action, so that the refund amount and refund due date are recorded against the deposit. See [Exiting a Resident or Recording a Death](exiting-a-resident-or-recording-a-death.md).
 {% endhint %}
 
 ## When is a refund due?
@@ -107,9 +107,3 @@ In normal processing the deposit balance reaches zero when the refund payment is
 {% hint style="warning" %}
 You cannot record a refund payment twice. Once a refund date has been recorded against a deposit, the refund step cannot be re-confirmed. If something needs to change after the refund has been recorded, raise it with your billing team rather than reopening the action.
 {% endhint %}
-
-## Related articles
-
-* [Exiting a Resident or Recording a Death](/broken/pages/52e1b40f1a1927baf1ad1439323a71b5370e1e2d)
-* [Managing RAD/RAC Accommodation Deposits](/broken/pages/5029be4ff8a685c62fd0783b757adb02aced860f)
-* [Understanding Fee and Accommodation Arrangements](/broken/pages/2bcc18eafba856acca0c5471e1fbbc091d342119)

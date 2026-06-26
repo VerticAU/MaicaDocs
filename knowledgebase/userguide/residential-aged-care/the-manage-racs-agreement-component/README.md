@@ -41,9 +41,9 @@ The component groups all of its functions into three tabs.
 
 Each tab is documented in detail in its own article:
 
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/983e97abf946b7dab6d3c8f8af3f9e5b859abebc)
-* [Managing RAD/RAC Accommodation Deposits (RAD/RAC Tab)](/broken/pages/c7771c5eec0192569a7c7302fdcd1e06f859274e)
-* [Relocating a Resident (Accommodation Tab)](/broken/pages/44e11daf605a78e2f7a923a89e11d1e68a5aadb4)
+* [Configuring Resident Fees (Fees Tab)](configuring-resident-fees-tab.md)
+* [Managing RAD/RAC Accommodation Deposits (RAD/RAC Tab)](managing-rad-rac-accommodation-deposits-tab.md)
+* [Relocating a Resident (Accommodation Tab)](relocating-a-resident-accommodation-tab.md)
 
 {% hint style="info" %}
 The Fees and RAD/RAC tabs work together. The lump sum account on the RAD/RAC tab links to a daily accommodation payment item on the Fees tab, so for some residents you configure fees first. The RAD/RAC article explains this order of operations.

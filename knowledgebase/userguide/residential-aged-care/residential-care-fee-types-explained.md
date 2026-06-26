@@ -5,7 +5,7 @@
 A resident in permanent residential care can pay several different fees, each covering a different part of their care and accommodation. Which fees apply to a particular resident depends on their fee arrangement (the regime they entered care under), their means assessment, and the accommodation they choose. This article explains each fee type in plain terms so you can recognise what you are setting up and billing.
 
 {% hint style="info" %}
-The fee types available to a resident are driven by their fee arrangement. To understand the three arrangements and how a resident's arrangement is set, see [Understanding Fee and Accommodation Arrangements](/broken/pages/2bcc18eafba856acca0c5471e1fbbc091d342119).
+The fee types available to a resident are driven by their fee arrangement. To understand the three arrangements and how a resident's arrangement is set, see [Understanding Fee and Accommodation Arrangements](understanding-fee-and-accommodation-arrangements.md).
 {% endhint %}
 
 ## The Basic Daily Fee
@@ -58,7 +58,7 @@ For residents on the 1 November 2025 accommodation arrangements, two further rul
 Neither retention nor DAP indexation applies under the 1 July 2014 accommodation arrangements.
 
 {% hint style="info" %}
-Lump sum deposits (RAD and RAC) are managed on the RAD/RAC tab, separately from day-to-day invoicing. See [Managing RAD/RAC Accommodation Deposits](/broken/pages/5029be4ff8a685c62fd0783b757adb02aced860f).
+Lump sum deposits (RAD and RAC) are managed on the RAD/RAC tab, separately from day-to-day invoicing. See [Managing RAD/RAC Accommodation Deposits](the-manage-racs-agreement-component/managing-rad-rac-accommodation-deposits-tab.md).
 {% endhint %}
 
 ## Other fees and optional services
@@ -74,10 +74,3 @@ Beyond the core fees, a resident may agree to optional or situational charges.
 {% hint style="warning" %}
 A Higher Everyday Living Fee cannot be used as a condition of entry or to secure a room, and standing arrangements require a signed written agreement before the fee is activated.
 {% endhint %}
-
-## Related articles
-
-* [Understanding Fee and Accommodation Arrangements](/broken/pages/2bcc18eafba856acca0c5471e1fbbc091d342119)
-* [How Resident Billing Works](/broken/pages/e7403245d83efff4f1d3d64bea06a5b7f91ae203)
-* [Configuring Resident Fees (Fees Tab)](/broken/pages/6ddadeca1e3317eaccb22e9a9defeb085555a028)
-* [Managing Residential Respite Care](/broken/pages/1416e5dd2eedf1ce5760c24465534090067085a5)

@@ -53,8 +53,3 @@ Maica calculates and shows the notification due date, but it does not send autom
 ## SIRS reports and dashboard
 
 Maica includes a packaged set of SIRS reports and a dashboard, found in the SIRS compliance reports folder. They are all based on incidents flagged as SIRS reportable and give you an operational view of your notifications, such as which are outstanding and which are approaching or past their deadline. The reports are editable, so you can adapt them to your own monitoring needs.
-
-## Related articles
-
-* [Reporting Obligations Overview](/broken/pages/127cfa01211d2a0b958957b2ea15cf00bef844a2)
-* [24/7 Registered Nurse Coverage](/broken/pages/50e0c83efc4f35122a8f082e6762b5ad799c5ab4)

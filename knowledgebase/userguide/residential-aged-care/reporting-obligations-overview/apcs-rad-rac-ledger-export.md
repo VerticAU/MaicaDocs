@@ -51,11 +51,5 @@ The **refund met deadline** flag is the key compliance indicator your auditor us
 The flag is blank for residents who did not depart during the year.
 
 {% hint style="info" %}
-The refund due date is set when a resident's departure is processed, based on the notice given. For how that date is determined, see [Refunding Lump Sum Deposits](/broken/pages/004b9550a7f343296410e5290ad144b5ad036265).
+The refund due date is set when a resident's departure is processed, based on the notice given. For how that date is determined, see [Refunding Lump Sum Deposits](../refunding-lump-sum-deposits.md).
 {% endhint %}
-
-## Related articles
-
-* [Reporting Obligations Overview](/broken/pages/127cfa01211d2a0b958957b2ea15cf00bef844a2)
-* [Managing RAD/RAC Accommodation Deposits](/broken/pages/f9e304e2c09c85673c6c64e4c424850eab8eab1b)
-* [Refunding Lump Sum Deposits](/broken/pages/004b9550a7f343296410e5290ad144b5ad036265)

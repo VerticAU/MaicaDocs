@@ -69,8 +69,3 @@ The billing process follows the same shape for every resident, regardless of the
 {% hint style="warning" %}
 Deposits and invoicing are deliberately kept apart. A RAD, RAC, or bond is a balance the provider holds on the resident's behalf, so it is tracked as a ledger rather than charged on an invoice. Daily accommodation payments (DAP and DAC), by contrast, are fees and are billed like any other fee item.
 {% endhint %}
-
-## Where to go next
-
-* [Understanding Fee and Accommodation Arrangements](/broken/pages/3d0387e183b8aed604010c7d2591a6e2162dddea) - how a resident's regime is determined and stored.
-* [Introduction to the RACS Solution](/broken/pages/1f62d4df30d703fd4443fdd37bef8a70ebada71a) - the records that make up a resident's file.
