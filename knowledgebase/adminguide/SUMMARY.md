@@ -82,14 +82,6 @@
 
 * [Getting Started with the Mobile App](mobile-worker-app/getting-started-with-the-mobile-app.md)
 
-## Forms
-
-* [Form Submission Settings](forms/form-submission-settings.md)
-* [Managing Access](forms/managing-access.md)
-* [Connecting to Salesforce](forms/connecting-to-salesforce.md)
-* [Salesforce Integration](forms/salesforce-integration.md)
-* [Disconnecting from Salesforce](forms/disconnecting-from-salesforce.md)
-
 ## Support at Home
 
 * [Claiming Process](support-at-home/claiming-process.md)
@@ -99,6 +91,40 @@
 * [Care Recipient Sync](support-at-home/care-recipient-sync-1.md)
 * [Budget Trend Analysis](support-at-home/budget-trend-analysis.md)
 * [Multiple Service Provider ID Support](support-at-home/multiple-service-provider-id-support.md)
+
+## Residential Aged Care
+
+* [Welcome](residential-aged-care/welcome.md)
+* [RACs Solution Overview](residential-aged-care/racs-solution-overview/README.md)
+  * [Architectural Principles](residential-aged-care/racs-solution-overview/architectural-principles.md)
+  * [The RACs Data Model](residential-aged-care/racs-solution-overview/the-racs-data-model.md)
+* [Prerequisites and Dependencies](residential-aged-care/prerequisites-and-dependencies.md)
+* [The RACs Configuration tab](residential-aged-care/the-racs-configuration-tab/README.md)
+  * [Caps and Duration Settings](residential-aged-care/the-racs-configuration-tab/caps-and-duration-settings.md)
+  * [Rate Configuration](residential-aged-care/the-racs-configuration-tab/rate-configuration.md)
+  * [Automation Toggles](residential-aged-care/the-racs-configuration-tab/automation-toggles.md)
+* [Billing Engine Architecture](residential-aged-care/billing-engine-architecture/README.md)
+  * [Fee Type Processing Rules](residential-aged-care/billing-engine-architecture/fee-type-processing-rules.md)
+  * [Next Billing Date and Catch up Chains](residential-aged-care/billing-engine-architecture/next-billing-date-and-catch-up-chains.md)
+  * [Fee Detection and Rate Updates](residential-aged-care/billing-engine-architecture/fee-detection-and-rate-updates.md)
+  * [The Indexation Engine](residential-aged-care/billing-engine-architecture/the-indexation-engine.md)
+  * [Scheduling and Manual Rate Changes](residential-aged-care/billing-engine-architecture/scheduling-and-manual-rate-changes.md)
+* [The Lump Sum Account model](residential-aged-care/the-lump-sum-account-model/README.md)
+  * [Retention and Drawdown Logic](residential-aged-care/the-lump-sum-account-model/retention-and-drawdown-logic.md)
+  * [Combination Method Configuration](residential-aged-care/the-lump-sum-account-model/combination-method-configuration.md)
+* [Integration Architecture and Event Lifecycle](residential-aged-care/integration-architecture-and-event-lifecycle/README.md)
+  * [PRODA Authentication and Setup](residential-aged-care/integration-architecture-and-event-lifecycle/proda-authentication-and-setup.md)
+  * [Outbound Event APIs](residential-aged-care/integration-architecture-and-event-lifecycle/outbound-event-apis.md)
+  * [Inbound Data APIs](residential-aged-care/integration-architecture-and-event-lifecycle/inbound-data-apis.md)
+  * [Accommodation Balance Reporting](residential-aged-care/integration-architecture-and-event-lifecycle/accommodation-balance-reporting.md)
+  * [Care Recipient Details Sync](residential-aged-care/integration-architecture-and-event-lifecycle/care-recipient-details-sync.md)
+* [Reporting Capability Matrix](residential-aged-care/reporting-capability-matrix/README.md)
+  * [QFR Report Configuration](residential-aged-care/reporting-capability-matrix/qfr-report-configuration.md)
+  * [SIRS Incident Configuration](residential-aged-care/reporting-capability-matrix/sirs-incident-configuration.md)
+  * [24/7 RN Coverage Check Configuration](residential-aged-care/reporting-capability-matrix/24-7-rn-coverage-check-configuration.md)
+  * [APCS Export Tool Configuration](residential-aged-care/reporting-capability-matrix/apcs-export-tool-configuration.md)
+* [Fee Adjustment Service](residential-aged-care/fee-adjustment-service.md)
+* [Statement Reconciliation Service](residential-aged-care/statement-reconciliation-service.md)
 
 ## Integrations
 
