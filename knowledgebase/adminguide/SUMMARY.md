@@ -151,6 +151,7 @@
 * [Invoice Management](settings/invoice-management.md)
 * [Integration Management](settings/integration-management/README.md)
   * [NDIS Integration](settings/integration-management/ndis-integration.md)
+  * [PRODA](settings/integration-management/proda.md)
   * [Stripe Integration](settings/integration-management/stripe-integration.md)
   * [Xero Integration](settings/integration-management/xero-integration.md)
 * [Connections Management](settings/connections-management/README.md)

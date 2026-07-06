@@ -1,5 +1,7 @@
 ---
 description: Learn about NDIS Integration Settings in Maica
+hidden: true
+noIndex: true
 ---
 
 # NDIS Integration

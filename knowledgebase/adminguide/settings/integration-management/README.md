@@ -8,7 +8,7 @@ These settings determine how Maica manages all of their Integrations and their f
 
 To dive deeper into each of the Integration's Settings, please visit their specific pages linked below:&#x20;
 
-1. [NDIS Integration](ndis-integration.md)
+1. [PRODA](proda.md)
 2. [Stripe Integration](stripe-integration.md)&#x20;
 3. [Xero Integration](xero-integration.md)
 
