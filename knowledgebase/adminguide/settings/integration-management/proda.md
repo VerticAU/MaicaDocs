@@ -2,7 +2,7 @@
 
 These settings determine how Maica connects your instance to PRODA and the government APIs. Maica supports connecting to more than one service at once, so a single instance can hold separate connections for NDIS and Aged Care (Support at Home).
 
-## Things to note: PRODA Integrations
+## Things to note: PRODA integrations
 
 To achieve a successful connection between your Maica instance and the government APIs, both your **Organisation** and each **Software Instance** (or **Device**) must be registered within PRODA. During software instance registration, PRODA provides a **Device Activation Code (DAC)** that Maica requires so we can activate the device on your behalf.
 
@@ -27,13 +27,14 @@ Maica supports multiple PRODA devices, so you can connect separately to differen
 
 Before you can use the API-dependent features of Maica, you need an active PRODA device for each service you intend to connect. Without an active device, Maica cannot connect to that service's API.
 
-As a prerequisite, it is assumed you have completed the following:
+As a prerequisite, it is assumed you have completed the following within PRODA:
 
-* Created and **verified** your PRODA account
-* Created and **registered** your B2B Device within PRODA
+* **Created and verified your PRODA account.** Your organisation must have a verified PRODA account with an authorised person who can manage devices. This is the identity PRODA uses to confirm who is authorising system access.
+* **Registered your organisation for the relevant service.** Your organisation must be linked in PRODA to the government service you are connecting to (for example, the NDIS or the Aged Care system), so that the correct APIs are made available to it.
+* **Created and registered your B2B Device.** A B2B Device is the software instance that will communicate with the API. Registering it in PRODA is what produces the Device Activation Code, Device Name, and organisation (RA) details that Maica needs.
 
 {% hint style="info" %}
-If you need help with the above, the NDIA has published a [PRODA Step-by-Step Guide](https://drive.google.com/file/d/1-xxMU0aOQdasYszCrWUVMl9VtedksDY7/view) with instructions and screenshots that walk you through both processes.
+These are all steps you complete directly in PRODA, before you configure anything in Maica. If you need help with them, the NDIA has published a [PRODA Step-by-Step Guide](https://drive.google.com/file/d/1-xxMU0aOQdasYszCrWUVMl9VtedksDY7/view) with instructions and screenshots that walk you through account verification and B2B Device registration.
 {% endhint %}
 
 ### Details to capture during registration
@@ -127,10 +128,10 @@ Failing to extend or activate a new device before the Device Expiry Date will re
 
 ### Extending a device
 
-You must extend a device directly through the PRODA portal, not through Maica.
+Device extension happens entirely in the PRODA portal, not in Maica. To extend a device, the authorised person signs in to PRODA, opens the organisation's B2B Devices, selects the device, and extends its expiry. PRODA sets a new expiry date, and no re-activation is required in Maica because the underlying device remains the same.
 
 {% hint style="info" %}
-You can extend a device **at any time** before its Device Expiry Date via PRODA. Doing so extends the current device and means you do not need to create and register a new one.
+You can extend a device **at any time** before its Device Expiry Date via PRODA. Doing so extends the current device and means you do not need to create and register a new one. It is good practice to extend well ahead of the expiry date to avoid any interruption to your API access.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -156,5 +157,5 @@ While a device is expired, attempting to use any of Maica's PRODA or API-depende
 This section designates the Site that handles NDIS notifications received via webhook.
 
 {% hint style="info" %}
-For more information on NDIS Notifications, including setup and assigning the necessary permission set, see the [NDIS Notification](/broken/pages/e21ae01a0e81e0f7780d96aaa01f9d134183ddb6) page.
+For more information on NDIS Notifications, including setup and assigning the necessary permission set, see the [NDIS Notification](/broken/pages/62f66b2a4d2aa9348bf9206064fc3a11045b191d) page.
 {% endhint %}
