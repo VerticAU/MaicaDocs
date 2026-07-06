@@ -1,8 +1,3 @@
----
-hidden: true
-noIndex: true
----
-
 # Agreement Item Funding Rollover
 
 ## Overview
@@ -208,6 +203,18 @@ Each entry in the audit history shows:
 * The other side of the rollover (source or target item name)
 * Whether the rollover was applied automatically by the nightly batch or manually via Quick Action
 
+## Interaction with Bulk Update Price List
+
+The **Bulk Update Price List** feature (Maica Settings → Agreement Management) re-prices Agreement Items to the rates in a selected price list, for example when bringing agreements in line with the latest NDIS Price Guide. This feature and Funding Rollover are designed to work together.
+
+When a bulk price update runs, it re-prices all eligible Agreement Items but **intentionally leaves any item that has already been processed for funding rollover unchanged**. Rolled-over items belong to closed, settled periods where the funding figures have already been finalised, so their rates are protected and are not overwritten by the new price list.
+
+{% hint style="info" %}
+This is expected behaviour. A bulk price update on a Service Agreement that contains rolled-over items completes cleanly: rolled-over items keep their settled rate, and every other item on the agreement is re-priced to the selected price list as normal.
+{% endhint %}
+
+If you need a rolled-over item to reflect a new rate, remember that it represents a period whose funding is already settled. Any adjustment should be made on the current or future period item rather than the closed one.
+
 ## Permission Set
 
 The **Maica - Manage Agreement Item Rollover** permission set grants the access required to:
@@ -246,6 +253,10 @@ The system could not find a matching Agreement Item. This can happen when:
 
 Use the manual target selection in the Quick Action to choose an eligible item.
 
+### A rolled-over item was not re-priced by a bulk price update
+
+This is expected. The Bulk Update Price List feature deliberately skips Agreement Items that have already been processed for funding rollover, because they belong to closed, settled periods. All other items on the agreement are re-priced as normal. See [Interaction with Bulk Update Price List](agreement-item-funding-rollover-1.md#interaction-with-bulk-update-price-list) above.
+
 ## Things to look out for
 
 ### Rollover applies only to active Service Agreements
@@ -263,3 +274,7 @@ The matching logic skips any candidate target that already has a Rollover Amount
 ### Once processed, items are not retried
 
 Source items with **Rollover Processed** set are not re-evaluated by the nightly batch, even if their state subsequently changes. This avoids the batch reprocessing the same item every night. If you need to re-run rollover for a specific item, clear the **Rollover Processed** flag manually and the batch will pick it up on the next run.
+
+### Bulk price updates do not re-price rolled-over items
+
+When you run a Bulk Update Price List, Agreement Items that have already been processed for funding rollover keep their existing rate and are not updated to the new price list. This protects the settled funding figures on closed periods. All other Agreement Items on the agreement are re-priced as normal. This is by design, not an error.
