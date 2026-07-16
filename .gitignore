@@ -22,3 +22,6 @@ override.tf.json
 
 # SFDX
 .sfdx/
+
+# Keep the docs-site stack's provider lock committed for reproducible CI
+!/site/terraform/.terraform.lock.hcl
