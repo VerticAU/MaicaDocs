@@ -22,3 +22,6 @@ override.tf.json
 
 # Bedrock metadata sidecars (generated in CI by scripts/kb_metadata.py, never committed)
 knowledgebase/**/*.metadata.json
+
+# SFDX
+.sfdx/
