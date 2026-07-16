@@ -19,3 +19,6 @@ override.tf.json
 
 # OS
 .DS_Store
+
+# SFDX
+.sfdx/
