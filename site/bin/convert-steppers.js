@@ -18,12 +18,16 @@
 //   2. Second thing.
 //
 // Each {% step %} becomes one list item `N. <first line>`. Every continuation
-// line of a step body is prefixed with a 3-space indent (the width of "N. ")
-// so it stays inside the list item. The continuation lines keep their OWN
-// leading whitespace, so nested content that earlier passes already produced
-// (admonitions, fenced code blocks, images) survives with its relative indent
-// intact: an admonition child line at 4 spaces lands at 3 + 4 = 7 spaces, still
-// 4 deeper than its "!!!" marker. Blank lines inside a body stay blank.
+// line of a step body is prefixed with a flat 4-space indent so it stays inside
+// the list item. python-markdown / mkdocs-material use a FLAT 4-space
+// list-continuation threshold (tab_length = 4), independent of the ordered-list
+// marker width, so 4 spaces is what keeps nested admonitions and fenced code
+// blocks inside the <li> for both single-digit (1.) and double-digit (10.)
+// markers. The continuation lines keep their OWN leading whitespace, so nested
+// content that earlier passes already produced (admonitions, fenced code
+// blocks, images) survives with its relative indent intact: an admonition child
+// line at 4 spaces lands at 4 + 4 = 8 spaces, still 4 deeper than its "!!!"
+// marker. Blank lines inside a body stay blank.
 //
 // This converter runs LATE in the pipeline (after hints/collapse/embeds/code/
 // metadata), so step bodies may already hold converted admonitions and iframes;
@@ -55,11 +59,11 @@ export function convertSteppers(content) {
       n++;
       const bodyLines = step[1].trim().split('\n');
       const first = (bodyLines.shift() ?? '').trim();
-      // Continuation lines keep their own indentation and gain a 3-space prefix
-      // so they remain within the list item. Blank lines stay blank (no
+      // Continuation lines keep their own indentation and gain a flat 4-space
+      // prefix so they remain within the list item. Blank lines stay blank (no
       // trailing whitespace).
       const rest = bodyLines
-        .map((line) => (line.trim() ? `   ${line}` : ''))
+        .map((line) => (line.trim() ? `    ${line}` : ''))
         .join('\n');
       items.push(rest ? `${n}. ${first}\n${rest}` : `${n}. ${first}`);
     }
