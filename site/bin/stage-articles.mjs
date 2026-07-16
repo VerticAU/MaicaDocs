@@ -99,12 +99,22 @@ async function stageSpace(srcSpace, destSpace) {
     await mkdir(path.dirname(out), { recursive: true });
 
     const content = await readFile(file, 'utf8');
-    // upPrefix depth is a function of where the OUTPUT file sits below the
-    // space root, because assets live at a single per-space root. A page at
-    // <dest>/data/data-objects/index.md is 2 dirs deep -> '../../'.
+    // upPrefix depth is a function of where the OUTPUT file is SERVED below the
+    // space root, because assets live at a single per-space root. mkdocs-material
+    // defaults to use_directory_urls: true, so the served URL depth is NOT the
+    // output file's directory depth:
+    //   - index.md (from README.md) is served at its own dir URL (foo/),
+    //     so served depth == output-dir depth.
+    //   - a non-index leaf page foo/bar.md is served at foo/bar/, one dir
+    //     deeper than its file path, so served depth == output-dir depth + 1.
+    // A page at <dest>/data/data-objects/index.md is served at data/data-objects/
+    // (2 dirs deep -> '../../'); a leaf <dest>/data/objects.md is served at
+    // data/objects/ (2 dirs deep -> '../../').
     const articleDir = path.dirname(outRel);
     const nested = articleDir === '.' ? 0 : articleDir.split(path.sep).length;
-    const upPrefix = '../'.repeat(nested);
+    const isIndex = path.basename(outRel) === 'index.md';
+    const servedDepth = nested + (isIndex ? 0 : 1);
+    const upPrefix = '../'.repeat(servedDepth);
 
     refsRewritten += (content.match(ASSET_MD_RE) || []).length + (content.match(ASSET_HTML_RE) || []).length;
     await writeFile(out, rewriteAssetPaths(content, upPrefix));
