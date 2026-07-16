@@ -1,0 +1,52 @@
+site_name: Maica Documentation
+site_description: Maica knowledge base - Admin Guide and User Guide
+
+# site_url: TODO - set once the docs domain is decided (Plan 2 / go-live).
+# Left commented intentionally; this is the one accepted placeholder per the design spec.
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/maica-logo.svg
+  favicon: assets/maica-favicon.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: "#"
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+
+docs_dir: build
+site_dir: _site
