@@ -41,10 +41,10 @@
 /* ------------------------------------------------------------------ */
 /* Fonts and weights                                                  */
 /* ------------------------------------------------------------------ */
-/* Base type at 15px (0.75rem * 20px html root) to match the reference. */
+/* Base type at 14px (0.7rem * 20px html root) to match the reference. */
 /* Scales headings, list items, tables, and admonitions by the same factor. */
 .md-typeset {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   line-height: 1.6;
 }
 
