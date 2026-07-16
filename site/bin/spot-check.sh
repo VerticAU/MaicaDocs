@@ -89,7 +89,7 @@ if grep -rq '{% stepper' "$OUT" || grep -rq '{% step ' "$OUT" || grep -rq 'endst
 fi
 
 # --- Images: every content <img> target must exist; zero .gitbook/assets ---
-if grep -rq '.gitbook/assets' "$OUT"; then
+if grep -rq '\.gitbook/assets' "$OUT"; then
   fail "legacy '.gitbook/assets' reference still present in _site/"
 fi
 python3 - "$OUT" <<'PY' || exit 1

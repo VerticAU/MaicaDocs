@@ -73,7 +73,7 @@ test('stageSpace: README->index, nested README->index, assets merged, img rewrit
   assert.ok(!entries.includes('README.md'));                       // README renamed away
 });
 
-test('stageSpace: use_directory_urls depth — leaf page gets N+1 ../, index page gets N ../', async () => {
+test('stageSpace: use_directory_urls depth - leaf page gets N+1 ../, index page gets N ../', async () => {
   // mkdocs-material default use_directory_urls: true serves a non-index leaf
   // page foo/bar.md at foo/bar/ (one dir deeper than its file path), while an
   // index page foo/README.md -> foo/index.md is served at foo/. Asset ../
