@@ -73,19 +73,20 @@ resource "aws_cloudfront_distribution" "docs" {
     max_ttl     = 86400
   }
 
-  # A private S3 bucket returns 403 (not 404) for a missing key; mkdocs emits a
-  # 404/index.html page. Map BOTH error codes to it.
+  # A private S3 bucket returns 403 (not 404) for a missing key; mkdocs emits its
+  # 404 page at the site root as 404.html (use_directory_urls does not apply to
+  # it). Map BOTH error codes to it.
   custom_error_response {
     error_code            = 403
     response_code         = 404
-    response_page_path    = "/404/index.html"
+    response_page_path    = "/404.html"
     error_caching_min_ttl = 60
   }
 
   custom_error_response {
     error_code            = 404
     response_code         = 404
-    response_page_path    = "/404/index.html"
+    response_page_path    = "/404.html"
     error_caching_min_ttl = 60
   }
 

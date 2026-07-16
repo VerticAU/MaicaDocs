@@ -140,8 +140,9 @@ curl -sSI "https://${CF}/adminguide/" | grep -i x-robots-tag   # expect: X-Robot
 Neither space's SUMMARY defines a top-level `index.md`, so the build produces no
 `_site/index.html`. The distribution has `default_root_object = index.html`, so
 a request to `/` asks S3 for a key that does not exist; S3 returns 403, which
-the distribution maps to the mkdocs `404/index.html` page. In other words, `/`
-currently serves the 404 page. `/adminguide/` and `/userguide/` work correctly.
+the distribution maps to the mkdocs `404.html` page at the site root. In other
+words, `/` (and any missing path) serves the styled mkdocs 404 page.
+`/adminguide/` and `/userguide/` work correctly.
 
 This is fine for the default-URL smoke test but must be decided before the
 custom-domain launch. The options are:
