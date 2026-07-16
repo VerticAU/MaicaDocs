@@ -160,13 +160,26 @@ AWS (there is no Route53 zone and no `aws_acm_certificate_validation` resource i
 this stack), so certificate validation and the final domain-to-CloudFront record
 are added by hand in the external DNS provider.
 
-Throughout this phase, substitute your chosen domain (for example
-`docs.maica.io`) wherever `docs.example` appears.
+The cutover is deliberately split across two variables so nothing ever attaches
+a not-yet-issued certificate to the distribution:
 
-### 2a. First apply: request the certificate
+- `enable_custom_domain` only REQUESTS the ACM certificate (and populates the
+  `acm_validation_records` output). The distribution stays on the CloudFront
+  default certificate.
+- `attach_custom_domain` ATTACHES the issued certificate and the domain alias to
+  the distribution. It requires `enable_custom_domain = true` and the cert to be
+  `ISSUED`; a precondition on the distribution enforces the first half, and
+  CloudFront itself rejects a non-ISSUED cert.
 
-Set `enable_custom_domain = true` and `domain_name`. You can pass them with
-`-var` as shown, or put them in a `terraform.tfvars` file. Optionally set
+This gives a clean three-step sequence: request the cert, validate it in
+external DNS, then attach. Throughout this phase, substitute your chosen domain
+(for example `docs.maica.io`) wherever `docs.example` appears.
+
+### 2a. First apply: request the certificate (attach still off)
+
+Set `enable_custom_domain = true` and `domain_name`, leaving
+`attach_custom_domain` at its default `false`. You can pass them with `-var` as
+shown, or put them in a `terraform.tfvars` file. Optionally set
 `allow_indexing = true` at this point only if you are ready for search engines
 (see step 2f for why indexing has two independent switches).
 
@@ -177,9 +190,12 @@ terraform apply \
   -var 'domain_name=docs.example'
 ```
 
-This creates the ACM certificate in `us-east-1`. Because there is deliberately
-no `aws_acm_certificate_validation` resource, this apply does NOT block waiting
-on DNS. Read the validation record it needs:
+This requests the ACM certificate in `us-east-1`. Because `attach_custom_domain`
+is still false, the distribution keeps the CloudFront default certificate and
+empty aliases, so this apply SUCCEEDS cleanly even though the new certificate is
+still `PENDING_VALIDATION`. It also does NOT block on DNS, because there is
+deliberately no `aws_acm_certificate_validation` resource. Read the validation
+record it needs:
 
 ```bash
 terraform output -json acm_validation_records
@@ -203,21 +219,25 @@ aws acm describe-certificate --region us-east-1 \
   --query "Certificate.Status" --output text   # expect: ISSUED
 ```
 
+Do NOT run the second apply until this reports `ISSUED`. Attaching a
+`PENDING_VALIDATION` certificate is exactly what the split avoids: CloudFront
+would reject it.
+
 ### 2c. Second apply: attach the cert and alias to CloudFront
 
-Because the first apply did not block on validation, the distribution is not yet
-serving the custom cert. Once ACM shows `ISSUED`, run a SECOND apply with the
-same variables. This attaches the ACM certificate and the domain alias to the
-distribution:
+Once ACM shows `ISSUED`, run a SECOND apply that adds `attach_custom_domain=true`
+on top of the same variables. This attaches the now-issued ACM certificate and
+the domain alias to the distribution:
 
 ```bash
 terraform apply \
   -var 'enable_custom_domain=true' \
+  -var 'attach_custom_domain=true' \
   -var 'domain_name=docs.example'
 ```
 
-This two-apply sequence (request cert, validate in external DNS, apply again to
-attach) is expected and by design.
+This three-step sequence (request cert, validate in external DNS, apply again
+with `attach_custom_domain=true`) is expected and by design.
 
 ### 2d. Point the domain at CloudFront
 
@@ -264,6 +284,7 @@ When ready to be indexed, apply with `allow_indexing = true` AND publish with
 cd site/terraform
 terraform apply \
   -var 'enable_custom_domain=true' \
+  -var 'attach_custom_domain=true' \
   -var 'domain_name=docs.example' \
   -var 'allow_indexing=true'
 cd ..

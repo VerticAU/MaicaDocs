@@ -39,7 +39,7 @@ resource "aws_cloudfront_distribution" "docs" {
   is_ipv6_enabled     = true
   default_root_object = "index.html"
   comment             = "Maica docs site"
-  aliases             = var.enable_custom_domain ? [var.domain_name] : []
+  aliases             = var.attach_custom_domain ? [var.domain_name] : []
   price_class         = "PriceClass_100"
 
   origin {
@@ -96,14 +96,25 @@ resource "aws_cloudfront_distribution" "docs" {
   }
 
   # Default-off: the distribution comes up on its *.cloudfront.net cert so it can
-  # be smoke-tested with no DNS. Setting enable_custom_domain=true swaps to the
-  # ACM cert. CloudFront rejects a custom cert without a matching alias, so both
-  # the alias (above) and the cert here track enable_custom_domain.
+  # be smoke-tested with no DNS. Cert REQUEST and cert ATTACH are separate phases.
+  # enable_custom_domain (acm.tf) only requests the cert; attaching it here is
+  # gated on attach_custom_domain, because CloudFront rejects a non-ISSUED cert.
+  # So the alias (above) and the ACM branch below track attach_custom_domain, NOT
+  # enable_custom_domain. The aws_acm_certificate.docs[0] index is only evaluated
+  # when attach_custom_domain is true, and attaching requires the cert to exist
+  # (enforced by the precondition below), so the index is always safe.
   viewer_certificate {
-    cloudfront_default_certificate = var.enable_custom_domain ? null : true
-    acm_certificate_arn            = var.enable_custom_domain ? aws_acm_certificate.docs[0].arn : null
-    ssl_support_method             = var.enable_custom_domain ? "sni-only" : null
-    minimum_protocol_version       = var.enable_custom_domain ? "TLSv1.2_2021" : null
+    cloudfront_default_certificate = var.attach_custom_domain ? null : true
+    acm_certificate_arn            = var.attach_custom_domain ? aws_acm_certificate.docs[0].arn : null
+    ssl_support_method             = var.attach_custom_domain ? "sni-only" : null
+    minimum_protocol_version       = var.attach_custom_domain ? "TLSv1.2_2021" : null
+  }
+
+  lifecycle {
+    precondition {
+      condition     = !var.attach_custom_domain || var.enable_custom_domain
+      error_message = "attach_custom_domain=true requires enable_custom_domain=true (the ACM certificate must be requested, and ISSUED, before it can be attached to the distribution)."
+    }
   }
 }
 
