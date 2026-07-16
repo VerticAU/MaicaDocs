@@ -21,12 +21,14 @@ rm -rf build
 for space in "${SPACES[@]}"; do
   node bin/stage-articles.mjs "$KB/$space" "build/$space"
 done
-# Branding logo/favicon live at the docs_dir root (build/assets) so theme.logo
-# (assets/maica-logo.svg) and theme.favicon resolve for every page. This is a
+# Branding logo/favicon and the theme stylesheet live at the docs_dir root
+# (build/assets) so theme.logo (assets/maica-logo.svg), theme.favicon, and
+# extra_css (assets/stylesheets/maica.css) resolve for every page. This is a
 # separate dir from the per-space page images at build/<space>/assets, so the
-# two never clobber each other.
+# two never clobber each other. Copy recursively so the stylesheets/ subdir
+# (and any future asset subdirs) come across, not just top-level files.
 mkdir -p build/assets
-cp assets/* build/assets/
+cp -R assets/. build/assets/
 
 echo "[2/3] run converters over each build dir"
 # Order matters: convert-metadata runs AFTER convert-hints because metadata

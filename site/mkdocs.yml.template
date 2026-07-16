@@ -9,25 +9,37 @@ theme:
   custom_dir: overrides
   logo: assets/maica-logo.svg
   favicon: assets/maica-favicon.svg
+  # Poppins for text, JetBrains Mono for code, matching the Maica knowledge base.
+  font:
+    text: Poppins
+    code: JetBrains Mono
+  # Two schemes using mkdocs-material's custom-color pattern. The exact teal
+  # values are defined in assets/stylesheets/maica.css under the "custom" keys.
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: teal
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/weather-night
+        icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: teal
-      accent: teal
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/weather-sunny
+        icon: material/brightness-4
         name: Switch to light mode
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.top
+    - navigation.indexes
+    - navigation.footer
+    - toc.follow
     - search.suggest
+    - search.highlight
     - content.code.copy
 
 markdown_extensions:
@@ -47,6 +59,12 @@ markdown_extensions:
 
 plugins:
   - search
+
+# Single brand-styling overrides file. The path resolves relative to docs_dir
+# (build/), so build.sh copies site/assets recursively into build/assets and
+# this lands at build/assets/stylesheets/maica.css.
+extra_css:
+  - assets/stylesheets/maica.css
 
 # Validation policy (made explicit so --strict behaviour is documented and does
 # not silently drift with mkdocs default changes). Under --strict every "warn"

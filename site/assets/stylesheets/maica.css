@@ -1,0 +1,332 @@
+/*
+ * Maica brand overrides for mkdocs-material.
+ *
+ * Restyles the stock material theme to resemble the Maica knowledge base
+ * (knowledge.maica.com.au): brand teal palette, Poppins + JetBrains Mono,
+ * a muted translucent header, rounded hairline cards, an airy content
+ * column, and a matching slate dark mode. This is the single extra CSS file
+ * referenced from mkdocs.yml.template (extra_css). No em dashes anywhere.
+ *
+ * Brand palette:
+ *   teal (primary/accent) #196061   dark teal #042F3A   light teal fill #EBF4F4
+ *   light bg #F8FAFA   text #1B1E1E   hairline #DEE8E8
+ */
+
+/* ------------------------------------------------------------------ */
+/* Custom color definitions (primary + accent = "custom" in config)   */
+/* ------------------------------------------------------------------ */
+[data-md-color-primary=custom] {
+  --md-primary-fg-color: #196061;
+  --md-primary-fg-color--light: #2a7a7b;
+  --md-primary-fg-color--dark: #042F3A;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+}
+
+[data-md-color-accent=custom] {
+  --md-accent-fg-color: #196061;
+  --md-accent-fg-color--transparent: #1960611a;
+}
+
+/* ------------------------------------------------------------------ */
+/* Brand shape/typography tokens                                      */
+/* ------------------------------------------------------------------ */
+:root {
+  --maica-radius: 8px;
+  --maica-hairline: #DEE8E8;
+  --maica-tint: #EBF4F4;
+  --maica-ink: #1B1E1E;
+  /* Slightly larger, airier base type than the material default. */
+  --md-typeset-font-size: 16px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Fonts and weights                                                  */
+/* ------------------------------------------------------------------ */
+.md-typeset {
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  color: var(--maica-ink);
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.md-typeset h3,
+.md-typeset h4 {
+  font-weight: 600;
+}
+
+.md-typeset {
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ */
+/* Light scheme (default): airy background, dark ink, teal links      */
+/* ------------------------------------------------------------------ */
+[data-md-color-scheme=default] {
+  --md-default-bg-color: #F8FAFA;
+  --md-default-fg-color: #1B1E1E;
+  --md-default-fg-color--light: #4a4f4f;
+  --md-default-fg-color--lighter: #7a8080;
+  --md-default-fg-color--lightest: #DEE8E8;
+  --md-typeset-color: #1B1E1E;
+  --md-typeset-a-color: #196061;
+  /* Hairline dividers and code tint. */
+  --md-code-bg-color: #eef4f4;
+  --md-code-fg-color: #1B1E1E;
+}
+
+[data-md-color-scheme=default] .md-typeset h1,
+[data-md-color-scheme=default] .md-typeset h2,
+[data-md-color-scheme=default] .md-typeset h3,
+[data-md-color-scheme=default] .md-typeset h4,
+[data-md-color-scheme=default] .md-typeset h5,
+[data-md-color-scheme=default] .md-typeset h6 {
+  color: var(--maica-ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Muted translucent header (NOT a solid teal bar)                    */
+/* ------------------------------------------------------------------ */
+.md-header {
+  background-color: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--maica-ink);
+  border-bottom: 1px solid var(--maica-hairline);
+  box-shadow: none;
+  height: 64px;
+}
+
+.md-header--shadow {
+  box-shadow: none;
+}
+
+.md-header__inner {
+  height: 64px;
+}
+
+/* Dark text/icons on the muted header. */
+.md-header__title,
+.md-header__button,
+.md-header__topic,
+.md-header .md-icon {
+  color: var(--maica-ink);
+}
+
+/* Left-aligned logo, capped height so both logos match visually. */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 26px;
+  width: auto;
+}
+
+/* Search input: rounded, hairline, dark text on light fill. */
+.md-search__form {
+  border-radius: var(--maica-radius);
+  background-color: #ffffff;
+  border: 1px solid var(--maica-hairline);
+  box-shadow: none;
+}
+
+.md-search__form:hover {
+  background-color: #ffffff;
+}
+
+.md-search__input {
+  color: var(--maica-ink);
+}
+
+.md-search__input::placeholder {
+  color: var(--md-default-fg-color--lighter);
+}
+
+.md-search__icon {
+  color: var(--maica-ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tabs: light bar with a teal underline on the active tab            */
+/* ------------------------------------------------------------------ */
+.md-tabs {
+  background-color: transparent;
+  color: var(--maica-ink);
+  border-bottom: 1px solid var(--maica-hairline);
+}
+
+.md-tabs__item {
+  height: 44px;
+}
+
+.md-tabs__link {
+  color: var(--maica-ink);
+  opacity: 0.72;
+  font-weight: 500;
+}
+
+.md-tabs__link:hover,
+.md-tabs__link--active {
+  opacity: 1;
+  color: var(--maica-ink);
+}
+
+/* Teal underline marker under the active tab. */
+.md-tabs__item--active .md-tabs__link,
+.md-tabs__link--active {
+  position: relative;
+}
+
+.md-tabs__item {
+  position: relative;
+}
+
+.md-tabs__item--active::after {
+  content: "";
+  position: absolute;
+  left: 0.6rem;
+  right: 0.6rem;
+  bottom: 0;
+  height: 2px;
+  background-color: #196061;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Airy content column (~768px) without breaking nav/toc sidebars     */
+/* ------------------------------------------------------------------ */
+.md-grid {
+  max-width: 68rem;
+}
+
+.md-content {
+  max-width: 48rem; /* ~768px content column */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.md-content__inner {
+  margin-top: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Rounded + hairline surfaces (cards, code, admonitions, images)     */
+/* ------------------------------------------------------------------ */
+.md-typeset pre > code,
+.md-typeset .highlight,
+.md-typeset pre {
+  border-radius: var(--maica-radius);
+}
+
+.md-typeset pre {
+  border: 1px solid var(--maica-hairline);
+  box-shadow: none;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--maica-radius);
+  border: 1px solid var(--maica-hairline);
+  box-shadow: none;
+}
+
+/* Grid cards: rounded, hairline, no heavy shadow; teal tint on hover. */
+.md-typeset .grid.cards > :is(ul, ol) > li,
+.md-typeset .grid.cards > .card,
+.md-typeset .grid > .card {
+  border-radius: var(--maica-radius);
+  border: 1px solid var(--maica-hairline);
+  box-shadow: none;
+  transition: border-color 125ms, background-color 125ms;
+}
+
+[data-md-color-scheme=default] .md-typeset .grid.cards > :is(ul, ol) > li:hover,
+[data-md-color-scheme=default] .md-typeset .grid.cards > .card:hover {
+  border-color: #196061;
+  background-color: var(--maica-tint);
+}
+
+/* Content images sit on rounded corners too. */
+.md-typeset img {
+  border-radius: var(--maica-radius);
+  max-width: 100%;
+}
+
+/* Tables: hairline framing, rounded outer corners. */
+.md-typeset table:not([class]) {
+  border-radius: var(--maica-radius);
+  border: 1px solid var(--maica-hairline);
+  box-shadow: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Dark-mode logo swap: teal logo in light, white logo in slate       */
+/* The logo.html partial renders both images with these classes.      */
+/* ------------------------------------------------------------------ */
+.md-logo__dark {
+  display: none;
+}
+
+[data-md-color-scheme=slate] .md-logo__light {
+  display: none;
+}
+
+[data-md-color-scheme=slate] .md-logo__dark {
+  display: inline-block;
+}
+
+/* ------------------------------------------------------------------ */
+/* Dark scheme (slate): teal stays, dark translucent header           */
+/* ------------------------------------------------------------------ */
+[data-md-color-scheme=slate] {
+  --md-default-bg-color: #14201f;
+  --md-default-fg-color: #e6ecec;
+  --md-typeset-a-color: #4fb3b4;
+  --md-code-bg-color: #1c2b2a;
+}
+
+[data-md-color-scheme=slate] .md-header {
+  background-color: rgba(20, 26, 26, 0.85);
+  color: #e6ecec;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme=slate] .md-header__title,
+[data-md-color-scheme=slate] .md-header__button,
+[data-md-color-scheme=slate] .md-header__topic,
+[data-md-color-scheme=slate] .md-header .md-icon,
+[data-md-color-scheme=slate] .md-search__input,
+[data-md-color-scheme=slate] .md-search__icon {
+  color: #e6ecec;
+}
+
+[data-md-color-scheme=slate] .md-search__form {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-md-color-scheme=slate] .md-tabs {
+  background-color: transparent;
+  color: #e6ecec;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme=slate] .md-tabs__link {
+  color: #e6ecec;
+}
+
+[data-md-color-scheme=slate] .md-typeset pre,
+[data-md-color-scheme=slate] .md-typeset .admonition,
+[data-md-color-scheme=slate] .md-typeset details,
+[data-md-color-scheme=slate] .md-typeset .grid.cards > :is(ul, ol) > li,
+[data-md-color-scheme=slate] .md-typeset table:not([class]) {
+  border-color: rgba(255, 255, 255, 0.1);
+}
