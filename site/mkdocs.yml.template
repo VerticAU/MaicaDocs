@@ -48,5 +48,31 @@ markdown_extensions:
 plugins:
   - search
 
+# Validation policy (made explicit so --strict behaviour is documented and does
+# not silently drift with mkdocs default changes). Under --strict every "warn"
+# is promoted to a fatal error, so this is where we draw the line between real
+# pipeline bugs and known GitBook authoring artifacts.
+#
+# FATAL (warn): a nav entry pointing at a missing page, or a Markdown link whose
+# target .md does not exist. These are genuine broken internal links that the
+# transform pipeline must never produce, so they stop the build.
+#
+# NON-FATAL (info): orphan pages not listed in a SUMMARY, absolute links, and
+# GitBook directory-style links like "foo/" (mkdocs cannot classify these but
+# they resolve correctly at runtime via directory URLs). Absolute links of the
+# form /broken/pages/<hash> are GitBook broken-page markers: real content issues
+# for the docs authors to clean up, but not something this pipeline can fix, so
+# they are surfaced as info rather than failing the build.
+validation:
+  nav:
+    omitted_files: info
+    not_found: warn
+    absolute_links: info
+  links:
+    not_found: warn
+    absolute_links: info
+    unrecognized_links: info
+    anchors: info
+
 docs_dir: build
 site_dir: _site
