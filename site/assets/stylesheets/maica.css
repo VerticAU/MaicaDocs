@@ -36,16 +36,16 @@
   --maica-hairline: #DEE8E8;
   --maica-tint: #EBF4F4;
   --maica-ink: #1B1E1E;
-  /* Slightly larger, airier base type than the material default. */
-  --md-typeset-font-size: 16px;
 }
 
 /* ------------------------------------------------------------------ */
 /* Fonts and weights                                                  */
 /* ------------------------------------------------------------------ */
+/* Base type at 15px (0.75rem * 20px html root) to match the reference. */
+/* Scales headings, list items, tables, and admonitions by the same factor. */
 .md-typeset {
-  font-size: 0.8rem;
-  line-height: 1.7;
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 
 .md-typeset h1 {
@@ -207,7 +207,7 @@
 }
 
 .md-content {
-  max-width: 48rem; /* ~768px content column */
+  max-width: 768px; /* explicit px to avoid the 20px-root rem confusion */
   margin-left: auto;
   margin-right: auto;
 }
