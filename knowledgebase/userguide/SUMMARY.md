@@ -202,6 +202,7 @@
 * [Refunding Lump Sum Deposits](residential-aged-care/refunding-lump-sum-deposits.md)
 * [Residential Care Fee types explained](residential-aged-care/residential-care-fee-types-explained.md)
 * [How Resident Billing works](residential-aged-care/how-resident-billing-works.md)
+* [Monthly Claim Batch and Claims Sync](residential-aged-care/monthly-claim-batch-and-claims-sync.md)
 * [Fee Treatment during Leave](residential-aged-care/fee-treatment-during-leave.md)
 * [Fee Adjustments and Corrections](residential-aged-care/fee-adjustments-and-corrections.md)
 * [How Maica connects to Services Australia](residential-aged-care/how-maica-connects-to-services-australia/README.md)
