@@ -41,7 +41,7 @@ Where Maica provides a reportable output rather than an integration, the figures
 
 Each supported capability is documented in its own article in this section:
 
-* The two Services Australia integrations are covered in [Inbound data APIs](../integration-architecture-and-event-lifecycle/inbound-data-apis.md) and [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3).
+* The two Services Australia integrations are covered in [Inbound data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453) and [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3).
 * The two Quarterly Financial Report outputs are covered in [QFR report configuration](qfr-report-configuration.md).
 * The coverage calculation is covered in [24/7 RN coverage check configuration](24-7-rn-coverage-check-configuration.md).
 * The prudential compliance export is covered in [APCS export tool configuration](apcs-export-tool-configuration.md).

@@ -91,7 +91,7 @@ The leave types are:
 If no end date is submitted, Services Australia treats the leave as open-ended. Maica sends an explicit end date when the resident returns. An accepted leave event can be updated, both to correct details and to apply the routine return-from-leave end date.
 {% endhint %}
 
-Before a leave event is created, Maica can check the resident's remaining entitlement through the leave and respite balance reads, so available days are confirmed before submission. Those inbound reads are covered in [Inbound data APIs](inbound-data-apis.md).
+Before a leave event is created, Maica can check the resident's remaining entitlement through the leave and respite balance reads, so available days are confirmed before submission. Those inbound reads are covered in [Inbound data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453).
 
 ## Supplement events
 

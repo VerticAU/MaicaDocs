@@ -5,7 +5,7 @@ The monthly residential care claim is not built and submitted from Maica. Servic
 This article explains the orchestration, the order the steps run in, what each step reads and writes, and the integration characteristics an administrator needs to support it. It is the technical companion to the user-facing [The Monthly Claim Batch and Claims Sync](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/the-monthly-claim-batch-and-claims-sync) article.
 
 {% hint style="info" %}
-For the shared authentication and gateway headers used by every Services Australia call, see [PRODA Authentication and Setup](proda-authentication-and-setup.md). For the catalogue of individual inbound reads and where each lands, see [Inbound Data APIs](inbound-data-apis.md).
+For the shared authentication and gateway headers used by every Services Australia call, see [PRODA Authentication and Setup](proda-authentication-and-setup.md). For the catalogue of individual inbound reads and where each lands, see [Inbound Data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453).
 {% endhint %}
 
 ## Why the integrations are documented together

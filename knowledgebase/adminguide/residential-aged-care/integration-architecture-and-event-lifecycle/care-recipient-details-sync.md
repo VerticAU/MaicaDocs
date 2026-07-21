@@ -5,7 +5,7 @@ The care recipient details sync is the foundational inbound integration for ever
 This article explains what the sync brings in, the ways it can be run, how you can tell when it last ran, and the conditions it must satisfy before a resident can be admitted. It is written for administrators and power users.
 
 {% hint style="info" %}
-The care recipient details sync is one of the inbound reads described in [Inbound data APIs](inbound-data-apis.md). That article covers the full set of reads; this article covers the care recipient sync workflow specifically.
+The care recipient details sync is one of the inbound reads described in [Inbound data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453). That article covers the full set of reads; this article covers the care recipient sync workflow specifically.
 {% endhint %}
 
 ## What the sync retrieves
@@ -49,7 +49,7 @@ A bulk sync issues a Services Australia call for the residents it covers. Run it
 Before a monthly claim is processed, the claim workflow refreshes the residents in that Claim Batch so the classification and approval data used for the claim is current at the point it matters most. This happens automatically as part of the claim process; you do not run it separately.
 
 {% hint style="info" %}
-For the monthly claim itself, see the Claims section of [Inbound data APIs](inbound-data-apis.md).
+For the monthly claim itself, see the Claims section of [Inbound data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453).
 {% endhint %}
 
 ## Checking the sync result

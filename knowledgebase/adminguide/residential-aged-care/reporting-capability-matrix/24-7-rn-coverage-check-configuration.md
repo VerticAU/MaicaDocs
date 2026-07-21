@@ -5,7 +5,7 @@ Providers must report 24/7 registered nurse (RN) coverage to GPMS each month, co
 This article explains how the coverage check is calculated, how to run it, and how to read and use the result. It is written for administrators and facility managers.
 
 {% hint style="info" %}
-The coverage result also reflects the registered nurse eligibility that arrives in the monthly claim. This check is the provider's own coverage calculation for GPMS reporting; for the eligibility returned with the claim, see [Inbound data APIs](../integration-architecture-and-event-lifecycle/inbound-data-apis.md).
+The coverage result also reflects the registered nurse eligibility that arrives in the monthly claim. This check is the provider's own coverage calculation for GPMS reporting; for the eligibility returned with the claim, see [Inbound data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453).
 {% endhint %}
 
 ## How coverage is calculated

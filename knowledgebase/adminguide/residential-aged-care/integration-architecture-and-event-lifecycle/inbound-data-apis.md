@@ -5,7 +5,7 @@ Alongside the event APIs that send data to Services Australia, the residential a
 This article explains what each inbound read provides, where the data lands in Maica, and when it runs. It is written for administrators who need to understand the data flow behind the resident record and the monthly claim.
 
 {% hint style="info" %}
-For the authentication and gateway headers shared by every Services Australia call, see [PRODA authentication and setup](proda-authentication-and-setup.md). For the overall data flow and event status model, see [Integration architecture and event lifecycle](./).
+For the authentication and gateway headers shared by every Services Australia call, see [PRODA authentication and setup](proda-authentication-and-setup.md). For the overall data flow and event status model, see [Integration architecture and event lifecycle](file:///). For how the claim and payment reads are orchestrated together into the monthly sync, see [Claims, Payment and Reconciliation Integration](claims-payment-and-reconciliation-integration.md).
 {% endhint %}
 
 ## How inbound reads work
@@ -66,12 +66,9 @@ These reads return service-level financial data and underpin the monthly claim a
 
 ### Claims
 
-The Claims read is the central financial reconciliation interface. Services Australia calculates the monthly residential care subsidy automatically from the events and classifications submitted during the month; the provider does not build a claim, they finalise it.
+The Claims read is the central financial reconciliation interface. Services Australia calculates the monthly residential care subsidy automatically from the events and classifications submitted during the month, so the provider does not build a claim line by line. Maica reads the calculated position back.
 
-The Claims interface has two operational roles:
-
-* **Reading the claim.** Maica retrieves the full claim for a service and claim month, including the service classifications, the per-resident funding detail, and the registered nurse eligibility data. This is how the confirmed subsidy position is brought into Maica.
-* **Finalising the claim.** Finalising formally closes the claim month and triggers Services Australia's final payment calculation. This is an irreversible action taken once billing has run and accommodation balances have been submitted.
+Maica retrieves the full claim for a service and claim month, including the service classifications, the per-resident funding detail, and the registered nurse eligibility data. This is how the confirmed subsidy position is brought into Maica.
 
 When a claim reaches an approved state, the confirmed data is written across several records:
 
@@ -83,11 +80,15 @@ When a claim reaches an approved state, the confirmed data is written across sev
 | **AN-ACC Classification**        | The resident-level AN-ACC classifications confirmed for payment                                                            |
 
 {% hint style="info" %}
-The Claims read and finalisation run as part of the monthly Claim Batch workflow. For the resident-facing view of claiming, see [How resident billing works](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/how-resident-billing-works). Accommodation balances must be submitted before a claim can be finalised; see [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3).
+The Claims read runs as one step of the monthly Claims Sync, which orchestrates the claim, payment and reconciliation reads together. For the full sequence, see [Claims, Payment and Reconciliation Integration](claims-payment-and-reconciliation-integration.md). For the resident-facing view of claiming, see [The Monthly Claim Batch and Claims Sync](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/the-monthly-claim-batch-and-claims-sync).
 {% endhint %}
 
 {% hint style="warning" %}
-Registered nurse eligibility is returned inside the Claims response and written to the Claim Batch. This is distinct from the separate 24/7 registered nurse coverage check that providers run for their own GPMS reporting; see [24/7 RN coverage check configuration](../reporting-capability-matrix/24-7-rn-coverage-check-configuration.md).
+The claim month progresses through Services Australia's own approval stages (submitted, being calculated, approved, completed). In the deployed build Maica brings that position in by **reading** the claim through Claims Sync; the claim status on the Claim Batch reflects where Services Australia has the claim. Claim finalisation is a Services Australia-side concept; there is no separate Maica finalise action wired to the Claim Batch in this build.
+{% endhint %}
+
+{% hint style="warning" %}
+Registered nurse eligibility is returned inside the Claims response and written to the Claim Batch. This is distinct from the separate 24/7 registered nurse coverage check that providers run for their own GPMS reporting (see [24/7 RN coverage check configuration](/broken/pages/ead48f8bde308d1a0a4d4727a92d50e6e546c432)), and from the standalone [24/7 RN supplement monthly summary](/broken/pages/68b3733591ad1a589341d9270a94f5a048f74871) that Maica reads back separately.
 {% endhint %}
 
 ### Payment statements
@@ -100,16 +101,24 @@ Two reads provide the read-only financial settlement view once Services Australi
 These reads are used to reconcile what Services Australia actually paid against the invoices and claim data held in Maica. The payment statement response also carries resident-level balance figures (remaining respite and social leave) that are sourced from this read rather than from the claim.
 
 {% hint style="info" %}
-For how the payment settlement data is matched back to invoices, see [Reconciling payments](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/reconciling-payments) in the User Guide and [Statement reconciliation service](../statement-reconciliation-service.md).
+For how the payment settlement data is matched back to invoices, see [Reconciling payments](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/reconciling-payments) in the User Guide and [Statement reconciliation service](/broken/pages/fe8b02118c9fcf07c851a31f24b20b3e1a7155eb).
 {% endhint %}
 
 ## Service-level summary reads
 
-The integration design also describes three service-level summary reads: a **service summary** (service identifiers, AN-ACC classifications, bed capacity, accreditation, respite allocation, and care minute and 24/7 RN eligibility), a **service occupancy summary** (daily occupancy confirmed by Services Australia), and a **24/7 RN supplement summary** (monthly registered nurse supplement detail). These feed the Quarterly Financial Report and registered nurse reporting.
+The integration also reads data scoped to the whole service rather than an individual resident.
 
-{% hint style="danger" %}
-These three service-level summary reads are defined in the integration design, but a dedicated inbound interface for them could not be confirmed in the current `release-production` code. In the deployed build, registered nurse eligibility is delivered through the Claims response rather than through a standalone supplement summary read. Confirm the service summary, occupancy and standalone RN supplement summary read paths with the engineering team before publishing this section.
+### 24/7 RN Supplement Summary
+
+Maica reads the monthly 24/7 registered nurse supplement summary for the service and stores it against the **Location**, as an entitlement-month summary with claim-month breakdown detail. This read runs as part of the monthly Claims Sync and is scoped by the service's NAPS ID. It applies to residential aged care claims with a Permanent or Respite funding type.
+
+{% hint style="info" %}
+For the summary and breakdown records, how they are keyed, and where they surface, see [The 24/7 RN Supplement Monthly Summary](/broken/pages/68b3733591ad1a589341d9270a94f5a048f74871).
 {% endhint %}
+
+### Service summary and occupancy (design)
+
+The integration design also describes two further service-level reads: a **service summary** (service identifiers, AN-ACC classifications, bed capacity, accreditation, respite allocation, and care minute and 24/7 RN eligibility) and a **service occupancy summary** (daily occupancy confirmed by Services Australia). These are intended to feed the Quarterly Financial Report.
 
 ## Where the data is used
 
