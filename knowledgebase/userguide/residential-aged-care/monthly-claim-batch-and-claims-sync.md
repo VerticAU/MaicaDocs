@@ -47,7 +47,7 @@ You do not set the Claim Status by hand as part of normal claiming. It reflects 
 The claim is one stage in a repeating monthly rhythm. Understanding the order helps you know when to run the sync and what to expect from it.
 
 1. **Billing runs through the month.** The daily billing engine generates each resident's invoices as it does every day. See [How Resident Billing Works](how-resident-billing-works.md).
-2. **Accommodation balances are submitted.** Toward month-end you report each resident's RAD/RAC balance to Services Australia. See [Reporting RAD/RAC Balances](how-maica-connects-to-services-australia/reporting-rad-rac-balances.md).
+2. **Accommodation balances are submitted.** Toward month-end you report each resident's RAD/RAC balance to Services Australia. See [Reporting RAD/RAC Balances](/broken/pages/1294c0625af2a6ee076f09cb24ba94b6fd1fec43).
 3. **You sync the claim.** You open the Claim Batch and run **Claims Sync** to pull the current calculated position from Services Australia into Maica.
 4. **The claim is approved and paid.** Once Services Australia approves the claim, the confirmed subsidy data lands in Maica, and payment follows.
 5. **You reconcile the payment.** When the payment arrives, you match it against the invoices you raised. See [Reconciling Payments](reconciling-payments.md).

@@ -1,45 +1,44 @@
-# Reporting RAD/RAC balances
+# Reporting RAD/RAC Balances
 
-## Overview
+Providers are required by law to report refundable accommodation balances (the RAD and RAC lump sums residents hold) to Services Australia every month, as at the last day of each claim month. Maica reports these balances for you from the monthly claim, drawing on the deposit movements it has recorded throughout the month.
 
-Providers are required by law to report refundable accommodation balances (the RAD and RAC lump sums residents hold) to Services Australia every month, as at the last day of each claim month. Maica reports these balances for you as a month-end step, drawing on the deposit movements it has recorded throughout the month.
-
-This article explains how the monthly report is produced and how Maica checks that every resident's balance has been reported before you finalise the subsidy claim.
+This article explains how the monthly report is produced, how you submit it, and how to correct or remove a balance after it has been sent.
 
 ## How balances are reported
 
-The accommodation balance report is a monthly action, not a real-time one. Throughout the month, every movement on a resident's deposit (payments in, retention deductions, draw-downs, and refunds) is recorded against their lump sum account. At month end, Maica gathers these into a balance report and submits it to Services Australia.
+The accommodation balance report is a monthly action, not a real-time one. Throughout the month, every movement on a resident's deposit (payments in, top-ups, drawdowns, and refunds) is recorded against their lump sum account. At month end, Maica gathers these into a balance report for each resident and submits it to Services Australia.
 
-You trigger the report from the claim batch for the month. For each resident with a deposit, Maica reports the balance as at the last day of the claim month, or as at the departure date if the resident left during the month. The reason reported reflects the most significant movement in the month, such as an initial payment, a refund, or a regular drawdown.
+For each resident with a deposit, Maica reports the balance as at the last day of the claim month, or as at the departure date if the resident left during the month. The reason reported reflects the most significant movement in the month, such as a payment received, a refund, or no change.
 
-{% hint style="info" %}
-Maica will not report the same resident twice for the same month. If a balance has already been submitted for a resident that month, it is skipped, so you can safely re-run the report.
+## Submitting balances from the claim
+
+You submit balances from the monthly **Claim Batch**. The submission action opens a window that shows you every resident for the claim month, grouped so you can see the position before you send anything.
+
+| Group             | What it means                                                 |
+| ----------------- | ------------------------------------------------------------- |
+| **Eligible**      | Ready to submit to Services Australia                         |
+| **Submitted**     | Already submitted for this month                              |
+| **Deleted**       | Removed at Services Australia                                 |
+| **Cannot submit** | Cannot be submitted; the reason is shown against the resident |
+
+When you submit, Maica sends each eligible balance to Services Australia one at a time and shows you the progress as it works through them.
+
+{% hint style="success" %}
+Maica will not report the same resident twice for the same month. A resident who has already been submitted appears under **Submitted**, so you can safely re-open and re-run the submission to pick up anyone who was missed.
 {% endhint %}
 
 {% hint style="warning" %}
-If a balance report fails to send for a resident, it is marked as failed with the error detail recorded, while the rest of the batch continues. Review and resolve any failed reports before finalising the claim.
+If a balance fails to send for a resident, it is marked with the error detail while the rest continue. Review the residents that failed, resolve the issue, and submit them again.
 {% endhint %}
 
-## The pre-claim balance gate
+## Correcting or removing a balance
 
-Before you finalise the monthly subsidy claim, Maica runs a gate check against Services Australia to confirm no resident is missing an accommodation balance report for the month.
+After a balance has been submitted, you can manage it per resident from the same window:
 
-| Gate check result            | What happens                                                                             |
-| ---------------------------- | ---------------------------------------------------------------------------------------- |
-| **No residents outstanding** | Finalisation proceeds.                                                                   |
-| **Residents outstanding**    | Finalisation is blocked, and Maica lists the affected residents so you can resolve them. |
+* **Sync** refreshes the resident's balance from Services Australia so Maica shows the current position.
+* **Correct** lets you submit a corrected balance, replacing the value held at Services Australia.
+* **Delete** removes the submission at Services Australia.
 
-This keeps the accommodation balance report and the subsidy claim in step, so you do not finalise a claim while balances are still missing.
-
-## Resolving outstanding balances
-
-If the gate check lists outstanding residents, resolve them before finalising:
-
-1. Review the list of affected residents Maica shows, which includes each resident's name, identifier, and last submitted balance.
-2. Re-run the balance report from the claim batch to pick up any residents that were missed.
-3. For an individual resident, use the manual submission action on their accommodation balance record.
-4. Re-attempt claim finalisation once the outstanding reports are submitted.
-
-{% hint style="success" %}
-Most outstanding balances are cleared simply by re-running the month-end report. The manual submission action is there for the occasional resident that needs to be handled on their own.
+{% hint style="info" %}
+When you correct or delete a balance, Maica first re-reads the latest version from Services Australia, so your change is always applied to the current record rather than an out-of-date one.
 {% endhint %}

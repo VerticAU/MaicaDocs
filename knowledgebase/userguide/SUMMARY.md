@@ -208,7 +208,7 @@
 * [How Maica connects to Services Australia](residential-aged-care/how-maica-connects-to-services-australia/README.md)
   * [Submitting Care and Supplement Events](residential-aged-care/how-maica-connects-to-services-australia/submitting-care-and-supplement-events.md)
   * [Keeping Care Recipient data in Sync](residential-aged-care/how-maica-connects-to-services-australia/keeping-care-recipient-data-in-sync.md)
-  * [Reporting RAD/RAC balances](residential-aged-care/how-maica-connects-to-services-australia/reporting-rad-rac-balances.md)
+  * [Reporting RAD/RAC Balances](residential-aged-care/how-maica-connects-to-services-australia/reporting-rad-rac-balances.md)
 * [Reconciling Payments](residential-aged-care/reconciling-payments.md)
 * [Reporting Obligations Overview](residential-aged-care/reporting-obligations-overview/README.md)
   * [24/7 Registered Nurse Coverage](residential-aged-care/reporting-obligations-overview/24-7-registered-nurse-coverage.md)
