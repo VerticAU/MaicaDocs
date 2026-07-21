@@ -124,6 +124,7 @@
   * [QFR Report Configuration](residential-aged-care/reporting-capability-matrix/qfr-report-configuration.md)
   * [SIRS Incident Configuration](residential-aged-care/reporting-capability-matrix/sirs-incident-configuration.md)
   * [24/7 RN Coverage Check Configuration](residential-aged-care/reporting-capability-matrix/24-7-rn-coverage-check-configuration.md)
+  * [The 24/7 RN Supplement Monthly Summary](residential-aged-care/reporting-capability-matrix/the-24-7-rn-supplement-monthly-summary.md)
   * [APCS Export Tool Configuration](residential-aged-care/reporting-capability-matrix/apcs-export-tool-configuration.md)
 * [Fee Adjustment Service](residential-aged-care/fee-adjustment-service.md)
 * [Statement Reconciliation Service](residential-aged-care/statement-reconciliation-service.md)
