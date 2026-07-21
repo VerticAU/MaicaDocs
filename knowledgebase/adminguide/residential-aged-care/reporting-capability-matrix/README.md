@@ -41,12 +41,12 @@ Where Maica provides a reportable output rather than an integration, the figures
 
 Each supported capability is documented in its own article in this section:
 
-* The two Services Australia integrations are covered in [Inbound data APIs](../integration-architecture-and-event-lifecycle/inbound-data-apis.md) and [Accommodation balance reporting](../integration-architecture-and-event-lifecycle/accommodation-balance-reporting.md).
+* The two Services Australia integrations are covered in [Inbound data APIs](../integration-architecture-and-event-lifecycle/inbound-data-apis.md) and [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3).
 * The two Quarterly Financial Report outputs are covered in [QFR report configuration](qfr-report-configuration.md).
 * The coverage calculation is covered in [24/7 RN coverage check configuration](24-7-rn-coverage-check-configuration.md).
 * The prudential compliance export is covered in [APCS export tool configuration](apcs-export-tool-configuration.md).
 * Serious incident reporting is covered in [SIRS incident configuration](sirs-incident-configuration.md).
 
 {% hint style="warning" %}
-The accommodation balance data model is in place, but the automated monthly submission to Services Australia could not be confirmed in the current build. See [Accommodation balance reporting](../integration-architecture-and-event-lifecycle/accommodation-balance-reporting.md) for the detail and the confirmation that is needed.
+The accommodation balance data model is in place, but the automated monthly submission to Services Australia could not be confirmed in the current build. See [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3) for the detail and the confirmation that is needed.
 {% endhint %}

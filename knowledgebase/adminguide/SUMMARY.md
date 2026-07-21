@@ -117,6 +117,7 @@
   * [PRODA Authentication and Setup](residential-aged-care/integration-architecture-and-event-lifecycle/proda-authentication-and-setup.md)
   * [Outbound Event APIs](residential-aged-care/integration-architecture-and-event-lifecycle/outbound-event-apis.md)
   * [Inbound Data APIs](residential-aged-care/integration-architecture-and-event-lifecycle/inbound-data-apis.md)
+  * [Claims, Payment and Reconciliation Integration](residential-aged-care/integration-architecture-and-event-lifecycle/claims-payment-and-reconciliation-integration.md)
   * [Accommodation Balance Reporting](residential-aged-care/integration-architecture-and-event-lifecycle/accommodation-balance-reporting.md)
   * [Care Recipient Details Sync](residential-aged-care/integration-architecture-and-event-lifecycle/care-recipient-details-sync.md)
 * [Reporting Capability Matrix](residential-aged-care/reporting-capability-matrix/README.md)

@@ -83,7 +83,7 @@ When a claim reaches an approved state, the confirmed data is written across sev
 | **AN-ACC Classification**        | The resident-level AN-ACC classifications confirmed for payment                                                            |
 
 {% hint style="info" %}
-The Claims read and finalisation run as part of the monthly Claim Batch workflow. For the resident-facing view of claiming, see [How resident billing works](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/how-resident-billing-works). Accommodation balances must be submitted before a claim can be finalised; see [Accommodation balance reporting](accommodation-balance-reporting.md).
+The Claims read and finalisation run as part of the monthly Claim Batch workflow. For the resident-facing view of claiming, see [How resident billing works](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/how-resident-billing-works). Accommodation balances must be submitted before a claim can be finalised; see [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3).
 {% endhint %}
 
 {% hint style="warning" %}
