@@ -8,7 +8,7 @@ This is distinct from indexation. Indexation applies government-published standa
 
 The fee rate check is implemented as the `RAC_ResidentFeeCalloutBatch` class. It is a scheduled, batched, callout-capable process that runs one Agreement Item per chunk, so each transaction can make its own outbound call to Services Australia.
 
-It is gated by the **Automate Resident Fee Rate Updates** toggle on the [RACS Configuration tab](../the-racs-configuration-tab/). When the toggle is off, the batch does no work and records a log entry confirming it was blocked, so administrators can keep a schedule in place and use the toggle as the on/off control.
+It is gated by the **Automate Resident Fee Rate Updates** toggle on the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f). When the toggle is off, the batch does no work and records a log entry confirming it was blocked, so administrators can keep a schedule in place and use the toggle as the on/off control.
 
 ### Scope
 

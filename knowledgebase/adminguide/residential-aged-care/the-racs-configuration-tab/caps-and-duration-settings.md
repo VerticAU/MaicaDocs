@@ -1,6 +1,6 @@
 # Caps and Duration Settings
 
-The **Regulatory Caps and Durations** section of the [RACS Configuration tab](./) holds the government-set limits that stop a resident from being charged more than the law allows for certain fees, plus the maximum periods over which those charges and retention deductions may apply. Update these values when the Department of Health, Disability and Ageing publishes revised caps or durations.
+The **Regulatory Caps and Durations** section of the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f) holds the government-set limits that stop a resident from being charged more than the law allows for certain fees, plus the maximum periods over which those charges and retention deductions may apply. Update these values when the Department of Health, Disability and Ageing publishes revised caps or durations.
 
 {% hint style="info" %}
 These caps protect residents from over-charging. The billing engine reads them when it calculates fees and stops charging once a cap or duration is reached. The values here are global and apply to every resident.
@@ -41,5 +41,5 @@ Retention is the amount a provider may deduct from a resident's RAD or RAC lump 
 | **RAC Retention Duration (Years)** | Number | The maximum number of years over which retention may be deducted from a resident's lump sum, measured from the date of their first lump sum payment. The billing engine stops retention deductions once this duration elapses. | Maximum years retention can be deducted from a lump sum. Currently 5 years from first payment. |
 
 {% hint style="info" %}
-This value is used to calculate the Retention Expiry Date on each Lump Sum Account. It is currently legislated at 5 years from the first payment. For how retention is applied, see [Retention and Drawdown Logic](../the-lump-sum-account-model/retention-and-drawdown-logic.md).
+This value is used to calculate the Retention Expiry Date on each Lump Sum Account. It is currently legislated at 5 years from the first payment. For how retention is applied, see [Retention and Drawdown Logic](/broken/pages/bcafc15aa4f4efe6509bbf894d03d5767ec80f79).
 {% endhint %}

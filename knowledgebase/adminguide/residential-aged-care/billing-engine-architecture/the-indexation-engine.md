@@ -6,14 +6,14 @@ Unlike the daily billing engine, the indexation engine is run on demand rather t
 
 ## How it is triggered
 
-The indexation engine is run from the **Run Indexation action** button in the **Indexed Rates and Supplements** section of the [RACS Configuration tab](../the-racs-configuration-tab/). It sits alongside the Basic Daily Fee standard rate and DAP index number fields, because those are the values it applies. Selecting it runs a single indexation pass over the in-scope Agreement Items.
+The indexation engine is run from the **Run Indexation action** button in the **Indexed Rates and Supplements** section of the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f). It sits alongside the Basic Daily Fee standard rate and DAP index number fields, because those are the values it applies. Selecting it runs a single indexation pass over the in-scope Agreement Items.
 
 The button is disabled only when **both** the Basic Daily Fee standard rate and the DAP index number are blank, since with neither value present there is nothing to apply. Its tooltip reads: _"Enter the new BDF rate and DAP index number before running the Indexation Engine."_
 
 Because the engine reads the values stored on the Setting record at the moment it runs, the order of operations matters.
 
 {% hint style="warning" %}
-Update the indexation values on the [RACS Configuration tab](../the-racs-configuration-tab/) **before** you run the engine. Enter the new Basic Daily Fee standard rate and the new DAP index number first, then run indexation. Running it against stale values produces stale rates.
+Update the indexation values on the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f) **before** you run the engine. Enter the new Basic Daily Fee standard rate and the new DAP index number first, then run indexation. Running it against stale values produces stale rates.
 {% endhint %}
 
 When you select the button, Maica shows a warning confirmation dialog before it does anything, warning that the run will apply the new rates to all in-scope active Agreement Items and that the action cannot be undone in a single step. You confirm to proceed.

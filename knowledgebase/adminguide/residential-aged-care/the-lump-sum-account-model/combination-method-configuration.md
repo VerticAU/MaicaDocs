@@ -5,7 +5,7 @@ The **Combination** payment method is for residents who pay part of their accomm
 This article explains how the Combination method is wired, how the DAP portion is calculated, when it is recalculated, and the important difference in where the interest rate comes from depending on what triggered the change. It is written for administrators and power users.
 
 {% hint style="info" %}
-This article builds on [The Lump Sum Account Model](./) and the draw-down behaviour described in [Retention and Drawdown Logic](retention-and-drawdown-logic.md).
+This article builds on [The Lump Sum Account Model](./) and the draw-down behaviour described in [Retention and Drawdown Logic](/broken/pages/bcafc15aa4f4efe6509bbf894d03d5767ec80f79).
 {% endhint %}
 
 ## What the Combination method represents

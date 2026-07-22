@@ -5,7 +5,7 @@ Two automated mechanisms reduce a resident's lump sum balance over the life of t
 This article explains how both services calculate their amounts, the records they create, and how they avoid ever pushing a balance below zero. It is written for administrators and power users who need to understand or support the billing engine's treatment of lump sum accounts.
 
 {% hint style="info" %}
-Both services depend on the objects described in [The Lump Sum Account Model](./), and both are driven by the billing engine covered in [Billing Engine Architecture](../billing-engine-architecture/).
+Both services depend on the objects described in [The Lump Sum Account Model](file:///), and both are driven by the billing engine covered in [Billing Engine Architecture](/broken/pages/b7195ce1cf837817529312a0e2744f8340bb42e3).
 {% endhint %}
 
 ## Retention
@@ -41,6 +41,10 @@ Retention follows a once-per-calendar-month cadence required by the regulator. I
 When a resident departs, the Departure Processor charges a final pro-rata retention for the days since the last retention charge up to the departure date. This path deliberately bypasses the monthly cadence guard, because a departing resident has no future run to pick up a rescheduled date; skipping the charge would silently drop the final retention.
 
 The departure calculation also clamps the period end to the **Retention Expiry Date**. Retention is not chargeable beyond the legislated five-year cap, so any days past expiry are excluded while valid pre-expiry days are still charged.
+
+{% hint style="info" %}
+Ledger movements written by the departure closure carry the Lump Sum Transaction source **System (Departure Processor)**, which distinguishes the final retention (and other departure-driven entries) from the routine System (Billing Engine) movements made during the nightly run. This makes the departure's effect on the deposit easy to identify in the transaction history.
+{% endhint %}
 
 ### The records retention creates
 
@@ -113,4 +117,4 @@ For a resident on the Combination payment method, reducing the balance changes t
 | Records committed        | Invoice Line Item, Transaction, Payment, balance update.            | Transaction, Payment, back-link, balance update.                 |
 | Cumulative field updated | Cumulative Retention Amount.                                        | Cumulative Draw-Down Amount.                                     |
 
-In both cases the balance can be reduced but never taken below zero, and every movement is written to the ledger with a System (Billing Engine) source so it is clearly distinguished from user-led entries.
+In both cases the balance can be reduced but never taken below zero, and every movement is written to the ledger with a source that identifies which process created it, so automated entries are clearly distinguished from user-led ones.

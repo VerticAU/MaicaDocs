@@ -1,6 +1,6 @@
 # Rate Configuration
 
-Two sections of the [RACS Configuration tab](./) hold the published rates and indexation values that the billing and indexation engines read. The **Interest Rates** section changes every quarter; the **Indexed Rates and Supplements** section changes twice a year at indexation. Keeping these values current is the administrator's responsibility, and the engines use whatever is stored here at the time they run.
+Two sections of the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f) hold the published rates and indexation values that the billing and indexation engines read. The **Interest Rates** section changes every quarter; the **Indexed Rates and Supplements** section changes twice a year at indexation. Keeping these values current is the administrator's responsibility, and the engines use whatever is stored here at the time they run.
 
 {% hint style="info" %}
 Enter each rate exactly as the government publishes it. For a percentage rate, type the published figure (for example, enter `7.78` for a rate of 7.78%).

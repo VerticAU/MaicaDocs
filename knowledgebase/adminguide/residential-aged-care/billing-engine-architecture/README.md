@@ -2,7 +2,7 @@
 
 The residential billing engine is the scheduled process that turns each resident's configured fees into invoices, statements, and accommodation drawdowns every day, without manual intervention. It is implemented as the `RAC_BillingEngine` Apex class and is the heart of residential aged care billing in Maica.
 
-This article explains how the engine is structured: what it processes, the services it orchestrates, and the lifecycle of a single billing run. The rules it applies are covered in the companion articles on [Next Billing Date and Catch-Up Chains](/broken/pages/4ca8ec4613fda5b50f7a24b4b2ae8ff807112fb9) and [Fee Type Processing Rules](fee-type-processing-rules.md).
+This article explains how the engine is structured: what it processes, the services it orchestrates, and the lifecycle of a single billing run. The rules it applies are covered in the companion articles on [Next Billing Date and Catch-Up Chains](next-billing-date-and-catch-up-chains.md) and [Fee Type Processing Rules](fee-type-processing-rules.md).
 
 ## What the engine does
 
@@ -11,7 +11,7 @@ The engine is a daily, scheduled, batched orchestrator. On each run it walks eve
 Technically, `RAC_BillingEngine` is a Salesforce `Batchable`, `Schedulable`, and `Stateful` class. A few properties follow from that design:
 
 * **Scheduled and batched.** A daily scheduled run starts a fresh batch. The batch processes Agreement Items in chunks of **20** at a time, each chunk with its own governor limits.
-* **Callout-free.** The engine never calls Services Australia. Fee rate callouts are separate scheduled job (see [Fee Detection and Rate Updates](/broken/pages/3c4471bff8b9aadb01aa7d0f1f31cddb161e29e8)).
+* **Callout-free.** The engine never calls Services Australia. Fee rate callouts are separate scheduled job (see [Fee Detection and Rate Updates](fee-detection-and-rate-updates.md)).
 * **Stateful counters.** The engine keeps running totals (items completed, items failed, statements touched, chain depth) across all chunks so the run can report a tidy summary at the end.
 
 {% hint style="info" %}
@@ -85,10 +85,14 @@ A successful run produces:
 * **Updated Funding cumulatives** that feed cap evaluation.
 * **Retention and accommodation drawdown** records where applicable.
 
+{% hint style="info" %}
+The `Billing Engine` line item source identifies charges the nightly engine raised. The same **Line Item Source** field carries other values for lines created by other processes, including **Departure Credit** for the pro-rata credits the departure processor raises when an in-advance fee was billed beyond a resident's departure date. Filtering on this source lets you separate routine engine charges from departure credits and other adjustments. See [Exiting a Resident or recording a death](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/exiting-a-resident-or-recording-a-death).
+{% endhint %}
+
 {% hint style="warning" %}
 If an item fails, its **Billing Status** is set to `Failed` and an error Log record is created, but the run continues with the next item. Failed items are skipped on later runs until an administrator clears the failure, so they do not block billing for other residents. Review the Log list view alongside the Billing Status filter to triage failures.
 {% endhint %}
 
 ## Automatic and manual runs
 
-The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area. Either way, the same pipeline executes; the only difference is what starts it. For scheduling and manual rate changes, see [Scheduling and Manual Rate Changes](/broken/pages/03ed22c679524501b012b8a3b6dd10872c720402).
+The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area. Either way, the same pipeline executes; the only difference is what starts it. For scheduling, see [Scheduling RACS Background Jobs](scheduling-racs-background-jobs.md); for manual rate changes, see [Scheduling and Manual Rate Changes](scheduling-and-manual-rate-changes.md).

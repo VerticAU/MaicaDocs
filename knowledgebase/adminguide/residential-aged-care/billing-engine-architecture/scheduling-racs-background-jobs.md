@@ -28,7 +28,7 @@ The three jobs differ in how they are gated. Two are controlled by an automation
 
 ### The toggle-gated jobs
 
-The billing engine and the fee rate check are each gated by an automation toggle on the [RACS Configuration tab](../the-racs-configuration-tab/) (stored on the Billing Setting record):
+The billing engine and the fee rate check are each gated by an automation toggle on the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f) (stored on the Billing Setting record):
 
 | Job                         | Automation toggle                                              |
 | --------------------------- | -------------------------------------------------------------- |
