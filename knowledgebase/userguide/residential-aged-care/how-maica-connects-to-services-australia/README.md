@@ -16,7 +16,7 @@ Some information is sent from Maica to Services Australia (outbound), and some i
 | **Services Australia to Maica (inbound)**  | Care recipient details, fee determinations, Medicare details, leave and respite balances, service and occupancy data, the 24/7 registered nurse supplement, claims, and payment statements. |
 
 {% hint style="info" %}
-Outbound submissions are described in [Submitting Care and Supplement Events](submitting-care-and-supplement-events.md). Inbound data is described in [Keeping Care Recipient Data in Sync](keeping-care-recipient-data-in-sync.md).
+Outbound submissions are described in [Submitting Care and Supplement Events](/broken/pages/b986cb97e9a54f0416e0105d352ab5443a5eee97). Inbound data is described in [Keeping Care Recipient Data in Sync](keeping-care-recipient-data-in-sync.md).
 {% endhint %}
 
 ## The event lifecycle

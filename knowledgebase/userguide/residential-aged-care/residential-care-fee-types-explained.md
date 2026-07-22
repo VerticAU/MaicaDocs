@@ -58,7 +58,7 @@ For residents on the 1 November 2025 accommodation arrangements, two further rul
 Neither retention nor DAP indexation applies under the 1 July 2014 accommodation arrangements.
 
 {% hint style="info" %}
-Lump sum deposits (RAD and RAC) are managed on the RAD/RAC tab, separately from day-to-day invoicing. See [Managing RAD/RAC Accommodation Deposits](the-manage-racs-agreement-component/managing-rad-rac-accommodation-deposits-tab.md).
+Lump sum deposits (RAD and RAC) are managed on the RAD/RAC tab, separately from day-to-day invoicing. See [Managing RAD/RAC Accommodation Deposits](/broken/pages/9e2113aa11f52b2bf9a2162a269b892009fd4dcd).
 {% endhint %}
 
 ## Other fees and optional services

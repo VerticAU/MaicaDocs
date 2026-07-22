@@ -7,7 +7,7 @@ When a resident leaves your service or passes away, any lump sum accommodation d
 This article covers when a refund is due, how interest is calculated, and how to record the payment in Maica.
 
 {% hint style="warning" %}
-**Prerequisites:** The resident's departure must already be processed through the **Manage Departure** action, so that the refund amount and refund due date are recorded against the deposit. See [Exiting a Resident or Recording a Death](exiting-a-resident-or-recording-a-death.md).
+**Prerequisites:** The resident's departure must already be processed through the **Manage Departure** action, so that the refund amount and refund due date are recorded against the deposit. See [Exiting a Resident or Recording a Death](/broken/pages/5165be3af2d6397f82ae455706d7b19c5db43e5c).
 {% endhint %}
 
 ## When is a refund due?

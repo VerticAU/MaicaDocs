@@ -42,7 +42,7 @@ The component groups all of its functions into three tabs.
 Each tab is documented in detail in its own article:
 
 * [Configuring Resident Fees (Fees Tab)](/broken/pages/e58e6fd8e6af00e47a151a42202614774912caaf)
-* [Managing RAD/RAC Accommodation Deposits (RAD/RAC Tab)](managing-rad-rac-accommodation-deposits-tab.md)
+* [Managing RAD/RAC Accommodation Deposits (RAD/RAC Tab)](/broken/pages/9e2113aa11f52b2bf9a2162a269b892009fd4dcd)
 * [Relocating a Resident (Accommodation Tab)](relocating-a-resident-accommodation-tab.md)
 
 {% hint style="info" %}

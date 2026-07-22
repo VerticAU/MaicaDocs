@@ -30,6 +30,10 @@ When you set up an account, you confirm two things:
 
 The account is created with a status of **Awaiting Payment**, and the agreed room price is copied from the Service Agreement.
 
+{% hint style="warning" %}
+Setting up accommodation requires the Service Agreement's **Funding** record to have a **Location** set. The room selection is scoped to that Location, so you only pick from rooms at the resident's facility. If the Funding record has no Location, Maica blocks the setup: the room lookup and the Save button are unavailable, and a message asks you to set the Location on the Funding record before adding accommodation. Set the Location first, then return to the tab.
+{% endhint %}
+
 ## Recording payments
 
 Two operations record money coming in.

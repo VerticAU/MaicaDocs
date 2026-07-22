@@ -5,7 +5,7 @@
 Several actions you take for a resident need to be reported to Services Australia, from admitting them, to recording supplements like oxygen, to electing into the new means testing arrangements. Maica sends each of these as an event. This article gives an overview of the events you can submit and points to the detailed steps for each.
 
 {% hint style="info" %}
-Every event you submit follows the same status lifecycle once it reaches Services Australia. For how held, rejected, and failed events are handled, see [How Maica Connects to Services Australia](./).
+Every event you submit follows the same status lifecycle once it reaches Services Australia. For how held, rejected, and failed events are handled, see [How Maica Connects to Services Australia](file:///).
 {% endhint %}
 
 ## Care period events
@@ -18,7 +18,7 @@ These events define a resident's care period and are the most operationally impo
 | **Departure** | When a resident permanently leaves or passes away.                                                                                                                                     |
 | **Leave**     | When a resident takes a period of temporary leave.                                                                                                                                     |
 
-You submit each of these from the resident's record using the relevant action. For the full steps, see [Admitting a Resident](../admitting-a-resident.md), [Exiting a Resident or Recording a Death](../exiting-a-resident-or-recording-a-death.md), and [Managing Temporary Leave](../managing-temporary-leave.md).
+You submit each of these from the resident's record using the relevant action. For the full steps, see [Admitting a Resident](../admitting-a-resident.md), [Exiting a Resident or Recording a Death](/broken/pages/5165be3af2d6397f82ae455706d7b19c5db43e5c), and [Managing Temporary Leave](../managing-temporary-leave.md).
 
 ## Supplement events
 
@@ -50,4 +50,13 @@ This automatic update happens only when Services Australia accepts the opt-in. I
 
 ## What happens after you submit
 
-Once submitted, each event is recorded against the resident and carries its Services Australia status. Most events return as Held first while Services Australia reviews them, then move to Accepted. You can monitor and refresh these statuses, and retry any submission that failed to send, as described in [How Maica Connects to Services Australia](./).
+Once submitted, each event is recorded against the resident and carries its Services Australia status. Most events return as Held first while Services Australia reviews them, then move to Accepted. You can monitor and refresh these statuses, and retry any submission that failed to send, as described in [How Maica Connects to Services Australia](file:///).
+
+Statuses are refreshed in two ways:
+
+* **Manually**, by refreshing the status on an individual event, when you want to check a specific event straight away.
+* **Automatically**, by a daily scheduled check that sweeps every held event and refreshes its status from Services Australia, so held events move to their settled status without anyone having to check each one by hand. The scheduled check covers Entry, Departure, Leave, Opt In, Enteral Feeding, and Oxygen events.
+
+{% hint style="info" %}
+The one exception is the **Extra Service** event, which Services Australia does not provide a status read for. An Extra Service event that is held is not updated by the automatic check and is refreshed manually if needed. The scheduled check is configured by your administrator; see [Scheduling RACS Background Jobs](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/residential-aged-care/billing-engine-architecture/scheduling-racs-background-jobs) in the Administration Guide.
+{% endhint %}

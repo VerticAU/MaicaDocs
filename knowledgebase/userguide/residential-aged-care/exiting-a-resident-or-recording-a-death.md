@@ -61,11 +61,12 @@ The final billing, retention, and refund do not run unless Services Australia ac
 Once the submission succeeds, Maica runs the resident's financial closure automatically. This involves several actions in sequence:
 
 1. **Final billing** is run up to and including the departure date, for the fees that still apply on that day (see the section on the departure day below).
-2. **Final retention** is deducted from the lump sum deposit, calculated proportionally up to the departure date.
-3. A **refund transaction** is recorded against the lump sum deposit for the balance that remains.
-4. The **refund due date** is calculated and saved, based on the notice given.
-5. The **base interest rate** that applies to the refund is captured against the deposit, so interest can be worked out later.
-6. All **Agreement Items** are closed and the **Service Agreement** is marked as discharged with the departure date.
+2. **Departure credits** are issued where a fee that bills in advance had already been charged beyond the departure date, so the resident is not left paying for days after they left (see below).
+3. **Final retention** is deducted from the lump sum deposit, calculated proportionally up to the departure date.
+4. A **refund transaction** is recorded against the lump sum deposit for the balance that remains.
+5. The **refund due date** is calculated and saved, based on the notice given.
+6. The **base interest rate** that applies to the refund is captured against the deposit, so interest can be worked out later.
+7. All **Agreement Items** are closed and the **Service Agreement** is marked as discharged with the departure date.
 
 When the closure finishes, a summary panel shows the departure date and reason, the final billing period, the refund amount, the refund due date, and the closed status of the Service Agreement.
 
@@ -102,6 +103,16 @@ Because of this, only certain fees can be charged on the departure day, and only
 * **Cannot be charged on the departure day:** the Means Tested Care Fee, the Hotelling Contribution, the Non-Clinical Care Contribution, the Income Tested Fee, and the Daily Accommodation Contribution.
 
 Maica applies these rules automatically during the final billing run, so the contributions that depend on subsidy are excluded from the departure day while the chargeable fees are still billed.
+
+### Departure credits for fees billed in advance
+
+Some fees bill **in advance**, meaning a charge for a period may already have been raised before the resident departed. When a resident leaves part way through a period that was billed ahead, they would otherwise be left paying for days after their departure.
+
+To prevent this, the departure processor issues a **Departure Credit** for the days beyond the departure date on any in-advance fee item that was billed past that date. Each credit is calculated pro-rata for the unused days, is derived only from the original advance charge raised by the billing engine (not from later adjustments), and is attached to the resident's final invoice so it offsets the amount already charged.
+
+{% hint style="info" %}
+Departure credits are produced automatically as part of the closure run; there is no separate action to trigger them. They appear as credit lines on the final invoice, distinguishable from other charges by their source. You do not need to calculate or raise them by hand.
+{% endhint %}
 
 {% hint style="warning" %}
 For residents on hospital leave, the day-29 reduction in the Means Tested Care Fee is monitored by your team rather than applied automatically. Check the resident's leave position before processing a departure that follows a long hospital stay.
