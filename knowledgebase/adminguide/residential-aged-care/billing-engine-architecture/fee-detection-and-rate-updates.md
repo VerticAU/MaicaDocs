@@ -14,10 +14,6 @@ It is gated by the **Automate Resident Fee Rate Updates** toggle on the [RACS Co
 
 The batch only considers active Agreement Items on active residential agreements, and only those whose fee type is one of the means tested or income tested contributions that Services Australia publishes per-resident rates for: the Means Tested Care Fee, Income Tested Fee, Daily Accommodation Contribution, Non-Clinical Care Contribution, and Hotelling Contribution.
 
-### The integration dependency
-
-The actual call to Services Australia is made by a separate Services Australia integration component, not by the batch itself. When that component is not present in the org, the batch logs a warning for the item and moves on without failing. In other words, the detection framework is wired and schedulable ahead of the integration component being deployed; until the integration component is in place, runs complete but make no live calls.
-
 ### Outcomes
 
 For each resident item, the callout returns one of four outcomes:
@@ -48,8 +44,4 @@ Several fee types are deliberately kept out of automated rate detection because 
 * **RAD/RAC Retention** is calculated by the retention service against the lump sum.
 * **Higher Everyday Living Fee** and **Extra Service Fee** are provider-set and not driven by Services Australia rate detection.
 
-In addition, an individual Service Agreement can be marked as excluded from automated rate changes, which removes that resident from both the scheduled fee rate check and the indexation engine. This is intended for residents whose fees are managed manually, such as short-stay respite residents billed in advance for the whole stay.
-
-{% hint style="warning" %}
-The per-Service-Agreement exclusion control is part of the RACS rollout. Confirm its availability and exact field name in your installed package version.
-{% endhint %}
+In addition, an individual Service Agreement can be marked as excluded from automated rate changes using the **Exclude from Automated Rate Changes** checkbox (`Exclude_From_Automated_Rate_Changes__c`) on the Service Agreement. When set, the resident is removed from both the scheduled fee rate check and the indexation engine. This is intended for residents whose fees are managed manually, such as short-stay respite residents billed in advance for the whole stay. The manual **Check Fee Rates** action remains available for an excluded resident.

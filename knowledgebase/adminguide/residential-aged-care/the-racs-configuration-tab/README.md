@@ -27,7 +27,7 @@ The sections are grouped by **update cadence** rather than by fee type, because 
 | **Indexed Rates and Supplements (March and September)** | The standard Basic Daily Fee, the DAP index number, and the maximum accommodation supplement |      3 | Twice-yearly indexation (20 March and 20 September)            |
 | **Automation**                                          | Toggles that control whether scheduled background processes run                              |      2 | Set once, after validating the relevant process                |
 
-Each section opens with a short paragraph explaining its purpose and update cadence, followed by its fields. The individual fields are documented in [Caps and Duration Settings](caps-and-duration-settings.md), [Rate Configuration](rate-configuration.md), and [Automation Toggles](automation-toggles.md).
+Each section opens with a short paragraph explaining its purpose and update cadence, followed by its fields. The individual fields are documented in [Caps and Duration Settings](caps-and-duration-settings.md), [Rate Configuration](rate-configuration.md), and [Automation Toggles](/broken/pages/e383a85f8371009b2768bc0603c17e4011f55d0b).
 
 ## Saving changes
 

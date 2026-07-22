@@ -11,7 +11,7 @@ The engine is a daily, scheduled, batched orchestrator. On each run it walks eve
 Technically, `RAC_BillingEngine` is a Salesforce `Batchable`, `Schedulable`, and `Stateful` class. A few properties follow from that design:
 
 * **Scheduled and batched.** A daily scheduled run starts a fresh batch. The batch processes Agreement Items in chunks of **20** at a time, each chunk with its own governor limits.
-* **Callout-free.** The engine never calls Services Australia. Fee rate callouts are separate scheduled job (see [Fee Detection and Rate Updates](fee-detection-and-rate-updates.md)).
+* **Callout-free.** The engine never calls Services Australia. Fee rate callouts are separate scheduled job (see [Fee Detection and Rate Updates](/broken/pages/3c4471bff8b9aadb01aa7d0f1f31cddb161e29e8)).
 * **Stateful counters.** The engine keeps running totals (items completed, items failed, statements touched, chain depth) across all chunks so the run can report a tidy summary at the end.
 
 {% hint style="info" %}
@@ -91,4 +91,4 @@ If an item fails, its **Billing Status** is set to `Failed` and an error Log rec
 
 ## Automatic and manual runs
 
-The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area. Either way, the same pipeline executes; the only difference is what starts it. For scheduling and manual rate changes, see [Scheduling and Manual Rate Changes](scheduling-and-manual-rate-changes.md).
+The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area. Either way, the same pipeline executes; the only difference is what starts it. For scheduling and manual rate changes, see [Scheduling and Manual Rate Changes](/broken/pages/03ed22c679524501b012b8a3b6dd10872c720402).

@@ -5,7 +5,7 @@ Three residential aged care processes are designed to run automatically on a sch
 It is written for administrators who configure and monitor the RACS background processes.
 
 {% hint style="info" %}
-The Schedules tab and its job controls (run time, frequency, start date, and the running-user and active or inactive indicators on each job) are the shared Maica scheduled-jobs framework. This article covers the RACS jobs specifically. For manual rate changes, see [Scheduling and Manual Rate Changes](scheduling-and-manual-rate-changes.md).
+The Schedules tab and its job controls (run time, frequency, start date, and the running-user and active or inactive indicators on each job) are the shared Maica scheduled-jobs framework. This article covers the RACS jobs specifically. For manual rate changes, see [Scheduling and Manual Rate Changes](/broken/pages/03ed22c679524501b012b8a3b6dd10872c720402).
 {% endhint %}
 
 ## The three RACS jobs

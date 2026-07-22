@@ -45,4 +45,4 @@ Entering a value on this tab does not recalculate anything by itself. The stored
 * The **indexation engine** reads the BDF standard rate and the DAP index number at each indexation date.
 * The **departure process** captures the BIR when a refund is processed.
 
-For the mechanics of indexation, see [The Indexation Engine](../billing-engine-architecture/the-indexation-engine.md).
+For the mechanics of indexation, see [The Indexation Engine](/broken/pages/53b7fd0adb757103b79b2b015caa8e1039c0ccfb).

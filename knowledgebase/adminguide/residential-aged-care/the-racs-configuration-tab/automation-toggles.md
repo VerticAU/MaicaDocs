@@ -1,9 +1,25 @@
 # Automation Toggles
 
-The **Automation** section of the [RACS Configuration tab](./) holds two toggles that control whether scheduled background processes are allowed to run. Both are checkboxes, both default to **off**, and both should be left off until the process they control has been validated against test data.
+The **Automation** section of the [RACS Configuration tab](file:///) holds three toggles that control whether scheduled background processes are allowed to run. All are checkboxes, all default to **off**, and all should be left off until the process they control has been validated against test data.
 
 {% hint style="danger" %}
 Turn these toggles on only after you have validated the automated process against test residents or test claims. Enabling automation before the process has been checked can apply rate changes or generate adjustment invoices across live residents without review.
+{% endhint %}
+
+## Automate Billing Engine
+
+This toggle controls whether the residential billing engine may run on a schedule.
+
+| Field                       | Type     | Default | On-screen help text                                                                                    |
+| --------------------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ |
+| **Automate Billing Engine** | Checkbox | Off     | Turn on to allow the RACS Billing Engine batch job to be scheduled. Leave off to run billing manually. |
+
+**When on:** the RACS Billing Engine job becomes available to schedule from the **Schedules** tab of the Billing Settings component. Once scheduled, it bills every due Agreement Item and rolls up invoices and statements on its recurring run.
+
+**When off:** the job's row on the Schedules tab is shown but disabled, so the engine does not run automatically. Billing can still be triggered ad-hoc from the settings area.
+
+{% hint style="info" %}
+Turning the toggle on makes the job schedulable; it does not start it. You still configure the schedule on the Billing Settings Schedules tab. For the job itself, see [Scheduling RACS Background Jobs](../billing-engine-architecture/scheduling-racs-background-jobs.md).
 {% endhint %}
 
 ## Automate Resident Fee Rate Updates

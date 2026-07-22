@@ -30,7 +30,7 @@ There are two ways the service runs.
 When the claim for a month is approved and the payment statement breakdown has been synced, the service runs as the final reconciliation step, provided the **Automate statement reconciliation** setting is switched on. It runs within the same claim sync process and does not make its own calls to Services Australia.
 
 {% hint style="info" %}
-The automatic behaviour is controlled by an automation toggle in the RACS configuration. See [Automation toggles](the-racs-configuration-tab/automation-toggles.md). When the toggle is off, reconciliation does not run automatically and can be run manually instead.
+The automatic behaviour is controlled by an automation toggle in the RACS configuration. See [Automation toggles](/broken/pages/e383a85f8371009b2768bc0603c17e4011f55d0b). When the toggle is off, reconciliation does not run automatically and can be run manually instead.
 {% endhint %}
 
 ### Manually for a single resident

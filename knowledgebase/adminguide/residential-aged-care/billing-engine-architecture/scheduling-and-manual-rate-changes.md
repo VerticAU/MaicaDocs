@@ -1,26 +1,9 @@
 # Scheduling and Manual Rate Changes
 
-The residential billing processes are designed to run automatically on a schedule, but administrators also need to intervene directly from time to time, for example to correct a single resident's rate. This article covers how the scheduled RACS jobs are configured and how a manual rate change is applied to one Agreement Item.
-
-## Scheduled runs
-
-Two RACS processes are intended to run on a schedule, each gated by an automation toggle on the [RACS Configuration tab](../the-racs-configuration-tab/):
-
-| Process                                            | What it does                                                        | Cadence                                                                    |
-| -------------------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Billing engine** (`RAC_BillingEngine`)           | Bills every due Agreement Item and rolls up invoices and statements | Daily, typically overnight                                                 |
-| **Fee rate check** (`RAC_ResidentFeeCalloutBatch`) | Polls Services Australia for per-resident fee rate changes          | On its configured cadence, only while the fee rate automation toggle is on |
-
-RACS scheduled jobs are managed from the **Schedules** tab in the Billing Settings area, using the same controls as other packaged Maica batch jobs (run time, frequency, start date). Each RACS job appears there when its matching automation toggle is turned on, so the toggle is the control point: turn it on to schedule the job, turn it off to stop it.
-
-The billing engine has a daily schedule and works through its backlog using the catch-up chain (see [Next Billing Date and Catch-Up Chains](next-billing-date-and-catch-up-chains.md)). The fee rate check does no work at all while its toggle is off, even if a schedule exists, so administrators can leave a schedule in place and use the toggle to switch detection on and off.
+The residential billing processes are designed to run automatically on a schedule, but administrators also need to intervene directly from time to time, for example to correct a single resident's rate. This article covers how a manual rate change is applied to one Agreement Item.
 
 {% hint style="info" %}
-Both engines can also be triggered ad-hoc from the settings area when you need a run immediately rather than waiting for the next scheduled time.
-{% endhint %}
-
-{% hint style="warning" %}
-The Schedules-tab entries for the RACS billing engine and fee rate check are part of the RACS rollout. Confirm which RACS jobs appear on the Schedules tab in your installed package version, and validate an end-to-end run against a test resident before relying on an automated schedule.
+For how the scheduled RACS background jobs (the billing engine, the resident fee rate check, and the held event status check) are configured and enabled, see [Scheduling RACS Background Jobs](scheduling-racs-background-jobs.md).
 {% endhint %}
 
 ## Manual rate changes
@@ -47,5 +30,9 @@ The action enforces a few rules before it will apply the change:
 * The effective date must be no more than one month from today.
 
 {% hint style="info" %}
-Reducing a Means Tested Care Fee rate shows an advisory before you submit, because the retrospective adjustment will generate a credit for periods already billed at the higher rate. The Change Rate action is not available on deactivated rows.
+Reducing a Means Tested Care Fee rate shows an advisory before you submit, because the retrospective adjustment will generate a credit for periods already billed at the higher rate.
+{% endhint %}
+
+{% hint style="info" %}
+The Change Rate action is not available on deactivated rows, nor on the Daily Accommodation Payment and RAD/RAC Retention fee types, which are maintained by the indexation engine and the retention service respectively. See [Configuring Resident Fees](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/the-manage-racs-agreement-component/configuring-resident-fees-tab) in the User Guide.
 {% endhint %}

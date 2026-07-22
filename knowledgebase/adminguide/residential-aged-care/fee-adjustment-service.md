@@ -30,7 +30,7 @@ There are two ways the service is triggered. Both follow the same calculation lo
 When a rate change is applied to an agreement item (for example following a detected government rate change), the fee update process creates the new agreement item and then invokes the adjustment service for any billing already stamped at the old rate inside the window. The same happens when a fee ceases: the service is invoked with an effective new rate of zero, producing a full credit for any billing after the cessation date.
 
 {% hint style="info" %}
-For how rate changes are detected and applied, see [Fee detection and rate updates](billing-engine-architecture/fee-detection-and-rate-updates.md).
+For how rate changes are detected and applied, see [Fee detection and rate updates](/broken/pages/3c4471bff8b9aadb01aa7d0f1f31cddb161e29e8).
 {% endhint %}
 
 ### After a manual rate change
