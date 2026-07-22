@@ -23,7 +23,7 @@ For each item due, the engine:
 Fee items can be billed daily, weekly, fortnightly, or monthly, and most residents have several items running side by side, for example a Basic Daily Fee item, a means tested fee item, and an accommodation item all billing in parallel.
 
 {% hint style="info" %}
-The billing engine is general purpose. It does not have separate logic hard-coded for every fee; instead it reads the fee type on each item and applies the right rules from there. That is why setting the correct fee type when you configure an item matters. See [Configuring Resident Fees (Fees Tab)](the-manage-racs-agreement-component/configuring-resident-fees-tab.md).
+The billing engine is general purpose. It does not have separate logic hard-coded for every fee; instead it reads the fee type on each item and applies the right rules from there. That is why setting the correct fee type when you configure an item matters. See [Configuring Resident Fees (Fees Tab)](/broken/pages/e58e6fd8e6af00e47a151a42202614774912caaf).
 {% endhint %}
 
 ## Invoices and invoice lines

@@ -28,7 +28,12 @@ Select **Add Fee Item** to open the fee item panel, then work through two steps.
 {% step %}
 ## Select the fee type
 
-Choose a Support Item from the lookup. The lookup is filtered to fee types that are valid for the resident's fee arrangement, so you cannot accidentally add a fee type that does not apply. A guidance message describes the fees you would typically configure for this resident.
+Choose a Support Item from the lookup. The lookup is filtered so you cannot add a fee type that does not apply to the resident. Two filters combine:
+
+* **Fee arrangement.** Only fee types valid for the resident's fee arrangement are offered (see the table below).
+* **Price List.** Only Support Items that appear as an active entry on the Service Agreement's Price List are shown, so the item you pick is always one your organisation has priced for this agreement.
+
+A guidance message describes the fees you would typically configure for this resident.
 {% endstep %}
 
 {% step %}
@@ -53,6 +58,10 @@ The fee types you can add depend on the resident's fee arrangement.
 | **Post 1 November 2025** | Basic Daily Fee, Hotelling Contribution, Non-Clinical Care Contribution, Daily Accommodation Payment, Daily Accommodation Contribution, Higher Everyday Living Fee                              |
 | **1 July 2014**          | Basic Daily Fee, Means Tested Care Fee, Daily Accommodation Payment, Daily Accommodation Contribution, Extra Service Fee, Additional Service Fee, Higher Everyday Living Fee, RAD/RAC Retention |
 | **Pre-1 July 2014**      | Basic Daily Fee, Income Tested Fee, Daily Accommodation Payment, Daily Accommodation Contribution, Extra Service Fee, RAD/RAC Retention                                                         |
+
+{% hint style="info" %}
+A respite resident is offered a narrowed set regardless of arrangement: Basic Daily Fee, Higher Everyday Living Fee, and an optional one-off Booking Fee only. Accommodation, means tested, and income tested fees do not apply during respite, because the government pays the respite accommodation supplement directly to the provider for the stay.
+{% endhint %}
 
 {% hint style="info" %}
 When you add a Daily Accommodation Payment, the rate is pre-filled from the agreed room price and the interest rate at the time the agreement was signed. You can override it. An Automatic RAD Drawdown option also appears for residents who pay by lump sum, which lets the billing engine draw fees from the deposit balance.
@@ -96,6 +105,10 @@ Each item in the list has row actions for ongoing maintenance.
 * **Change Rate** is the right action for a genuine rate change. You enter the new rate and an effective date. Maica end-dates the existing item, creates a new one carrying the new rate, and corrects any periods already billed at the old rate. This produces the same clean history as applying a change through Check Fee Rates.
 * **Deactivate** stops billing for that fee from today. Maica sets the item's end date to today, which makes it inactive. The item stays visible in the list, greyed out, for audit purposes. You are asked to confirm first.
 
+{% hint style="info" %}
+**Change Rate is not available on every fee type.** It is disabled for the **Daily Accommodation Payment** and **RAD/RAC Retention** fee types, because those rates are not changed by a manual rate entry: a Daily Accommodation Payment moves through the indexation engine and the agreed room price, and RAD/RAC Retention is calculated by the retention service against the lump sum. On those rows the action shows as disabled with a tooltip explaining why, and directs you to edit the fee item instead. Change Rate is also unavailable on deactivated rows.
+{% endhint %}
+
 {% hint style="warning" %}
-If you reduce the rate on a Means Tested Care Fee item and the resident has already been charged at the higher rate, you may need to refund the difference. Maica shows a reminder but does not calculate the refund. Process any refund as a credit note or a negative invoice line item on the relevant invoice.
+If you use Change Rate to reduce a Means Tested Care Fee rate, Maica shows an advisory before you submit, because the retrospective correction will generate a credit for periods already billed at the higher rate. Review the advisory before confirming. If the resident has already been charged at the higher rate, you may need to process a refund; Maica shows a reminder but does not calculate the refund. Process any refund as a credit note or a negative invoice line item on the relevant invoice.
 {% endhint %}
