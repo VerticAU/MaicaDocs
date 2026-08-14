@@ -77,7 +77,7 @@ Support Details are visible to users with the Support Permission Set. This Permi
 
 Please note, Phone and Email fields must be populated in your Maica General Settings & the related Permission Set defined above must be assigned for this button to be visible. \
 \
-&#xNAN;_&#x4E;ote: You can separate visibility of the Support Button for different users via the Permission Set._&#x20;
+_&#x4E;ote: You can separate visibility of the Support Button for different users via the Permission Set._&#x20;
 {% endhint %}
 
 ### Validate the Experience
