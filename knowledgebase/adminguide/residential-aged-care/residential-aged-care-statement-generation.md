@@ -5,7 +5,7 @@ A Residential Aged Care monthly statement is a `Service Agreement Statement` rec
 Statement generation is a process an administrator runs for a chosen period. It is not part of the nightly billing run: the billing engine creates invoice lines and invoices, and statement generation reads those committed lines afterwards. That separation is deliberate. Because every total is derived from committed Invoice Line Items rather than accumulated as charges are raised, a statement can be regenerated and it is self-correcting when lines are later amended or credited.
 
 {% hint style="info" %}
-Earlier versions of the billing engine produced these statements as part of the nightly run. It no longer does. See [Billing Engine Architecture](billing-engine-architecture/).
+The nightly billing engine does not produce statements. It raises the invoice lines this process reads. See [Billing Engine Architecture](billing-engine-architecture/).
 {% endhint %}
 
 ## Where do I find it?
@@ -61,7 +61,7 @@ Maica selects every `Residential Aged Care - Monthly` statement on that Service 
 | Exactly one statement covering **identical** start and end dates | Treated as a re-run of that statement. See [Re-running a period](residential-aged-care-statement-generation.md#re-running-a-period). |
 | Anything else                                                    | Rejected. The error names each overlapping statement, its period, and how many of the period's Invoice Line Items it holds.          |
 
-Overlap is deliberately detected on the statement periods themselves rather than on the lines they hold. A statement generated before its lines existed overlaps a window while holding nothing inside it, and testing the lines would miss it, which is how two overlapping statements could previously be created for the same resident.
+Overlap is deliberately detected on the statement periods themselves rather than on the lines they hold. A statement generated before its lines existed overlaps a window while holding nothing inside it, so testing the lines would miss it and allow two overlapping statements for the same resident.
 
 Exactly one statement may cover a period. Nothing in this process can move a line from one statement to another, so resolve the overlapping statement before generating the new one.
 {% endstep %}

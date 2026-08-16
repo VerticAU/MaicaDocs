@@ -20,16 +20,16 @@ Only Agreement Items whose Funding has a Funding Source of `Residential Aged Car
 
 ### Why the chunk size is one
 
-A chunk size of one is a deliberate choice of failure isolation over throughput. Every write the engine makes belongs to a single savepoint-guarded commit phase at the end of the chunk, so an unhandled database error in that phase rolls the whole chunk back. At a larger chunk size, one Agreement Item the database rejected took every other item in its chunk down with it. At one, a commit failure quarantines exactly the item that caused it.
+A chunk size of one is a deliberate choice of failure isolation over throughput. Every write the engine makes belongs to a single savepoint-guarded commit phase at the end of the chunk, so an unhandled database error in that phase rolls the whole chunk back. At a wider chunk that rollback would take every other item in the chunk down with the one the database rejected. At one, a commit failure quarantines exactly the item that caused it and no sibling.
 
-The trade is that the per-chunk fixed cost, the parent record loads, the cap settings and the invoice resolution, is now paid once per Agreement Item rather than once per twenty. Total queries across a run rise accordingly. The daily run is unattended and chains itself until the backlog drains, so elapsed time is the currency the design is willing to spend.
+The trade is that the per-chunk fixed cost, the parent record loads, the cap settings and the invoice resolution, is paid once per Agreement Item rather than once per chunk of many. Total queries across a run rise accordingly. The daily run is unattended and chains itself until the backlog drains, so elapsed time is the currency the design is willing to spend.
 
-## What the engine no longer does
+### What sits outside the engine
 
-Two behaviours that earlier versions of this article described have been removed from the engine, and readers looking for them here should look elsewhere.
+Two things a reader might reasonably expect the engine to handle sit outside it.
 
-* **Statements.** The engine no longer creates, updates, rolls up, counts or links to any Service Agreement Statement. `Residential Aged Care - Monthly` is still a valid Statement Type and no existing statement record was affected by the change. Statement generation is now a discrete, flow-driven process that derives its totals from committed Invoice Line Items, which means a statement can be regenerated and is self-correcting when lines are later amended. The engine's in-flight totals could not be recomputed and drifted from their own lines.
-* **Leave.** The engine does not read leave records when billing. No leave type suspends resident billing in residential aged care, so chargeable days always equal the total days in the period. Leave records, their automation and any reporting on them are untouched; only the engine's reading of them is gone. The reasoning is set out in [Next Billing Date and Catch-Up Chains](next-billing-date-and-catch-up-chains.md).
+* **Statements.** The engine does not create, update, roll up, count or link to any Service Agreement Statement. Statement generation is a separate, flow-driven process that an administrator runs for a chosen period from **Claim Management** in Maica's Settings. It derives its totals from committed Invoice Line Items rather than accumulating them as charges are raised, which is what allows a statement to be regenerated and to correct itself when lines are later amended. See Residential Aged Care Statement Generation.
+* **Leave.** The engine does not read leave records when billing. No leave type suspends resident billing in residential aged care, so chargeable days always equal the total days in the period. Leave is still recorded, and still drives reporting and submission to Services Australia; it simply has no bearing on what the engine charges. The reasoning is set out in Next Billing Date and Catch-Up Chains.
 
 {% hint style="warning" %}
 A resident's fees do not reduce during any type of leave. The resident is paying to hold a bed and the bed is held whether they occupy it or not, so every leave provision's consequence falls on the provider's subsidy rather than on what the resident owes.
@@ -59,7 +59,7 @@ Each Agreement Item carries the fields the engine needs to bill it:
 | **Fee Type** (on the linked Support Item)                   | Tells the engine which processing rules apply.                                                                             |
 
 {% hint style="info" %}
-**Active Item** is a formula that is true when today falls within the item's dates and the parent agreement is active. The billing engine no longer uses it to decide eligibility, for the reasons given under [Selecting what is due](./#selecting-what-is-due). Other components, including the Manage RACS Agreement screens and the accommodation service, still rely on it.
+**Active Item** is a formula that is true when today falls within the item's dates and the parent agreement is active. The billing engine does not use it to decide eligibility, for the reasons given under Selecting what is due. Other components, including the Manage RACS Agreement screens and the accommodation service, do rely on it.
 {% endhint %}
 
 ### Orchestrated services
@@ -89,7 +89,7 @@ The run selects Agreement Items on seven conditions. An item is in scope when it
 | The agreement is billable   | Not cancelled, not a draft, not discharged, started on or before the run date, and either open-ended or ended within the lookback window. |
 | The funding is residential  | The agreement's Funding has a Funding Source of `Residential Aged Care`.                                                                  |
 
-Eligibility deliberately gates on no formula field. Both the item's **Active Item** formula and the agreement's **Status** formula embed a test that today falls on or before the end date, and that test defeats the cursor: an item whose cursor is clamped to its end date would be eligible on exactly one calendar day, because the cursor matures on that date and the formula turns false the next morning. Since the batch runs overnight, a fee ceased during business hours had no eligible run at all and its accrued days were never billed. The exclusions the agreement's Status formula stood for are preserved as the explicit conditions in the table above.
+Eligibility deliberately gates on no formula field. Both the item's **Active Item** formula and the agreement's **Status** formula embed a test that today falls on or before the end date, and that test defeats the cursor: an item whose cursor is clamped to its end date would be eligible on exactly one calendar day, because the cursor matures on that date and the formula turns false the next morning. Since the batch runs overnight, a fee ceased during business hours would then have no eligible run at all and its accrued days would never be billed. The exclusions the agreement's **Status** formula expresses are therefore stated as the explicit conditions in the table above, which are filterable and carry no date test.
 
 Discharged agreements stay out of scope because final billing on departure is owned by the departure process, which drives the same per-item pipeline directly. See [Exiting a Resident or recording a death](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/residential-aged-care/exiting-a-resident-or-recording-a-death).
 
@@ -213,7 +213,7 @@ Where resolution fails for a Service Agreement, the engine builds its own invoic
 
 ## Reviewing a run
 
-Failures are reported through Log records rather than through the batch job, and that is a change in where to look.
+Failures are reported through Log records rather than through the batch job, so the Log list view is where triage starts.
 
 {% hint style="warning" %}
 When a single item fails, its **Billing Status** is set to `Failed`, a Log record of type `Error` with a Source of `RAC Billing Engine` is created, and the run continues with the next item. Failed items are skipped on later runs until an administrator clears **Billing Status**, so they do not block billing for other residents. Review the Log list view alongside the Billing Status filter to triage failures.
