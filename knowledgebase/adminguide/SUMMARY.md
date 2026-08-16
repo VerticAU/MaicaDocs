@@ -111,6 +111,7 @@
   * [The Indexation Engine](residential-aged-care/billing-engine-architecture/the-indexation-engine.md)
   * [Scheduling RACs Background Jobs](residential-aged-care/billing-engine-architecture/scheduling-racs-background-jobs.md)
   * [Scheduling and Manual Rate Changes](residential-aged-care/billing-engine-architecture/scheduling-and-manual-rate-changes.md)
+* [Residential Aged Care Statement Generation](residential-aged-care/residential-aged-care-statement-generation.md)
 * [The Lump Sum Account model](residential-aged-care/the-lump-sum-account-model/README.md)
   * [Retention and Drawdown Logic](residential-aged-care/the-lump-sum-account-model/retention-and-drawdown-logic.md)
   * [Combination Method Configuration](residential-aged-care/the-lump-sum-account-model/combination-method-configuration.md)
