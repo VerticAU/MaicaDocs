@@ -129,7 +129,7 @@ If the chain reaches the depth limit before the backlog is cleared, the engine r
 
 ### When the chain stops early
 
-A hop that commits nothing ends the chain, rather than burning through the depth limit. The reasoning is that a hop which committed no Agreement Item update would repeat exactly the same work on the next hop with exactly the same result. Before this rule, a single permanently unbillable item could requeue the chain to its depth limit every night.
+A hop that commits nothing ends the chain, rather than burning through the depth limit. The reasoning is that a hop which committed no Agreement Item update would repeat exactly the same work on the next hop with exactly the same result. Without that rule a single permanently unbillable item would requeue the chain to its depth limit every night.
 
 The engine records a Log entry of type `Warning`, with a Source of `RAC Billing Engine`, in each of the three conditions worth an administrator's attention:
 
