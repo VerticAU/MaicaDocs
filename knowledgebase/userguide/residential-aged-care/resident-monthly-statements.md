@@ -4,7 +4,7 @@ A monthly statement gives a resident a single record of what they were charged o
 
 ## When a statement is produced
 
-Statements are produced by a run that someone in your organisation starts for a chosen period, usually once the month being covered has finished and all of its charges have been raised. They are not created automatically overnight.
+Statements are produced by a run that someone in your organisation starts for a chosen period, usually once the month being covered has finished and all of its charges have been raised.&#x20;
 
 That ordering matters. The nightly billing run raises the invoice lines; the statement is calculated from those lines afterwards. A statement generated before the month's charges were all raised would understate the resident's position, so the period is normally generated after the month has closed.
 
