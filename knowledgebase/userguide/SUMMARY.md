@@ -213,6 +213,7 @@
 * [Reconciling Payments](residential-aged-care/reconciling-payments.md)
 * [Reporting Obligations Overview](residential-aged-care/reporting-obligations-overview/README.md)
   * [24/7 Registered Nurse Coverage](residential-aged-care/reporting-obligations-overview/24-7-registered-nurse-coverage.md)
+  * [Care Minutes](residential-aged-care/reporting-obligations-overview/care-minutes.md)
   * [Quarterly financial Report QFR Data](residential-aged-care/reporting-obligations-overview/quarterly-financial-report-qfr-data.md)
   * [Managing SIRS Notifications](residential-aged-care/reporting-obligations-overview/managing-sirs-notifications.md)
   * [APCS RAD/RAC Ledger Export](residential-aged-care/reporting-obligations-overview/apcs-rad-rac-ledger-export.md)
