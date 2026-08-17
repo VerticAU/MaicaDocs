@@ -5,7 +5,7 @@ Two automated mechanisms reduce a resident's lump sum balance over the life of t
 This article explains how both services calculate their amounts, the records they create, and how they avoid ever pushing a balance below zero. It is written for administrators and power users who need to understand or support the billing engine's treatment of lump sum accounts.
 
 {% hint style="info" %}
-Both services depend on the objects described in [The Lump Sum Account Model](file:///), and both are driven by the billing engine covered in [Billing Engine Architecture](/broken/pages/b7195ce1cf837817529312a0e2744f8340bb42e3).
+Both services depend on the objects described in [The Lump Sum Account Model](https://knowledge.maica.com.au/maica-knowledge-base/maica-administration-guide/residential-aged-care/the-lump-sum-account-model), and both are driven by the billing engine covered in [Billing Engine Architecture](https://knowledge.maica.com.au/maica-knowledge-base/maica-administration-guide/residential-aged-care/billing-engine-architecture).
 {% endhint %}
 
 ## Retention
@@ -35,6 +35,8 @@ After summing the segments, the service clamps the total to the account's curren
 ### Monthly cadence
 
 Retention follows a once-per-calendar-month cadence required by the regulator. If the fee item was last charged retention less than a month ago, the service does not charge again on the normal billing path. Instead it signals the engine to skip the charge and push the item's next billing date forward by one month, so the next scheduled run picks it up at the right time. A validation rule on the Agreement Item enforces the same monthly cadence at configuration time, and this runtime check is the second line of defence against manual date overrides or imported data.
+
+The cadence anchor is stamped with the **end of the period just billed**, not the date the run happened. On a catch-up run those two differ, and anchoring on the run date would push the next eligible date beyond where the cadence guard expects it and silently skip a legitimately due period.
 
 ### Retention on departure
 
@@ -89,12 +91,16 @@ When the balance is smaller than the invoiced amount, a **partial draw-down** fi
 
 The service takes a database savepoint and commits four changes as a single unit. Before reading the balance it re-queries the account with a row lock, so a concurrent process (such as a departure refund running during the nightly batch) cannot consume the same balance twice.
 
-1. A **Lump Sum Transaction** of type Draw-Down, with a negative Amount, the new balance in **Balance After**, and a link to the triggering Invoice Line Item.
+1. A **Lump Sum Transaction** of type Draw-Down, with a negative Amount, the new balance in **Balance After**, a **Transaction Date** of the billing period end, and a link to the triggering Invoice Line Item.
 2. A **Payment** against the invoice, with a Source of RAD Draw-Down, marked as paid, since the draw-down has already settled the amount from the deposit.
 3. A back-link from the transaction to the Payment, giving navigation in both directions.
 4. A reduction of the account's **Current Balance** by the drawn amount.
 
 The **Cumulative Draw-Down Amount** roll-up on the account updates automatically from the new transaction.
+
+{% hint style="info" %}
+**A draw-down is dated to the period it settles, not to the day the engine ran.** On a normal nightly run the two are effectively the same. They diverge on a catch-up run replaying several missed periods, after a missed schedule, and on a manual re-run. Dating by the run date would collapse every replayed period's draw-down onto a single day, which hides each movement from its own period's retention segmentation and mis-buckets it in the APCS export. Retention uses the same period frame, so the two sit consistently in the ledger.
+{% endhint %}
 
 {% hint style="danger" %}
 If any of the four writes fails, the whole set is rolled back to the savepoint and the engine logs the failure before moving to the next item. The invoice line item and invoice the engine committed earlier are in a prior transaction and are left untouched.
@@ -113,6 +119,7 @@ For a resident on the Combination payment method, reducing the balance changes t
 | Service                  | `RAC_RetentionService`                                              | `RAC_DrawdownService`                                            |
 | Amount basis             | Daily-balance segmentation at the annual rate, clamped to balance.  | Lesser of the invoiced amount and the balance.                   |
 | Cadence                  | Once per calendar month, plus a final pro-rata charge on departure. | Each time the fee item is billed.                                |
+| Transaction date         | The end of the period billed.                                       | The end of the period billed.                                    |
 | Transaction type         | Retention Deduction                                                 | Draw-Down                                                        |
 | Records committed        | Invoice Line Item, Transaction, Payment, balance update.            | Transaction, Payment, back-link, balance update.                 |
 | Cumulative field updated | Cumulative Retention Amount.                                        | Cumulative Draw-Down Amount.                                     |
