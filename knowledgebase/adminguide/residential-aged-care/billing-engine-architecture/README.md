@@ -28,8 +28,8 @@ The trade is that the per-chunk fixed cost, the parent record loads, the cap set
 
 Two things a reader might reasonably expect the engine to handle sit outside it.
 
-* **Statements.** The engine does not create, update, roll up, count or link to any Service Agreement Statement. Statement generation is a separate, flow-driven process that an administrator runs for a chosen period from **Claim Management** in Maica's Settings. It derives its totals from committed Invoice Line Items rather than accumulating them as charges are raised, which is what allows a statement to be regenerated and to correct itself when lines are later amended. See Residential Aged Care Statement Generation.
-* **Leave.** The engine does not read leave records when billing. No leave type suspends resident billing in residential aged care, so chargeable days always equal the total days in the period. Leave is still recorded, and still drives reporting and submission to Services Australia; it simply has no bearing on what the engine charges. The reasoning is set out in Next Billing Date and Catch-Up Chains.
+* **Statements.** The engine does not create, update, roll up, count or link to any Service Agreement Statement. Statement generation is a separate, flow-driven process that an administrator runs for a chosen period from **Claim Management** in Maica's Settings. It derives its totals from committed Invoice Line Items rather than accumulating them as charges are raised, which is what allows a statement to be regenerated and to correct itself when lines are later amended. See [Residential Aged Care Statement Generation](../residential-aged-care-statement-generation.md).
+* **Leave.** The engine does not read leave records when billing. No leave type suspends resident billing in residential aged care, so chargeable days always equal the total days in the period. Leave is still recorded, and still drives reporting and submission to Services Australia; it simply has no bearing on what the engine charges. The reasoning is set out in [Next Billing Date and Catch-Up Chains](next-billing-date-and-catch-up-chains.md).
 
 {% hint style="warning" %}
 A resident's fees do not reduce during any type of leave. The resident is paying to hold a bed and the bed is held whether they occupy it or not, so every leave provision's consequence falls on the provider's subsidy rather than on what the resident owes.
@@ -59,7 +59,7 @@ Each Agreement Item carries the fields the engine needs to bill it:
 | **Fee Type** (on the linked Support Item)                   | Tells the engine which processing rules apply.                                                                             |
 
 {% hint style="info" %}
-**Active Item** is a formula that is true when today falls within the item's dates and the parent agreement is active. The billing engine does not use it to decide eligibility, for the reasons given under Selecting what is due. Other components, including the Manage RACS Agreement screens and the accommodation service, do rely on it.
+**Active Item** is a formula that is true when today falls within the item's dates and the parent agreement is active. The billing engine does not use it to decide eligibility, for the reasons given under [Selecting what is due](./#selecting-what-is-due). Other components, including the Manage RACS Agreement screens and the accommodation service, do rely on it.
 {% endhint %}
 
 ### Orchestrated services
@@ -111,55 +111,55 @@ Each item is processed end to end inside its own try block, so a failure on one 
 
 {% stepper %}
 {% step %}
-#### Resolve the parent records
+### Resolve the parent records
 
 Resolve the parent Service Agreement, Funding and Lump Sum Account from the records preloaded for the chunk.
 {% endstep %}
 
 {% step %}
-#### Derive the billing period
+### Derive the billing period
 
-Derive the billing period. An empty period is a legitimate skip that leaves the cursor untouched; a breach of the in-advance horizon fails the item.
+An empty period is a legitimate skip that leaves the cursor untouched; a breach of the in-advance horizon fails the item.
 {% endstep %}
 
 {% step %}
-#### Compute the proposed charge amount
+### Compute the proposed charge amount
 
 Daily fee types multiply rate by quantity by chargeable days; other frequencies charge rate by quantity for the whole period. Retention takes its amount from the Retention Service.
 {% endstep %}
 
 {% step %}
-#### Apply fee type rules
+### Apply the fee type rules
 
 Route capped fees (Non-Clinical Care Contribution and Means Tested Care Fee) through the Cap Service, retention through the Retention Service and its own duration cap, and bill pass-through fees at their raw amount.
 {% endstep %}
 
 {% step %}
-#### Resolve and widen the invoice
+### Resolve and widen the invoice
 
 Take the invoice for the period from the chunk's pre-resolved map and widen its billing period bounds to cover this item.
 {% endstep %}
 
 {% step %}
-#### Stage the Invoice Line Item
+### Stage the Invoice Line Item
 
-Stage the Invoice Line Item.
+The line carries the derived quantity and unit price, a service date of the period end, and a line item source of `Billing Engine`.
 {% endstep %}
 
 {% step %}
-#### Stage the Funding cumulative updates
+### Stage the Funding cumulative updates
 
-Stage the Funding cumulative updates.
+The cumulative totals that cap evaluation reads are updated in the same commit as the charge that moved them.
 {% endstep %}
 
 {% step %}
-#### Stage the Agreement Item update
+### Stage the Agreement Item update
 
 Advance the billing cursor, stamp the period dates and set **Billing Status** to `Complete`.
 {% endstep %}
 
 {% step %}
-#### Queue settlements
+### Queue the settlements
 
 Queue an accommodation drawdown where eligible, and a retention settlement where the Retention Service built one.
 {% endstep %}
@@ -169,7 +169,7 @@ All database writes are staged and committed once per chunk as bulk operations, 
 
 #### Periods that produce no charge
 
-Three outcomes at step 4 end the item's turn early, and they are deliberately different from each other:
+Three outcomes at the fee type rules step end the item's turn early, and they are deliberately different from each other:
 
 | Outcome                                                                       | What happens                                                                                                                                                                                                          |
 | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
