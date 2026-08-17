@@ -16,10 +16,48 @@ Use the Relocate Resident workflow for **permanent moves within the same home**.
 
 The Accommodation tab first shows the resident's current room, its listed price, the current agreed price, and the ward type if the room is an extra service room. Selecting Relocate Resident steps you through the move.
 
-1. **Select the new room.** Choose the destination from a list of rooms in the same home. The current room is excluded, and rooms that are already occupied are not offered.
+1. **Select the new room.** Choose the destination from a list of rooms in the same home. The current room is excluded, and rooms that are already full for the dates of this agreement are not offered. See [Which rooms are offered](relocating-a-resident-accommodation-tab.md#which-rooms-are-offered).
 2. **Set the new agreed price.** The price defaults to the new room's listed price. You can set it lower by negotiation, but not higher. You also set the effective date and a move reason.
 3. **Review the financial impact.** Maica shows what will change, including any refund due and any recalculated daily payment, based on the price difference.
 4. **Confirm and process.** You confirm the move, and Maica applies all the updates together.
+
+## Which rooms are offered
+
+Both **Relocate Resident** and **Add Accommodation** offer only rooms with capacity left for the dates of the agreement you are working on. A room is withheld when the number of residents holding it over those dates has reached its capacity.
+
+The agreement being edited never counts against itself, so relocating a resident does not see their own current room as occupied.
+
+### What holds a room and what releases it
+
+| State of an agreement holding the room | Room held?                                                            |
+| -------------------------------------- | --------------------------------------------------------------------- |
+| Active                                 | Held                                                                  |
+| Draft                                  | **Held.** A draft is a provisional booking and still reserves the bed |
+| Resident on leave                      | **Held.** A bed is retained for a resident on leave                   |
+| Discharged                             | Released                                                              |
+| Cancelled                              | Released                                                              |
+
+{% hint style="info" %}
+A room whose only occupant has been discharged is offered again straight away. There is no separate step to free the bed.
+{% endhint %}
+
+### How the dates are compared
+
+A room is only counted as occupied where the existing stay and the dates of your agreement actually overlap. An agreement with no end date is treated as running indefinitely.
+
+The comparison is inclusive at both ends, so a stay that ends on the very day your agreement starts still counts as an overlap and the room is not offered. A stay that ended the day before does not, and the room is available.
+
+{% hint style="info" %}
+Capacity is per room, not per bed occupied. A room with capacity for two residents and only one current occupant is still offered.
+{% endhint %}
+
+{% hint style="warning" %}
+**A Service Agreement with no Start Date is offered no rooms at all.** Add Accommodation reports that the Start Date must be set before accommodation can be added, and hides the room lookup rather than showing an empty list. This is deliberate: the capacity check that runs on save skips any agreement without a start date, so offering rooms here would let a dateless agreement take a bed with nothing downstream to stop it. Set the Start Date on the Service Agreement first.
+{% endhint %}
+
+{% hint style="warning" %}
+Add Accommodation also requires the agreement's Funding record to have a **Location** set, since the room list is drawn from the rooms at that location. Where it is missing, the same block applies and the message names the Funding record. Only one message shows at a time, and the Location one takes precedence.
+{% endhint %}
 
 ## Charging for the new room
 
