@@ -35,3 +35,19 @@ Please note, Google Maps APIs require billing to be enabled, even for free usage
 6. **Update Maica Settings**\
    a. In Maica, go to **Settings > Maps Management**\
    b. Paste your Google API Key into the **Google API Key** field and click **Save**.
+
+## **Rotating Your Google API Key**&#x20;
+
+The below section outlines the steps required to rotate your own Google API Key:&#x20;
+
+{% hint style="info" %}
+This may be necessary if your Key becomes outdated or you receive `Bad Request` error messages within Maica when travel values are attempted to be calculated.
+{% endhint %}
+
+1. Open the Google Cloud Console Credentials page.
+2. Click the name of the API key you want to roll.
+3. Click Rotate key at the top of the screen.
+4. Choose a new name if needed, then click Create.
+5. Copy the new key and update your application code.
+6. Delete the old key from your credentials list once your app finishes migrating.
+7. Paste the updated key into the Maica Settings.&#x20;
