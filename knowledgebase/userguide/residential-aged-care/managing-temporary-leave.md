@@ -1,6 +1,6 @@
 # Managing Temporary Leave
 
-Temporary leave is when a permanent resident temporarily stops receiving care while their place is held for them. Leave does not affect a resident's right to their place, but depending on the type and length of leave it can affect the subsidy the government pays and the fees the resident is charged.
+Temporary leave is when a permanent resident temporarily stops receiving care while their place is held for them. Leave does not affect a resident's right to their place, but depending on the type and length of leave it can affect the subsidy the government pays.
 
 This article covers the leave types, how to record a leave period, how each leave type affects fees, and how leave balances work.
 
@@ -33,7 +33,7 @@ The leave start date is inclusive for payment. The end date is not inclusive. If
 
 ## Fee treatment during leave
 
-How leave affects fees depends on the leave type. The billing engine reads the leave period and applies the right treatment automatically, with one exception noted below.
+Fees continue during every type of leave. The billing engine does not read leave records, so no leave type reduces the days charged or suspends billing. What differs by leave type is the subsidy the government pays the provider.
 
 | Leave type          | Fee treatment                                                                                                                                                                     |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,6 +45,8 @@ How leave affects fees depends on the leave type. The billing engine reads the l
 {% hint style="warning" %}
 The day 29 hospital leave reduction is not applied automatically. The billing engine continues to bill the means tested care fee at the configured rate. Monitoring hospital stays that reach 28 days and adjusting the resident's fee where appropriate is a provider responsibility. Adjust the rate on the Fees tab if a reduction applies.
 {% endhint %}
+
+For how each leave type affects the resident's fees in more detail, see [Fee Treatment during Leave](fee-treatment-during-leave.md).
 
 ## Leave balances
 

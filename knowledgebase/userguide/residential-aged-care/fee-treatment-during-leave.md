@@ -8,9 +8,13 @@ This is the fees-focused companion to the lifecycle article on recording leave. 
 
 ## How leave affects billing
 
-When the billing engine bills a fee item, it checks for any leave that overlaps the billing period and applies the rules for that leave type before calculating the charge. For this to work, the leave must be recorded against the resident before the billing run, so record leave promptly.
+Leave does not change what a resident is billed. No leave type suspends billing or reduces the number of days charged, and the billing engine does not read leave records when it bills a fee item. The resident is paying to hold their place, and the place is held whether they occupy it or not.
 
-For residential aged care, most fees continue during leave. The main thing to watch is the reduction in the government subsidy that can occur on long hospital stays, which may reduce a resident's means tested fee. That reduction is not applied automatically; it is monitored by your team, as explained below.
+What leave can change is the subsidy the government pays the provider. The main thing to watch is the reduction that can occur on long hospital stays, which may reduce a resident's means tested fee. That reduction is not applied automatically; it is monitored by your team, as explained below.
+
+{% hint style="info" %}
+Leave still needs recording promptly, for reporting and for submission to Services Australia. It simply has no bearing on what the billing engine charges.
+{% endhint %}
 
 ## Fee treatment by leave type
 
