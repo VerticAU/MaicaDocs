@@ -28,7 +28,7 @@ The departure runs across three steps. You move through them in order, and the f
 
 {% stepper %}
 {% step %}
-## Confirm the departure details
+### Confirm the departure details
 
 The first step shows the resident's current details for reference and asks you to enter the departure-specific information.
 
@@ -46,7 +46,7 @@ The **Notice Given Date** matters financially. If at least 14 days notice was gi
 {% endstep %}
 
 {% step %}
-## Submit the departure to Services Australia
+### Submit the departure to Services Australia
 
 When you confirm the details, Maica creates the departure event and submits it to Services Australia. This step must succeed before any of the resident's financial closure runs.
 
@@ -56,7 +56,7 @@ The final billing, retention, and refund do not run unless Services Australia ac
 {% endstep %}
 
 {% step %}
-## Run the departure processor
+### Run the departure processor
 
 Once the submission succeeds, Maica runs the resident's financial closure automatically. This involves several actions in sequence:
 

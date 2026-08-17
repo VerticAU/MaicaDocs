@@ -58,7 +58,7 @@ Select **Add Fee Item** to open the fee item panel, then work through two steps.
 
 {% stepper %}
 {% step %}
-## Select the fee type
+### Select the fee type
 
 Choose a Support Item from the lookup. The lookup is filtered so you cannot add a fee type that does not apply to the resident. Two filters combine:
 
@@ -69,7 +69,7 @@ A guidance message describes the fees you would typically configure for this res
 {% endstep %}
 
 {% step %}
-## Configure the item
+### Configure the item
 
 Enter the rate (in dollars per day) and the billing details, then save.
 
@@ -105,19 +105,19 @@ For means tested fee types, you can confirm the resident's current rate against 
 
 {% stepper %}
 {% step %}
-## Select **Check Fee Rates**
+### Select **Check Fee Rates**
 
 Maica calls Services Australia and compares the current rate for each in-scope fee item against what is configured.
 {% endstep %}
 
 {% step %}
-## Review any differences
+### Review any differences
 
 If any rates differ, a comparison table shows the current and the new rate for each item, and an **Apply Changes** button appears.
 {% endstep %}
 
 {% step %}
-## Apply the changes
+### Apply the changes
 
 Review the comparison and select **Apply Changes** to update the rates you accept. You always confirm before anything changes.
 {% endstep %}
