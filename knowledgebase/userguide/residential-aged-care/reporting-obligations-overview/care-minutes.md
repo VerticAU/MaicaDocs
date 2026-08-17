@@ -149,5 +149,5 @@ From FY2025-26 the Care Minutes Performance Statement is externally audited and 
 
 ## Related articles
 
-* [24/7 Registered Nurse Coverage](24-7-registered-nurse-coverage.md), the other quarterly compliance check on the same record
+* [24/7 Registered Nurse Coverage](/broken/pages/a523d52ccc117a1650cf1f9c7d00bd7499c71d5e), the other quarterly compliance check on the same record
 * [Care Minutes Check Configuration](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/residential-aged-care/reporting-capability-matrix/care-minutes-check-configuration) in the Administration Guide, for the field reference, permissions and the full calculation
