@@ -217,6 +217,7 @@
   * [Quarterly financial Report QFR Data](residential-aged-care/reporting-obligations-overview/quarterly-financial-report-qfr-data.md)
   * [Managing SIRS Notifications](residential-aged-care/reporting-obligations-overview/managing-sirs-notifications.md)
   * [APCS RAD/RAC Ledger Export](residential-aged-care/reporting-obligations-overview/apcs-rad-rac-ledger-export.md)
+  * [24/7 Registered Nurse Coverage](residential-aged-care/reporting-obligations-overview/24-7-registered-nurse-coverage-1.md)
 
 ## Mobile Worker App
 
