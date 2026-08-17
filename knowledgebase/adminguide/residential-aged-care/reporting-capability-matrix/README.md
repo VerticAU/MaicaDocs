@@ -43,7 +43,7 @@ Each supported capability is documented in its own article in this section:
 
 * The two Services Australia integrations are covered in [Inbound data APIs](/broken/pages/9fa8a492d0fc7d5f06ef6189a7de35f369419453) and [Accommodation balance reporting](/broken/pages/4f44271aa9814f2cd423bd0c88319ce4f857aac3).
 * The two Quarterly Financial Report outputs are covered in [QFR report configuration](qfr-report-configuration.md).
-* The coverage calculation is covered in [24/7 RN coverage check configuration](24-7-rn-coverage-check-configuration.md).
+* The coverage calculation is covered in [24/7 RN coverage check configuration](/broken/pages/88cc7c0914f7a2e6941c8da7bffa9f5a1a3c521a).
 * The prudential compliance export is covered in [APCS export tool configuration](apcs-export-tool-configuration.md).
 * Serious incident reporting is covered in [SIRS incident configuration](sirs-incident-configuration.md).
 

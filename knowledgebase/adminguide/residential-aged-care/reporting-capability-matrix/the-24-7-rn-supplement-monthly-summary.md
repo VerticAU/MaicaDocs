@@ -5,7 +5,7 @@ Services Australia pays a monthly 24/7 registered nurse supplement to eligible r
 It is written for administrators and facility managers responsible for revenue assurance and registered nurse reporting.
 
 {% hint style="info" %}
-This article covers the supplement Maica reads back from Services Australia. For the provider's own coverage calculation used for GPMS reporting, see [24/7 RN Coverage Check Configuration](24-7-rn-coverage-check-configuration.md).
+This article covers the supplement Maica reads back from Services Australia. For the provider's own coverage calculation used for GPMS reporting, see [24/7 RN Coverage Check Configuration](/broken/pages/88cc7c0914f7a2e6941c8da7bffa9f5a1a3c521a).
 {% endhint %}
 
 ## How it differs from the other RN figures

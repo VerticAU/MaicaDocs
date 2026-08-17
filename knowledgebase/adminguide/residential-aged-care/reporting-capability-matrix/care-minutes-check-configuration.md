@@ -1,6 +1,6 @@
 # Care Minutes Check Configuration
 
-The **Care Minutes Check** compares direct care minutes delivered at a facility against the Department's published targets for it, and projects the quarter's likely landing point from the remaining roster. It follows the same pattern as the [24/7 RN Coverage Check](24-7-rn-coverage-check-configuration.md): a quick action on **Location**, a calculated record, and a Flow entry point for automation.
+The **Care Minutes Check** compares direct care minutes delivered at a facility against the Department's published targets for it, and projects the quarter's likely landing point from the remaining roster. It follows the same pattern as the [24/7 RN Coverage Check](/broken/pages/88cc7c0914f7a2e6941c8da7bffa9f5a1a3c521a): a quick action on **Location**, a calculated record, and a Flow entry point for automation.
 
 The numerator sits on the Appointment tree and the denominator on the Service Agreement tree, and no report type can join the two. That is why this is a calculation rather than a report, and why its inputs need to be configured deliberately.
 
