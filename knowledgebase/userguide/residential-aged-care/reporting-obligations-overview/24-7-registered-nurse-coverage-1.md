@@ -12,19 +12,19 @@ The coverage check runs from the facility's Location record.
 
 {% stepper %}
 {% step %}
-#### Open the Location record
+### Open the Location record
 
 Open the **Location** record for the facility.
 {% endstep %}
 
 {% step %}
-#### Run the coverage check
+### Run the coverage check
 
 Select the **Run 24/7 RN Coverage Check** action.
 {% endstep %}
 
 {% step %}
-#### Choose the month
+### Choose the month
 
 Choose the month to check, usually the prior month, and confirm.
 {% endstep %}
@@ -83,31 +83,31 @@ The coverage check tells you whether you met the requirement; you still report i
 
 {% stepper %}
 {% step %}
-#### Run the check after month end
+### Run the check after month end
 
 Run the check **after the month has ended**, so the whole month is assessed.
 {% endstep %}
 
 {% step %}
-#### Confirm the result is complete
+### Confirm the result is complete
 
 Review the result and confirm **Partial Month** is not ticked.
 {% endstep %}
 
 {% step %}
-#### Investigate gaps
+### Investigate gaps
 
 If the result is **Fail**, use the gap detail to investigate which shifts need attention before you report.
 {% endstep %}
 
 {% step %}
-#### Submit in GPMS
+### Submit in GPMS
 
 Log into GPMS and enter the coverage confirmation by the 7th of the month.
 {% endstep %}
 
 {% step %}
-#### Record the submission in Maica
+### Record the submission in Maica
 
 Return to the coverage result record in Maica and tick **GPMS submitted**, recording the date.
 {% endstep %}
