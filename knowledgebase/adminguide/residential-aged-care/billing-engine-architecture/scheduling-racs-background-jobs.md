@@ -5,7 +5,7 @@ Three residential aged care processes are designed to run automatically on a sch
 It is written for administrators who configure and monitor the RACS background processes.
 
 {% hint style="info" %}
-The Schedules tab and its job controls (run time, frequency, start date, and the running-user and active or inactive indicators on each job) are the shared Maica scheduled-jobs framework. This article covers the RACS jobs specifically. For manual rate changes, see [Scheduling and Manual Rate Changes](/broken/pages/03ed22c679524501b012b8a3b6dd10872c720402).
+The Schedules tab and its job controls (run time, frequency, start date, and the running-user and active or inactive indicators on each job) are the shared Maica scheduled-jobs framework. This article covers the RACS jobs specifically. For manual rate changes, see [Scheduling and Manual Rate Changes](scheduling-and-manual-rate-changes.md).
 {% endhint %}
 
 ## The three RACS jobs
@@ -14,7 +14,7 @@ Each job appears as a row on the Schedules tab in the Billing Settings area, usi
 
 | Job (Schedules-tab name)         | Apex class                    | What it does                                                          | Default run time |
 | -------------------------------- | ----------------------------- | --------------------------------------------------------------------- | ---------------- |
-| **RAC Billing Engine**           | `RAC_BillingEngine`           | Bills every due Agreement Item and rolls up invoices and statements   | 01:00            |
+| **RAC Billing Engine**           | `RAC_BillingEngine`           | Bills every due Agreement Item and rolls up invoices                  | 01:00            |
 | **RAC Resident Fee Rate Check**  | `RAC_ResidentFeeCalloutBatch` | Polls Services Australia for per-resident fee rate changes            | 02:00            |
 | **RACS Held Event Status Check** | `RACS_HeldEventStatusBatch`   | Refreshes the status of held Aged Care Events from Services Australia | 03:00            |
 
@@ -28,7 +28,7 @@ The three jobs differ in how they are gated. Two are controlled by an automation
 
 ### The toggle-gated jobs
 
-The billing engine and the fee rate check are each gated by an automation toggle on the [RACS Configuration tab](/broken/pages/0ae4e45ff9f83e2a3a240a31c2b87a029130a33f) (stored on the Billing Setting record):
+The billing engine and the fee rate check are each gated by an automation toggle on the [RACS Configuration tab](https://knowledge.maica.com.au/maica-knowledge-base/maica-administration-guide/residential-aged-care/the-racs-configuration-tab) (stored on the Billing Setting record):
 
 | Job                         | Automation toggle                                              |
 | --------------------------- | -------------------------------------------------------------- |
@@ -53,7 +53,7 @@ When it runs, it looks at **every** held Aged Care Event that has a Services Aus
 
 ### Which categories are refreshed
 
-The sweep refreshes events in six categories, routing each to the matching Services Australia read:
+The sweep refreshes events in seven categories, routing each to the matching Services Australia read:
 
 * Entry
 * Departure
@@ -61,10 +61,9 @@ The sweep refreshes events in six categories, routing each to the matching Servi
 * Opt In
 * Enteral Feeding
 * Oxygen
+* Extra Service
 
-{% hint style="warning" %}
-The **Extra Service** category is not refreshed by the sweep, because it has no status-read interface at Services Australia. An Extra Service event that is held is skipped and left in its held status, and the sweep logs a warning noting it was skipped.
-{% endhint %}
+Every category has a status-read interface at Services Australia, so no held event is left unrefreshed because of its category. A category the sweep cannot match to a read still falls through to the skip branch and is logged as a warning.
 
 ### How failures are handled
 
