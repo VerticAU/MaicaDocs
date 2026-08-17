@@ -95,19 +95,19 @@ An edit to the item's dates, method or frequency, a cessation, or a rate change 
 
 {% stepper %}
 {% step %}
-## Billed and closed
+### Billed and closed
 
 The cursor is blank and a Last Billed Period End is recorded. If the item's window now extends past that date, billing resumes on the day after it; otherwise the item stays closed. A one-off stays closed regardless.
 {% endstep %}
 
 {% step %}
-## Maica's to derive
+### Maica's to derive
 
 The cursor is blank with nothing billed, or it still matches exactly what its stored settings imply. It is re-derived from the new settings.
 {% endstep %}
 
 {% step %}
-## Claimed
+### Claimed
 
 The cursor has been advanced by the engine or deliberately overridden. It is left untouched.
 {% endstep %}
@@ -133,11 +133,11 @@ A hop that commits nothing ends the chain, rather than burning through the depth
 
 The engine records a Log entry of type `Warning`, with a Source of `RAC Billing Engine`, in each of the three conditions worth an administrator's attention:
 
-| Condition                                                           | What the warning tells you                                                                                                                                                              |
-| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| The chain reached its depth limit                                   | The depth reached, the cap, and the completed and failed counts for the dispatch. The remaining backlog will be picked up on the next scheduled run.                                    |
-| The chain stopped with work still outstanding and nothing committed | How many Agreement Items are still eligible, the depth reached, and the counts for the dispatch. Check the Log records of type `Error` from the same source for the underlying failure. |
-| An invoice could not be resolved for one or more Service Agreements | How many Service Agreements billed onto a fallback invoice header, and that the period may now carry a duplicate header. See [Billing Engine Architecture](./).                         |
+| Condition                                                           | What the warning tells you                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| The chain reached its depth limit                                   | The depth reached, the cap, and the completed and failed counts for the dispatch. The remaining backlog will be picked up on the next scheduled run.                                                                                                                                          |
+| The chain stopped with work still outstanding and nothing committed | How many Agreement Items are still eligible, the depth reached, and the counts for the dispatch. Check the Log records of type `Error` from the same source for the underlying failure.                                                                                                       |
+| An invoice could not be resolved for one or more Service Agreements | How many Service Agreements billed onto a fallback invoice header, and that the period may now carry a duplicate header. See [Billing Engine Architecture](https://knowledge.maica.com.au/maica-knowledge-base/maica-administration-guide/residential-aged-care/billing-engine-architecture). |
 
 The first two are mutually exclusive. The third is independent of both and can accompany either.
 
