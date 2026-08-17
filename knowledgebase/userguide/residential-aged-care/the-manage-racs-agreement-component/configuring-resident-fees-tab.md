@@ -20,6 +20,38 @@ At the top of the tab is a read-only panel showing the resident's fee context, d
 | **Accommodation Arrangement** | Which accommodation regime applies                                    |
 | **Pensioner Status**          | The resident's pensioner status                                       |
 
+## The fee items list
+
+The list shows the resident's fee items with their rate, billing method, frequency, dates and status.
+
+### Showing and hiding inactive items
+
+By default the list shows only current items and hides those that have been end-dated, so a resident with a long history of rate changes does not present a wall of superseded rows. A **Show inactive items** toggle above the list brings the end-dated rows back into view.
+
+Beside the toggle, a count tells you what you are looking at, in the form **Showing 3 of 7 items**: the number of rows visible against the total the agreement holds. Where the two numbers differ, rows are being hidden.
+
+{% hint style="info" %}
+The toggle affects the display only. It is not remembered between visits and resets to hiding inactive items each time you open the component. Nothing is ever removed from the record by hiding it.
+{% endhint %}
+
+{% hint style="info" %}
+An item can show as **Inactive** and still be a current row rather than history, for instance one with a start date in the future. The toggle hides only items that have actually been end-dated, so a future-dated item stays visible whichever way the toggle is set.
+{% endhint %}
+
+{% hint style="warning" %}
+Hiding a row never hides its actions or removes it from anything else. **Check Fee Rates** works from its own list of in-scope items and is unaffected by the toggle, so an item hidden from view can still appear in a rate comparison. That is expected rather than a fault.
+{% endhint %}
+
+### How the list is ordered
+
+The order is fixed and cannot be changed by clicking a column heading. Items sort by:
+
+1. **Active items first**, then inactive ones.
+2. **Newest start date first** within each group. Items with no start date come last.
+3. **Fee type alphabetically** where start dates match.
+
+The result is that the items you are most likely to act on sit at the top, and a fee's rate history reads downwards from its most recent rate.
+
 ## Adding fee items
 
 Select **Add Fee Item** to open the fee item panel, then work through two steps.
@@ -103,7 +135,11 @@ Each item in the list has row actions for ongoing maintenance.
 
 * **Edit** opens the item with its current values. Use this for correcting a mistake such as a typo. Editing changes the item in place and does not create a rate history or a retrospective adjustment.
 * **Change Rate** is the right action for a genuine rate change. You enter the new rate and an effective date. Maica end-dates the existing item, creates a new one carrying the new rate, and corrects any periods already billed at the old rate. This produces the same clean history as applying a change through Check Fee Rates.
-* **Deactivate** stops billing for that fee from today. Maica sets the item's end date to today, which makes it inactive. The item stays visible in the list, greyed out, for audit purposes. You are asked to confirm first.
+* **Deactivate** stops billing for that fee from today. Maica sets the item's end date to today, which makes it inactive. The item stays on the record for audit purposes, and reappears in the list whenever **Show inactive items** is on. You are asked to confirm first.
+
+{% hint style="info" %}
+A deactivated item flips to Inactive in the list immediately, even though the resident is still billed for that final day. The row reflects your action straight away while the billing engine handles the last day correctly.
+{% endhint %}
 
 {% hint style="info" %}
 **Change Rate is not available on every fee type.** It is disabled for the **Daily Accommodation Payment** and **RAD/RAC Retention** fee types, because those rates are not changed by a manual rate entry: a Daily Accommodation Payment moves through the indexation engine and the agreed room price, and RAD/RAC Retention is calculated by the retention service against the lump sum. On those rows the action shows as disabled with a tooltip explaining why, and directs you to edit the fee item instead. Change Rate is also unavailable on deactivated rows.
