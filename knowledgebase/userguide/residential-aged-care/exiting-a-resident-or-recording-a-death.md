@@ -76,6 +76,25 @@ If the resident holds a lump sum deposit, the summary panel reminds you to retur
 {% endstep %}
 {% endstepper %}
 
+## If the final billing does not complete
+
+A departure always completes, even where part of the final billing could not be saved. The discharge is not rolled back and the resident is not left half-departed.
+
+That is deliberate, and the reason is the order things happen in. The departure is lodged with Services Australia **before** the financial closure runs, and that submission cannot be withdrawn: once the Commonwealth has accepted it, a resubmission is rejected because a departure for that care period has already been received. Abandoning the local closure would leave Salesforce saying the resident is still in care while Services Australia says they have left, and would also destroy the record of what went wrong.
+
+Instead, the shortfall is reported to you at the point of discharge. There are two forms it can take.
+
+| What you are told                                                       | What it means                                                                                                                     | What to do                                                                                                                                  |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Final billing **did not save** for this Service Agreement               | Nothing from the final billing run was recorded, and the message names the underlying cause where the billing engine reported one | The departure stands. The whole of the resident's final billing needs raising, so treat it as outstanding work before you close the account |
+| Final billing is **incomplete**, naming the fee items that did not bill | The rest of the final billing ran, but the named items failed and were marked as failed                                           | The named items are held out of the nightly billing run, so they will not correct themselves. Fix and bill each of them by hand             |
+
+{% hint style="danger" %}
+A failed fee item stays out of the nightly billing run until someone clears its billing status. It will not be picked up on a later run, and the resident has already left, so nothing else will prompt you. Act on the message at the time of discharge or record it as follow-up work.
+{% endhint %}
+
+In both cases the evidence survives: the fee item carries its failed status and the billing run writes a log entry for the attempt. Departure credits still run correctly, because they are worked out from what was actually saved to the database, so an item whose charge never committed simply has nothing to credit back.
+
 ## Departure reason codes
 
 Select the reason that best matches why the resident left. The reasons available in the action are listed below.
