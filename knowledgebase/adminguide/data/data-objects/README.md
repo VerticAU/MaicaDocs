@@ -1,5 +1,7 @@
 ---
 description: Learn about the Data Objects used in Maica.
+hidden: true
+noIndex: true
 ---
 
 # Data Objects
