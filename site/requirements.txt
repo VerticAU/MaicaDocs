@@ -1,0 +1,6 @@
+# Maica docs site - Python build dependencies
+# Install: pip install -r requirements.txt
+# Build:   ./build.sh && mkdocs build --strict
+mkdocs==1.6.1
+mkdocs-material==9.7.4
+pymdown-extensions==10.21
