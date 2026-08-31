@@ -19,7 +19,7 @@ Service Agreements are a one-to-many record within **Maica**, meaning, that each
 Once you have clicked the `New` button, you will be presented with a pop-up to begin populating the Basic Details of your Service Agreement record. At this stage you should fill in all mandatory and recommended fields before clicking `Save` to create your Service Agreement record.
 
 {% hint style="info" %}
-Service Agreements are mainly populated through Quick Actions within the Agreement that become available once your record has been created and saved. These Quick Actions are dependent on the selected Funding Type. To learn more about NDIS supported Service Agreements, click here, and to learn more about Aged Care supported Service Agreements, click here.
+Service Agreements are mainly populated through Quick Actions within the Agreement that become available once your record has been created and saved. These Quick Actions are dependent on the selected Funding Type. To learn more about NDIS supported Service Agreements, click [here](ndis-agreements/), and to learn more about Aged Care supported Service Agreements, click [here](aged-care-agreements/).
 {% endhint %}
 
 ## Service Agreement Statuses
@@ -32,12 +32,12 @@ The `Status` of a Service Agreement in **Maica** represents the current state or
 
 Please refer to the table below for more detailed description of all the `Statuses`:
 
-| Status       | Description                                                                                                                                                                                                                                                                                            |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `Active`     | The Service Agreement is currently in effect, and Services are being delivered under the terms outlined in the agreement and within the specified dates. This is the **default** `Status`.                                                                                                             |
-| `Draft`      | In effect when the `Daft Service Agreement` checkbox is ticked. This is a manually configured status that could be used whilst the Agreement is being finalised or you are building out the Budget.                                                                                                    |
-| `On Leave`   | In effect once a Leave event has been set up against the Service Agreement. **Maica** will automatically update the `Status` when the `Leave` date overlaps the `Current` date. Please refer to the [below](./#service-agreement-leave) section to see how to set up Leave within a Service Agreement. |
-| `Discharged` | <p>In effect after you have Discharged the Service Agreement. Once <code>Discharged</code>, Maica will automatically generate a <code>Discharge Statement</code> and update the <code>Status</code>.<br><br>This is <strong>only</strong> relevant for Aged Care Service Agreements.</p>               |
+| Status       | Description                                                                                                                                                                                                                                                                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Active`     | The Service Agreement is currently in effect, and Services are being delivered under the terms outlined in the agreement and within the specified dates. This is the **default** `Status`.                                                                                                                                                        |
+| `Draft`      | In effect when the `Daft Service Agreement` checkbox is ticked. This is a manually configured status that could be used whilst the Agreement is being finalised or you are building out the [Budget](aged-care-agreements/manage-budget.md).                                                                                                      |
+| `On Leave`   | In effect once a Leave event has been set up against the Service Agreement. **Maica** will automatically update the `Status` when the `Leave` date overlaps the `Current` date. Please refer to the [below](./#service-agreement-leave) section to see how to set up Leave within a Service Agreement.                                            |
+| `Discharged` | <p>In effect after you have <a href="aged-care-agreements/discharge-services.md">Discharged</a> the Service Agreement. Once <code>Discharged</code>, Maica will automatically generate a <code>Discharge Statement</code> and update the <code>Status</code>.<br><br>This is <strong>only</strong> relevant for Aged Care Service Agreements.</p> |
 
 ## Service Agreement Leave
 

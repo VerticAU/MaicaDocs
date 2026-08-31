@@ -53,11 +53,11 @@ Selecting **Manage Travel** opens a more detailed breakdown of the above Travel 
 If the figures do not match your actual travel, you have two options:
 
 1. **Edit and Save** – You can directly adjust the values by first clicking the `Edit` button shown at the bottom of the screen. When doing so, you may need to add a comment explaining the change, and resave. This will update the Appointment or Shift automatically.
-2. **Contact Organisation** – If the edit button is not visible, you will need to notify your organisation to make corrections. We recommend using Incidents to do so.
+2. **Contact Organisation** – If the edit button is not visible, you will need to notify your organisation to make corrections. We recommend using [Incidents](incidents.md) to do so.
 
 ### Manage Expenses
 
-The **Manage Expenses** option allows you to add any expenses that were not captured during the Appointment. This works in the same way as the **Expenses Action** on the Appointment screen, but is available here as a final step before Check-Out.
+The **Manage Expenses** option allows you to add any expenses that were not captured during the Appointment. This works in the same way as the [**Expenses Action**](expenses.md) on the Appointment screen, but is available here as a final step before Check-Out.
 
 ### Checklist Items
 
