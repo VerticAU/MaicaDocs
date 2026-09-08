@@ -7,91 +7,97 @@ description: >-
 # Manage Services
 
 {% hint style="danger" %}
-Please note, as of November 1st 2025 Home Care Packages are being replaced with Support at Home funding. This function will still be present in Maica.&#x20;
+Please note, as of November 1st 2025 Home Care Packages are being replaced with Support at Home funding. This function will still be present in Maica.
 {% endhint %}
 
 ## What does the `Manage Services` Quick Action do?
 
-The Manage Services tool in **Maica** is a Quick Action with a customised User Interface for adding, updating, and managing Services within a Service Agreement. `Manage Services` allows you to add new Services in the form of [Agreement Items](../../the-building-blocks.md#agreement-items) against a [Service Agreement](../../../getting-started/maica-key-concepts/service-agreement.md). These [Agreement Items](../../the-building-blocks.md#agreement-items) will ultimately form the base of your Appointments or Shifts.
+The Manage Services tool in **Maica** is a Quick Action with a customised User Interface for adding, updating, and managing Services within a Service Agreement. `Manage Services` allows you to add new Services in the form of Agreement Items against a Service Agreement. These Agreement Items will ultimately form the base of your Appointments or Shifts.
 
 ## Where do I find the `Manage Services` button?
 
-The Manage Services function is visible at the top right hand corner of your interface on the Service Agreement record, as shown below.&#x20;
+The Manage Services function is visible at the top right hand corner of your interface on the Service Agreement record, as shown below.
 
-<figure><img src="../../../.gitbook/assets/manage services button.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FOJoQEQtvBCWOxYssoCRL%2Fmanage%20services%20button.png?alt=media&#x26;token=231d2ddf-ef71-4c88-b875-6c3d183edcda" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-This function is only available when the `Funding Type` is set to `Home Care Package`.&#x20;
+This function is only available when the `Funding Type` is set to `Home Care Package`.
 {% endhint %}
 
-## How do I add Services?&#x20;
+## How do I add Services?
 
-In order to begin adding Services, simply click the `Manage Services` button to display the pop-up, as shown below. &#x20;
+In order to begin adding Services, simply click the `Manage Services` button to display the pop-up, as shown below.
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2024-08-23 at 1.44.52 pm.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FIivhZov0a8oIJzVYQyLg%2FScreenshot%202024-08-23%20at%201.44.52%20pm.png?alt=media&#x26;token=516c27c7-e9ff-4602-957c-dc3b619b6e7e" alt=""><figcaption></figcaption></figure>
 
 The Manage Services tool is divided into two sections.
 
-1. The Budget Trend Analysis&#x20;
-2. [`Agreement Items`](../../the-building-blocks.md#agreement-items)
+1. The Budget Trend Analysis
+2. `Agreement Items`
 
 {% hint style="success" %}
-The Budget Trend Analysis section is also displayed on the Service Agreement Record, and is visible to assist you in monitoring and forecasting a Participant's financial status. However, it is purely a visual helper and is not crucial in adding Services. To read more about the Budget Trend Analysis tool, [click here](manage-services.md#budget-trend-analysis).&#x20;
+The Budget Trend Analysis section is also displayed on the Service Agreement Record, and is visible to assist you in monitoring and forecasting a Participant's financial status. However, it is purely a visual helper and is not crucial in adding Services. To read more about the Budget Trend Analysis tool, [click here](manage-services.md#budget-trend-analysis).
 {% endhint %}
 
-In **Maica**, we Manage Services for a [Service Agreement](../../../getting-started/maica-key-concepts/service-agreement.md) through [Agreement Items](../../the-building-blocks.md#agreement-items). To begin adding Agreement Items, simply click the `+ Add` button to display the `Manage Agreement Item` pop-up, as shown below.&#x20;
+In **Maica**, we Manage Services for a Service Agreement through Agreement Items. To begin adding Agreement Items, simply click the `+ Add` button to display the `Manage Agreement Item` pop-up, as shown below.
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2024-08-23 at 2.04.57 pm.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FRkBgG8KWJbg9dazLV73r%2FScreenshot%202024-08-23%20at%202.04.57%20pm.png?alt=media&#x26;token=27861f0b-269e-422b-983a-3f60feea0579" alt=""><figcaption></figcaption></figure>
 
-The Management Agreement Item is also divided into two sections, `Structure` and `Available Funding`. You should begin by populating the `Structure`. This is important as you may have quite a high number of [Support Items](../../the-building-blocks.md#support-items) or [Support Categories](../../the-building-blocks.md#support-categories) to choose from (these will be selectable in the `Available Funding` Section), and once the desired `Structure` has been populated, **Maica** will only show the [Items](../../the-building-blocks.md#support-items) or [Categories](../../the-building-blocks.md#support-categories) that fit the specified `Structure`.&#x20;
+The Management Agreement Item is also divided into two sections, `Structure` and `Available Funding`. You should begin by populating the `Structure`. This is important as you may have quite a high number of Support Items or Support Categories to choose from (these will be selectable in the `Available Funding` Section), and once the desired `Structure` has been populated, **Maica** will only show the Items or Categories that fit the specified `Structure`.
 
 The `Structure` section contains a number of fields to be populated, these are explained in further detail in the table below:
 
-<table><thead><tr><th width="264">Field </th><th>Description</th></tr></thead><tbody><tr><td><code>Funding Structure</code> </td><td>This field indicates the Funding Structure of the Agreement Item. <code>Support Item</code> allows you to configure funding for a specific <a href="../../the-building-blocks.md#support-items">Support Item</a>, whereas <code>Support Category</code> allows you to setup bucket funding for a <a href="../../the-building-blocks.md#support-categories">Support Category</a>. To learn more about the types of Funding Structure's in <strong>Maica</strong>, click <a href="../../the-building-blocks.md">here</a>.</td></tr></tbody></table>
+<table><thead><tr><th width="264">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>Funding Structure</code></td><td>This field indicates the Funding Structure of the Agreement Item. <code>Support Item</code> allows you to configure funding for a specific Support Item, whereas <code>Support Category</code> allows you to setup bucket funding for a Support Category. To learn more about the types of Funding Structure's in <strong>Maica</strong>, click here.</td></tr></tbody></table>
 
-The fields are slightly different depending on the selected `Funding Structure`, below are the displayed fields if you select `Support Item`:&#x20;
+The fields are slightly different depending on the selected `Funding Structure`, below are the displayed fields if you select `Support Item`:
 
-<table><thead><tr><th width="268">Field </th><th>Description </th></tr></thead><tbody><tr><td><code>Period</code></td><td>This field indicates the date range the funding is valid for. You can choose to preset the Period to the Participant(s) Active Plan Range, Active Service Agreement Range or input a Custom Range.  </td></tr><tr><td><code>Start &#x26; End Date</code></td><td>If a Custom Range is selected for your Period, you can input your desired Start &#x26; End Dates here. Otherwise, this field will be populated based on the Participants Active Plan or Service Agreement data within <strong>Maica</strong>. </td></tr><tr><td><code>Service Day</code> </td><td>This field allows you to set the days of the week the Client has nominated to receive the Service.</td></tr><tr><td><code>Service Time</code></td><td>This field allows you to set the time of day the Client has nominated to receive the Service.</td></tr><tr><td><code>Service Frequency</code></td><td>This field allows you to set the frequency or interval the Client has nominated to receive the Service. It is also used to calculate the <code>Total Quantity</code>.</td></tr><tr><td><code>Days of the Week</code></td><td>This field is only visible if <code>Service Frequency</code> is set to <code>Weekly</code>. It is a multi-select to set the specific days of the week the Client has nominated to receive the Service and it is also used to calculate the <code>Total Quantity</code>.</td></tr><tr><td><code>Quantity</code> </td><td>This is a manual input field that allows for you to set a desired Quantity. This is essentially the duration of a Service. A Quantity of 1 is equivalent to 1 hour. It is also used to calculate the <code>Total Quantity</code>.   </td></tr><tr><td><code>Total Quantity</code></td><td>The <code>Total Quantity</code> represents the Total Number of Services being delivered during the specified <code>Period</code>. </td></tr></tbody></table>
+<table><thead><tr><th width="268">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>Period</code></td><td>This field indicates the date range the funding is valid for. You can choose to preset the Period to the Participant(s) Active Plan Range, Active Service Agreement Range or input a Custom Range.</td></tr><tr><td><code>Start &#x26; End Date</code></td><td>If a Custom Range is selected for your Period, you can input your desired Start &#x26; End Dates here. Otherwise, this field will be populated based on the Participants Active Plan or Service Agreement data within <strong>Maica</strong>.</td></tr><tr><td><code>Service Day</code></td><td>This field allows you to set the days of the week the Client has nominated to receive the Service.</td></tr><tr><td><code>Service Time</code></td><td>This field allows you to set the time of day the Client has nominated to receive the Service.</td></tr><tr><td><code>Service Frequency</code></td><td>This field allows you to set the frequency or interval the Client has nominated to receive the Service. It is also used to calculate the <code>Total Quantity</code>.</td></tr><tr><td><code>Days of the Week</code></td><td>This field is only visible if <code>Service Frequency</code> is set to <code>Weekly</code>. It is a multi-select to set the specific days of the week the Client has nominated to receive the Service and it is also used to calculate the <code>Total Quantity</code>.</td></tr><tr><td><code>Quantity</code></td><td>This is a manual input field that allows for you to set a desired Quantity. This is essentially the duration of a Service. A Quantity of 1 is equivalent to 1 hour. It is also used to calculate the <code>Total Quantity</code>.</td></tr><tr><td><code>Total Quantity</code></td><td>The <code>Total Quantity</code> represents the Total Number of Services being delivered during the specified <code>Period</code>.</td></tr></tbody></table>
 
-Below are the displayed fields if you select `Support Category` as your `Funding Structure`: &#x20;
+Below are the displayed fields if you select `Support Category` as your `Funding Structure`:
 
-<table><thead><tr><th width="268">Field </th><th>Description </th></tr></thead><tbody><tr><td><code>Period</code></td><td>This field indicates the date range the funding is valid for. You can choose to preset the Period to the Participant(s) Active Plan Range, Active Service Agreement Range or input a Custom Range.  </td></tr><tr><td><code>Start &#x26; End Date</code></td><td>If a Custom Range is selected for your Period, you can input your desired Start &#x26; End Dates here. Otherwise, this field will be populated based on the Participants Active Plan or Service Agreement data within <strong>Maica</strong>. </td></tr><tr><td><code>Amount</code> </td><td>This field represents the total amount for the Category Funding, for example allocating $5,000.00 to a specific Support Category would mean being able to use any Support Item within this Support Category to a total spend of $5,000.00.</td></tr><tr><td><code>Total Quantity</code></td><td>The <code>Total Quantity</code> represents the Total Number of Services being delivered during the specified <code>Period</code>. </td></tr></tbody></table>
+<table><thead><tr><th width="268">Field</th><th>Description</th></tr></thead><tbody><tr><td><code>Period</code></td><td>This field indicates the date range the funding is valid for. You can choose to preset the Period to the Participant(s) Active Plan Range, Active Service Agreement Range or input a Custom Range.</td></tr><tr><td><code>Start &#x26; End Date</code></td><td>If a Custom Range is selected for your Period, you can input your desired Start &#x26; End Dates here. Otherwise, this field will be populated based on the Participants Active Plan or Service Agreement data within <strong>Maica</strong>.</td></tr><tr><td><code>Amount</code></td><td>This field represents the total amount for the Category Funding, for example allocating $5,000.00 to a specific Support Category would mean being able to use any Support Item within this Support Category to a total spend of $5,000.00.</td></tr><tr><td><code>Total Quantity</code></td><td>The <code>Total Quantity</code> represents the Total Number of Services being delivered during the specified <code>Period</code>.</td></tr></tbody></table>
 
-Once you have populated your `Structure`, **Maica** will show you the [Items](../../the-building-blocks.md#support-items) or [Categories](../../the-building-blocks.md#support-categories) that fit the specified Structure and are available for selection in the Available Funding Section, as shown below.&#x20;
+Once you have populated your `Structure`, **Maica** will show you the Items or Categories that fit the specified Structure and are available for selection in the Available Funding Section, as shown below.
 
-<figure><img src="../../../.gitbook/assets/Screenshot 2024-08-23 at 4.16.03 pm.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FgLl2PRRKXVMRbw5pHqZE%2FScreenshot%202024-08-23%20at%204.16.03%20pm.png?alt=media&#x26;token=1b8043ce-6efc-409a-b805-8f39f082e6c3" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 As we have selected `Saturday` in the `Service Day` section, Maica will only show us the Support Item or Categories that are available on a `Saturday`.
 {% endhint %}
 
-The `Available Funding` section also has a `Total Items` field in the top right corner. This simply is a numerical value expressing the Total Number of available Items or Categories to select from that fit your inputted `Structure`.&#x20;
+The `Available Funding` section also has a `Total Items` field in the top right corner. This simply is a numerical value expressing the Total Number of available Items or Categories to select from that fit your inputted `Structure`.
 
-After the required Support Item or Category has been selected, simply click the `Add` button to finalise the Agreement Item and it as a Service.&#x20;
+After the required Support Item or Category has been selected, simply click the `Add` button to finalise the Agreement Item and it as a Service.
 
 {% hint style="success" %}
-Maica will only allow the Support Items and Categories within the recorded Participant's Plan Details (Active Plan) to be selected. To learn more about Plan Record's, click [here](manage-budget.md).&#x20;
+Maica will only allow the Support Items and Categories within the recorded Participant's Plan Details (Active Plan) to be selected. To learn more about Plan Record's, click here.
 {% endhint %}
 
-## What happens after I add a Service?&#x20;
+## What happens after I add a Service?
 
-After you have added your required Service's, they will all be displayed within the UI in the form of a Summary table, as shown below:&#x20;
+After you have added your required Service's, they will all be displayed within the UI in the form of a Summary table, as shown below:
 
-<figure><img src="../../../.gitbook/assets/agreement items (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FOnLELStofCdKPz6ni2Pe%2Fagreement%20items.png?alt=media&#x26;token=d707889b-70aa-4a88-ba5d-21fc1c381e50" alt=""><figcaption></figcaption></figure>
 
-Here you can manually override the Price List rate or edit the Quantity if you desire. This allows you to personalise your rates or use a different calculation method that suits your needs.&#x20;
+Here you can edit the `Quantity`, and, if you hold the required permission, override the Price List rate. This allows you to personalise your rates or use a different calculation method that suits your needs.
 
-Within this screen, there is also an `Actions` section located on the far right hand side of the interface. The buttons within that section have the following functions:&#x20;
+{% hint style="warning" %}
+Overriding the `Rate` requires the **Maica - Manage Services - Assign Custom Rate** permission set. Without it, the `Rate` field is read-only and always shows the Price List Entry's Unit Price (or a previously saved rate); you can still add, remove, and adjust the Quantity of items.
 
-<table><thead><tr><th width="151">Button</th><th>Description</th></tr></thead><tbody><tr><td><ol><li>Edit</li></ol></td><td>This button allows you to edit the Agreement Item by reopening the <a href="manage-services.md#how-do-i-add-services"><code>Manage Agreement Item</code></a> pop-up of an existing Item. </td></tr><tr><td><ol start="2"><li>Delete</li></ol></td><td>This button removes Agreement Items from the Service Agreement. </td></tr><tr><td><ol start="3"><li>Duplicate</li></ol></td><td>This button allows you to duplicate Agreement Items. This can be useful if you have similar Items that you do not wish to rebuild, you can simply duplicate and edit. </td></tr></tbody></table>
+Setting a `Rate` of `$0` where the Price List Entry's Unit Price is not itself `$0` additionally requires the **Maica - Manage Services - Allow $0 Rate Services** permission set. A Support Item whose Price List Entry is genuinely priced at `$0` can always be added, regardless of either permission.
+{% endhint %}
 
-Once you have finalised your Agreement Items, click `Submit` and Maica will update the Service Agreement and any associated records to match your changes.&#x20;
+Within this screen, there is also an `Actions` section located on the far right hand side of the interface. The buttons within that section have the following functions:
+
+<table><thead><tr><th width="151">Button</th><th>Description</th></tr></thead><tbody><tr><td><ol><li>Edit</li></ol></td><td>This button allows you to edit the Agreement Item by reopening the <a href="manage-services.md#how-do-i-add-services"><code>Manage Agreement Item</code></a> pop-up of an existing Item.</td></tr><tr><td><ol start="2"><li>Delete</li></ol></td><td>This button removes Agreement Items from the Service Agreement.</td></tr><tr><td><ol start="3"><li>Duplicate</li></ol></td><td>This button allows you to duplicate Agreement Items. This can be useful if you have similar Items that you do not wish to rebuild, you can simply duplicate and edit.</td></tr></tbody></table>
+
+Once you have finalised your Agreement Items, click `Submit` and Maica will update the Service Agreement and any associated records to match your changes.
 
 ## Budget Trend Analysis
 
 The Budget Trend Analysis helps is a visual tool at the top of the Manage Services modal that helps you track how funding is being used across a Care Recipient’s Support at Home Plan. It provides a clear, quarter-by-quarter view of available funding, projected expenditure, and remaining balances.
 
-### How does it work?&#x20;
+### How does it work?
 
 For each quarter in the Care Recipient’s Plan, the component displays a **tile** showing:
 
@@ -111,18 +117,18 @@ The Budget Trend Analysis calculations are supported by fields on the Plan, Serv
 
 {% hint style="warning" %}
 If the Estimated Expenditure in the Budget Trend Analysis appears significantly higher than expected, this may be caused by Agreement Items where the Quantity was edited manually in the table row rather\
-than through the Manage Agreement Item modal. To learn more, see [Agreement Item Quantity](../../agreement-item-quantity.md)
+than through the Manage Agreement Item modal. To learn more, see Agreement Item Quantity
 {% endhint %}
 
-## Validation&#x20;
+## Validation
 
-### Appointment Service Validation for Support at Home&#x20;
+### Appointment Service Validation for Support at Home
 
 When a Service Agreement is funded under **Support at Home** and linked to a Parent Plan, the Manage Services component validates selected services against the **Approved Services** defined on that Plan.
 
 This ensures only services formally approved for the Care Recipient can be added to the Service Agreement.
 
-#### So, what is the logic?&#x20;
+#### So, what is the logic?
 
 Two validations are performed whenever a product/support item is selected:
 
