@@ -144,7 +144,7 @@
 
 ## ROSTERS
 
-* [Create a Rroster](rosters/create-a-rroster.md)
+* [Create a Roster](rosters/create-a-roster.md)
 * [Manage a Roster](rosters/manage-a-roster.md)
 
 ## Timesheets

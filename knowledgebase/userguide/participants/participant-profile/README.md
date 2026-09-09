@@ -195,9 +195,9 @@ To link a Participant with a Resource, simply click `New`, select the desired `R
 The `Participant Resource` list is directly related to the `Resources Participant` list on the [Resource Profile](../../resources/resource-profile.md). This means, if multiple `Participants` are receiving care from a given `Resource`, this will be reflect on the `Resource Participants` list and display on the [Resource Profile](../../resources/resource-profile.md) under the Profile Management tab. This list will be dynamically updated if an update occurs on the `Resource` Profile.
 {% endhint %}
 
-### Contact Locations
+### Participant Locations
 
-The `Contact Location` related list shows the `Locations` recorded against a `Participant`, such as their home address or any other address where services are delivered to them.
+The `Participant Location` related list shows the `Locations` recorded against a `Participant`, such as their home address or any other address where services are delivered to them.
 
 The benefit of this list is that you can see and maintain all of a Participant's service delivery addresses in one place, and then select them by name when creating an `Appointment` or `Shift` rather than typing an address each time.
 
@@ -212,7 +212,7 @@ A Participant can only have one Primary Service Delivery Location at a time. If 
 {% endhint %}
 
 {% hint style="info" %}
-The **New Location** action and the `Contact Locations` related list are added to your Participant page by your administrator. If you cannot see them, please contact your system administrator.
+The **New Location** action and the `Participant Locations` related list are added to your Participant page by your administrator. If you cannot see them, please contact your system administrator.
 {% endhint %}
 
 ### Participant Goals

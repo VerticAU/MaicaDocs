@@ -77,10 +77,3 @@ When a `Draft` Roster is selected, an **Approve** action appears in the toolbar 
 {% hint style="warning" %}
 Approving a Roster affects who can see its Shifts and, for a master Roster, generates the rest of the series. Before approving, read [Manage a Roster](/broken/pages/36026830b8e12d0f61868dbcfbd9184cbcb949e7).
 {% endhint %}
-
-## Related Articles
-
-* [Rosters](/broken/pages/8e8ae768e39de1cf6b3c8daf61355859b34ef6b2)
-* [Create a Roster](/broken/pages/6bb8975d49ed0cc644d8ebeff8568921a2506d14)
-* [Manage a Roster](/broken/pages/36026830b8e12d0f61868dbcfbd9184cbcb949e7)
-* [Shift View](/broken/pages/3ab670f3546214eb17fe27c4e5a199a97dce245b)

@@ -48,13 +48,13 @@ A Roster is created as `Draft`. Approving it does two things:
 
 {% stepper %}
 {% step %}
-## Makes Shifts visible to Care Workers
+#### Makes Shifts visible to Care Workers
 
 Its Shifts become visible to Care Workers, including in Shift Offers, the Care Worker agenda, and the related notifications.
 {% endstep %}
 
 {% step %}
-## Generates the rest of the series
+#### Generates the rest of the series
 
 Where the Roster is the master of its series, the rest of the series is generated forward to the Schedule Horizon.
 {% endstep %}
@@ -143,10 +143,3 @@ If you close the modal while a clone is still running, it keeps going in the bac
 | You change the Schedule dates on an Approved master Roster | The Roster stays `Approved`. You are offered a reevaluate of the future Draft Rosters.                 |
 | You try to approve a Roster with no Shifts                 | The approval is refused with a message asking you to add a Shift first.                                |
 | You decline the approve confirmation                       | The Roster stays at its previous status. Any other edits you made in the same save are still applied.  |
-
-## Related Articles
-
-* [Create a Roster](/broken/pages/a23cd73bc2d2b6f5641e7e755e994694be8d4a98)
-* [Roster View](/broken/pages/3118d748193f318440a8a5512d37068a35c24361)
-* [Manage a Shift](/broken/pages/68d0796ad45cd9622d0c3bd731d0a39609ae282f)
-* [Recurring Schedules](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/recurring-schedules)

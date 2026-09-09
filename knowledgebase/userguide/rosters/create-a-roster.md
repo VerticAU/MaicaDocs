@@ -1,4 +1,4 @@
-# Create a Rroster
+# Create a Roster
 
 ## Overview
 
@@ -14,7 +14,7 @@ Creating a Roster is done from the [Planner](/broken/pages/51d2466397b824771629f
 
 {% stepper %}
 {% step %}
-### Open the Manage Roster modal
+#### Open the Manage Roster modal
 
 From the Planner, switch to [Roster View](/broken/pages/51d2466397b824771629f8618ddb7b9798b18a93) and choose to create a new Roster. The **Manage Roster** modal opens with the fields pre-filled from your current Planner period.
 
@@ -22,7 +22,7 @@ The modal is made up of detail rows. Click a row to open its editor, and click a
 {% endstep %}
 
 {% step %}
-### Set the Schedule window
+#### Set the Schedule window
 
 `Schedule Start` and `Schedule End` define the recurrence horizon: the period across which the series of Rosters will run.
 
@@ -34,13 +34,13 @@ The Roster's own start date follows the Schedule Start. Its end date is derived 
 {% endstep %}
 
 {% step %}
-### Choose the Location
+#### Choose the Location
 
 Select the `Location` the Roster covers. Once selected, the Location's address is shown beneath the field so you can confirm you have picked the right one.
 {% endstep %}
 
 {% step %}
-### Set the Frequency and Repeat Every
+#### Set the Frequency and Repeat Every
 
 `Frequency` sets the cadence of the series. `Repeat Every` sets how many of those periods pass between one Roster and the next, and defaults to `1`.
 
@@ -61,12 +61,12 @@ Select the `Location` the Roster covers. Once selected, the Location's address i
 As you set these fields, a recurrence preview shows how many Rosters the series will contain, for example `12 Rosters in this series`. Select **Show details** to see the individual iteration dates.
 
 {% hint style="info" %}
-The preview describes the size of the **series**, not what is created when you save. Saving creates the first Roster only. See [What happens when you save](create-a-rroster.md#what-happens-when-you-save) below.
+The preview describes the size of the **series**, not what is created when you save. Saving creates the first Roster only. See [What happens when you save](create-a-roster.md#what-happens-when-you-save) below.
 {% endhint %}
 {% endstep %}
 
 {% step %}
-### Set Inherit Confirmed Resources
+#### Set Inherit Confirmed Resources
 
 `Inherit Confirmed Resources` controls whether the confirmed Resources on a Shift are carried forward onto the Shifts generated for future Rosters in the series. It is switched **off** by default on a new Roster.
 
@@ -76,7 +76,7 @@ Leave this off when you expect to allocate Resources fresh each period. Turn it 
 {% endstep %}
 
 {% step %}
-### Set the Status and Notes
+#### Set the Status and Notes
 
 A new Roster is created as `Draft`.
 
@@ -92,7 +92,7 @@ Add any `Notes` that the people working from this Roster should see.
 {% endstep %}
 
 {% step %}
-### Create
+#### Create
 
 Select **Create**. The Roster is saved and the Planner refreshes with the new Roster selected.
 
@@ -119,9 +119,3 @@ To learn more about approving a Roster and how the series rolls forward, see [Ma
 | You save without adding Shifts          | The Roster is created as `Draft`. Add Shifts to it before approving.                 |
 | You set `Repeat Every` to a blank value | It defaults back to `1` rather than saving empty.                                    |
 | You double-click **Create**             | Only one Roster is created. The second click is ignored while the save is in flight. |
-
-## Related Articles
-
-* [Manage a Roster](/broken/pages/fcb5b8294f7ec8d89c9f1c1903acfe972171b528)
-* [Roster View](/broken/pages/51d2466397b824771629f8618ddb7b9798b18a93)
-* [Create a Shift](/broken/pages/171aa44aeb7c6d478edc79747e7dbecbb1b65e0b)
