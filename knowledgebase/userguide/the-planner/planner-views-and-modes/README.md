@@ -17,7 +17,7 @@ The below list outlines the available views on the **Maica** Planner:&#x20;
 * [Participant View](participant-view.md)&#x20;
 * [Asset View](asset-view.md)&#x20;
 * [Accomodation View](accomodation-view.md)&#x20;
-* [Roster View](roster-view.md)&#x20;
+* [Roster View](/broken/pages/iDBmQBglbdc3Wz0PxW1y)&#x20;
 * [Shift View](shift-view.md)
 
 {% hint style="warning" %}

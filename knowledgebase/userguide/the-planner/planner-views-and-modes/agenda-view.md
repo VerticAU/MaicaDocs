@@ -9,7 +9,7 @@ description: Learn about the Agenda View in Maica
 The Agenda View displays your Planner information in a list format, grouped by day. Instead of showing events on a grid, it provides a sequential agenda of **Appointments**, making it easy to quickly review what is scheduled for each day.
 
 {% hint style="warning" %}
-Agenda Mode only displays Appointments, in order to see Shifts, please use [Schedule](schedule.md), [Roster](roster-view.md) or [Shift](shift-view.md) Views.&#x20;
+Agenda Mode only displays Appointments, in order to see Shifts, please use [Schedule](schedule.md), [Roster](/broken/pages/iDBmQBglbdc3Wz0PxW1y) or [Shift](shift-view.md) Views.&#x20;
 {% endhint %}
 
 ### Agenda Mode

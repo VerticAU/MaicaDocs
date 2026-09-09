@@ -28,7 +28,7 @@ Once done, either the `New Appointment` or `New Shift` module will display. Maic
 | [Participant View](../planner-views-and-modes/participant-view.md)    | `New Appointment` |
 | [Asset View ](../planner-views-and-modes/asset-view.md)               | `New Appointment` |
 | [Accomodation View ](../planner-views-and-modes/accomodation-view.md) | `New Appointment` |
-| [Roster View ](../planner-views-and-modes/roster-view.md)             | `New Shift`       |
+| [Roster View ](/broken/pages/iDBmQBglbdc3Wz0PxW1y)                    | `New Shift`       |
 | [Shift View ](../planner-views-and-modes/shift-view.md)               | `New Shift`       |
 
 Once the applicable module has been shown, create your `Appointment` or `Shift` by following the same steps detailed [here](../../appointments/create-an-appointment/).

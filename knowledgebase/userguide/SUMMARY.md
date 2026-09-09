@@ -142,6 +142,11 @@
   * [Open Shift Profile](shifts/shift-actions/open-shift-profile.md)
   * [Google Maps](shifts/shift-actions/google-maps.md)
 
+## ROSTERS
+
+* [Create a Rroster](rosters/create-a-rroster.md)
+* [Manage a Roster](rosters/manage-a-roster.md)
+
 ## Timesheets
 
 * [Timesheet Overview](timesheets/timesheet-overview/README.md)

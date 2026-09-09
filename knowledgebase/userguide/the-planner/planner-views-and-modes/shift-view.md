@@ -34,10 +34,10 @@ On Timeline Mode, Roster View will organise your Planner by `Shift(s)`. This wil
 The details displayed on each Shift cell are configurable. To learn more, click [here](../planner-filter/).&#x20;
 {% endhint %}
 
-Similar to [Roster View](roster-view.md), If you use the `Group By` Planner Action, **Maica** will show helpful indicators on your Planner to inform you of how many unique `Shifts(s)` you have at any given time, as shown above.
+Similar to [Roster View](/broken/pages/iDBmQBglbdc3Wz0PxW1y), If you use the `Group By` Planner Action, **Maica** will show helpful indicators on your Planner to inform you of how many unique `Shifts(s)` you have at any given time, as shown above.
 
 {% hint style="info" %}
-For further information on these indicators, please click [here](roster-view.md).&#x20;
+For further information on these indicators, please click [here](/broken/pages/iDBmQBglbdc3Wz0PxW1y).&#x20;
 {% endhint %}
 
 In addition, a few useful interaction features are available on the Shift cell in Timeline Mode on Shift View. These are:

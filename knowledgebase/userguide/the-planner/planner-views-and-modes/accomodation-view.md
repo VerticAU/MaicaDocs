@@ -36,4 +36,4 @@ When you make an Appointment from Timeline Mode in Accomodation View, the Appoin
 In Timeline Mode, Accomodation View will be [Grouped By](../planner-actions/group-by.md) Location by default.&#x20;
 {% endhint %}
 
-If the `Group By` Planner Action is in use, **Maica** will show helpful indicators on your Planner to inform you of how many unique `Appointment(s)` you have at any given time, as shown above by the `Green 1`. To learn more about these indicators, click [here](roster-view.md).&#x20;
+If the `Group By` Planner Action is in use, **Maica** will show helpful indicators on your Planner to inform you of how many unique `Appointment(s)` you have at any given time, as shown above by the `Green 1`. To learn more about these indicators, click [here](/broken/pages/iDBmQBglbdc3Wz0PxW1y).&#x20;
