@@ -6,15 +6,13 @@ description: Learn about recurring schedules within Maica and how to manage thes
 
 ### Overview
 
-Maica support the management of recurring schedules supporting the ongoing generation of either Appointments, Shifts, or Unavailabilities. The following configuration options are available when managing Recurring Schedules.
+Maica support the management of recurring schedules supporting the ongoing generation of either Appointments, Shifts, Unavailabilities, or Rosters. The following configuration options are available when managing Recurring Schedules.
 
 {% hint style="info" %}
 It’s important to note that Recurring Schedules cannot be set to begin in the past. They must start either today or on a future date.
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>Recurring Schedule Configuration available for Appointments, Shifts, and Unavailabilities.</p></figcaption></figure>
-
-
+<figure><img src="https://293583916-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F9selzjEx6KX7RYEawAVr%2Fuploads%2FMgxboINTe26vIdIz0xbk%2Fimage.png?alt=media&#x26;token=cd0d4031-4763-4642-8742-7249fc0c6f57" alt=""><figcaption><p>Recurring Schedule Configuration available for Appointments, Shifts, and Unavailabilities.</p></figcaption></figure>
 
 | Configuration           | Description                                                                                 | Options                                                                                                                     |
 | ----------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -26,7 +24,7 @@ It’s important to note that Recurring Schedules cannot be set to begin in the 
 | Exclude Public Holidays | If selected, Maica excludes any days marked as a public holiday(s) in Salesforce.           | `Yes`/`No`                                                                                                                  |
 
 {% hint style="info" %}
-**Maica** does not support a `Fortnightly Frequency`. If you wish to have a Recurring Schedule on a Fortnightly basis, please set your `Frequency` to `Weekly`, select your `Schedule Day` and `Repeat Every` 2 weeks.   &#x20;
+**Maica** does not support a `Fortnightly Frequency`. If you wish to have a Recurring Schedule on a Fortnightly basis, please set your `Frequency` to `Weekly`, select your `Schedule Day` and `Repeat Every` 2 weeks.
 {% endhint %}
 
 ### Scheduled Appointment Creation Logic
@@ -36,7 +34,7 @@ Within a Recurring Schedule, Maica generates Appointments based on a `Schedule H
 {% hint style="info" %}
 A `Schedule Horizon` defines the rolling time period into the future during which **Maica** evaluates schedules and creates corresponding Appointments. It is measured in weeks and determines how far ahead Appointments are planned and generated.\
 \
-You can set your desired Schedule Horizon in the Maica General Settings. For more information on setting your Schedule Horizon, click [here](../settings/general-settings.md).&#x20;
+You can set your desired Schedule Horizon in the Maica General Settings. For more information on setting your Schedule Horizon, click here.
 {% endhint %}
 
 {% hint style="info" %}
@@ -45,7 +43,7 @@ The `Schedule Horizon Date Range` is determined based on today() + `Schedule Hor
 
 To further understand the Appointment Creation Logic, see the below example:
 
-Let's say you are creating a Recurring Schedule with the following inputs,&#x20;
+Let's say you are creating a Recurring Schedule with the following inputs,
 
 * `Schedule Horizon` = 12 weeks
 * `Schedule Start Date` = Jan 3, 2025
@@ -56,9 +54,9 @@ Let's say you are creating a Recurring Schedule with the following inputs,&#x20;
 * `Master Appointment` != null
 * `Master Appointment` != Cancelled
 
-Then, when the daily batch is run, the following occurs:&#x20;
+Then, when the daily batch is run, the following occurs:
 
-* The `Schedule Horizon End Date` will be calculated per below:&#x20;
+* The `Schedule Horizon End Date` will be calculated per below:
   * Today + 12 weeks = Feb 25, 2025
 * Maica will create `Appointment` records for the period between the `Schedule Start Date` and the `Schedule Horizon End Date`
   * Meaning that `Appointment` records will be created for the period Jan 3, 2025 to Feb 25, 2025
@@ -68,14 +66,43 @@ Then, when the daily batch is run, the following occurs:&#x20;
 This Maica logic ensures Appointment Records are created for schedules within a rolling time horizon, maintaining consistent coverage and adapting dynamically as time progresses.
 
 {% hint style="info" %}
-When an Appointment Schedule is created the `Schedule Horizon` only respects 4 weeks. This is due to **Salesforce** limits and timeout risks during business hours. However, the overnight Batch will always respect the 12 week `Schedule Horizon` as per the setting.&#x20;
+When an Appointment Schedule is created the `Schedule Horizon` only respects 4 weeks. This is due to **Salesforce** limits and timeout risks during business hours. However, the overnight Batch will always respect the 12 week `Schedule Horizon` as per the setting.
 {% endhint %}
 
-### Schedule Evaluation Date&#x20;
+### Roster Generation Logic
 
-**Maica** retrieves Appointment Schedule records that will be included for Appointment processing based on a `Schedule Evaluation Date` field. The below information defines the field and details how the logic works in practice:&#x20;
+Rosters use the same Schedule record and the same rolling `Schedule Horizon` as Appointments and Shifts, but the way a Roster series is started differs in two important respects.
 
-`Schedule Evaluation Date`: Specifies the earliest date on which **Maica** will include the Appointment Schedule record for evaluation to determine whether Appointment records need to be created. It is calculated as the `Schedule Start Date` minus the `Schedule Horizon` (in weeks). This ensures that the system identifies and processes Appointment Schedule records within the appropriate window for generating Appointment’s on a rolling basis. The formula is shown below.&#x20;
+**Generation only begins once the master Roster is Approved.** Saving a new Roster creates the first Roster only. The remaining Rosters in the series are not generated until that master Roster is approved. Approving it generates the series forward to the Schedule Horizon immediately, rather than waiting for the next overnight run.
+
+**The daily job then rolls the series forward.** The `Manage Recurring Rosters` scheduled job maintains the series on an ongoing basis. It processes Schedules where all of the following are true:
+
+* `Status` is `Approved`
+* `End Date` is today or later
+* `Under Evaluation` is TRUE
+* The linked `Master Roster` has a `Status` of `Approved`
+
+{% hint style="warning" %}
+A Roster series with a `Draft` master Roster is never rolled forward, even where its Schedule is otherwise eligible. If a series has stopped generating, check the master Roster's status first.
+{% endhint %}
+
+{% hint style="info" %}
+The job only creates Rosters that are **missing** from the horizon; it skips any that already exist, so it is safe to run repeatedly. Once the Rosters exist, a second background process materialises their Shifts.
+{% endhint %}
+
+#### Reevaluating a Roster series
+
+A **Reevaluate** action is available on the Schedule record. For a Roster series this is destructive: it deletes the future `Draft` Rosters and regenerates them from the Schedule's current configuration. Approved Rosters are never deleted by a reevaluate.
+
+{% hint style="info" %}
+To learn how end users create, approve, and reevaluate Rosters, see [Manage a Roster](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/rosters/manage-a-roster) in the User Guide.
+{% endhint %}
+
+### Schedule Evaluation Date
+
+**Maica** retrieves Appointment Schedule records that will be included for Appointment processing based on a `Schedule Evaluation Date` field. The below information defines the field and details how the logic works in practice:
+
+`Schedule Evaluation Date`: Specifies the earliest date on which **Maica** will include the Appointment Schedule record for evaluation to determine whether Appointment records need to be created. It is calculated as the `Schedule Start Date` minus the `Schedule Horizon` (in weeks). This ensures that the system identifies and processes Appointment Schedule records within the appropriate window for generating Appointment’s on a rolling basis. The formula is shown below.
 
 ```apex
 maica__Schedule_Start_Date__c - Schedule Horizon (weeks)
@@ -83,14 +110,14 @@ maica__Schedule_Start_Date__c - Schedule Horizon (weeks)
 
 #### Example:
 
-* Given Inputs:&#x20;
+* Given Inputs:
   * `Schedule Horizon`: 12 weeks
   * `Schedule Start Date`: 1st April 2025
   * `Schedule End Date`: 30th October 2025
   * `Frequency`: Weekly
   * `Today`: 4th December 2024
 
-**Formula**:&#x20;
+**Formula**:
 
 <pre class="language-apex"><code class="lang-apex"><strong>Schedule Evaluation Date = Schedule Start Date - Schedule Horizon (weeks)
 </strong></code></pre>
@@ -112,7 +139,7 @@ maica__Schedule_Start_Date__c - Schedule Horizon (weeks)
 {% hint style="info" %}
 Please note, there is also an `Under Evaluation` field which indicates whether the Appointment Schedule is eligible for automated processing.\
 \
-The value is determined by a formula that evaluates whether the current date falls within the `Schedule Evaluation Date` and the `Schedule End Date`. This ensures that only relevant Appointment Schedules are included for processing. Used in both the Appointment Schedule (Recurring Appointment) and Unavailability automation logic, as show below.&#x20;
+The value is determined by a formula that evaluates whether the current date falls within the `Schedule Evaluation Date` and the `Schedule End Date`. This ensures that only relevant Appointment Schedules are included for processing. Used in the Appointment Schedule (Recurring Appointment), Unavailability, and Roster automation logic, as show below.
 {% endhint %}
 
 **`Under Evaluation` Formula**:
@@ -140,7 +167,7 @@ AND(
 
 **Maica** has logic to prevent past Scheduled Appointment being created. If the Scheduled Batch is interrupted (eg, stopped or paused) and then resumed at a later date, **Maica** ensures the `Anchor Date` is only used if the Appointment `Schedule Start Date` is **greater than or equal to today's date**. This logic prevents the creation of Appointments with dates in the past during the interrupted period.
 
-Consider the following example:&#x20;
+Consider the following example:
 
 * Today's Date = 20th November 2024
 * An Appointment Schedule was configured to generate weekly Appointment records starting from 1st November 2024.
@@ -149,18 +176,18 @@ Consider the following example:&#x20;
 When the batch is resumed, **Maica** evaluates and sets the Anchor Date to:
 
 * The most recent `Appointment Schedule Start Date`, if it is greater than or equal to today's date; or
-* Today's date, if the most recent `Appointment Schedule Start Date` is in the past.&#x20;
+* Today's date, if the most recent `Appointment Schedule Start Date` is in the past.
 
-By covering both scenarios, the logic ensures that the `Anchor Date` will always be today or a future date, never a past date.&#x20;
+By covering both scenarios, the logic ensures that the `Anchor Date` will always be today or a future date, never a past date.
 
 So, if today's date is 20th November 2024, the system evaluates the most recent `Appointment Schedule Start Date` (8th November 2024) and determines that it is in the past. As per the logic:
 
-* The system ignores the 8th November 2024 date because it is before today's date.&#x20;
+* The system ignores the 8th November 2024 date because it is before today's date.
 * Instead, it defaults the Anchor Date to 20th November 2024 (today's date), ensuring no Appointment records are created in the past.
 
-**Maica** will then begin generating Appointment records starting from the next valid future date, based on the schedule's frequency.&#x20;
+**Maica** will then begin generating Appointment records starting from the next valid future date, based on the schedule's frequency.
 
-### Cancelling a Schedule&#x20;
+### Cancelling a Schedule
 
 There are several ways to cancel a **Recurring Schedule** or an **Appointment** within one, depending on what you need to cancel and where you are in the schedule.
 
@@ -192,7 +219,7 @@ If you only need to cancel a single Appointment within a schedule — without af
 Your organisation's Billing Cancellation rules apply to all of the scenarios above. Check with your administrator if you are unsure how these are configured.
 {% endhint %}
 
-### Things to look out for&#x20;
+### Things to look out for
 
 #### Schedules Running Old Logic After a Package Update
 
@@ -210,12 +237,12 @@ If you notice any unexpected behaviour following an update, please **contact the
 
 #### Owner Assignment for Recurring Appointment Batches
 
-When generating **Recurring Appointment** batches, Maica automatically ensures that all cloned **Appointment** records are owned by an **Active User**. This prevents batch failures that could occur when the **Owner of the Master Appointment** is inactive. It works as described below:&#x20;
+When generating **Recurring Appointment** batches, Maica automatically ensures that all cloned **Appointment** records are owned by an **Active User**. This prevents batch failures that could occur when the **Owner of the Master Appointment** is inactive. It works as described below:
 
 1. **Ownership Validation**
    * Before generating Recurring Appointments, Maica checks whether the _Master Appointment Owner_ is active.
    * If the owner **is active**, ownership of the cloned Appointment records is retained.
-   * If the owner **is inactive**, ownership is reassigned to the **current running user** (the user executing the batch). This is determined in the [Scheduled Jobs](../settings/scheduled-jobs.md).&#x20;
+   * If the owner **is inactive**, ownership is reassigned to the **current running user** (the user executing the batch). This is determined in the Scheduled Jobs.
 2. **Batch Execution Conditions**
    * If the running user is inactive, the batch or scheduled job will not execute.
    * This ensures only active users can trigger recurring batch generation.
@@ -228,7 +255,7 @@ This ensures all generated **Appointment** records are owned by an active user, 
 The same ownership logic applies to **Recurring Unavailability Batches**, maintaining consistency across recurring record generation.
 {% endhint %}
 
-The below tables outlines some Example Scenarios:&#x20;
+The below tables outlines some Example Scenarios:
 
 | Scenario                                 | Result                                                                                                    |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------- |
