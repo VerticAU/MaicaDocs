@@ -61,7 +61,7 @@ Select the `Location` the Roster covers. Once selected, the Location's address i
 As you set these fields, a recurrence preview shows how many Rosters the series will contain, for example `12 Rosters in this series`. Select **Show details** to see the individual iteration dates.
 
 {% hint style="info" %}
-The preview describes the size of the **series**, not what is created when you save. Saving creates the first Roster only. See [What happens when you save](create-a-roster.md#what-happens-when-you-save) below.
+The preview describes the size of the **series**, not what is created when you save. Saving creates the first Roster only. See [What happens when you save](create-a-rroster.md#what-happens-when-you-save) below.
 {% endhint %}
 {% endstep %}
 

@@ -8,7 +8,7 @@ description: Learn about capturing basic details for a new Shift
 
 The Basic Details tab captures the basic details of the [Shift](../../getting-started/maica-key-concepts/shift.md), as described in the below table:
 
-<table><thead><tr><th width="222">Captured Information	</th><th>Description</th></tr></thead><tbody><tr><td><a href="../../getting-started/maica-key-concepts/resource.md">Resource(s) </a></td><td>This allows for the selection of <a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a> by simply typing a name of a Resource (or multiple) or by clicking on the <code>Filter</code> icon which allows for <a href="../../appointments/create-an-appointment/smart-selection-filter.md">Smart Selection</a> of <a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a>.</td></tr><tr><td><a href="../../getting-started/maica-key-concepts/asset.md">Asset(s) </a></td><td>This allows for the selection of <a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a> by simply typing a name of a Asset (or multiple) or by clicking on the <code>Filter</code> icon which allows for <a href="../../appointments/create-an-appointment/smart-selection-filter.md">Smart Selection</a> of <a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a>.</td></tr><tr><td>Date &#x26; Time Details </td><td>The date and time details are pre-populated from the <a href="../../the-planner/planner-overview.md">Planner</a> so there is nothing to do for the user. </td></tr><tr><td>Shift Service </td><td>This allows for the selection of Shift Service(s). You can add an Shift Service by typing the name of the service, or by using any key words configured within the service. For example: If you were adding <strong>Support Coordination</strong>, you could type <strong>Support Coordination</strong>, or, <strong>advice</strong>. </td></tr><tr><td>Claim Type</td><td>This allows for the selection of a Claim Type by selecting one from the provided dropdown list. </td></tr><tr><td>Time Zone</td><td>When creating a new Shift, the <strong>timezone is automatically set</strong> <strong>&#x26; displayed</strong> based on the <strong>Salesforce user’s current browser timezone.</strong> This occurs before a Location is selected.</td></tr></tbody></table>
+<table><thead><tr><th width="222">Captured Information</th><th>Description</th></tr></thead><tbody><tr><td><a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a></td><td>This allows for the selection of <a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a> by simply typing a name of a Resource (or multiple) or by clicking on the <code>Filter</code> icon which allows for <a href="../../appointments/create-an-appointment/smart-selection-filter.md">Smart Selection</a> of <a href="../../getting-started/maica-key-concepts/resource.md">Resource(s)</a>.</td></tr><tr><td><a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a></td><td>This allows for the selection of <a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a> by simply typing a name of a Asset (or multiple) or by clicking on the <code>Filter</code> icon which allows for <a href="../../appointments/create-an-appointment/smart-selection-filter.md">Smart Selection</a> of <a href="../../getting-started/maica-key-concepts/asset.md">Asset(s)</a>.</td></tr><tr><td>Date &#x26; Time Details</td><td>The date and time details are pre-populated from the <a href="../../the-planner/planner-overview.md">Planner</a> so there is nothing to do for the user.</td></tr><tr><td>Shift Service</td><td>This allows for the selection of Shift Service(s). You can add an Shift Service by typing the name of the service, or by using any key words configured within the service. For example: If you were adding <strong>Support Coordination</strong>, you could type <strong>Support Coordination</strong>, or, <strong>advice</strong>.</td></tr><tr><td>Claim Type</td><td>This allows for the selection of a Claim Type by selecting one from the provided dropdown list.</td></tr><tr><td>Time Zone</td><td>When creating a new Shift, the <strong>timezone is automatically set</strong> <strong>&#x26; displayed</strong> based on the <strong>Salesforce user’s current browser timezone.</strong> This occurs before a Location is selected.</td></tr></tbody></table>
 
 ### Autocomplete Appointments for Linked Appointments
 
@@ -72,7 +72,7 @@ At the same time, it maintains full control for scenarios where Appointment-leve
 * A Shift contains multiple Appointments but Autocomplete Appointments is not enabled.\
   The care worker must check in, check out, and complete each Appointment individually, even after actioning the Shift itself.
 
-## Things to look out for: Basic Details&#x20;
+## Things to look out for: Basic Details
 
 <figure><img src="../../.gitbook/assets/things to look out for basic details shifts.png" alt="" width="500"><figcaption></figcaption></figure>
 
@@ -80,34 +80,38 @@ At the same time, it maintains full control for scenarios where Appointment-leve
 
 This alert will show in the instance where the selected Resource(s) have a Roster Mode conflict and hence cannot be allocated to the proposed Shift. This is the only restriction that **Maica** enforces where the user cannot continue to create the Shift.
 
+{% hint style="warning" %}
+`Roster Mode` is a setting on a `Resource` that controls how that person can be scheduled. It is not the same thing as a **Roster**, which is a separate record that groups Shifts for a Location and period.
+{% endhint %}
+
 {% hint style="info" %}
-`Roster Mode` in **Maica** is used to define the behaviour and validation applied when scheduling `Shifts` for a `Resource`. When selecting a `Roster Mode` for a `Resource`, there are two selectable options. These are:
+`Roster Mode` in **Maica** is used to define the behaviour and validation applied when scheduling `Shifts` for a `Resource`. When selecting a `Roster Mode` for a `Resource`, there are three selectable options. These are:
 
 * `Appointment`: This means Appointments can be scheduled at any time for a Resource provided it is within any active Availability record(s) if these exist. If no Availability record(s) exist, Appointments can be created at any time.
 * `Shift`: This means Appointments can only be scheduled within a Shift that a Resource is part of and it is within any active Availability record(s) if these exist. If no Availability record(s) exist, Appointments still must fall within a Shift that the Resource is assigned to.
-* `Dynamic`: The Resource can be assigned to both Shifts and standalone Appointments, subject to overlap and availability rules. For the Shift basic-details article, also update the resolution guidance so it reads that you must select Resource(s) set to a Roster Mode of `Shift` or `Dynamic` during the time of the proposed Shift.
+* `Dynamic`: The Resource can be assigned to both Shifts and standalone Appointments, subject to overlap and availability rules.
 {% endhint %}
 
 In order to resolve this alert, you **must** select Resource(s) that are set to a Roster Mode of `Shift` or `Dynamic` during the time of the proposed Shift.
 
-You can set a Resource(s) Roster Mode on their [Resource Profile](../../resources/resource-profile.md), [Availability Records](../../resources/resource-profile.md), or by using a [Global Setting](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/rostering-management) in your Maica organisation for all Resource(s). To learn more, click the links.&#x20;
+You can set a Resource(s) Roster Mode on their [Resource Profile](../../resources/resource-profile.md), [Availability Records](../../resources/resource-profile.md), or by using a [Global Setting](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/rostering-management) in your Maica organisation for all Resource(s). To learn more, click the links.
 
 {% hint style="info" %}
-It is important to note that if a `Resource` has a `Roster Mode` set on their Resource Record that is different to the `Roster Mode` set for a specific `Availability` Record, the `Availability` Record Mode will take precedent during the `Availability` period. \
+It is important to note that if a `Resource` has a `Roster Mode` set on their Resource Record that is different to the `Roster Mode` set for a specific `Availability` Record, the `Availability` Record Mode will take precedent during the `Availability` period.\
 \
 If No `Availability` Records are found and the `Roster Mode` is not set on the `Resource` Record: the `Roster Mode` for the `Resource` will be defined by the `Global Roster Mode` setting. This is configurable in the **Maica** [Rostering Management](https://knowledge.maica.com.au/maica-knowledge-base/v/maica-administration-guide/settings/rostering-management) settings.
 {% endhint %}
 
 ### 2. Shift Allocation Incomplete
 
-This alert will show in the instance where you have a different number of Resource(s) allocated compared to the specified Required number for the Shift. This will result in an incomplete Shift.&#x20;
+This alert will show in the instance where you have a different number of Resource(s) allocated compared to the specified Required number for the Shift. This will result in an incomplete Shift.
 
-For example, if you have an incorrect required number of [Resource(s)](../../getting-started/maica-key-concepts/resource.md), **Maica** will alert you with the following warning:&#x20;
+For example, if you have an incorrect required number of [Resource(s)](../../getting-started/maica-key-concepts/resource.md), **Maica** will alert you with the following warning:
 
 `The Shift does not have the required number of Resources allocated.`
 
-In this instance, **Maica** will still allow you to continue to the next stage of creating your Shift. However, as mentioned, it will result in an unfulfilled Shift. &#x20;
+In this instance, **Maica** will still allow you to continue to the next stage of creating your Shift. However, as mentioned, it will result in an unfulfilled Shift.
 
-In order to resolve the Incomplete allocation alert, ensure that the number of selected [Resource(s)](../../getting-started/maica-key-concepts/resource.md) match the specified required number. [For example](https://ourguidelines.ndis.gov.au/would-we-fund-it/home-and-living-supports/21-ratio-support): If you only require 1 Resource for your Shift, ensure 1 is allocated, as shown below.&#x20;
+In order to resolve the Incomplete allocation alert, ensure that the number of selected [Resource(s)](../../getting-started/maica-key-concepts/resource.md) match the specified required number. [For example](https://ourguidelines.ndis.gov.au/would-we-fund-it/home-and-living-supports/21-ratio-support): If you only require 1 Resource for your Shift, ensure 1 is allocated, as shown below.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-09-25 at 4.40.22 pm.png" alt="" width="563"><figcaption></figcaption></figure>

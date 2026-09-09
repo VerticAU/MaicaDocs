@@ -12,6 +12,7 @@ A Shift, whilst similar to [Appointments](appointment.md), is the principal way 
 * [Appointment Services](appointment-service.md) (Shift Service) which are being delivered as part of the Shift
 * [Location](../../appointments/create-an-appointment/location.md) at which the Shift is being held
 * Recurrance if the Shift is a repeating service being delivered
+* The Roster the Shift belongs to, where it forms part of one
 
 {% hint style="info" %}
 You can learn how to create Shifts [here](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts).
@@ -23,6 +24,14 @@ A Shift sets out the structure under which [Resources](resource.md) are rostered
 
 {% hint style="info" %}
 The primary difference between Shifts and [Appointments](appointment.md) is that Shifts do not have specific [Participants](participant.md) associated with the Shift. The overall purpose of a Shift is to place [Resources](resource.md) at a specific [Location](../../appointments/create-an-appointment/location.md) at specific (and potentially recurring) times.
+{% endhint %}
+
+### Standalone Shifts and Roster Shifts
+
+A Shift can either stand on its own, or belong to a **Roster**. A Roster groups the Shifts for one Location and period into a single record that can be reviewed, approved, and generated forward as a series.
+
+{% hint style="info" %}
+Where a Shift belongs to a Roster, that Roster controls when the Shift becomes visible to Care Workers: the Shifts under a `Draft` Roster are not offered to Care Workers until the Roster is `Approved`. Schedulers and coordinators can still see and resource them in the meantime.
 {% endhint %}
 
 ### Usage
