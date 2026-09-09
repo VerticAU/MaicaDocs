@@ -1,3 +1,7 @@
+---
+description: Learn how Roster Mode controls the way a Resource can be scheduled in Maica
+---
+
 # Resource Roster Mode
 
 ## What is Roster Mode?
@@ -6,8 +10,12 @@
 
 Roster Mode is used by coordinators and schedulers who build the roster, and by administrators who set a Resource's default way of working. Choosing the right mode helps **Maica** keep the roster consistent, for example by stopping a shift-based worker from being booked outside their Shifts.
 
+{% hint style="warning" %}
+**Roster Mode is not the same thing as a Roster.** Roster Mode is a setting on a Resource that controls how that person can be scheduled. A Roster is a separate record that groups Shifts for a Location and period. The two are unrelated, and changing one does not affect the other.
+{% endhint %}
+
 {% hint style="info" %}
-Roster Mode is set on the [Resource](/broken/pages/a3ad13711cf6d314cc4187c4d2a97d4ea1bfe9b2) record and can also be set on individual [Availability](/broken/pages/a3ad13711cf6d314cc4187c4d2a97d4ea1bfe9b2) records. See [How Maica determines a Resource's Roster Mode](resource-roster-mode.md#how-maica-determines-a-resources-roster-mode) for how the two interact.
+Roster Mode is set on the Resource Profile record and can also be set on individual Availability records. See [How Maica determines a Resource's Roster Mode](resource-roster-mode.md#how-maica-determines-a-resources-roster-mode) for how the two interact.
 {% endhint %}
 
 ## Where do I set Roster Mode?
@@ -79,5 +87,5 @@ Separately from coverage, **Maica** can prevent a Resource from being double-boo
 For `Dynamic` Resources, a rostering setting also controls whether **Maica** prevents an overlapping `Shift` and `Appointment` at the same time. When that setting is enabled, a `Dynamic` Resource cannot be booked into an Appointment that overlaps one of their Shifts, and vice versa.
 
 {% hint style="info" %}
-To learn more about the per-Resource overlap exception, see the **Allow Overlap** section of the [Resource Profile](/broken/pages/a3ad13711cf6d314cc4187c4d2a97d4ea1bfe9b2) article.
+To learn more about the per-Resource overlap exception, see the **Allow Overlap** section of the Resource Profile article.
 {% endhint %}
