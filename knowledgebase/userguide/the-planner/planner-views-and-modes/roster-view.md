@@ -2,12 +2,12 @@
 
 ## What information does the Roster View display?
 
-The Roster View shows the `Shifts` belonging to a single [Roster](/broken/pages/8e8ae768e39de1cf6b3c8daf61355859b34ef6b2), together with a summary of that Roster and controls for moving through the Rosters in its series.
+The Roster View shows the `Shifts` belonging to a single [Roster](../../rosters/create-a-rroster.md), together with a summary of that Roster and controls for moving through the Rosters in its series.
 
 Roster View is **roster-first**. Unlike the other Planner views, it does not show everything in the selected period by default. Until you select a Roster from the toolbar, the grid stays empty.
 
 {% hint style="info" %}
-To view Shifts that do not belong to a Roster, use [Shift View](/broken/pages/3ab670f3546214eb17fe27c4e5a199a97dce245b) instead. Shift View shows standalone Shifts by default, with an option to include Roster Shifts as well.
+To view Shifts that do not belong to a Roster, use [Shift View](shift-view.md) instead. Shift View shows standalone Shifts by default, with an option to include Roster Shifts as well.
 {% endhint %}
 
 ## Selecting a Roster
@@ -57,7 +57,7 @@ When the selected Roster belongs to a Schedule, the toolbar arrows step to the p
 A **Go to Master** option jumps straight to the master Roster of the series, which is the Roster that future Rosters are regenerated from.
 
 {% hint style="info" %}
-To learn more about master Rosters and how a series is generated, see [Manage a Roster](/broken/pages/36026830b8e12d0f61868dbcfbd9184cbcb949e7).
+To learn more about master Rosters and how a series is generated, see [Manage a Roster](../../rosters/manage-a-roster.md).
 {% endhint %}
 
 ## Timeline and Calendar modes
@@ -75,5 +75,5 @@ The colour theming of the cells and the information presented within them are co
 When a `Draft` Roster is selected, an **Approve** action appears in the toolbar with a highlighted treatment to indicate that action is needed.
 
 {% hint style="warning" %}
-Approving a Roster affects who can see its Shifts and, for a master Roster, generates the rest of the series. Before approving, read [Manage a Roster](/broken/pages/36026830b8e12d0f61868dbcfbd9184cbcb949e7).
+Approving a Roster affects who can see its Shifts and, for a master Roster, generates the rest of the series. Before approving, read [Manage a Roster](../../rosters/manage-a-roster.md).
 {% endhint %}

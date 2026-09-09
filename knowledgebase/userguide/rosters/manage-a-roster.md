@@ -4,10 +4,10 @@
 
 Once a `Roster` exists, managing it covers four things: editing its details, approving it so its Shifts become visible to Care Workers, cloning it to start a new series, and regenerating the future Rosters in its series.
 
-All four are reached from the **Manage Roster** modal in [Roster View](/broken/pages/3118d748193f318440a8a5512d37068a35c24361), or from the Planner toolbar.
+All four are reached from the **Manage Roster** modal in [Roster View](../the-planner/planner-views-and-modes/roster-view.md), or from the Planner toolbar.
 
 {% hint style="info" %}
-To create a Roster in the first place, see [Create a Roster](/broken/pages/a23cd73bc2d2b6f5641e7e755e994694be8d4a98).
+To create a Roster in the first place, see [Create a Roster](create-a-rroster.md).
 {% endhint %}
 
 ## Editing a Roster

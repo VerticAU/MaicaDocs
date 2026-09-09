@@ -4,7 +4,7 @@
 
 A `Roster` groups the `Shifts` for one Location and one period into a single record you can review, approve, and hand over. Creating a Roster sets up that first period and, where the Roster recurs, defines the cadence that future Rosters in the series follow.
 
-Creating a Roster is done from the [Planner](/broken/pages/51d2466397b824771629f8618ddb7b9798b18a93) using the **Manage Roster** modal.
+Creating a Roster is done from the [Planner](../the-planner/planner-overview.md) using the **Manage Roster** modal.
 
 {% hint style="warning" %}
 **Prerequisites:** you need access to the Planner, and permission to create Rosters. If you also intend to approve the Roster, you need the Roster approve permission. See [Permission Groups & Sets](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/data/permission-groups-and-sets) in the Administration Guide.
@@ -16,7 +16,7 @@ Creating a Roster is done from the [Planner](/broken/pages/51d2466397b824771629f
 {% step %}
 #### Open the Manage Roster modal
 
-From the Planner, switch to [Roster View](/broken/pages/51d2466397b824771629f8618ddb7b9798b18a93) and choose to create a new Roster. The **Manage Roster** modal opens with the fields pre-filled from your current Planner period.
+From the Planner, switch to [Roster View](../the-planner/planner-views-and-modes/roster-view.md) and choose to create a new Roster. The **Manage Roster** modal opens with the fields pre-filled from your current Planner period.
 
 The modal is made up of detail rows. Click a row to open its editor, and click away from it to collapse it again.
 {% endstep %}
@@ -81,7 +81,7 @@ Leave this off when you expect to allocate Resources fresh each period. Turn it 
 A new Roster is created as `Draft`.
 
 {% hint style="warning" %}
-`Approved` is not offered when creating a Roster. A Roster cannot be approved until it has at least one Shift, and a brand new Roster has none. Approve it later, once its Shifts are in place, as described in [Manage a Roster](/broken/pages/fcb5b8294f7ec8d89c9f1c1903acfe972171b528).
+`Approved` is not offered when creating a Roster. A Roster cannot be approved until it has at least one Shift, and a brand new Roster has none. Approve it later, once its Shifts are in place, as described in [Manage a Roster](manage-a-roster.md).
 {% endhint %}
 
 {% hint style="info" %}
@@ -109,7 +109,7 @@ Saving creates **one** Roster, the first in the series. The remaining Rosters ar
 The rest of the series is generated only after the master Roster is approved. Approving it materialises the series forward to the Schedule Horizon, and a scheduled job then keeps rolling it forward over time.
 
 {% hint style="info" %}
-To learn more about approving a Roster and how the series rolls forward, see [Manage a Roster](/broken/pages/fcb5b8294f7ec8d89c9f1c1903acfe972171b528). To learn about the Schedule Horizon, see [Recurring Schedules](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/recurring-schedules) in the Administration Guide.
+To learn more about approving a Roster and how the series rolls forward, see [Manage a Roster](manage-a-roster.md). To learn about the Schedule Horizon, see [Recurring Schedules](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/recurring-schedules) in the Administration Guide.
 {% endhint %}
 
 ## Common Scenarios
