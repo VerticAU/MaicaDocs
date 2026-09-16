@@ -170,6 +170,6 @@ This is why records created before a `Funding Type` is configured need to be rev
 ## Related articles
 
 * [Billing Management Settings](./)
-* [Invoice Line Item Overview](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/invoices/invoice-overview/invoice-line-item-overview)
-* [Agreement Item](../../data/data-objects/agreement-item.md)
-* [Travel Management Settings](../travel-management.md)
+* [Invoice Line Item Overview](https://knowledge.maica.com.au/maica-user-guide/invoices/invoice-overview/invoice-line-item-overview)
+* [Agreement Item](https://knowledge.maica.com.au/maica-administration-guide/data/data-objects/agreement-item)
+* [Travel Management Settings](https://knowledge.maica.com.au/maica-administration-guide/settings/travel-management)
