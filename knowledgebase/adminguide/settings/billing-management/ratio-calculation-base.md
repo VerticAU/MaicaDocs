@@ -166,10 +166,3 @@ Correcting records that have already reached `Generated` requires a data remedia
 On the `Quantity` base, Maica uses the `Quantity` already stored on the `Delivery Activity` and treats it as the Participant's ratio'd share. If that `Quantity` was written while a different base was in effect, or before the `Funding Type` was configured, the stored full value carries straight through to `Quantity Delivered`.
 
 This is why records created before a `Funding Type` is configured need to be reviewed, rather than simply left to recalculate.
-
-## Related articles
-
-* [Billing Management Settings](./)
-* [Invoice Line Item Overview](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/invoices/invoice-overview/invoice-line-item-overview)
-* [Agreement Item](../../data/data-objects/agreement-item.md)
-* [Travel Management Settings](../travel-management.md)
