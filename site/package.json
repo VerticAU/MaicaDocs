@@ -1,0 +1,10 @@
+{
+  "name": "maica-docs-site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Maica docs-site build pipeline (GitBook -> mkdocs-material transform).",
+  "scripts": {
+    "test": "node --test bin/__tests__/*.test.mjs"
+  }
+}

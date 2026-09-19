@@ -1,0 +1,18 @@
+{#-
+  Maica override of the stock partials/logo.html.
+
+  Renders BOTH brand logos so the header can swap them by color scheme:
+  the teal wordmark in light mode and the white wordmark in dark mode. The
+  actual show/hide is done in assets/stylesheets/maica.css via the
+  .md-logo__light / .md-logo__dark classes keyed off data-md-color-scheme.
+
+  The stock partial is included inside the header's home-page <a> link, so we
+  keep the same alt text and emit only the <img> elements here.
+-#}
+{% if config.theme.logo %}
+  <img class="md-logo__light" src="{{ config.theme.logo | url }}" alt="{{ config.site_name }}">
+  <img class="md-logo__dark" src="{{ 'assets/maica-logo-dark.svg' | url }}" alt="{{ config.site_name }}">
+{% else %}
+  {% set icon = config.theme.icon.logo or "material/library" %}
+  {% include ".icons/" ~ icon ~ ".svg" %}
+{% endif %}
