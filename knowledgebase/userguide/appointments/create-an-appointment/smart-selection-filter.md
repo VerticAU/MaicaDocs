@@ -6,7 +6,7 @@ description: Learn about how the Smart Selection Filter works in Maica
 
 ## What is the Smart Selection Filter?
 
-The Smart Selection Filter is a tool designed to identify and rank the most suitable Participant(s), Resource(s), or Asset(s) for an Appointment based on a range of possible `Attributes`. It simplifies the roster selection process by comparing all available options to selected attributes and presenting them in an ordered list based on matches. This feature allows you to quickly and efficiently select the optimal fit for your Appointment.
+The Smart Selection Filter is a tool designed to identify and rank the most suitable [Participant(s)](../../getting-started/maica-key-concepts/participant.md), [Resource(s)](../../getting-started/maica-key-concepts/resource.md), or [Asset(s)](../../getting-started/maica-key-concepts/asset.md) for an [Appointment](../../getting-started/maica-key-concepts/appointment.md) based on a range of possible `Attributes`. It simplifies the roster selection process by comparing all available options to selected attributes and presenting them in an ordered list based on matches. This feature allows you to quickly and efficiently select the optimal fit for your [Appointment](../../getting-started/maica-key-concepts/appointment.md).
 
 Unlike the Resource Optimiser (which evaluates multiple Appointments at once), Smart Selection is a **single-record, real-time matching tool** designed to help end users pick the best candidate during scheduling.
 
@@ -28,7 +28,7 @@ It uses a simplified version of the [Resource Optimiser](../../the-planner/resou
 
 ## Where do I find the Smart Selection Filter?
 
-In **Maica**, you select Participant(s), Resource(s), and Asset(s) in the Basic Details stage of creating or managing an Appointment, it is here you will also find the Smart Selection Filter. On the right side of the selection search box, you will see a `Filter` symbol; simply click this `Filter` to open the Smart Selection Filter pop-up, as shown below.
+In **Maica**, you select Participant(s), Resource(s), and Asset(s) in the [Basic Details](basic-details.md) stage of creating or managing an Appointment, it is here you will also find the Smart Selection Filter. On the right side of the selection search box, you will see a `Filter` symbol; simply click this `Filter` to open the Smart Selection Filter pop-up, as shown below.
 
 {% hint style="success" %}
 This tool can also be accessed across Maica where Participant, Resource or Asset selectors are available

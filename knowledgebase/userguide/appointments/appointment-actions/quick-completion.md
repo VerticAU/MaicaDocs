@@ -6,7 +6,7 @@ description: Learn how to Quick Complete an Appointment and how Maica records th
 
 ## What is Quick Completing an Appointment?
 
-Quick Completing an Appointment essentially bypasses the checking in/out processes and sets an Appointment to the `Completed` status. It is possible to still capture Appointment Service information whilst Quick Completing an Appointment.
+Quick Completing an [Appointment](../../getting-started/maica-key-concepts/appointment.md) essentially bypasses the checking in/out processes and sets an [Appointment](../../getting-started/maica-key-concepts/appointment.md) to the `Completed` status. It is possible to still capture [Appointment Service](../../getting-started/maica-key-concepts/appointment-service.md) information whilst Quick Completing an Appointment.
 
 Because the check-in and check-out steps are skipped, **Maica assumes the delivery times from the Appointment's scheduled window** rather than recording them as they happen. Maica marks every Appointment completed this way so that assumed times can be told apart from times your care team actually captured.
 
@@ -22,7 +22,7 @@ Where an Appointment already holds recorded actual times, Quick Complete replace
 
 ## What does the Quick Complete Action include?
 
-When Quick Completing an Appointment, you are presented with a dialog showing distinct areas of input including **Appointment Date & Time Information**, **Appointment Service Information**, **Manage Travel** as well as **Check-In/Out Location**; these areas are further described in this article.
+When Quick Completing an [Appointment](../../getting-started/maica-key-concepts/appointment.md), you are presented with a dialog showing distinct areas of input including **Appointment Date & Time Information**, **Appointment Service Information**, **Manage Travel** as well as **Check-In/Out Location**; these areas are further described in this article.
 
 {% hint style="warning" %}
 If you wish to Quick Complete your Appointment without adjusting any of these areas, you can. **Maica** will automatically populate the required ones with information from the Appointment, hence, they only need to be manually adjusted if desired.
@@ -30,7 +30,7 @@ If you wish to Quick Complete your Appointment without adjusting any of these ar
 
 ### Check In/Out Location
 
-This part of the Quick Complete process captures accurate Location information. **Maica** offers the ability for Locations to be tracked to ensure that Appointments can be accurately recorded.
+This part of the Quick Complete process captures accurate Location information. **Maica** offers the ability for Locations to be tracked to ensure that [Appointments](../../getting-started/maica-key-concepts/appointment.md) can be accurately recorded.
 
 {% hint style="info" %}
 In order for a Location to be obtained, the User must have Location Permissions set to Allowed on their Device or Browser.
@@ -38,23 +38,23 @@ In order for a Location to be obtained, the User must have Location Permissions 
 
 ### Appointment Date & Time Information
 
-This part of the Quick Complete process captures the relevant Date & Time information. **Maica** offers configurable capability when Quickly Completing an Appointment to ensure that Appointments can be accurately recorded.
+This part of the Quick Complete process captures the relevant Date & Time information. **Maica** offers configurable capability when Quickly Completing an Appointment to ensure that [Appointments](../../getting-started/maica-key-concepts/appointment.md) can be accurately recorded.
 
-When Quickly Completing your Appointment, **Maica** will automatically populate the Date and Time information to the scheduled Date and Time of the Appointment. This can be configured by manually entering any desired Date and Time.
+When Quickly Completing your [Appointment](../../getting-started/maica-key-concepts/appointment.md), **Maica** will automatically populate the Date and Time information to the scheduled Date and Time of the Appointment. This can be configured by manually entering any desired Date and Time.
 
 ### Manage Travel
 
 When Quick Completing an Appointment, you can also Manage Travel. To learn more about the Manage Travel Action, please click here:
 
-1. Manage Travel Tool for Users
+1. [Manage Travel Tool for Users](check-out.md#manage-travel)
 2. [Manage Travel Logic for Administrators](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/travel-claiming-and-expenses)
 
 ### Appointment Services
 
-This part of the process offers an overview of the Appointment Service(s) delivered as well as the ability to adjust the quantity of each service as required. Adjusting the quantity offers you flexibility within an Appointment to control how long each Participant may spend for each Appointment Service within an Appointment, or how long each Service may have been delivered. This means, if the actual service duration has changed for one or more Participants, this can easily be captured.
+This part of the process offers an overview of the [Appointment Service(s)](../../getting-started/maica-key-concepts/appointment-service.md) delivered as well as the ability to adjust the quantity of each service as required. Adjusting the quantity offers you flexibility within an [Appointment](../../getting-started/maica-key-concepts/appointment.md) to control how long each [Participant](../../getting-started/maica-key-concepts/participant.md) may spend for each [Appointment Service](../../getting-started/maica-key-concepts/appointment-service.md) within an [Appointment](../../getting-started/maica-key-concepts/appointment.md), or how long each Service may have been delivered. This means, if the actual service duration has changed for one or more Participants, this can easily be captured.
 
 {% hint style="info" %}
-To learn more about the quantity function, click here.
+To learn more about the quantity function, click [here](../create-an-appointment/summary.md#things-to-look-out-for-summary).
 {% endhint %}
 
 ## How Maica records the times
@@ -81,7 +81,7 @@ The **Quick Completed** checkbox on the Appointment records whether the actual t
 
 Completing an Appointment now also records the delivery times against each assigned care worker's **Appointment Resource** record, so time is captured per worker rather than only against the Appointment.
 
-For each assigned Resource, Maica:
+For each assigned [Resource](../../getting-started/maica-key-concepts/resource.md), Maica:
 
 * Fills **Actual Start**, **Actual End**, **Check In Time** and **Check Out Time** from the Appointment's actual times, but only where they are blank
 * Sets both **Checked In** and **Checked Out**
@@ -93,7 +93,7 @@ Times a care worker recorded themselves are never overwritten. Where a worker ch
 Two exclusions apply:
 
 * Only Resources in **Accepted** or **Confirmed** status are recorded. A Resource still **Pending** is left untouched.
-* Assets are excluded, since an Asset does not record delivery time.
+* [Assets](../../getting-started/maica-key-concepts/asset.md) are excluded, since an Asset does not record delivery time.
 
 Check-in and check-out **coordinates** are deliberately not recorded on the worker's Appointment Resource. The location available at this point belongs to the person completing the Appointment, not to the care worker who delivered it.
 
