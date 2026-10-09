@@ -1,5 +1,5 @@
 ---
-description: Learn about Ratio Calculation Base in Maica
+description: Learn how Maica shares the cost of a group Appointment between Participants
 ---
 
 # Ratio Calculation Base
@@ -28,12 +28,16 @@ A `Funding Type` with no value selected is not an error state. Maica simply fall
 
 ## How the two options differ
 
-Maica divides by the `Required Participants` value on the Appointment.
+The share is the Appointment's `Required Resources` to `Required Participants` ratio, written workers first following the NDIA convention. An Appointment with one Resource and three Participants is shared at 1:3, and one with two Resources and three Participants at 2:3. This ratio is recorded on each `Delivery Activity` in its `Ratio` field, so it can also be set row by row.
 
-| Setting      | What Maica does                                                                                                                             |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Quantity`   | The `Quantity` is divided by `Required Participants`. The `Unit Price` remains the full rate from the Agreement Item.                       |
-| `Unit Price` | The `Quantity` remains the full, undivided value. The `Unit Price` is divided by `Required Participants` and rounded to two decimal places. |
+| Setting      | What Maica does                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `Quantity`   | The `Quantity` is the scheduled amount with the ratio applied. The `Unit Price` remains the full rate from the Agreement Item.            |
+| `Unit Price` | The `Quantity` remains the full, undivided scheduled amount. The `Unit Price` has the ratio applied and is rounded to two decimal places. |
+
+{% hint style="info" %}
+Both bases round to two decimal places using banker's rounding, which rounds a midpoint to the nearest even digit. One hour at 1:8 is therefore `0.12`, not `0.13`.
+{% endhint %}
 
 On both bases, `Quantity Delivered` is the Participant's ratio'd share. This is the value that rolls up to the `Agreement Item` and drives utilisation. It is not used to calculate the invoiced amount.
 
@@ -51,6 +55,42 @@ An Appointment of **2 hours**, with **1 Resource** and **3 Required Participants
 {% hint style="info" %}
 The two bases produce a near-identical `Line Total`. They are not always exactly equal, because the `Unit Price` is rounded to two decimal places before being multiplied out. Which base you choose is driven by how your claims need to be presented, not by the total charged.
 {% endhint %}
+
+## The ratio on each Delivery Activity
+
+Each `Delivery Activity` carries the figures that produced its `Quantity`, so a row records how it was priced.
+
+| Field                    | What it holds                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| `Scheduled Quantity`     | The scheduled amount before the ratio is applied                                      |
+| `Ratio`                  | The share for that row, written workers first, for example `1:3`. Blank reads as 1:1  |
+| `Ratio Calculation Base` | The base that was resolved when the row was costed, either `Quantity` or `Unit Price` |
+
+Maica derives `Quantity` from these three. On the `Quantity` base it applies the ratio to `Scheduled Quantity`. On the `Unit Price` base it leaves `Quantity` at the full scheduled amount and applies the ratio to the price.
+
+Because the base is stamped onto the row when it is costed, the row itself shows which base priced it, and a later settings change does not reinterpret what is already stored.
+
+{% hint style="info" %}
+`Ratio` is free text, so a value written by a Data Loader can be malformed. Maica reads anything it cannot parse as 1:1, and the save still succeeds.
+{% endhint %}
+
+### When Maica derives the Quantity, and when it leaves it alone
+
+A `Quantity` you have set by hand is never overwritten. Maica derives the `Quantity` only when the row has none, when the stored value is negative, or when `Scheduled Quantity`, `Ratio` or `Ratio Calculation Base` changes.
+
+Derivation is skipped entirely in these cases:
+
+* The row has been billed, meaning it carries an `Invoice Line Item` or its `Billing Status` is `Generated`
+* The row's `Status` is `Completed`, since `Quantity` is frozen at that point
+* The row is a travel activity, whose quantity is already each Participant's share
+
+{% hint style="success" %}
+To have Maica derive a `Quantity` you have previously set by hand, clear the field and save. An empty `Quantity` is read as a request to derive it.
+{% endhint %}
+
+### Setting the ratio from the Appointment
+
+In the Standard experience for managing Appointments, the **Adjust Ratio Matrix** presents Participants against Services as a grid, and sets the `Scheduled Quantity` or the `Ratio` for a single Participant and Service without affecting the others.
 
 ## How Maica decides which base applies
 
@@ -78,7 +118,7 @@ It looks that `Funding Type` up in the `Ratio Calculation Base` setting.
 {% step %}
 #### Use the default base
 
-If no value is stored against that `Funding Type`, it uses `Quantity`.
+If no value is stored against that `Funding Type`, it uses `Quantity`. The same applies where the stored setting cannot be read at all, for example after a manual edit introduced a typo, so the costing still completes.
 {% endstep %}
 {% endstepper %}
 
@@ -108,6 +148,10 @@ Adding a value to the `Agreement Item` → `Funding Type` picklist does **not** 
 
 {% hint style="warning" %}
 Whenever you add a new `Funding Type` value, you must also set its `Ratio Calculation Base` in Billing Management Settings. Until you do, Maica treats it as `Quantity`.
+{% endhint %}
+
+{% hint style="info" %}
+[Unfunded Service Delivery](../../system-processes/unfunded-service-delivery.md) prices a Service from a Price List and uses an `Unfunded` Funding Type. Once `Unfunded` is on the `Funding Type` value set, set its `Ratio Calculation Base` here in the same way as any other Funding Type.
 {% endhint %}
 
 Follow these steps:
