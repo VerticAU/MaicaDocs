@@ -19,3 +19,6 @@ override.tf.json
 
 # OS
 .DS_Store
+
+# Bedrock metadata sidecars (generated in CI by scripts/kb_metadata.py, never committed)
+knowledgebase/**/*.metadata.json

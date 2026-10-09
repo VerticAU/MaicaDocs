@@ -106,3 +106,24 @@ The simplified form is used deliberately: it keeps search ranking unchanged. Emb
 - Metadata keys on each retrieve result: `url` (string, may be missing), `guide` (`User Guide` or `Admin Guide`), `title` (string). They are plain strings, not wrapped in Bedrock typed values.
 - Treat a missing `url` as normal: print the title with no link.
 - They go live once this change is implemented and merged and the switch-over check passes. Until then, retrieve results carry only Bedrock's own keys.
+
+## Implementation
+
+- `scripts/kb_metadata.py` (standard library only) applies the URL rule, runs the live check (HEAD without following redirects, GET fallback on 405, at most two redirect hops, 8 workers, 10 second timeout, one retry) and writes `<page>.md.metadata.json` next to each page. It prints counts of pages with url, via redirect and without url, and exits 0 even when it warns.
+- `scripts/kb_verify_urls.py` (needs `boto3`) is the read-only switch-over check from step 3. It imports the URL rule from `kb_metadata.py`.
+- `.github/workflows/sync-docs-to-s3.yml` sets up Python 3.12 and runs `kb_metadata.py` before the sync, which now includes `*.md.metadata.json`.
+- `.gitignore` ignores `knowledgebase/**/*.metadata.json`.
+
+Run locally from the repository root:
+
+```bash
+# Check every published URL without writing anything
+python3 scripts/kb_metadata.py --dry-run
+
+# Write the metadata files (as CI does); --no-check skips the network
+python3 scripts/kb_metadata.py
+
+# After ingestion: confirm every retrieve result carries url (read-only)
+pip install boto3
+python3 scripts/kb_verify_urls.py --bucket <raw bucket name>
+```
