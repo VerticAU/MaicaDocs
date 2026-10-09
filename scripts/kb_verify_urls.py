@@ -3,18 +3,24 @@
 
 For each page under knowledgebase/{userguide,adminguide} this makes one
 bedrock-agent-runtime retrieve call against the knowledge base, using the
-page title as the query, numberOfResults 1, and a filter on
-x-amz-bedrock-kb-source-uri for that page's S3 object. It then checks the
-returned metadata for the url key.
+page title as the query, numberOfResults 10, and a filter that requires the
+page's own title and guide metadata keys (andAll of two equals conditions).
+Titles can repeat, so it then picks the result whose location S3 URI equals
+the page's object, s3://<bucket>/knowledgebase/<space>/<rel>.md, and checks
+that result's metadata for the url key. Title and guide are derived exactly
+as kb_metadata.py derives them.
+
+A filter on x-amz-bedrock-kb-source-uri does not work on this knowledge
+base (it returns no results), which is why the filter uses our own keys.
 
 Requires boto3 and AWS credentials with bedrock:Retrieve:
 
     pip install boto3
     python scripts/kb_verify_urls.py --bucket <raw bucket name>
 
-Exits 1 if any page returns no result or a result without url. A url that
-differs from the path-derived URL is reported for information only (it is
-expected where GitBook redirects the page).
+Exits 1 if any page returns no matching result or a result without url. A
+url that differs from the path-derived URL is reported for information only
+(it is expected where GitBook redirects the page).
 
 See docs/superpowers/specs/2026-10-09-kb-page-url-metadata-design.md.
 """
@@ -28,7 +34,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from kb_metadata import derive_url, iter_pages, read_title  # noqa: E402
+from kb_metadata import derive_url, guide_for, iter_pages, read_title  # noqa: E402
 
 import boto3  # noqa: E402
 from botocore.exceptions import ClientError  # noqa: E402
@@ -37,17 +43,20 @@ PAUSE = 0.1
 MAX_ATTEMPTS = 5
 
 
-def retrieve(client, kb_id: str, query: str, source_uri: str) -> list[dict]:
+def retrieve(client, kb_id: str, title: str, guide: str) -> list[dict]:
     for attempt in range(MAX_ATTEMPTS):
         try:
             resp = client.retrieve(
                 knowledgeBaseId=kb_id,
-                retrievalQuery={"text": query},
+                retrievalQuery={"text": title},
                 retrievalConfiguration={
                     "vectorSearchConfiguration": {
-                        "numberOfResults": 1,
+                        "numberOfResults": 10,
                         "filter": {
-                            "equals": {"key": "x-amz-bedrock-kb-source-uri", "value": source_uri}
+                            "andAll": [
+                                {"equals": {"key": "title", "value": title}},
+                                {"equals": {"key": "guide", "value": guide}},
+                            ]
                         },
                     }
                 },
@@ -84,13 +93,17 @@ def main(argv: list[str] | None = None) -> int:
         expected = derive_url(space, rel)
         title = read_title(path) or path.stem
         source_uri = f"s3://{args.bucket}/knowledgebase/{space}/{rel}"
-        results = retrieve(client, args.kb_id, title, source_uri)
+        results = retrieve(client, args.kb_id, title, guide_for(space))
         time.sleep(PAUSE)
         label = f"{space}/{rel}"
-        if not results:
+        match = next(
+            (r for r in results if ((r.get("location") or {}).get("s3Location") or {}).get("uri") == source_uri),
+            None,
+        )
+        if match is None:
             no_result.append(label)
             continue
-        url = (results[0].get("metadata") or {}).get("url")
+        url = (match.get("metadata") or {}).get("url")
         if not url:
             missing_url.append(label)
             continue
@@ -100,7 +113,7 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"pass: {passed}/{len(pages)}")
     for heading, items in (
-        ("No retrieve result", no_result),
+        ("No matching retrieve result", no_result),
         ("Result without url", missing_url),
         ("Info: url differs from derived URL (expected for redirects)", differs),
     ):
