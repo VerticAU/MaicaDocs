@@ -7,6 +7,8 @@ on:
       - master
     paths:
       - 'knowledgebase/**'
+      - 'scripts/kb_metadata.py'
+      - '.github/workflows/sync-docs-to-s3.yml'
 
 jobs:
   sync:
@@ -15,6 +17,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate Bedrock metadata files
+        run: python scripts/kb_metadata.py
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -22,10 +32,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-southeast-2
 
-      - name: Sync markdown to raw S3 bucket
+      - name: Sync markdown and metadata to raw S3 bucket
         run: |
           aws s3 sync knowledgebase/ s3://${{ secrets.S3_RAW_BUCKET }}/knowledgebase/ \
             --delete \
             --exclude "*" \
             --include "*.md" \
+            --include "*.md.metadata.json" \
             --no-progress
