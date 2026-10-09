@@ -6,7 +6,7 @@ description: Learn about creating Recurring Schedules for Shifts
 
 ## What is Scheduling in Maica?&#x20;
 
-**Maica** scheduling allows you to create a recurring schedule for your new [Shift](../../getting-started/maica-key-concepts/shift.md). Recurring Shifts happen on a regular schedule and **Maica** will create these based on the populated information from completing the following fields:&#x20;
+**Maica** scheduling allows you to create a recurring schedule for your new [Shift](../../../getting-started/maica-key-concepts/shift.md). Recurring Shifts happen on a regular schedule and **Maica** will create these based on the populated information from completing the following fields:&#x20;
 
 <table><thead><tr><th>Field Name</th><th width="115">Field Type </th><th>Description </th></tr></thead><tbody><tr><td><code>Schedule Start</code> </td><td>Data</td><td>The Start Date of the Recurring Shift.</td></tr><tr><td><code>Schedule End</code> </td><td>Data </td><td>The End Date of the Recurring Shift.</td></tr><tr><td><code>Frequency</code> </td><td>Picklist </td><td>This enables the selection of the following values: <code>Daily</code>, <code>Weekly</code>, <code>Monthly</code>, <code>Quarterly</code>, <code>Annually</code></td></tr><tr><td><code>Repeat Every</code> </td><td>Number </td><td>This captures the interval based on the Frequency, for example if <code>Weekly</code> is selected, then the number <code>2</code> means <code>Every 2 weeks</code>.</td></tr></tbody></table>
 
@@ -39,17 +39,17 @@ Note:&#x20;
 
 When making Recurring Shifts, you have two more configurable options.&#x20;
 
-<figure><img src="../../.gitbook/assets/shift recurring schedule.png" alt=""><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (30).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/shift recurring schedule.png" alt="" data-size="original"></td></tr></tbody></table>
 
 #### 1. Exclude Public Holidays:
 
-When this is toggled on, Maica will exclude any [Shift](../../getting-started/maica-key-concepts/shift.md) that falls on a Public Holiday from your Recurring Schedule.&#x20;
+When this is toggled on, Maica will exclude any [Shift](../../../getting-started/maica-key-concepts/shift.md) that falls on a Public Holiday from your Recurring Schedule.&#x20;
 
 * If you create a Recurring Schedule by `End Date` and Public Holidays fall within the specified dates, the Public Holidays will be skipped and the number of Shifts in your schedule will be reduced by the number of Public Holidays within the specified dates.&#x20;
 * If you create a Recurring Schedule by `Number of Shifts` and Public Holidays fall within your schedule, the Public Holidays will be skipped, but the `Number of Shifts` will remain constant, and the `End Date` will be extended accordingly.&#x20;
 
 {% hint style="info" %}
-Maica will alert you if a Public Holiday falls within your schedule. For more information on how to configure Public Holidays within your organisation, click [here](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/system-processes/public-holiday-configuration).&#x20;
+Maica will alert you if a Public Holiday falls within your schedule. For more information on how to configure Public Holidays within your organisation, click [here](/broken/spaces/9selzjEx6KX7RYEawAVr/pages/DnXceOXdAlQQneTndMuO).&#x20;
 {% endhint %}
 
 #### 2. Schedule by Number of Appointments:&#x20;

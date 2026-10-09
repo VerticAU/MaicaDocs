@@ -33,7 +33,7 @@ The status of the Shift changes from `In Progress` to `Completed` after the last
 This part of the process offers an overview of the Shift Service(s) delivered as well as the ability to adjust the quantity of each service as required. Adjusting the quantity offers you flexibility within an Shift to control how long each Service may have been delivered. This means, if the actual Service duration is different from the scheduled Time, this can easily be captured.
 
 {% hint style="info" %}
-To learn more about the quantity function, click [here](../create-a-shift/summary.md#id-1.-adjusted-quantity).&#x20;
+To learn more about the quantity function, click [here](../create-a-shift/general/summary.md#id-1.-adjusted-quantity).&#x20;
 {% endhint %}
 
 ## Check-Out Location

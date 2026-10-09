@@ -6,33 +6,33 @@ description: Discover how to specify the Appointment location
 
 ## What are the Location Selection Options?
 
-The second tab captures the location details of the [Appointment](../../getting-started/maica-key-concepts/appointment.md). There are four different methods by which the location can be established, as shown below:&#x20;
+The second tab captures the location details of the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). There are four different methods by which the location can be established, as shown below:&#x20;
 
-<figure><img src="../../.gitbook/assets/appointment location.png" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><p></p><p><img src="../../../.gitbook/assets/image (42).png" alt=""></p></td><td align="center" valign="top"><p><img src="../../../.gitbook/assets/appointment location.png" alt="" data-size="original"></p><p></p></td></tr></tbody></table>
 
 ### 1. Location
 
-By using the Location tab, you can choose the location of your [Appointment](../../getting-started/maica-key-concepts/appointment.md) from your stored Locations . Once your Location is selected, any connected Accomodation records are displayed and accessible for selection in order to provide a more detailed location.
+By using the Location tab, you can choose the location of your [Appointment](../../../getting-started/maica-key-concepts/appointment.md) from your stored Locations . Once your Location is selected, any connected Accomodation records are displayed and accessible for selection in order to provide a more detailed location.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-07-23 at 10.04.01 am.png" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (43).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.04.01 am.png" alt="" data-size="original"></td></tr></tbody></table>
 
 ### 2. Participant Location
 
-The Participant Location tab enables the Appointment Location to be selected from a list of all recorded Mailing Address values for each [Participant](../../getting-started/maica-key-concepts/participant.md) associated with the [Appointment](../../getting-started/maica-key-concepts/appointment.md). So, when adding [Participants](../../getting-started/maica-key-concepts/participant.md) to an [Appointment](../../getting-started/maica-key-concepts/appointment.md), you can automatically select the Appointment Location from all addresses connected to their record.&#x20;
+The Participant Location tab enables the Appointment Location to be selected from a list of all recorded Mailing Address values for each [Participant](../../../getting-started/maica-key-concepts/participant.md) associated with the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). So, when adding [Participants](../../../getting-started/maica-key-concepts/participant.md) to an [Appointment](../../../getting-started/maica-key-concepts/appointment.md), you can automatically select the Appointment Location from all addresses connected to their record.&#x20;
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-07-23 at 10.05.08 am.png" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (44).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.05.08 am.png" alt="" data-size="original"></td></tr></tbody></table>
 
 ### 3. Manual Entry
 
-The Manual Entry tab allows for flexibility where the [Appointment](../../getting-started/maica-key-concepts/appointment.md) is to be held at a location not previously recorded. You can enter an address manually to be captured against the [Appointment](../../getting-started/maica-key-concepts/appointment.md). Here, you have the option to manually enter the information or have the fields automatically fill in by using the [Google Maps Integration](location.md#google-maps-integration) to find the address.&#x20;
+The Manual Entry tab allows for flexibility where the [Appointment](../../../getting-started/maica-key-concepts/appointment.md) is to be held at a location not previously recorded. You can enter an address manually to be captured against the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). Here, you have the option to manually enter the information or have the fields automatically fill in by using the [Google Maps Integration](location.md#google-maps-integration) to find the address.&#x20;
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-07-23 at 10.09.38 am.png" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (45).png" alt=""></td><td align="center" valign="top"><p><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.09.38 am.png" alt="" data-size="original"></p><p></p></td></tr></tbody></table>
 
 ### 4. Digital Location
 
-If your [Appointment](../../getting-started/maica-key-concepts/appointment.md) is not at a physical address, simply click the toggle to turn off all Location selection options and proceed with the [Appointment](../../getting-started/maica-key-concepts/appointment.md) setup.
+If your [Appointment](../../../getting-started/maica-key-concepts/appointment.md) is not at a physical address, simply click the toggle to turn off all Location selection options and proceed with the [Appointment](../../../getting-started/maica-key-concepts/appointment.md) setup.
 
-<figure><img src="../../.gitbook/assets/Screenshot 2024-07-23 at 10.22.00 am.png" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (46).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.22.00 am.png" alt="" data-size="original"></td></tr></tbody></table>
 
 ## Timezone Selection&#x20;
 
@@ -56,7 +56,7 @@ In order for Maica to successfully detect and change Timezones, a Google API Key
 
 * The **Start** and **End Times** are saved using the Appointment’s selected timezone.
 * Other users will see the Appointment adjusted to **their own local timezone** when viewing it (e.g. in the Planner, Quick Info, or record view).
-* A **world icon** appears in the Planner showing the viewer's browser timezone with helpful tooltip context. To learn more, [click here](../../the-planner/planner-overview.md#timezone-indicator).&#x20;
+* A **world icon** appears in the Planner showing the viewer's browser timezone with helpful tooltip context. To learn more, [click here](../../../the-planner/planner-overview.md#timezone-indicator).&#x20;
 * For edge cases (e.g. border towns or cross-timezone Appointments), you can manually override the timezone selection.
 
 | **Example**                                             | **Outcome**                                                                                |
@@ -117,20 +117,20 @@ To configure your Travel Sequence Gap, head to [Travel Management](https://app.g
 
 **Maica** integrates with Google Maps to determine travel times.&#x20;
 
-When selecting a location for any given [Appointment](../../getting-started/maica-key-concepts/appointment.md), **Maica** will use Google to determine the required travel time and distance to and from the [Appointment](../../getting-started/maica-key-concepts/appointment.md). It will then give you an **Appointment Travel Time Breakdown** which includes a summary of your travel, as well as the total travel time and distance for the [Appointment](../../getting-started/maica-key-concepts/appointment.md).&#x20;
+When selecting a location for any given [Appointment](../../../getting-started/maica-key-concepts/appointment.md), **Maica** will use Google to determine the required travel time and distance to and from the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). It will then give you an **Appointment Travel Time Breakdown** which includes a summary of your travel, as well as the total travel time and distance for the [Appointment](../../../getting-started/maica-key-concepts/appointment.md).&#x20;
 
 {% hint style="info" %}
 The Google Maps integration will display on all Location Selection Options that include a physical address.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/google maps integration location.png" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (48).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/google maps integration location.png" alt="" data-size="original"></td></tr></tbody></table>
 
-When determining your **Appointment Travel Time Breakdown** for Default travel (not Sequential), you have three options for both the origin (**1. from which travel will be started**) and the destination (**2. to which travel will complete**) of your [Appointment](../../getting-started/maica-key-concepts/appointment.md). These options are shown in the table below:
+When determining your **Appointment Travel Time Breakdown** for Default travel (not Sequential), you have three options for both the origin (**1. from which travel will be started**) and the destination (**2. to which travel will complete**) of your [Appointment](../../../getting-started/maica-key-concepts/appointment.md). These options are shown in the table below:
 
 <table><thead><tr><th width="286.8564453125">Travel Option	</th><th>Description </th></tr></thead><tbody><tr><td><code>Previous/Next Appointment</code></td><td>This is either the previous Appointment (in cases where travel is to an Appointment) or the next Appointment (in cases where travel is from an Appointment).</td></tr><tr><td><code>Home Address</code></td><td>This is the address on the Salesforce User profile linked to the Resource record.</td></tr><tr><td><code>Primary Location</code> </td><td>This is a lookup on the Resource record which is associated with a location containing an address.</td></tr><tr><td><code>Current Location</code> </td><td>The current location of the Resource (User) using <strong>Maica</strong></td></tr></tbody></table>
 
 ### Travel Alert
 
-**Maica** uses Google Traffic Awareness to check that you will arrive to your [Appointment](../../getting-started/maica-key-concepts/appointment.md) on time. It does this by assessing your selected [Appointment](../../getting-started/maica-key-concepts/appointment.md) time with your estimated travel time in order to verify that you will make it based on Google Traffic data. If you aren't expected to make it, **Maica** will display the alert below:
+**Maica** uses Google Traffic Awareness to check that you will arrive to your [Appointment](../../../getting-started/maica-key-concepts/appointment.md) on time. It does this by assessing your selected [Appointment](../../../getting-started/maica-key-concepts/appointment.md) time with your estimated travel time in order to verify that you will make it based on Google Traffic data. If you aren't expected to make it, **Maica** will display the alert below:
 
-<figure><img src="../../.gitbook/assets/traffic awareness.png" alt="" width="541"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (50).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/traffic awareness.png" alt="" data-size="original"></td></tr></tbody></table>

@@ -6,7 +6,7 @@ description: Learn about how the Smart Selection Filter works in Maica
 
 ## What is the Smart Selection Filter?
 
-The Smart Selection Filter is a tool designed to identify and rank the most suitable [Participant(s)](../../getting-started/maica-key-concepts/participant.md), [Resource(s)](../../getting-started/maica-key-concepts/resource.md), or [Asset(s)](../../getting-started/maica-key-concepts/asset.md) for an [Appointment](../../getting-started/maica-key-concepts/appointment.md) based on a range of possible `Attributes`. It simplifies the roster selection process by comparing all available options to selected attributes and presenting them in an ordered list based on matches. This feature allows you to quickly and efficiently select the optimal fit for your [Appointment](../../getting-started/maica-key-concepts/appointment.md).
+The Smart Selection Filter is a tool designed to identify and rank the most suitable [Participant(s)](../../../getting-started/maica-key-concepts/participant.md), [Resource(s)](../../../getting-started/maica-key-concepts/resource.md), or [Asset(s)](../../../getting-started/maica-key-concepts/asset.md) for an [Appointment](../../../getting-started/maica-key-concepts/appointment.md) based on a range of possible `Attributes`. It simplifies the roster selection process by comparing all available options to selected attributes and presenting them in an ordered list based on matches. This feature allows you to quickly and efficiently select the optimal fit for your [Appointment](../../../getting-started/maica-key-concepts/appointment.md).
 
 Unlike the Resource Optimiser (which evaluates multiple Appointments at once), Smart Selection is a **single-record, real-time matching tool** designed to help end users pick the best candidate during scheduling.
 
@@ -24,7 +24,7 @@ for an Appointment or Shift by:
 2. Scoring everyone who remains
 3. Ranking them in order of suitability based on your selected Sort Criteria
 
-It uses a simplified version of the [Resource Optimiser](../../the-planner/resource-optimiser/), providing real-time scoring for a _single_ selection.
+It uses a simplified version of the [Resource Optimiser](../../../the-planner/resource-optimiser/), providing real-time scoring for a _single_ selection.
 
 ## Where do I find the Smart Selection Filter?
 
@@ -34,7 +34,7 @@ In **Maica**, you select Participant(s), Resource(s), and Asset(s) in the [Basic
 This tool can also be accessed across Maica where Participant, Resource or Asset selectors are available
 {% endhint %}
 
-<figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FVEFymjA7wcGmrubIWVWN%2Fsmart%20selection%20where%20to%20find%20.png?alt=media&#x26;token=37351ed7-cbbf-49f5-b2da-d49e11dc712e" alt="" width="563"><figcaption></figcaption></figure>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (56).png" alt=""></td><td align="center" valign="top"><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FVEFymjA7wcGmrubIWVWN%2Fsmart%20selection%20where%20to%20find%20.png?alt=media&#x26;token=37351ed7-cbbf-49f5-b2da-d49e11dc712e" alt="" data-size="original"></td></tr></tbody></table>
 
 ## Smart Selection Filter Elements
 
@@ -42,7 +42,7 @@ Once you have clicked on the Filter icon, and Smart Selection Filter pop-up has 
 
 <figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FWQp0ncUOvGql5xGZbyHq%2Ffind%20resource%202.png?alt=media&#x26;token=03082409-32d2-4efe-b534-25387a32f2b9" alt=""><figcaption></figcaption></figure>
 
-<table><thead><tr><th width="307">Element</th><th>Description</th></tr></thead><tbody><tr><td><ol><li><code>Sort Order Toggle</code></li></ol></td><td>This button allows you to switch the display order of the list between ascending and descending, letting you view the items from top to bottom or bottom to top based on the current sort criteria.</td></tr><tr><td><ol start="2"><li><code>Score</code></li></ol></td><td>Displays the calculated Matching Score (%) for each Resource. The score reflects how well the Resource meets the current Skills, Attributes, Availability, Workload, and Travel criteria (based on Matching Score weightings). The list is sorted by this score unless you change the Sort Criteria.</td></tr><tr><td><ol start="3"><li><code>Sort Criteria Dropdown</code></li></ol></td><td>Allows you to choose how the Resource list is ordered. <strong>Overall Matching Score</strong> is always available, and each of Availability, Workload, Skills, Attributes and Travel appears only where that criterion currently carries a weighting. These options are detailed <a href="smart-selection-filter.md#smart-selection-filter-dropdown-criteria-sections">below</a>.</td></tr><tr><td><ol start="4"><li><code>Ranking Criteria</code></li></ol></td><td>Allows you to add additional scoring rules that influence how Resources are ranked. Ranking Criteria work the same as in the <a href="../../the-planner/resource-optimiser/#ranking-criteria">Optimiser</a>: each rule consists of a <strong>Field</strong>, <strong>Operator</strong>, and <strong>Value</strong>, and Resources earn score if they match the defined rules.</td></tr><tr><td><ol start="5"><li><code>Settings</code></li></ol></td><td>Opens the Smart Selection Filter settings panel, allowing you to refine which Resources appear in the list. This includes options such as <strong>Only allocated Resources</strong> (show only Resources linked to the selected Participant) and <strong>Only matched Resources</strong> (hide Resources that do not match any selected Skills or Attributes). These settings affect the candidate list before scoring is applied.</td></tr></tbody></table>
+<table><thead><tr><th width="307">Element</th><th>Description</th></tr></thead><tbody><tr><td><ol><li><code>Sort Order Toggle</code></li></ol></td><td>This button allows you to switch the display order of the list between ascending and descending, letting you view the items from top to bottom or bottom to top based on the current sort criteria.</td></tr><tr><td><ol start="2"><li><code>Score</code></li></ol></td><td>Displays the calculated Matching Score (%) for each Resource. The score reflects how well the Resource meets the current Skills, Attributes, Availability, Workload, and Travel criteria (based on Matching Score weightings). The list is sorted by this score unless you change the Sort Criteria.</td></tr><tr><td><ol start="3"><li><code>Sort Criteria Dropdown</code></li></ol></td><td>Allows you to choose how the Resource list is ordered. <strong>Overall Matching Score</strong> is always available, and each of Availability, Workload, Skills, Attributes and Travel appears only where that criterion currently carries a weighting. These options are detailed <a href="smart-selection-filter.md#smart-selection-filter-dropdown-criteria-sections">below</a>.</td></tr><tr><td><ol start="4"><li><code>Ranking Criteria</code></li></ol></td><td>Allows you to add additional scoring rules that influence how Resources are ranked. Ranking Criteria work the same as in the <a href="../../../the-planner/resource-optimiser/#ranking-criteria">Optimiser</a>: each rule consists of a <strong>Field</strong>, <strong>Operator</strong>, and <strong>Value</strong>, and Resources earn score if they match the defined rules.</td></tr><tr><td><ol start="5"><li><code>Settings</code></li></ol></td><td>Opens the Smart Selection Filter settings panel, allowing you to refine which Resources appear in the list. This includes options such as <strong>Only allocated Resources</strong> (show only Resources linked to the selected Participant) and <strong>Only matched Resources</strong> (hide Resources that do not match any selected Skills or Attributes). These settings affect the candidate list before scoring is applied.</td></tr></tbody></table>
 
 ## Smart Selection Filter Dropdown Criteria Sections
 
@@ -103,7 +103,7 @@ To use the Smart Selection Filter, you only need to open it and select your Reso
 However, we advise adding Ranking Criteria refine suitability. To do so,
 
 {% hint style="info" %}
-To learn about the logic behind Ranking Criteria, [click here](../../the-planner/resource-optimiser/#ranking-criteria).
+To learn about the logic behind Ranking Criteria, [click here](../../../the-planner/resource-optimiser/#ranking-criteria).
 {% endhint %}
 
 1. Click **Add Criteria**.

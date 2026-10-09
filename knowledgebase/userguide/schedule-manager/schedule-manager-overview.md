@@ -37,4 +37,4 @@ The Schedule Manager also contains a Records Summary at the bottom of the screen
 
 For a hands-on walk-through of the Schedule Manager, you can access the **Interactive Overview** below. This provides a step-by-step demonstration of the key components and functions outlined above, allowing you to explore how to navigate the Schedule Manager.
 
-{% embed url="https://app.arcade.software/share/cg6KJlcNU6cCzZTZGcz3" %}
+{% @arcade/embed flowId="cg6KJlcNU6cCzZTZGcz3" url="https://app.arcade.software/share/cg6KJlcNU6cCzZTZGcz3" %}

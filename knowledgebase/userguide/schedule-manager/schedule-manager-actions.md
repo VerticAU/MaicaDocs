@@ -39,10 +39,10 @@ As mentioned, Bulk Actions allow you to update multiple **Appointments** or **Sh
 
 The **Resource Allocation** action allows you to assign one or more Resources to multiple selected **Appointments** or **Shifts** at the same time. You can add additional Resources, or replace existing.&#x20;
 
-When selected from the **Bulk Actions** menu, the [Find Resource](../appointments/create-an-appointment/smart-selection-filter.md) modal will open. This screen uses the Smart Selection Filter, which applies the same matching logic as the Appointment Optimiser to order resources by suitability.
+When selected from the **Bulk Actions** menu, the [Find Resource](../appointments/create-an-appointment/general/smart-selection-filter.md) modal will open. This screen uses the Smart Selection Filter, which applies the same matching logic as the Appointment Optimiser to order resources by suitability.
 
 {% hint style="info" %}
-To learn more about how Resources are scored and matched, refer to the [Smart Selection Filter](../appointments/create-an-appointment/smart-selection-filter.md) article and Matching Score Importance Level in the [Rostering Management Settings](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/rostering-management).
+To learn more about how Resources are scored and matched, refer to the [Smart Selection Filter](../appointments/create-an-appointment/general/smart-selection-filter.md) article and Matching Score Importance Level in the [Rostering Management Settings](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/rostering-management).
 {% endhint %}
 
 From the modal, you can search for and select the resources you wish to allocate.

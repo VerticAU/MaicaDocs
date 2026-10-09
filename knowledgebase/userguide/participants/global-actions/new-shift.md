@@ -16,7 +16,7 @@ To learn more about the details and stages of creating a New Shift, click [here]
 
 ## Pre-populated Fields
 
-When creating an [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) from the **Maica Actions** menu, the Date & Time will be pre-populated. **Maica** will pre-populate this field to the `current` Date & Time of the action selected, and will automatically set the [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) duration to `60 minutes`.  This can be changed manually in the [Basic Details](../../appointments/create-an-appointment/basic-details.md) stage of the [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) creation.&#x20;
+When creating an [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) from the **Maica Actions** menu, the Date & Time will be pre-populated. **Maica** will pre-populate this field to the `current` Date & Time of the action selected, and will automatically set the [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) duration to `60 minutes`.  This can be changed manually in the [Basic Details](../../appointments/create-an-appointment/general/basic-details.md) stage of the [Shifts](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/shifts) creation.&#x20;
 
 {% hint style="info" %}
 You can also change your default duration in Maica Settings; click here to learn more.&#x20;

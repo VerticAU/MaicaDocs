@@ -54,7 +54,7 @@ When Quick Completing an Appointment, you can also Manage Travel. To learn more 
 This part of the process offers an overview of the [Appointment Service(s)](../../getting-started/maica-key-concepts/appointment-service.md) delivered as well as the ability to adjust the quantity of each service as required. Adjusting the quantity offers you flexibility within an [Appointment](../../getting-started/maica-key-concepts/appointment.md) to control how long each [Participant](../../getting-started/maica-key-concepts/participant.md) may spend for each [Appointment Service](../../getting-started/maica-key-concepts/appointment-service.md) within an [Appointment](../../getting-started/maica-key-concepts/appointment.md), or how long each Service may have been delivered. This means, if the actual service duration has changed for one or more Participants, this can easily be captured.
 
 {% hint style="info" %}
-To learn more about the quantity function, click [here](../create-an-appointment/summary.md#things-to-look-out-for-summary).
+To learn more about the quantity function, click [here](../create-an-appointment/general/summary.md#things-to-look-out-for-summary).
 {% endhint %}
 
 ## How Maica records the times

@@ -15,7 +15,7 @@ The **Manage** action opens a modal that allows you to update key details of an 
 It functions the same way as the desktop version.&#x20;
 
 {% hint style="success" %}
-To learn more about the details of Managing an Appointment or Shift, [click here](../../appointments/manage-an-appointment.md).&#x20;
+To learn more about the details of Managing an Appointment or Shift, [click here](../../appointments/manage-an-appointment/).&#x20;
 {% endhint %}
 
 #### When you may use Manage on Mobile
