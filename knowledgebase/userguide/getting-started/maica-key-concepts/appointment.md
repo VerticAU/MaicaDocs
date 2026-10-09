@@ -11,7 +11,7 @@ An Appointment is the principal way of organising services to your [Participants
 * [Participant](participant.md)[s](participant.md) who are being serviced as part of the Appointment
 * [Resource](resource.md)[s](resource.md) who are delivering the service as part of the Appointment
 * [Appointment Services](appointment-service.md) which are being delivered as part of the Appointment
-* [Location](../../appointments/create-an-appointment/location.md) at which the Appointment is being held
+* [Location](../../appointments/create-an-appointment/general/location.md) at which the Appointment is being held
 * Recurrance if the Appointment is a repeating service being delivered
 
 {% hint style="info" %}

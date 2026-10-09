@@ -11,7 +11,7 @@ When [Shifts](../../getting-started/maica-key-concepts/shift.md) are cancelled, 
 **Maica** supports two scenarios in which Shifts can be cancelled, including:
 
 1. **Single Shifts:** They are cancelled by simply setting the Shift `Status` to cancelled. _**Shifts are not deleted.**_
-2. **Recurring** **Shifts:** They are cancelled for either only the specific Shift being managed or for any future Shift part of the [Recurring Schedule](../create-a-shift/schedule.md). **Maica** will display the following option when a Recurring Shift is attempted to be cancelled. _**Shifts are not deleted**._
+2. **Recurring** **Shifts:** They are cancelled for either only the specific Shift being managed or for any future Shift part of the [Recurring Schedule](../create-a-shift/general/schedule.md). **Maica** will display the following option when a Recurring Shift is attempted to be cancelled. _**Shifts are not deleted**._
 
 <figure><img src="../../.gitbook/assets/Screenshot 2024-08-06 at 1.39.48 pm.png" alt="" width="466"><figcaption></figcaption></figure>
 

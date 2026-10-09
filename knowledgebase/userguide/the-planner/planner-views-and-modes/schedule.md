@@ -23,7 +23,7 @@ Please note that both the cascade effect shown below and the information present
 <figure><img src="../../.gitbook/assets/Screenshot 2024-09-13 at 10.48.53 am.png" alt=""><figcaption><p>Schedule View on Calendar Mode</p></figcaption></figure>
 
 {% hint style="info" %}
-If an Appointment is part of an [Appointment Schedule](../../appointments/create-an-appointment/schedule.md), it will be locked on the Planner and the drag and drop prevented. This same application applies to Completed or Cancelled Appointments.
+If an Appointment is part of an [Appointment Schedule](../../appointments/create-an-appointment/general/schedule.md), it will be locked on the Planner and the drag and drop prevented. This same application applies to Completed or Cancelled Appointments.
 {% endhint %}
 
 ### Timeline Mode

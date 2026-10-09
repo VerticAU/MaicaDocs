@@ -33,7 +33,7 @@ The status of the Appointment changes from `In Progress` to `Completed` after th
 This part of the Check-Out process offers an overview of the [Appointment Service(s)](../../getting-started/maica-key-concepts/appointment-service.md) delivered as well as the ability to adjust the quantity of each service as required. Adjusting the quantity offers you flexibility within an [Appointment](../../getting-started/maica-key-concepts/appointment.md) to control how long each [Participant](../../getting-started/maica-key-concepts/participant.md) may spend for each [Appointment Service](../../getting-started/maica-key-concepts/appointment-service.md) within an [Appointment](../../getting-started/maica-key-concepts/appointment.md). This means, if the actual service duration has changed for one or more Participants, this can easily be captured at the time of Check-Out.
 
 {% hint style="info" %}
-To learn more about the quantity function, click [here](../create-an-appointment/summary.md#things-to-look-out-for-summary).&#x20;
+To learn more about the quantity function, click [here](../create-an-appointment/general/summary.md#things-to-look-out-for-summary).&#x20;
 {% endhint %}
 
 ## Check-Out Location
@@ -74,7 +74,7 @@ The following sections explain the `Manage Travel` tool from a User Experience p
 
 ### 1. Time and Distance&#x20;
 
-The first step in using the Manage Travel tool is to track the time and distance travelled as part of the Appointment. **Maica** will automatically populate, using Google, and based on the information provided at the [Location](../create-an-appointment/location.md) stage of the Appointment creation, however, it can be adjusted if desired.&#x20;
+The first step in using the Manage Travel tool is to track the time and distance travelled as part of the Appointment. **Maica** will automatically populate, using Google, and based on the information provided at the [Location](../create-an-appointment/general/location.md) stage of the Appointment creation, however, it can be adjusted if desired.&#x20;
 
 {% hint style="info" %}
 If you would like to make this information adjustable, this can be managed via Permissions Sets.

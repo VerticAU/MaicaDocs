@@ -339,10 +339,10 @@ The **Manual Assignment** function allows users to select or replace Resources f
 You can also launch Broadcasting from within the Find Resource modal. Doing so, will pre populate the selected Resource in the Manual Selection field of the Broadcast run and ensure they are one of, or the only, Resource to receive an offer.&#x20;
 {% endhint %}
 
-Manual Assignment uses the [**Find Resource**](../../appointments/create-an-appointment/smart-selection-filter.md) modal to display all eligible Resources that meet the Optimiser’s current configuration. Each Resource is shown with a corresponding **Overall Matching Score**, allowing users to make informed selections based on the same scoring logic used by automated optimisation.
+Manual Assignment uses the [**Find Resource**](../../appointments/create-an-appointment/general/smart-selection-filter.md) modal to display all eligible Resources that meet the Optimiser’s current configuration. Each Resource is shown with a corresponding **Overall Matching Score**, allowing users to make informed selections based on the same scoring logic used by automated optimisation.
 
 {% hint style="info" %}
-To learn more about the Find Resource modal, please [click here](../../appointments/create-an-appointment/smart-selection-filter.md).&#x20;
+To learn more about the Find Resource modal, please [click here](../../appointments/create-an-appointment/general/smart-selection-filter.md).&#x20;
 {% endhint %}
 
 {% hint style="success" %}
