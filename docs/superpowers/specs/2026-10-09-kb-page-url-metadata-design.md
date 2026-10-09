@@ -2,7 +2,7 @@
 
 - **Date:** 2026-10-09
 - **Decided by:** Stephen Kent (grilling session)
-- **Status:** Decided, not yet implemented
+- **Status:** Implemented (scripts and workflow); switch-over pending
 - **Scope:** the MaicaDocs pipeline only. The consumer (Maica MCP `search_knowledge_base`, VerticAU/MaicaPlane `src/mcp`) is covered by MaicaPlane PR #268, `docs/superpowers/specs/2026-10-09-kb-source-links-design.md`.
 
 ## Problem
@@ -93,7 +93,7 @@ The simplified form is used deliberately: it keeps search ranking unchanged. Emb
 2. Start an ingestion job manually (`workflow_dispatch` on `bedrock-ingestion.yml`) and wait for it to complete.
 3. Run `scripts/kb_verify_urls.py` (read-only). For every page, it makes one `bedrock-agent-runtime retrieve` call against KB `A55D5QJ1R6`. Each call uses the page title as the query, `numberOfResults` 1, and a filter of `equals` on `x-amz-bedrock-kb-source-uri` set to `s3://<raw bucket>/knowledgebase/<space>/<rel>.md`. It checks that the returned metadata has `url` equal to the expected value, and reports `pass/total` plus a list of misses.
 4. If any page is missing `url` because Bedrock did not re-index an unchanged page when only its metadata file was added, force a re-index. Re-upload every `.md` (`aws s3 cp knowledgebase/ s3://<raw bucket>/knowledgebase/ --recursive --exclude "*" --include "*.md"`, which updates LastModified), ingest again and re-run step 3.
-5. Done when the check reports 358/358, less any pages warned in step 1 for a failed live check.
+5. Done when the check reports every page passing (369 on 2026-10-09), less any pages warned in step 1 for a failed live check.
 
 ## Out of scope / follow-ups
 
