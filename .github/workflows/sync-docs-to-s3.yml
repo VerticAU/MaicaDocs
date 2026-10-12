@@ -8,6 +8,7 @@ on:
     paths:
       - 'knowledgebase/**'
       - 'scripts/kb_metadata.py'
+      - 'scripts/test_kb_metadata.py'
       - '.github/workflows/sync-docs-to-s3.yml'
 
 jobs:
@@ -22,8 +23,23 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generate Bedrock metadata files
-        run: python scripts/kb_metadata.py
+      - name: Test the metadata script
+        run: python -m unittest discover -s scripts -p "test_*.py"
+
+      # Live pages and their sidecars only: pages GitBook has retired
+      # (frontmatter hidden: true or noIndex: true) are left out, so the
+      # --delete sync below removes them from S3 and the next ingestion
+      # drops them from the knowledge base.
+      - name: Stage live pages and Bedrock metadata files
+        run: |
+          python scripts/kb_metadata.py --stage build/knowledgebase
+          staged=$(find build/knowledgebase -name '*.md' | wc -l)
+          echo "staged markdown files: $staged"
+          # Guard the --delete sync: a broken stage must never empty the bucket.
+          if [ "$staged" -lt 300 ]; then
+            echo "::error::only $staged pages staged, refusing to sync"
+            exit 1
+          fi
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -34,7 +50,7 @@ jobs:
 
       - name: Sync markdown and metadata to raw S3 bucket
         run: |
-          aws s3 sync knowledgebase/ s3://${{ secrets.S3_RAW_BUCKET }}/knowledgebase/ \
+          aws s3 sync build/knowledgebase/ s3://${{ secrets.S3_RAW_BUCKET }}/knowledgebase/ \
             --delete \
             --exclude "*" \
             --include "*.md" \
