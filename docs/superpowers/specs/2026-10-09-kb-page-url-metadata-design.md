@@ -127,3 +127,14 @@ python3 scripts/kb_metadata.py
 pip install boto3
 python3 scripts/kb_verify_urls.py --bucket <raw bucket name>
 ```
+
+## Retired pages are not indexed (2026-10-12)
+
+GitBook retires a page by setting `hidden: true` and `noIndex: true` in its frontmatter, often keeping the old file beside its live replacement (for example `support-at-home/care-recipient-sync.md`, retired, beside `care-recipient-sync-1.md`, live, in both guides). Both files are listed in `SUMMARY.md`, so reachability from `SUMMARY.md` does not tell them apart; the frontmatter does. Indexing both made search return two versions of one page, and the factory agent cited both as if they disagreed.
+
+- `kb_metadata.py` skips any page whose frontmatter sets `hidden: true` or `noIndex: true` (either one is enough) and prints `skipped: <space>/<rel> (<flags>)` for each.
+- CI now runs `kb_metadata.py --stage build/knowledgebase`, which copies only live pages, their sidecars and each `SUMMARY.md` into a fresh folder, and syncs that folder instead of `knowledgebase/`. `--delete` removes the retired pages and their sidecars from S3, and the next hourly ingestion deletes them from the index. The workflow refuses to sync if fewer than 300 pages were staged, so a broken stage can never empty the bucket.
+- The workflow runs `scripts/test_kb_metadata.py` first, including a positive control on the real tree (care-recipient-sync.md left out, care-recipient-sync-1.md kept, both guides).
+- `kb_verify_urls.py` also checks retired pages the other way round: a retrieve on the page's own title and guide must not return its S3 object.
+- Measured 2026-10-12: 12 retired pages (all set both flags), 357 live pages. S3 goes from 371 markdown files (369 pages plus two `SUMMARY.md`) and 369 sidecars to 359 and 357.
+- Out of scope: the 31 data object pages under the retired `adminguide/data/data-objects/README.md` are not flagged themselves and stay indexed; the two `SUMMARY.md` files are still indexed, as before.

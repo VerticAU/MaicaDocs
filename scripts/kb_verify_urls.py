@@ -18,8 +18,12 @@ Requires boto3 and AWS credentials with bedrock:Retrieve:
     pip install boto3
     python scripts/kb_verify_urls.py --bucket <raw bucket name>
 
-Exits 1 if any page returns no matching result or a result without url. A
-url that differs from the path-derived URL is reported for information only
+Pages kb_metadata.py skips as retired (frontmatter hidden: true or
+noIndex: true) are checked the other way round: the same retrieve must NOT
+return their S3 object, because the sync deletes it.
+
+Exits 1 if any live page returns no matching result or a result without url,
+or if any retired page is still returned. A url that differs from the path-derived URL is reported for information only
 (it is expected where GitBook redirects the page).
 
 See docs/superpowers/specs/2026-10-09-kb-page-url-metadata-design.md.
@@ -34,7 +38,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from kb_metadata import derive_url, guide_for, iter_pages, read_title  # noqa: E402
+from kb_metadata import derive_url, guide_for, iter_pages, read_title, retired_reason  # noqa: E402
 
 import boto3  # noqa: E402
 from botocore.exceptions import ClientError  # noqa: E402
@@ -78,7 +82,10 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     root = Path(args.root)
-    pages = list(iter_pages(root))
+    pages = []
+    retired = []
+    for page in iter_pages(root):
+        (retired if retired_reason(page[2]) else pages).append(page)
     if not pages:
         print(f"error: no pages found under {root}", file=sys.stderr)
         return 1
@@ -88,6 +95,15 @@ def main(argv: list[str] | None = None) -> int:
     no_result: list[str] = []
     missing_url: list[str] = []
     differs: list[str] = []
+    still_indexed: list[str] = []
+
+    for space, rel, path in retired:
+        title = read_title(path) or path.stem
+        source_uri = f"s3://{args.bucket}/knowledgebase/{space}/{rel}"
+        results = retrieve(client, args.kb_id, title, guide_for(space))
+        time.sleep(PAUSE)
+        if any(((r.get("location") or {}).get("s3Location") or {}).get("uri") == source_uri for r in results):
+            still_indexed.append(f"{space}/{rel}")
 
     for space, rel, path in pages:
         expected = derive_url(space, rel)
@@ -112,7 +128,9 @@ def main(argv: list[str] | None = None) -> int:
             differs.append(f"{label}: {url} (derived {expected})")
 
     print(f"pass: {passed}/{len(pages)}")
+    print(f"retired pages gone from the index: {len(retired) - len(still_indexed)}/{len(retired)}")
     for heading, items in (
+        ("Retired page (hidden or noIndex) still indexed", still_indexed),
         ("No matching retrieve result", no_result),
         ("Result without url", missing_url),
         ("Info: url differs from derived URL (expected for redirects)", differs),
@@ -122,7 +140,7 @@ def main(argv: list[str] | None = None) -> int:
             for item in items:
                 print(f"  {item}")
 
-    return 1 if no_result or missing_url else 0
+    return 1 if no_result or missing_url or still_indexed else 0
 
 
 if __name__ == "__main__":
