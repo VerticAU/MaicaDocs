@@ -29,41 +29,7 @@ The two are independent. A Service can ask the user to choose between several Ag
 Maica reads both fields in user mode. Where your organisation uses a cloned or hand-built permission set over Appointment Service, in place of the packaged **Maica - Appointment Service Create Access** and **Maica - Appointment Service Edit Access** sets, grant read access to both fields. Without read access, Create and Manage Appointment do not load.
 {% endhint %}
 
-## Preparing your organisation for unfunded delivery
-
-Unfunded delivery bills under an **Unfunded** Funding Type, which must exist on the Funding Type value set before an unfunded Appointment can be billed.
-
-{% stepper %}
-{% step %}
-#### Add the Unfunded Funding Type
-
-In Salesforce Setup, open **Picklist Value Sets**, open the **Funding Type** value set, and add the value `Unfunded`.
-{% endstep %}
-
-{% step %}
-#### Map it to Do Not Claim
-
-On the **Invoice** object, open the **Claim Behaviour** field and add `Unfunded` as a controlling value for **Do Not Claim**, so unfunded delivery is invoiced but never claimed.
-{% endstep %}
-
-{% step %}
-#### Set its Ratio Calculation Base
-
-In **Maica Settings** → **Billing Management**, set the [Ratio Calculation Base](../settings/billing-management/ratio-calculation-base.md) for `Unfunded` in the same way as any other Funding Type.
-{% endstep %}
-
-{% step %}
-#### Check your Price Lists
-
-The Price List a user can choose must be **Active** and must hold at least one **Active** Price List Entry. A Price List with no active entry can price nothing, so Maica does not offer it.
-{% endstep %}
-{% endstepper %}
-
-{% hint style="danger" %}
-Until the `Unfunded` value exists on the **Funding Type** value set, billing for an unfunded delivery cannot complete. Maica refuses the Invoice and names what is missing.
-{% endhint %}
-
-## How a funding selection is used
+## How Funding Selections are used
 
 A funding source chosen in the **Select Funding Source** dialog is stored on the **Delivery Activity**, in either the **Agreement Item** or the **Price List** lookup.
 
