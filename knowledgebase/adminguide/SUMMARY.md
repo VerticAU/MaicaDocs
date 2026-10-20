@@ -178,6 +178,7 @@
 * [Maps Management](settings/maps-management.md)
 * [Mobile Management](settings/mobile-management.md)
 * [Scheduled Jobs](settings/scheduled-jobs.md)
+* [Temporary Jobs](settings/temporary-jobs.md)
 * [Support at Home](settings/support-at-home.md)
 * [Participant Notes](settings/participant-notes.md)
 * [Upcoming Appointments](settings/upcoming-appointments.md)

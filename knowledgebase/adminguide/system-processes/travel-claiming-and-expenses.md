@@ -26,3 +26,38 @@ The "Invoice Line Item" is generated based on all the travel-related settings, e
 {% endhint %}
 
 In summary, this diagram outlines a process of collecting travel-related data, applying any relevant restrictions or caps, and finally generating invoice line items that reflect travel expenses to be billed.
+
+## How travel quantities are rounded
+
+Travel is stored and billed in a fixed precision, so that the quantity on a travel Delivery Activity, the quantity on the Invoice Line Item and the amount charged all reconcile.
+
+### Stored travel time and distance
+
+| Value               | How it is stored                                |
+| ------------------- | ----------------------------------------------- |
+| **Travel time**     | Rounded to whole minutes, half up, for each leg |
+| **Travel distance** | Rounded to two decimal places                   |
+
+Each leg is rounded before the legs are added together, so a two-leg total can differ by one minute from rounding the true total. For example, a 27.88 minute trip is stored and charged as 28 minutes. Existing Appointment Resources are not changed.
+
+Every screen that splits travel into a part before the Appointment and a part after it uses the same rule. The stored total is rounded first, the proportion is limited to between 0 and 100, and the "after" value is the total less the "before" value, so it is never below zero.
+
+### Billed travel quantities
+
+When the travel Delivery Activity is created for each Participant, its share is rounded to two decimal places. A value that falls exactly halfway rounds to the nearest even digit, so `0.125` becomes `0.12`.
+
+| Example                                                                        | Quantity stored                          |
+| ------------------------------------------------------------------------------ | ---------------------------------------- |
+| A single 20 minute chargeable leg at 100 per cent                              | `0.33`                                   |
+| A 30 minute leg                                                                | `0.50`                                   |
+| 10 kilometres shared 33.34, 33.33 and 33.33 per cent across three Participants | `3.33` for each travel Delivery Activity |
+
+{% hint style="warning" %}
+A travel share that rounds to `0.00` creates no travel Delivery Activity, because a zero quantity cannot be invoiced.
+{% endhint %}
+
+An open Delivery Activity that carries a quantity with more than two decimal places is costed at two decimal places the next time it is costed. A Delivery Activity that has already been billed is read back as invoiced and is not changed.
+
+Travel Delivery Activities keep the full unit price when the Ratio Calculation Base is **Unit Price**, and are left out of the quantity synchronisation checks on the Manage Appointment screens. When a Participant is added to an existing Appointment, the new Participant receives service rows only, not a copy of another Participant's travel row.
+
+To learn how travel caps limit the billed quantity, see [Billing Invoice Generation](billing-invoice-generation.md).
