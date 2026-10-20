@@ -10,7 +10,7 @@ Maica offers two experiences for creating and managing Appointments, **Standard*
 
 In the Standard experience, an existing Appointment opens in a single screen with two steps. In the first step you review and change the details, editing each one in place. In the second, the **Summary** shows what will be delivered, to whom and at what cost, before you save.
 
-{% @arcade/embed flowId="eflavDWLGcemDDq0kxeO" url="https://app.arcade.software/share/eflavDWLGcemDDq0kxeO" %}
+{% @arcade/embed url="https://app.arcade.software/share/eflavDWLGcemDDq0kxeO" flowId="eflavDWLGcemDDq0kxeO" %}
 
 ## Opening an Appointment
 
@@ -105,7 +105,9 @@ The **Location** row offers three types of location:
 
 Beside the Location search, the people icon switches the search to the selected Participant's own addresses.
 
-Once a Location is set, click **Click Here to Manage Travel** to open the Manage Travel dialog and work out travel to and from the Appointment for each Resource. When travel has been calculated, the link reads **Travel Calculated. Click here to Manage**.
+Once the Appointment has a Location, or a manual address with a Street, and at least one Resource is assigned or selected, click **Click Here to Manage Travel** to open the Manage Travel dialog and work out travel to and from the Appointment for each Resource. When travel has been calculated, the link reads **Travel Calculated. Click here to Manage**.
+
+The link is also shown where the Appointment holds only an Asset, and it is not shown for a Shift, because travel does not apply to a Shift. On an existing Appointment, every selected Resource already has a travel row, so opening Manage Travel does not rebuild anything or create duplicate Appointment Resources.
 
 ### Schedule
 
@@ -118,6 +120,15 @@ Where the Appointment belongs to a recurring series, the **Schedule** row shows 
 | **Approve Schedule**    | Shown in place of Unapproved Schedule when you have permission to approve schedules. Click it to approve the schedule               |
 
 To make a one-off Appointment repeat, click **Add Schedule** in the row, then set the start and end dates, how often it repeats and at what interval. For a weekly schedule, choose the days of the week. A schedule can create up to 730 occurrences.
+
+#### Schedule End
+
+The earliest **Schedule End** you can enter depends on which Appointment in the series you have open.
+
+* **The Master Appointment:** the Schedule End cannot be earlier than that Appointment's own end date.
+* **Any other Appointment in the series:** the earliest Schedule End allowed is the **Schedule Start**. This means you can change an unrelated field on a later Appointment and save it for that Appointment only, even where its date falls after the Schedule End.
+
+When you choose to apply your changes to all future Appointments from an Appointment that is not the Master, the new schedule starts on that Appointment. Where the **Schedule End** is before that Appointment's date, the save is refused with the message "Schedule End cannot be before this Appointment's date when applying changes to future Appointments." Nothing is saved, and the schedule is unchanged. For a Shift, the message names the Shift. A Schedule End on the Appointment's own date is accepted, and the series splits as described in [Manage an Appointment](./).
 
 #### Cost forecast
 
@@ -164,7 +175,7 @@ From the Summary you can also open the [Select Funding Source](standard-experien
 
 ## Select Funding Source
 
-{% @arcade/embed flowId="JUUBDfV983P4snq1N1TN" url="https://app.arcade.software/share/JUUBDfV983P4snq1N1TN" %}
+{% @arcade/embed url="https://app.arcade.software/share/JUUBDfV983P4snq1N1TN" flowId="JUUBDfV983P4snq1N1TN" %}
 
 The **Select Funding Source** dialog is where you decide which funding pays for each Service. You open it from the Summary.
 

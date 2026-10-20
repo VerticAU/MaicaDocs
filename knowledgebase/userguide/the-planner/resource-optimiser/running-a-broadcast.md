@@ -44,9 +44,9 @@ Manual Selection here is optional. We have selected a Resource (Luca Milne) in t
 You then click **Done** on the Broadcast modal and **Confirm** on the Optimiser.
 
 {% hint style="info" %}
-Please note there are two stages of Confirmation required to initiate a Broadcast. This is because no changes are made to data in Maica until you click Confirm on the Optimiser modal. \
+Please note there are two stages of Confirmation required to initiate a Broadcast. This is because no changes are made to data in Maica until you click Confirm on the Optimiser modal.\
 \
-This means you if you configure a Broadcast, but then needed to undo it or make changes, you can up until the point of clicking Confirm on the Optimiser itself.&#x20;
+This means you if you configure a Broadcast, but then needed to undo it or make changes, you can up until the point of clicking Confirm on the Optimiser itself.
 {% endhint %}
 
 #### Running the Broadcast
@@ -57,7 +57,7 @@ Once you click Confirm, the Broadcast begins. This means:
 * The Appointment is marked as having a **Live Broadcast**
 
 {% hint style="info" %}
-You can identify and filter by Live Broadcasts by reopening the Optimiser and noticing a Blue Broadcast icon next to the record under the status. This icon will turn grey once they Broadcast window expires, which you can also filter by.&#x20;
+You can identify and filter by Live Broadcasts by reopening the Optimiser and noticing a Blue Broadcast icon next to the record under the status. This icon will turn grey once they Broadcast window expires, which you can also filter by.
 {% endhint %}
 
 As responses come in, Maica processes them in real time:
@@ -67,7 +67,7 @@ As responses come in, Maica processes them in real time:
 3. The third Resource accepts → **Confirmed**
 
 {% hint style="info" %}
-In First In, Best Dressed, Resources are immediately set to Confirmed as they Accept an offer without any additional steps required from Rostering Staff. This will automatically add the Shift into their Planner.&#x20;
+In First In, Best Dressed, Resources are immediately set to Confirmed as they Accept an offer without any additional steps required from Rostering Staff. This will automatically add the Shift into their Planner.
 {% endhint %}
 
 Once the third Resource is confirmed:
@@ -88,7 +88,7 @@ For the Highest Scoring Offer Method, we’ll use the same Shift:
 * **Tuesday, 18 June – 7:00am to 3:00pm**
 * **Required Resources:** 3
 
-However this time let's set some Ranking Criteria for this run, as this may impact our Scoring Metrics.&#x20;
+However this time let's set some Ranking Criteria for this run, as this may impact our Scoring Metrics.
 
 For this example, let's say we add one criterion:
 
@@ -101,14 +101,14 @@ Remember, **Resource Pool** = _Who_ is considered & **Ranking Criteria** = _How 
 {% endhint %}
 
 {% hint style="info" %}
-To learn more about how Ranking Criteria works in Maica, [click here](./#ranking-criteria).&#x20;
+To learn more about how Ranking Criteria works in Maica, [click here](./#ranking-criteria).
 {% endhint %}
 
 In the Broadcast configuration modal, let's set:
 
 * **Offer Count:** 10
 * **Offer Method:** Highest Scoring
-* **Manual Selection:** _Empty_&#x20;
+* **Manual Selection:** _Empty_
 * **Expiration Window:** 2 hours
 * **Send Notifications:** Yes
 
@@ -119,7 +119,7 @@ In the Broadcast configuration modal, let's set:
 Now, as Resources respond:
 
 * Accepted offers are tracked, but **not confirmed immediately**
-* The Appointment remains **Unfilled** while responses are collected and until the Response Window expires.&#x20;
+* The Appointment remains **Unfilled** while responses are collected and until the Response Window expires.
 
 Once the response window does end (or all responses are received), Maica evaluates the results and:
 
@@ -131,7 +131,7 @@ Any remaining Accepted offers are set to **Withdrawn**.
 
 The Appointment is now marked as **Filled**.
 
-## Manual Selection&#x20;
+## Manual Selection
 
 #### Configuring our Broadcast
 
@@ -140,9 +140,9 @@ Again, for Manual Selection, let's use the same Shift:
 * **Tuesday, 18 June – 7:00am to 3:00pm**
 * **Required Resources:** 3
 
-From the Optimiser, this time select Manual as the Offer Method and use the same configuration as above.&#x20;
+From the Optimiser, this time select Manual as the Offer Method and use the same configuration as above.
 
-Before we begin let's build a Resource Pool for this run, as we may only want a certain group of Resources to receive the offer.&#x20;
+Before we begin let's build a Resource Pool for this run, as we may only want a certain group of Resources to receive the offer.
 
 Currently, let's assume we have **184 active Resources** which we want to narrow down.
 
@@ -154,10 +154,10 @@ Open the **Resource Pool** and start applying filters to refine the group.
 4. Select an **Operator** (e.g., _equals_).
 5. Select a **Value** (e.g., _Full-Time_).
 
-After applying this first filter, our pool narrows from **184 → 126** Resources, and we now begin our Broadcast.&#x20;
+After applying this first filter, our pool narrows from **184 → 126** Resources, and we now begin our Broadcast.
 
 {% hint style="info" %}
-To learn more about how the Resource Pool works in Maica, [click here](./#resource-pool).&#x20;
+To learn more about how the Resource Pool works in Maica, [click here](./#resource-pool).
 {% endhint %}
 
 #### Running our Broadcast
@@ -168,18 +168,18 @@ During the broadcast:
 * Accepted offers remain in **Accepted (Pending Approval)**
 
 {% hint style="info" %}
-In this scenario, Resources will get an alert on the Mobile App that they have Accepted a Shift and now awaiting Managers Approval.&#x20;
+In this scenario, Resources will get an alert on the Mobile App that they have Accepted a Shift and now awaiting Managers Approval.
 {% endhint %}
 
-Let's say in this scenario that only **2 Resources** accept the offer, when we **Required 3**.&#x20;
+Let's say in this scenario that only **2 Resources** accept the offer, when we **Required 3**.
 
-As this is a Manual Run, we will need to go back into the Optimiser to view the outcome of and action the Broadcast. There are 2 different ways we can do this and assess the results:&#x20;
+As this is a Manual Run, we will need to go back into the Optimiser to view the outcome of and action the Broadcast. There are 2 different ways we can do this and assess the results:
 
-1. In the Resources Column next to the Shift with updated Resource Statuses.&#x20;
-2. In the Shift Insights.&#x20;
+1. In the Resources Column next to the Shift with updated Resource Statuses.
+2. In the Shift Insights.
 
 {% hint style="info" %}
-Both of the above options are further [detailed here](./#resource-column).&#x20;
+Both of the above options are further [detailed here](./#resource-column).
 {% endhint %}
 
 Still at this point no Resources are confirmed and the Shift remains **Unfilled**
@@ -195,37 +195,37 @@ This time, we will:
 * Expand the Resource pool to allow for _Part-Time_ staff to also be included
 * Change the Offer Method to First In, Best Dressed
 
-Now we quickly have our final Acceptance, and the Shift is automatically **Filled**.&#x20;
+Now we quickly have our final Acceptance, and the Shift is automatically **Filled**.
 
 {% hint style="success" %}
 Re-broadcasting allows you to adjust your approach without starting over. You can change Offer Counts, Pools, and Methods, etc as needed.
 {% endhint %}
 
 {% hint style="info" %}
-It is important to note, especially for Manual Selection Broadcasts, that if you wish to review the results of your Broadcast you must reopen the Optimiser from within the same Period on the Planner that you first issued the offers.&#x20;
+It is important to note, especially for Manual Selection Broadcasts, that if you wish to review the results of your Broadcast you must reopen the Optimiser from within the same Period on the Planner that you first issued the offers.
 {% endhint %}
 
 ## Find Resource Manual Resource Selection
 
-There is one final way we are able to Broadcast a Shift or Appointment, and this is directly through the Find Resource modal. Here, any of the above Methods can be used.&#x20;
+There is one final way we are able to Broadcast a Shift or Appointment, and this is directly through the Find Resource modal. Here, any of the above Methods can be used.
 
 {% hint style="info" %}
-For some background on the Find Resource Modal, [click here](./#manually-assign-resources).&#x20;
+For some background on the Find Resource Modal, [click here](./#manually-assign-resources).
 {% endhint %}
 
-To do so, select a Shift from the Optimiser, and instead of opening the Broadcast Modal, open the Find Resource Manually Modal.&#x20;
+To do so, select a Shift from the Optimiser, and instead of opening the Broadcast Modal, open the Find Resource Manually Modal.
 
-From here, you will be able to preselect any number of Resources you wish with a clear view of how they are ranked (in order of Optimisation Score) for that Shift, as shown below.&#x20;
+From here, you will be able to preselect any number of Resources you wish with a clear view of how they are ranked (in order of Optimisation Score) for that Shift, as shown below.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2026-01-15 at 3.58.33 pm.png" alt=""><figcaption></figcaption></figure>
 
-From here, you can select Broadcast in the bottom right to trigger the Broadcast Configuration Modal with the above 3 Resources preselected and the Offer Count defaulted to 3.&#x20;
+From here, you can select Broadcast in the bottom right to trigger the Broadcast Configuration Modal with the above 3 Resources preselected and the Offer Count defaulted to 3.
 
 <figure><img src="../../.gitbook/assets/Screenshot 2026-01-15 at 3.59.21 pm.png" alt=""><figcaption></figcaption></figure>
 
-Now you are ready to configure the rest of your Broadcast.&#x20;
+Now you are ready to configure the rest of your Broadcast.
 
-This is a handy way to manually determine some or all of the Resources receiving an offer for any particular Shift with clear visibility of their Optimisation Score.&#x20;
+This is a handy way to manually determine some or all of the Resources receiving an offer for any particular Shift with clear visibility of their Optimisation Score.
 
 ### Cancelling a Broadcast
 
@@ -255,17 +255,34 @@ When no active Broadcasts are present in the selection, the **Broadcast** button
 Once the cancellation is confirmed:
 
 * All Resources in **Pending** or **Accepted** status on the affected records are moved to **Withdrawn**.
-* The following Broadcast fields are cleared on each affected Appointment or Shift: Offer Method, Offer Count, Broadcast Configuration, Broadcast Ends, and Expiration Window.
+* The following Broadcast fields are cleared on each affected Appointment or Shift: Offer Method, Offer Count, Broadcast Configuration and Expiration Window.
+* **Broadcast Ends** is set to the time of the cancellation, rather than cleared. This marks the Broadcast as ended, so the offers that were withdrawn stay withdrawn.
 * The records are no longer marked as having a Live Broadcast.
 
-After cancellation, the records are back in the same state as if no Broadcast had been initiated. You can configure and start a new Broadcast, manually assign Resources via the Find Resource Modal, or take any other action available in the Optimiser.
+After cancellation, you can configure and start a new Broadcast, manually assign Resources via the Find Resource Modal, or take any other action available in the Optimiser.
 
 {% hint style="info" %}
 Withdrawal notifications are **not** sent to Resources when a Broadcast is cancelled. The cancellation is silent from the Resource's perspective, even for Resources who had already Accepted the offer. This avoids generating "withdrawal" alerts for Resources whose offers were retracted as part of a Scheduler-initiated correction.
 {% endhint %}
 
+{% hint style="warning" %}
+If any part of a cancellation cannot be saved, nothing is changed and the Optimiser shows an error, rather than the "Broadcast Cancelled" message.
+{% endhint %}
+
 {% hint style="success" %}
 Cancel Broadcast also works as a bulk action. If you select multiple Appointments or Shifts with active Broadcasts, cancelling applies to all of them in a single step.
+{% endhint %}
+
+#### Offers after a Broadcast has ended or been cancelled
+
+A Broadcast has ended once its **Broadcast Ends** time has passed, either because the Expiration Window ran out or because it was cancelled. Maica treats offers on an ended Broadcast as closed.
+
+* **Unconfirming a Confirmed Resource:** when a Confirmed Resource is unconfirmed, the other Withdrawn offers on the Appointment return to **Pending** only while the Broadcast is still running, or has no end time, and the Appointment is not **Cancelled**. Once the Broadcast has ended or been cancelled, they stay **Withdrawn**.
+* **Accepting an expired offer:** a Resource who tries to accept an offer after the Broadcast has ended is refused with the message "This offer has expired and can no longer be accepted." This includes a Resource who kept **My Offers** open past the end time.
+* **Planner badge:** the Planner badge counts only **Pending** offers whose Broadcast has not ended, so it matches the **My Offers** list.
+
+{% hint style="info" %}
+Offers that were already **Pending** on an expired Broadcast before your organisation upgraded to V2.29 are not changed.
 {% endhint %}
 
 #### Example scenarios
@@ -276,3 +293,5 @@ Cancel Broadcast also works as a bulk action. If you select multiple Appointment
   Cancel the Broadcast to move all 5 Resources to **Withdrawn** and clear the Broadcast configuration on the Shift. You can then re-broadcast with different parameters or assign Resources directly.
 * You have 12 Appointments with active Broadcasts that all need to be cancelled because of a scheduling change at the Participant level.\
   Select all 12 in the Optimiser, click **Broadcast → Cancel Broadcast** once, then **Confirm**. The cancellation applies to all 12 in a single bulk action.
+* A Broadcast is cancelled, and then a Confirmed Resource on the same Appointment is unconfirmed.\
+  The offers withdrawn by the cancellation stay **Withdrawn**, because the Broadcast has ended.

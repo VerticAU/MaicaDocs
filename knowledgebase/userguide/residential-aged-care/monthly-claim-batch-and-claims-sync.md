@@ -47,10 +47,11 @@ You do not set the Claim Status by hand as part of normal claiming. It reflects 
 The claim is one stage in a repeating monthly rhythm. Understanding the order helps you know when to run the sync and what to expect from it.
 
 1. **Billing runs through the month.** The daily billing engine generates each resident's invoices as it does every day. See [How Resident Billing Works](how-resident-billing-works.md).
-2. **Accommodation balances are submitted.** Toward month-end you report each resident's RAD/RAC balance to Services Australia. See [Reporting RAD/RAC Balances](/broken/pages/1294c0625af2a6ee076f09cb24ba94b6fd1fec43).
+2. **Accommodation balances are submitted.** Toward month-end you report each resident's RAD/RAC balance to Services Australia. See [Reporting RAD/RAC Balances](how-maica-connects-to-services-australia/reporting-rad-rac-balances.md).
 3. **You sync the claim.** You open the Claim Batch and run **Claims Sync** to pull the current calculated position from Services Australia into Maica.
-4. **The claim is approved and paid.** Once Services Australia approves the claim, the confirmed subsidy data lands in Maica, and payment follows.
-5. **You reconcile the payment.** When the payment arrives, you match it against the invoices you raised. See [Reconciling Payments](reconciling-payments.md).
+4. **You finalise the claim month.** For Permanent and Respite claims, once the balances are submitted and the claim has been synced, you run **Finalise Claim** to close the month at Services Australia. See [Finalising the claim month](monthly-claim-batch-and-claims-sync.md#finalising-the-claim-month).
+5. **The claim is approved and paid.** Once Services Australia approves the claim, the confirmed subsidy data lands in Maica, and payment follows.
+6. **You reconcile the payment.** When the payment arrives, you match it against the invoices you raised. See [Reconciling Payments](reconciling-payments.md).
 
 {% hint style="info" %}
 Because Services Australia calculates the claim rather than receiving one you build, most of the claim work is reviewing what the sync brings back, not data entry.
@@ -68,16 +69,18 @@ Because Services Australia calculates the claim rather than receiving one you bu
 
 ### What the sync does
 
-When you run Claims Sync, Maica works through a set of steps in order, each retrieving one part of the monthly picture from Services Australia and writing it into Maica. The steps run one after another, and if one fails the sync stops there so you can resolve the problem and run it again.
+When you run Claims Sync, Maica works through a set of steps in order, each retrieving one part of the monthly picture from Services Australia and writing it into Maica. **Claim details** runs first, and it is the only step that stops the sync if it fails. If any other step fails, it reports a warning and the sync carries on with the remaining steps, so one unavailable step no longer hides the rest of the claim position.
 
-| Step                       | What it brings back                                                                                                            |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Payment summary**        | The payments Services Australia has recorded for the service this month, including advance and claim payment amounts and dates |
-| **Claim details**          | The claim status, the Services Australia operational bed count, and the claim submission position for the month                |
-| **Respite summary**        | Respite allocation and usage figures, and residential respite incentive (RRI) figures where they apply                         |
-| **Care recipient details** | The per-resident detail behind the claim, refreshed for the residents in the claim month                                       |
-| **RN supplement summary**  | The 24/7 registered nurse supplement figures for the service, stored against the Location                                      |
-| **Reconciliation**         | Matches the confirmed position against your invoices and prepares any adjustments                                              |
+| Step                       | What it brings back                                                                                                                                                        |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Claim details**          | The claim status, the Services Australia operational bed count, and the claim submission position for the month. If this step fails, the sync stops and no later step runs |
+| **Payment summary**        | The payments Services Australia has recorded for the service this month, including advance and claim payment amounts and dates                                             |
+| **Respite summary**        | Respite allocation and usage figures, and residential respite incentive (RRI) figures where they apply. Runs once the claim is **Approved** or **Completed**               |
+| **Care recipient details** | The per-resident detail behind the claim, refreshed for the residents in the claim month. Runs once the claim is **Approved** or **Completed**                             |
+| **RN supplement summary**  | The 24/7 registered nurse supplement figures for the service, stored against the Location                                                                                  |
+| **Reconciliation**         | Matches the confirmed position against your invoices and prepares any adjustments. Runs only when the care recipient details step succeeded                                |
+
+A step that does not run shows a grey panel with the reason, for example that the claim is not yet approved. When a step fails, a single message at the end lists the steps that failed.
 
 {% hint style="info" %}
 Some steps may show **warnings** rather than a clean result. A warning does not mean the sync failed; it flags something in that step's data that is worth reviewing, such as a resident the claim could not match. The step still completes and the sync moves on.
@@ -96,17 +99,36 @@ Once the sync completes, the Claim Batch shows the current position:
 You can run Claims Sync as often as you need through the month. Each run refreshes the Claim Batch with the latest position from Services Australia, so it is safe to re-run whenever you want to check where the claim stands.
 {% endhint %}
 
+## What the sync writes on every run
+
+The claim details step writes the following records each time you run Claims Sync, whatever the Claim Status. This means they exist while the claim is still **Submitted**, which is when you need them to submit accommodation balances.
+
+| Record                           | What the sync populates                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------ |
+| **Funding Item**                 | One record per resident for the claim month, including the supported resident status |
+| **Claim Service Classification** | The service-level classifications for the month                                      |
+
 ## What happens when the Claim is approved
 
 When Services Australia approves the claim, the sync writes the confirmed data across several records so the approved subsidy position is reflected throughout Maica:
 
-| Record                           | What the approved claim populates                                                                       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| **Claim Batch**                  | The confirmed claim status, operational bed count, registered nurse eligibility, and the last sync time |
-| **Funding Item**                 | One record per resident for the claim month, including the supported resident status                    |
-| **Claim Service Classification** | The service-level classifications confirmed for the month                                               |
-| **AN-ACC Classification**        | The resident-level AN-ACC classifications confirmed for payment                                         |
+| Record                    | What the approved claim populates                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Claim Batch**           | The confirmed claim status, operational bed count, registered nurse eligibility, and the last sync time |
+| **AN-ACC Classification** | The resident-level AN-ACC classifications confirmed for payment                                         |
 
 {% hint style="warning" %}
 The registered nurse eligibility written to the Claim Batch here comes from the claim itself. It is not the same as the separate 24/7 registered nurse coverage check you run for your own GPMS reporting. The two are independent.
 {% endhint %}
+
+## Finalising the claim month
+
+For **Permanent** and **Respite** claims, the **Finalise Claim** action closes the claim month at Services Australia. You run it from the Claim Batch, once the month is ready.
+
+{% hint style="danger" %}
+Finalising cannot be undone from Maica. Check the claim position before you finalise.
+{% endhint %}
+
+The claim month is ready to finalise when the Claim Status is **Submitted**, the accommodation balances for the month have been submitted (the **Balance Submission Status** is **Complete**), and the claim has been synced. Where something is missing, the action tells you what to do first and no Finalise button is shown. If the month has already been finalised, the action says so and updates the Claim Batch from Services Australia.
+
+You need the **Can Manage RACS Claims** permission to run **Sync Claim Batch** and **Finalise Claim**. To learn more, see the [Finalise Claim](finalise-claim.md) article in this section.

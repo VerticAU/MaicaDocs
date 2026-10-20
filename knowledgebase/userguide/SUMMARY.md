@@ -219,6 +219,7 @@
 * [How Resident Billing works](residential-aged-care/how-resident-billing-works.md)
 * [Resident Monthly Statements](residential-aged-care/resident-monthly-statements.md)
 * [Monthly Claim Batch and Claims Sync](residential-aged-care/monthly-claim-batch-and-claims-sync.md)
+* [Finalise Claim](residential-aged-care/finalise-claim.md)
 * [Fee Treatment during Leave](residential-aged-care/fee-treatment-during-leave.md)
 * [Fee Adjustments and Corrections](residential-aged-care/fee-adjustments-and-corrections.md)
 * [How Maica connects to Services Australia](residential-aged-care/how-maica-connects-to-services-australia/README.md)

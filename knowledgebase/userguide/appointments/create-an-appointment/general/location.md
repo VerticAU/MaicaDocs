@@ -6,9 +6,9 @@ description: Discover how to specify the Appointment location
 
 ## What are the Location Selection Options?
 
-The second tab captures the location details of the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). There are four different methods by which the location can be established, as shown below:&#x20;
+The second tab captures the location details of the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). There are four different methods by which the location can be established, as shown below:
 
-<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><p></p><p><img src="../../../.gitbook/assets/image (42).png" alt=""></p></td><td align="center" valign="top"><p><img src="../../../.gitbook/assets/appointment location.png" alt="" data-size="original"></p><p></p></td></tr></tbody></table>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (42).png" alt="" data-size="original"></td><td align="center" valign="top"><img src="../../../.gitbook/assets/appointment location.png" alt="" data-size="original"></td></tr></tbody></table>
 
 ### 1. Location
 
@@ -18,15 +18,15 @@ By using the Location tab, you can choose the location of your [Appointment](../
 
 ### 2. Participant Location
 
-The Participant Location tab enables the Appointment Location to be selected from a list of all recorded Mailing Address values for each [Participant](../../../getting-started/maica-key-concepts/participant.md) associated with the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). So, when adding [Participants](../../../getting-started/maica-key-concepts/participant.md) to an [Appointment](../../../getting-started/maica-key-concepts/appointment.md), you can automatically select the Appointment Location from all addresses connected to their record.&#x20;
+The Participant Location tab enables the Appointment Location to be selected from a list of all recorded Mailing Address values for each [Participant](../../../getting-started/maica-key-concepts/participant.md) associated with the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). So, when adding [Participants](../../../getting-started/maica-key-concepts/participant.md) to an [Appointment](../../../getting-started/maica-key-concepts/appointment.md), you can automatically select the Appointment Location from all addresses connected to their record.
 
 <table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (44).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.05.08 am.png" alt="" data-size="original"></td></tr></tbody></table>
 
 ### 3. Manual Entry
 
-The Manual Entry tab allows for flexibility where the [Appointment](../../../getting-started/maica-key-concepts/appointment.md) is to be held at a location not previously recorded. You can enter an address manually to be captured against the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). Here, you have the option to manually enter the information or have the fields automatically fill in by using the [Google Maps Integration](location.md#google-maps-integration) to find the address.&#x20;
+The Manual Entry tab allows for flexibility where the [Appointment](../../../getting-started/maica-key-concepts/appointment.md) is to be held at a location not previously recorded. You can enter an address manually to be captured against the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). Here, you have the option to manually enter the information or have the fields automatically fill in by using the [Google Maps Integration](location.md#google-maps-integration) to find the address.
 
-<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (45).png" alt=""></td><td align="center" valign="top"><p><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.09.38 am.png" alt="" data-size="original"></p><p></p></td></tr></tbody></table>
+<table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (45).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.09.38 am.png" alt="" data-size="original"></td></tr></tbody></table>
 
 ### 4. Digital Location
 
@@ -34,7 +34,7 @@ If your [Appointment](../../../getting-started/maica-key-concepts/appointment.md
 
 <table><thead><tr><th align="center" valign="top">Standard Experience</th><th align="center" valign="top">Legacy Experience</th></tr></thead><tbody><tr><td align="center" valign="top"><img src="../../../.gitbook/assets/image (46).png" alt=""></td><td align="center" valign="top"><img src="../../../.gitbook/assets/Screenshot 2024-07-23 at 10.22.00 am.png" alt="" data-size="original"></td></tr></tbody></table>
 
-## Timezone Selection&#x20;
+## Timezone Selection
 
 When creating an Appointment, Maica automatically assigns a **Time Zone** using the current user’s browser location (e.g. Melbourne).
 
@@ -49,14 +49,14 @@ Once a **Location** is selected, Maica checks if that Location is in a different
 * If **no Location** is selected, the Time Zone can still be selected manually from the picklist.
 
 {% hint style="warning" %}
-In order for Maica to successfully detect and change Timezones, a Google API Key must be properly set up in the Maps Management Settings. To learn how to set up your API Key, [click here](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/maps-management#setting-up-your-google-api-key). &#x20;
+In order for Maica to successfully detect and change Timezones, a Google API Key must be properly set up in the Maps Management Settings. To learn how to set up your API Key, [click here](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/maps-management#setting-up-your-google-api-key).
 {% endhint %}
 
 #### Key Behaviour
 
 * The **Start** and **End Times** are saved using the Appointment’s selected timezone.
 * Other users will see the Appointment adjusted to **their own local timezone** when viewing it (e.g. in the Planner, Quick Info, or record view).
-* A **world icon** appears in the Planner showing the viewer's browser timezone with helpful tooltip context. To learn more, [click here](../../../the-planner/planner-overview.md#timezone-indicator).&#x20;
+* A **world icon** appears in the Planner showing the viewer's browser timezone with helpful tooltip context. To learn more, [click here](../../../the-planner/planner-overview.md#timezone-indicator).
 * For edge cases (e.g. border towns or cross-timezone Appointments), you can manually override the timezone selection.
 
 | **Example**                                             | **Outcome**                                                                                |
@@ -75,7 +75,7 @@ There are two options:
 
 <table><thead><tr><th width="153.580078125">Mechanism</th><th>Description</th></tr></thead><tbody><tr><td><strong>Default</strong></td><td>Origins and destinations are set manually by the user on each individual appointment. Maica uses the <code>Previous/Next Appointment Timespan (Days)</code> setting to determine how far back and forward it looks when suggesting a previous or next appointment as an origin or destination.</td></tr><tr><td><strong>Sequential</strong></td><td>Maica automatically determines the origin and destination for each appointment in a worker's day based on the order of their schedule. Travel is calculated between consecutive appointments within a defined time gap. No manual origin/destination setup is required.</td></tr></tbody></table>
 
-### Default&#x20;
+### Default
 
 When the Travel Mechanism is set to **Default**, users open each appointment and manually configure the origin and destination via the Travel Management component. Maica uses the `Previous/Next Appointment Timespan (Days)` setting to define how far back or forward it looks when presenting a previous or next appointment as a suggested origin or destination.
 
@@ -85,7 +85,7 @@ This setting is measured in **days** and is visible in Travel Management setting
 
 When the Travel Mechanism is set to **Sequential**, Maica automatically links each appointment to the one before and after it in a worker's schedule, and calculates travel between those linked appointments using [Google Maps](location.md#google-maps-integration). This removes the need for manual origin/destination management and ensures travel predictions stay accurate as the schedule changes.
 
-Travel is calculated only **between** appointments in a sequence — no travel is calculated to the first appointment of the day or from the last.&#x20;
+Travel is calculated only **between** appointments in a sequence — no travel is calculated to the first appointment of the day or from the last.
 
 {% hint style="info" %}
 This aligns with industry standard conditions where travel to and from the start and end of a worker's day is not billable or payable.
@@ -110,14 +110,23 @@ If the gap between two appointments exceeds this value, they are treated as sepa
 
 This allows a single worker to have **multiple sequences in one day**. For example, if the gap is set to 2 hours and a worker has a morning block and an afternoon block with a 3-hour break between them, each block is treated as its own independent sequence.\
 \
-To configure your Travel Sequence Gap, head to [Travel Management](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/travel-management) in the Maica Settings.&#x20;
+To configure your Travel Sequence Gap, head to [Travel Management](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/travel-management) in the Maica Settings.
 {% endhint %}
+
+#### How Sequential travel is linked and maintained
+
+* **No neighbour, no travel.** An Appointment with no neighbour in Sequential mode carries no travel, so the first Appointment of a day has none.
+* **Origin and destination options.** In Sequential mode, the Location picker offers only the **Previous Appointment** and **Next Appointment** legs. A **Primary Location** or manual address already saved on the record is still listed, so that an address change can recalculate it. Shifts are outside Sequential travel and keep every option.
+* **Saved choices.** A saved travel choice is kept when the editor opens. It is dropped only where it is the neighbouring Appointment's leg and that neighbour no longer exists. An empty picker, for example where no Maps key is configured, does not clear it.
+* **Completed and cancelled neighbours.** A **Completed** Appointment within the **Travel Sequence Gap (Hours)** is a genuine link, because the worker was there, so its travel is paid. Only a **Cancelled** Appointment drops out of the sequence. Travel on a **Completed** Appointment is never rewritten when the sequence is maintained.
+* **Deleting an Appointment.** Deleting an Appointment, or an Appointment Resource, detaches its neighbours. Neighbours that are **Completed** keep their travel. The others are cleared and resolved again, so the outer two Appointments of three link to each other and recalculate when the middle one is deleted.
+* **Changing an address.** Changing an Appointment's address recalculates that Appointment and the one after it. The Appointment before it is not recalculated.
 
 ### Google Maps Integration
 
-**Maica** integrates with Google Maps to determine travel times.&#x20;
+**Maica** integrates with Google Maps to determine travel times.
 
-When selecting a location for any given [Appointment](../../../getting-started/maica-key-concepts/appointment.md), **Maica** will use Google to determine the required travel time and distance to and from the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). It will then give you an **Appointment Travel Time Breakdown** which includes a summary of your travel, as well as the total travel time and distance for the [Appointment](../../../getting-started/maica-key-concepts/appointment.md).&#x20;
+When selecting a location for any given [Appointment](../../../getting-started/maica-key-concepts/appointment.md), **Maica** will use Google to determine the required travel time and distance to and from the [Appointment](../../../getting-started/maica-key-concepts/appointment.md). It will then give you an **Appointment Travel Time Breakdown** which includes a summary of your travel, as well as the total travel time and distance for the [Appointment](../../../getting-started/maica-key-concepts/appointment.md).
 
 {% hint style="info" %}
 The Google Maps integration will display on all Location Selection Options that include a physical address.
@@ -127,7 +136,7 @@ The Google Maps integration will display on all Location Selection Options that 
 
 When determining your **Appointment Travel Time Breakdown** for Default travel (not Sequential), you have three options for both the origin (**1. from which travel will be started**) and the destination (**2. to which travel will complete**) of your [Appointment](../../../getting-started/maica-key-concepts/appointment.md). These options are shown in the table below:
 
-<table><thead><tr><th width="286.8564453125">Travel Option	</th><th>Description </th></tr></thead><tbody><tr><td><code>Previous/Next Appointment</code></td><td>This is either the previous Appointment (in cases where travel is to an Appointment) or the next Appointment (in cases where travel is from an Appointment).</td></tr><tr><td><code>Home Address</code></td><td>This is the address on the Salesforce User profile linked to the Resource record.</td></tr><tr><td><code>Primary Location</code> </td><td>This is a lookup on the Resource record which is associated with a location containing an address.</td></tr><tr><td><code>Current Location</code> </td><td>The current location of the Resource (User) using <strong>Maica</strong></td></tr></tbody></table>
+<table><thead><tr><th width="286.8564453125">Travel Option</th><th>Description</th></tr></thead><tbody><tr><td><code>Previous/Next Appointment</code></td><td>This is either the previous Appointment (in cases where travel is to an Appointment) or the next Appointment (in cases where travel is from an Appointment).</td></tr><tr><td><code>Home Address</code></td><td>This is the address on the Salesforce User profile linked to the Resource record.</td></tr><tr><td><code>Primary Location</code></td><td>This is a lookup on the Resource record which is associated with a location containing an address.</td></tr><tr><td><code>Current Location</code></td><td>The current location of the Resource (User) using <strong>Maica</strong></td></tr></tbody></table>
 
 ### Travel Alert
 

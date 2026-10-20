@@ -144,3 +144,18 @@ An example of this logic is shown below:
 * Changes are **only applied to future Appointments**, avoiding duplication and misalignment between schedules.
 
 </details>
+
+### Schedule End when editing a recurring Appointment
+
+The earliest **Schedule End** you can enter depends on which Appointment in the series you are editing. This applies to both the Standard and Legacy experiences, and to Shifts as well as Appointments.
+
+| Appointment being edited | Earliest Schedule End allowed   |
+| ------------------------ | ------------------------------- |
+| The `Master` Appointment | That Appointment's own end date |
+| Any other Appointment    | The **Schedule Start**          |
+
+This means a change that applies to only a later Appointment in the series can be saved even where that Appointment's date falls after the Schedule End.
+
+When you choose **apply changes to all future Appointments** from an Appointment that is not the master, the new Schedule starts on that Appointment, so its end cannot fall before it. Where the **Schedule End** is earlier than that Appointment's date, the save is refused with the message "Schedule End cannot be before this Appointment's date when applying changes to future Appointments." Nothing is saved and the Schedule is unchanged. For a Shift, the message refers to the Shift instead.
+
+A **Schedule End** on the Appointment's own date is accepted. The original Schedule ends the day before, and a new Schedule starts on that date with the Appointment as its Master.

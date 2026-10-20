@@ -42,7 +42,49 @@ Once you have clicked on the Filter icon, and Smart Selection Filter pop-up has 
 
 <figure><img src="https://2670482622-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FhehRshYIRk6XUlay9L3b%2Fuploads%2FWQp0ncUOvGql5xGZbyHq%2Ffind%20resource%202.png?alt=media&#x26;token=03082409-32d2-4efe-b534-25387a32f2b9" alt=""><figcaption></figcaption></figure>
 
-<table><thead><tr><th width="307">Element</th><th>Description</th></tr></thead><tbody><tr><td><ol><li><code>Sort Order Toggle</code></li></ol></td><td>This button allows you to switch the display order of the list between ascending and descending, letting you view the items from top to bottom or bottom to top based on the current sort criteria.</td></tr><tr><td><ol start="2"><li><code>Score</code></li></ol></td><td>Displays the calculated Matching Score (%) for each Resource. The score reflects how well the Resource meets the current Skills, Attributes, Availability, Workload, and Travel criteria (based on Matching Score weightings). The list is sorted by this score unless you change the Sort Criteria.</td></tr><tr><td><ol start="3"><li><code>Sort Criteria Dropdown</code></li></ol></td><td>Allows you to choose how the Resource list is ordered. <strong>Overall Matching Score</strong> is always available, and each of Availability, Workload, Skills, Attributes and Travel appears only where that criterion currently carries a weighting. These options are detailed <a href="smart-selection-filter.md#smart-selection-filter-dropdown-criteria-sections">below</a>.</td></tr><tr><td><ol start="4"><li><code>Ranking Criteria</code></li></ol></td><td>Allows you to add additional scoring rules that influence how Resources are ranked. Ranking Criteria work the same as in the <a href="../../../the-planner/resource-optimiser/#ranking-criteria">Optimiser</a>: each rule consists of a <strong>Field</strong>, <strong>Operator</strong>, and <strong>Value</strong>, and Resources earn score if they match the defined rules.</td></tr><tr><td><ol start="5"><li><code>Settings</code></li></ol></td><td>Opens the Smart Selection Filter settings panel, allowing you to refine which Resources appear in the list. This includes options such as <strong>Only allocated Resources</strong> (show only Resources linked to the selected Participant) and <strong>Only matched Resources</strong> (hide Resources that do not match any selected Skills or Attributes). These settings affect the candidate list before scoring is applied.</td></tr></tbody></table>
+<table><thead><tr><th width="307">Element</th><th>Description</th></tr></thead><tbody><tr><td><ol><li><code>Sort Order Toggle</code></li></ol></td><td>This button allows you to switch the display order of the list between ascending and descending, letting you view the items from top to bottom or bottom to top based on the current sort criteria.</td></tr><tr><td><ol start="2"><li><code>Score</code></li></ol></td><td>Displays the calculated Matching Score (%) for each Resource. The score reflects how well the Resource meets the current Skills, Attributes, Availability, Workload, and Travel criteria (based on Matching Score weightings). The list is sorted by this score unless you change the Sort Criteria.</td></tr><tr><td><ol start="3"><li><code>Sort Criteria Dropdown</code></li></ol></td><td>Allows you to choose how the Resource list is ordered. <strong>Overall Matching Score</strong> is always available, and each of Availability, Workload, Skills, Attributes and Travel appears only where that criterion currently carries a weighting. These options are detailed <a href="smart-selection-filter.md#smart-selection-filter-dropdown-criteria-sections">below</a>.</td></tr><tr><td><ol start="4"><li><code>Ranking Criteria</code></li></ol></td><td>Allows you to add additional scoring rules that influence how Resources are ranked. Ranking Criteria work the same as in the <a href="../../../the-planner/resource-optimiser/#ranking-criteria">Optimiser</a>: each rule consists of a <strong>Field</strong>, <strong>Operator</strong>, and <strong>Value</strong>, and Resources earn score if they match the defined rules.</td></tr><tr><td><ol start="5"><li><code>Settings</code></li></ol></td><td>Opens the Smart Selection Filter settings panel, allowing you to refine which Resources appear in the list. This includes options such as <strong>Only allocated Resources</strong> (show only Resources linked to the selected Participant) and <strong>Only matched Resources</strong> (hide Resources that do not meet the Required Skills and Attributes you have selected). These settings affect the candidate list before scoring is applied. To learn more, see <a href="smart-selection-filter.md#only-matched-resources">Only matched Resources</a>.</td></tr></tbody></table>
+
+{% hint style="info" %}
+When you are selecting a Resource, the toolbar also has a **Resource Pool** button, as the first icon. It lets you remove Resources from the list before any scoring takes place. To learn more, see [Resource Pool](smart-selection-filter.md#resource-pool).
+{% endhint %}
+
+## Resource Pool
+
+The **Resource Pool** works in the same way as the Resource Pool in the [Resource Optimiser](../../../the-planner/resource-optimiser/#resource-pool). It defines a smaller group of Resources, and any Resource outside the pool is removed from the list. This is different from **Ranking Criteria**, which only change the order and the score of the Resources that remain.
+
+To use the Resource Pool:
+
+1. Click the **Resource Pool** button, the first icon in the toolbar.
+2. Click **Add Criteria**, then choose a **Field**, **Operator** and **Value**, as described in [How do I use the Smart Selection Filter?](smart-selection-filter.md#how-do-i-use-the-smart-selection-filter)
+3. Watch the **Current Pool** count. It shows how many Resources match your criteria and updates as you add them, before you apply the pool.
+4. Click apply to filter the list.
+
+{% hint style="info" %}
+The **Resource Pool**, **Ranking Criteria** and **Settings** panels are mutually exclusive. Opening one closes the others.
+{% endhint %}
+
+### How the Resource Pool behaves
+
+* Resources that are already assigned to the Appointment or Shift are still shown, even where they fall outside the pool.
+* The **Resource Pool** button is highlighted whenever a pool is active, including a pool that was passed in from another screen.
+* The last pool you applied is remembered in your browser and is used the next time you open the window. It is kept separately from the Resource Optimiser's saved pool, and it is shared by anyone using the same browser.
+* Where the screen that opened the window passes in a pool, that pool is shown and applied instead of your saved pool. This includes an empty pool passed in from the Resource Optimiser.
+* **Reset** returns the pool to the one the window opened with.
+* The **Current Pool** count includes criteria on related fields, for example a criterion on a Resource's User or Primary Location. The count uses your own field access, so a criterion on a field you cannot read counts zero Resources.
+
+## Only matched Resources
+
+With **Only matched Resources** turned on in **Settings**, Maica removes Resources that do not meet your Required criteria before it scores the rest.
+
+* **Required attribute criteria:** a Resource must meet every Required attribute criterion, not just one.
+* **Required Skills:** each Required skill row filters the list. A Resource meets a row by holding any one of that row's Skills, and must meet every Required row. This applies whatever the Skills weighting is set to.
+* **Preferred rows:** Preferred criteria never exclude a Resource. They only affect the score.
+* **Required Resources:** a Resource marked as Required for the selected Participant still appears.
+* **Text area criteria:** a short text area criterion filters as text. A criterion on a long or rich text area only affects the score.
+
+{% hint style="warning" %}
+The Resource Optimiser and Broadcasting turn **Only matched Resources** on, so their candidate lists narrow in the same way. Where you add two or more Required attribute criteria, a Resource that meets only some of them is no longer offered.
+{% endhint %}
 
 ## Smart Selection Filter Dropdown Criteria Sections
 
@@ -74,6 +116,16 @@ The weightings are resolved for each search in three layers, and the dropdown re
 If you have already sorted by a criterion and its weighting is then reduced to 0%, the list falls back to **Overall Matching Score** the next time it refreshes, rather than leaving the selection unresolved.
 {% endhint %}
 
+### Shifts
+
+Maica identifies a Shift from its Record Type, so a Shift is scored with the **Shift** weightings from **Rostering Settings** rather than the Appointment weightings. The same applies in the Resource Optimiser, in Highest Scoring assignment of broadcast Shifts, and in Schedule Manager bulk allocation.
+
+The Shift rules also apply in the Smart Selection Filter:
+
+* The Shift overlap setting is honoured.
+* A Resource whose roster mode is Appointment is shown as unavailable, with the message "There's a Roster Mode Conflict for the Resource."
+* The coverage check that applies only to Appointments does not run for Shifts.
+
 ### Required and Preferred Resources
 
 Where a Participant has Resources marked as **Required**, those Resources are placed at the top of the list and are always included, regardless of their score, even where more Resources match than the list can show.
@@ -88,7 +140,7 @@ Where a Resource is both Required and Preferred, the green tick takes precedence
 
 ### How many Resources are shown
 
-The number of rows the list returns is capped by the **Find Resource Number of Rows** setting, which defaults to 100. The list is ordered by Resource Name when this cap applies, so the same Resources are returned from one search to the next.
+The number of rows the list returns is capped by the **Find Resource Number of Rows** setting, which defaults to 100. The list is ordered by Resource Name when this cap applies, so the same Resources are returned from one search to the next. With **Only matched Resources** on, the cap and the footer count only the Resources that match.
 
 Where records were left out, a footer reads “A limited number of records is shown”. Narrow your search term, or apply Ranking Criteria, to bring the list within the cap.
 

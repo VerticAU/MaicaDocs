@@ -96,7 +96,9 @@ Beside the Location search, the people icon switches the search to the selected 
 
 Where the Appointment has exactly one Participant and no Location has been chosen, Maica switches to that Participant's addresses and fills in their primary address. A Location you have already chosen is never replaced.
 
-Once a Location is set, click **Click Here to Manage Travel** to open the Manage Travel dialog and work out travel to and from the Appointment for each Resource. When travel has been calculated, the link reads **Travel Calculated. Click here to Manage**.
+Once the Appointment has a Location, or a manual address with a Street, and at least one Resource has been selected, click **Click Here to Manage Travel** to open the Manage Travel dialog and work out travel to and from the Appointment for each Resource. This includes a Resource that was pre-filled for you, for example when you create the Appointment from the Planner Resource view, from a Resource record, or with Auto-Schedule Appointment Creator. When travel has been calculated, the link reads **Travel Calculated. Click here to Manage**.
+
+When you open Manage Travel on a new Appointment, Maica adds a travel row for each selected Resource that does not have one yet, so the dialog lists each Resource by name. The link is not shown for a Shift, because travel does not apply to a Shift.
 
 ### Schedule
 

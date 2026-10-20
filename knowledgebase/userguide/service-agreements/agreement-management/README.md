@@ -55,12 +55,26 @@ You can queue Leave records and future date them, and the Automation in **Maica*
 
 ### What happens to Appointments during Leave
 
-When you save a Leave record, **Maica** cancels the Delivery Activities for that Participant across the Leave period. What then happens to the Appointment itself depends on who else is attending.
+When you save a Leave record, **Maica** cancels the Participant's Delivery Activities that fall within the Leave period and that still have work to do. A Delivery Activity is cancelled only when all of the following are true:
 
-| Appointment type                                                                 | What happens                                                                                                                  |
-| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| **One-to-one**, where the Participant on Leave is the only Participant attending | The Appointment is set to `Cancelled`, its Cancellation Date is recorded, and every Resource on it is set to `Withdrawn`.     |
-| **Group**, where other Participants are also attending                           | The Appointment remains scheduled for the other Participants. Only the Leave Participant's Delivery Activities are cancelled. |
+* Its `Status` is `Planned`
+* Its `Billing Status` is not `Generated`, and it is not linked to an Invoice Line Item
+* It has no Agreement Item yet, or its Agreement Item belongs to the Service Agreement the Leave is set up on
+
+The Leave period runs from the Leave `Start Date` to the end of the Leave `End Date`, so an Appointment that starts later in the day on the End Date is included. Delivery Activities that were delivered, are under review, or have already been billed are left exactly as they are, so a back-dated Leave never changes work that is recorded or billed.
+
+{% hint style="info" %}
+Where a Participant has more than one Service Agreement funding the same Service, a Leave on one agreement only cancels the deliveries funded by that agreement. Leaves saved together on different agreements each affect only their own deliveries.
+{% endhint %}
+
+What then happens to the Appointment itself depends on whether anything is left to deliver on it.
+
+| Appointment type                                                                            | What happens                                                                                                                  |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **One-to-one**, where the Participant on Leave is the only Participant with open deliveries | The Appointment is set to `Cancelled`, its Cancellation Date is recorded, and every Resource on it is set to `Withdrawn`.     |
+| **Group**, where other Participants still have open deliveries on the Appointment           | The Appointment remains scheduled for the other Participants. Only the Leave Participant's Delivery Activities are cancelled. |
+
+An Appointment is cancelled only when no open Participant delivery remains on it. If every remaining Participant of a group Appointment goes on Leave in the same save, the Appointment is cancelled, as it is when the Leaves are saved one at a time. If another Service Agreement still funds a delivery for the same Participant on that Appointment, the Appointment stays scheduled with its Resource confirmed.
 
 {% hint style="success" %}
 Because the Resources are `Withdrawn`, the Support Worker's allocated hours reduce and they become available for other work in that time slot straight away. There is no need to open each Appointment to release them.
@@ -71,6 +85,10 @@ An Appointment is treated as one-to-one based on the Participants **still attend
 {% hint style="info" %}
 Shifts behave in the same way as Appointments.
 {% endhint %}
+
+When a delivery is cancelled by a Leave, its `Date` is set to today, and your cancellation Claim Type is applied where one is configured. A Shift uses the Shift cancellation Claim Type. Where the Appointment starts within your Short Notice Cancellation Period of that date, the delivery can also be set up for short-notice cancellation billing.
+
+You can save more than one Leave in a single transaction, for example through a data load.
 
 #### Appointments that are left unchanged
 
