@@ -116,6 +116,81 @@ class StageTest(unittest.TestCase):
         self.assertTrue((self.root / "userguide" / "live.md.metadata.json").exists())
 
 
+class ReleaseNotesSpaceTest(unittest.TestCase):
+    def test_space_is_registered(self):
+        base, guide = kb_metadata.SPACES["releasenotes"]
+        self.assertEqual(base, "https://knowledge.maica.com.au/maica-release-notes")
+        self.assertEqual(guide, "Release Notes")
+        self.assertEqual(kb_metadata.guide_for("releasenotes"), "Release Notes")
+
+    def test_url_derivation(self):
+        d = kb_metadata.derive_url
+        base = "https://knowledge.maica.com.au/maica-release-notes"
+        self.assertEqual(d("releasenotes", "README.md"), base)
+        self.assertEqual(d("releasenotes", "client-care/README.md"), base + "/client-care")
+        self.assertEqual(d("releasenotes", "client-care/version-2.16.md"), base + "/client-care/version-2.16")
+        self.assertEqual(d("releasenotes", "client-management/version-0.380.md"), base + "/client-management/version-0.380")
+
+    def test_existing_spaces_unchanged(self):
+        self.assertEqual(
+            kb_metadata.derive_url("adminguide", "a/README.md"),
+            "https://knowledge.maica.com.au/maica-knowledge-base/maica-administration-guide/a",
+        )
+        self.assertEqual(kb_metadata.derive_url("userguide", "a.md"), "https://knowledge.maica.com.au/maica-knowledge-base/a")
+
+
+class ReleaseNotesStageTest(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self._tmp.cleanup)
+        tmp = Path(self._tmp.name)
+        self.root = tmp / "knowledgebase"
+        self.stage = tmp / "stage"
+
+    def test_missing_releasenotes_folder_is_a_no_op(self):
+        write(self.root / "userguide" / "live.md", "# Live\n")
+        code, out = run_main(["--root", str(self.root), "--no-check", "--stage", str(self.stage)])
+        self.assertEqual(code, 0)
+        self.assertEqual(sorted(p.name for p in self.stage.iterdir()), ["userguide"])
+        self.assertIn("pages: 1,", out)
+
+    def test_release_notes_are_staged_with_metadata_and_hidden_draft_is_skipped(self):
+        write(self.root / "userguide" / "live.md", "# Live\n")
+        write(self.root / "releasenotes" / "SUMMARY.md", "# Summary\n")
+        write(self.root / "releasenotes" / "client-care" / "README.md", "# Client Care\n")
+        write(self.root / "releasenotes" / "client-care" / "version-2.16.md", "---\ndescription: x\n---\n\n# Version 2.16\n")
+        write(self.root / "releasenotes" / "client-care" / "version-2.99.md", "---\nhidden: true\n---\n\n# Version 2.99\n")
+        code, out = run_main(["--root", str(self.root), "--no-check", "--stage", str(self.stage)])
+        self.assertEqual(code, 0)
+        folder = self.stage / "releasenotes" / "client-care"
+        self.assertTrue((folder / "version-2.16.md").exists())
+        self.assertFalse((folder / "version-2.99.md").exists())
+        self.assertFalse((folder / "version-2.99.md.metadata.json").exists())
+        self.assertIn("skipped: releasenotes/client-care/version-2.99.md (hidden: true)", out)
+        meta = json.loads((folder / "version-2.16.md.metadata.json").read_text(encoding="utf-8"))["metadataAttributes"]
+        self.assertEqual(
+            meta,
+            {
+                "url": "https://knowledge.maica.com.au/maica-release-notes/client-care/version-2.16",
+                "guide": "Release Notes",
+                "title": "Version 2.16",
+            },
+        )
+        readme = json.loads((folder / "README.md.metadata.json").read_text(encoding="utf-8"))["metadataAttributes"]
+        self.assertEqual(readme["url"], "https://knowledge.maica.com.au/maica-release-notes/client-care")
+        self.assertTrue((self.stage / "releasenotes" / "SUMMARY.md").exists())
+
+    def test_unhiding_a_note_indexes_it(self):
+        note = write(self.root / "releasenotes" / "client-care" / "version-3.0.md", "---\nhidden: true\n---\n# Version 3.0\n")
+        write(self.root / "userguide" / "live.md", "# Live\n")
+        run_main(["--root", str(self.root), "--no-check", "--stage", str(self.stage)])
+        self.assertFalse((self.stage / "releasenotes").exists())
+        note.write_text("# Version 3.0\n", encoding="utf-8")
+        stage2 = self.stage.parent / "stage2"
+        run_main(["--root", str(self.root), "--no-check", "--stage", str(stage2)])
+        self.assertTrue((stage2 / "releasenotes" / "client-care" / "version-3.0.md").exists())
+
+
 @unittest.skipUnless(REPO_KB.is_dir(), "knowledgebase/ not present")
 class RepoPositiveControlTest(unittest.TestCase):
     """The page that started this: a retired Care Recipient Sync and its live -1 copy, in both guides."""

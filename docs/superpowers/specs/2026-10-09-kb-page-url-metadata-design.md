@@ -42,6 +42,7 @@ For a page at `knowledgebase/<space>/<rel>.md`:
 |--------------|------|
 | `userguide` | `https://knowledge.maica.com.au/maica-knowledge-base` |
 | `adminguide` | `https://knowledge.maica.com.au/maica-knowledge-base/maica-administration-guide` |
+| `releasenotes` | `https://knowledge.maica.com.au/maica-release-notes` (its own site section, not under `maica-knowledge-base`; guide label `Release Notes`) |
 
 - `<rel>/README.md` maps to `<base>/<rel>` (a folder page). The root `README.md` maps to `<base>`.
 - Any other file maps to `<base>/<rel without .md>`.
