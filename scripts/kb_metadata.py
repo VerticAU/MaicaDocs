@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate Bedrock metadata sidecars for knowledge base pages.
 
-For every page under knowledgebase/{userguide,adminguide} (excluding
+For every page under knowledgebase/{userguide,adminguide,releasenotes} (excluding
 SUMMARY.md) this script derives the published GitBook URL from the file
 path, checks it live, and writes <page>.md.metadata.json next to the page:
 
@@ -42,9 +42,14 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 SITE = "https://knowledge.maica.com.au/maica-knowledge-base"
+# The Release Notes space is its own GitBook site section, NOT under SITE.
+RELEASE_NOTES_SITE = "https://knowledge.maica.com.au/maica-release-notes"
+# A space whose folder is absent (for example releasenotes before Git Sync
+# creates it) is skipped by iter_pages, so it is a clean no-op.
 SPACES = {
     "userguide": (SITE, "User Guide"),
     "adminguide": (SITE + "/maica-administration-guide", "Admin Guide"),
+    "releasenotes": (RELEASE_NOTES_SITE, "Release Notes"),
 }
 TIMEOUT = 10
 WORKERS = 8

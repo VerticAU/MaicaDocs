@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read-only check that every knowledge base page carries its url in Bedrock.
 
-For each page under knowledgebase/{userguide,adminguide} this makes one
+For each page under knowledgebase/{userguide,adminguide,releasenotes} this makes one
 bedrock-agent-runtime retrieve call against the knowledge base, using the
 page title as the query, numberOfResults 10, and a filter that requires the
 page's own title and guide metadata keys (andAll of two equals conditions).
