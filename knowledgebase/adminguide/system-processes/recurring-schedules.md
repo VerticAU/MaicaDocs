@@ -38,7 +38,7 @@ You can set your desired Schedule Horizon in the Maica General Settings. For mor
 {% endhint %}
 
 {% hint style="info" %}
-The `Schedule Horizon Date Range` is determined based on today() + `Schedule Horizon` (weeks)
+The `Schedule Horizon Date Range` is determined based on today() + `Schedule Horizon` (weeks), where today is the current date in the Appointment’s timezone. To learn more, see [Maica Timezone Management](../maica-timezone-management.md).
 {% endhint %}
 
 To further understand the Appointment Creation Logic, see the below example:
@@ -69,6 +69,19 @@ This Maica logic ensures Appointment Records are created for schedules within a 
 When an Appointment Schedule is created the `Schedule Horizon` only respects 4 weeks. This is due to **Salesforce** limits and timeout risks during business hours. However, the overnight Batch will always respect the 12 week `Schedule Horizon` as per the setting.
 {% endhint %}
 
+#### Time zones and daylight saving
+
+Maica generates each occurrence in the **Appointment’s timezone**, not the timezone of the user or job that runs the generation. This applies to the overnight batch, to creating or managing an Appointment or Shift with a schedule, and to the **Schedule Reevaluate** quick action.
+
+* Each occurrence is created at the master Appointment’s local start time, so a series stays at the same local time on either side of a daylight saving change. The end keeps the master Appointment’s duration.
+* The `Schedule Horizon End Date` and the date generation starts from are worked out from today’s date in the Appointment’s timezone.
+* Completed and Cancelled occurrences are skipped on their own local date, so a cancelled occurrence is not recreated.
+* Where an Appointment has no `Time Zone`, Maica uses your organisation’s default timezone.
+
+{% hint style="info" %}
+To learn how the Appointment `Time Zone` is set and how it affects scheduling, see [Maica Timezone Management](../maica-timezone-management.md).
+{% endhint %}
+
 ### Roster Generation Logic
 
 Rosters use the same Schedule record and the same rolling `Schedule Horizon` as Appointments and Shifts, but the way a Roster series is started differs in two important respects.
@@ -88,6 +101,10 @@ A Roster series with a `Draft` master Roster is never rolled forward, even where
 
 {% hint style="info" %}
 The job only creates Rosters that are **missing** from the horizon; it skips any that already exist, so it is safe to run repeatedly. Once the Rosters exist, a second background process materialises their Shifts.
+{% endhint %}
+
+{% hint style="info" %}
+When the Shifts of a Roster are materialised, the date of each source Shift is read in the Shift’s own timezone. A late-evening Shift is therefore copied to the same weekday, whatever the timezone of the user or job running the process. To learn more, see [Maica Timezone Management](../maica-timezone-management.md).
 {% endhint %}
 
 #### Reevaluating a Roster series
@@ -213,7 +230,7 @@ If you need to end a schedule from a specific point forward, open the Appointmen
 
 #### Cancel an Individual Appointment Within a Schedule
 
-If you only need to cancel a single Appointment within a schedule — without affecting any others — open the Appointment you want to cancel and select **Apply changes to only this Appointment**. The rest of the schedule continues as normal.
+If you only need to cancel a single Appointment within a schedule, without affecting any others, open the Appointment you want to cancel and select **Apply changes to only this Appointment**. The rest of the schedule continues as normal.
 
 {% hint style="success" %}
 Your organisation's Billing Cancellation rules apply to all of the scenarios above. Check with your administrator if you are unsure how these are configured.

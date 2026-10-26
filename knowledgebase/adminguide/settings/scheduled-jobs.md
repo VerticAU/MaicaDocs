@@ -82,9 +82,11 @@ Retrieves `Schedule` records WHERE:
 * `Under_Evaluation__c` = TRUE
 * `Status__c` = 'Approved'
 * `Master_Appointment__r`.`Status__c` != 'Cancelled'
-* `Master_Appointment__r`.`RecordType` != 'Shift'
+* `Master_Appointment__r`.`RecordType` = 'Shift'
 
 For each `Schedule` Record, the Job will determine the anchor date, which can either be the last `Original Schedule Start`, or, `Schedule Start`. The anchor date cannot be prior to today. Once specified, the Job creates Scheduled Shifts which are clones of Master Shifts with related Delivery Activities and Appointment Resources up until the Horizon determined in the General Settings.\
+\
+Each Shift is created at the Master Shift’s local start time in the Appointment’s timezone, so a series keeps the same local time across a daylight saving change, whatever the timezone of the user running the job. To learn more, see [Maica Timezone Management](../maica-timezone-management.md).\
 \
 It is important to note that the Job does not fill up the dates where there is a Shift with a `Completed` or `Cancelled` status on a date within the Schedule. Additionally, the Status for each Record is being determined via the Service Management Settings. **Maica** will default the Status to `Scheduled`, but you can change this to suit your preference.\
 \
@@ -144,9 +146,11 @@ Retrieves `Schedule` records WHERE:
 * `Under_Evaluation__c` = TRUE
 * `Status__c` = 'Approved'
 * `Master_Appointment__r`.`Status__c` != 'Cancelled'
-* `Master_Appointment__r`.`RecordType` != 'Appointment'
+* `Master_Appointment__r`.`RecordType` = 'Appointment'
 
 For each `Schedule` Record, the Job will determine the anchor date, which can either be the last `Original Schedule Start`, or, `Schedule Start`. The anchor date cannot be prior to today. Once specified, the Job creates Scheduled Appointments which are clones of Master Appointments with related Delivery Activities and Appointment Resources up until the Horizon determined in the General Settings.\
+\
+Each Appointment is created at the Master Appointment’s local start time in its own timezone, so a series keeps the same local time across a daylight saving change, whatever the timezone of the user running the job. To learn more, see [Maica Timezone Management](../maica-timezone-management.md).\
 \
 It is important to note that the Job does not fill up the dates where there is an Appointment with a `Completed` or `Cancelled` status on a date within the Schedule. Additionally, the Status for each Record is being determined via the Service Management Settings. **Maica** will default the Status to `Scheduled`, but you can change this to suit your preference.\
 \
@@ -285,7 +289,7 @@ Once the batch is finished, it also does a cleanup:
 
 **Purpose:**
 
-This job calculates and updates the **Total Committed** values on `Agreement_Item__c` records based on associated `Delivery_Activity__c` records, giving you an accurate view of how much has been used across participant agreements. It doesn’t just look at logged delivery — it also includes **predicted commitments** based on **active schedules**.\
+This job calculates and updates the **Total Committed** values on `Agreement_Item__c` records based on associated `Delivery_Activity__c` records, giving you an accurate view of how much has been used across participant agreements. It doesn’t just look at logged delivery, it also includes **predicted commitments** based on **active schedules**.\
 \
 It's designed to help you keep your totals clean and up to date based on Delivery Activity usage.
 
@@ -304,5 +308,7 @@ For each Delivery Activity that qualifies, Maica runs its Appointment Cost Calcu
 After the batch runs:
 
 * The `Total_Committed__c` field is updated with the final figure
+
+Where a projected date for a recurring schedule has no matching Agreement Item or Support Item, the date is left out of the total and the job writes a **Warning** to the Logs for the Delivery Activity. To learn more, see [Total Committed Calculation](../system-processes/total-committed-calculation.md).
 
 </details>
