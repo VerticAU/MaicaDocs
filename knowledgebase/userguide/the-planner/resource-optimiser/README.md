@@ -114,6 +114,14 @@ The **Current Pool** count includes criteria on related fields, for example a cr
 The Resource Pool does not impact the order of Resource ranking — only which Resources are included for evaluation.
 {% endhint %}
 
+#### Saved Resource Pool filters
+
+The Resource Pool has its own **Your Filters** box, so a pool you use often can be saved and picked again in a later run. It works in the same way as saved Planner filters, with **Save**, **Save As**, **Find Filter**, a prompt to discard unsaved changes, and **Reset**. See **Saved Planner Filters**.
+
+* A saved Resource Pool filter stores only the pool criteria. It does not store the Ranking Criteria or the Settings.
+* Where a criterion uses a field you cannot read, that row is left out when the filter loads, with a notice.
+* Resource Pool filters and Planner filters are kept apart. The Optimiser lists only Resource Pool filters, and the Planner never lists them.
+
 #### Pool limit warning
 
 The Optimiser can only evaluate a limited number of Resources in a run. That number is the **Find Resource Number of Rows** setting, which defaults to 100. When **Current Pool** is above it, the panel shows a warning:

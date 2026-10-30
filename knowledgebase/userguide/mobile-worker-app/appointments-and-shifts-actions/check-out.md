@@ -55,6 +55,16 @@ If the figures do not match your actual travel, you have two options:
 1. **Edit and Save** – You can directly adjust the values by first clicking the `Edit` button shown at the bottom of the screen. When doing so, you may need to add a comment explaining the change, and resave. This will update the Appointment or Shift automatically.
 2. **Contact Organisation** – If the edit button is not visible, you will need to notify your organisation to make corrections. We recommend using [Incidents](incidents.md) to do so.
 
+#### Manage Travel when your organisation uses Sequential travel
+
+Where your organisation calculates travel in sequence between Appointments, only travel **to** an Appointment is recorded.
+
+* **From Appointment** is locked, with a note that only travel to an Appointment is recorded.
+* **To Appointment** can be edited. The values you enter are a proposal, and a proposal on a later Appointment in a sequence always sends the Appointment for review by your Coordinator, however close it is to the calculated travel.
+* On the first Appointment in a sequence, including an Appointment with none before or after it, both legs are locked with a note that travel to the first Appointment in a sequence is not paid. The stored values are shown, and any proposal is not submitted.
+
+Your Coordinator then chooses whether the calculated or the proposed travel is used. See **Reviewing Proposed Travel**.
+
 ### Manage Expenses
 
 The **Manage Expenses** option allows you to add any expenses that were not captured during the Appointment. This works in the same way as the [**Expenses Action**](expenses.md) on the Appointment screen, but is available here as a final step before Check-Out.

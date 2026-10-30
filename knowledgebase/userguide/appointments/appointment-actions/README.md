@@ -23,6 +23,7 @@ Appointment actions refer to actions and tasks related to managing and handling 
 | Appointment Incidents                                   | Appointment Incidents allows you to record and manage incidents that occur during an Appointment. On desktop, this action is available in the Standard experience.                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | [Open Appointment Profile](open-appointment-profile.md) | This opens the Salesforce Appointment profile which allows you to see all relevant Appointment information using the native Salesforce platform.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | [Google Maps](google-maps.md)                           | The Google Maps action opens the directions to the Appointment from a number of selectable starting points in Google Maps, directly from the Appointment.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [View in Planner](./#view-in-planner)                   | Opens the Planner from the Appointment record page and highlights the Appointment. It uses your current Planner filters, so the Appointment is not shown where those filters exclude it.                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 ## How do I access the Appointment Actions?
 
@@ -52,6 +53,35 @@ Some actions are also available from the Appointment Quick Information dialog, a
 
 {% hint style="info" %}
 These Actions are configurable in the [Planner Management](https://app.gitbook.com/s/9selzjEx6KX7RYEawAVr/settings/planner-management) Settings.
+{% endhint %}
+
+## View in Planner
+
+**View in Planner** is an action on the Appointment record page in Salesforce. It opens the Planner in a new browser tab, moves to the date of the Appointment and highlights it.
+
+{% hint style="warning" %}
+**View in Planner** uses your current Planner filters and does not change them. If your filters would not normally show the Appointment, the Appointment is not displayed, and the Planner can appear empty or without a highlighted Appointment.
+{% endhint %}
+
+The Planner opens with the filters you last used, or the default filter your organisation has set where you have not used the Planner before. The action finds the Appointment by date, but not by changing the filters. An Appointment is hidden when it falls outside any of the following:
+
+* **Only my Appointments**, which shows only Appointments where your User is linked to the Resource. It is on by default
+* The Resource, Participant, Location, Type, Status, Service or Skill you have filtered on, including any filter set to **Exclude**
+* The **Appointment Resource Status** filter. Where it starts from a single status, such as Confirmed, Appointments whose Resource is in another status, such as Pending, are hidden
+* **Only records with Appointments**, in views that list Resources or Participants
+
+The view can change for you. Where you were last in the Roster or Shift view and the Appointment is not a Shift, the Planner opens in the Schedule view for that visit, without changing your saved view. A Shift opens in the Shift view.
+
+### What to do when the Planner appears empty
+
+1. In the Planner, open the filter panel and check the **Basic** and **Advanced** tabs
+2. Clear or adjust the criteria that exclude the Appointment, for example turn off **Only my Appointments**, or select **Reset** to return to your saved or default filter
+3. Apply the filter, then find the Appointment in the Planner
+
+The highlight is applied once, when the Planner loads. After you change the filters, click **View in Planner** on the Appointment again to have it highlighted, or locate the Appointment on the date you were taken to.
+
+{% hint style="info" %}
+To avoid the empty result, adjust your filters to include the Appointment before you click **View in Planner**. To learn more about filters, see **Planner Filter** and **Saved Planner Filters**.
 {% endhint %}
 
 ## Appointment Actions Visibility based on Appointment Status

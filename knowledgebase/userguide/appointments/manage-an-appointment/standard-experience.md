@@ -72,7 +72,9 @@ When you add a Participant, each Service on the Appointment is added for them as
 
 Search for active Resources by name, or click the filter icon to open **Find Resources**. Beneath the list, **Required Resources** shows how many Resources the Appointment needs, and can be changed in the same way.
 
-Where a Resource carries a warning, such as a possible conflict with their availability, it is shown in amber on that Resource. Click it to confirm that the Resource should still be allocated.
+Where a Resource carries a warning, such as a possible conflict with their availability, it is shown in amber on that Resource. The warning names the cause for that Resource, together with the date and time that was checked, for example that no availability covers the period, that the Resource is on leave, or that their availability is at a different Location. Click it to confirm that the Resource should still be allocated.
+
+Availability is checked again whenever the Appointment's Location changes, so a Location mismatch is shown even when the Resource was added first.
 
 ### Services
 
@@ -120,6 +122,14 @@ Where the Appointment belongs to a recurring series, the **Schedule** row shows 
 | **Approve Schedule**    | Shown in place of Unapproved Schedule when you have permission to approve schedules. Click it to approve the schedule               |
 
 To make a one-off Appointment repeat, click **Add Schedule** in the row, then set the start and end dates, how often it repeats and at what interval. For a weekly schedule, choose the days of the week. A schedule can create up to 730 occurrences.
+
+A new schedule whose start date is on or before today creates this Appointment and then only the occurrences dated after today that are not on leave. The Schedule row shows the number of Appointments that will actually be created and names the dates that will not be created, and the **Cost Breakdown** leaves those dates out. When you save, Maica asks you to confirm the dates that will not be created. This applies to a new schedule only, and an existing series is not affected.
+
+#### Removing a schedule
+
+To stop an Appointment repeating, click **Remove Schedule** (the X on the row) and save. Maica asks you to confirm in a **Remove Schedule** dialog that shows how many future Appointments, or Shifts, will be deleted. These are the Appointments on the same Schedule that start in the future and are still in the default status. Maica then deletes them and the Schedule record.
+
+The Appointment you are editing, the Master Appointment, past Appointments and Appointments that are no longer in the default status are kept, with the Schedule removed from them. Select **Cancel** in the dialog to return to the Appointment with the schedule still removed, or click **Add Schedule** to restore the original schedule.
 
 #### Schedule End
 

@@ -1,3 +1,7 @@
+---
+description: Learn how to set up and maintain a resident's fee items on the Fees tab
+---
+
 # Configuring Resident Fees tab
 
 The **Fees** tab is where you set up and maintain a resident's fee items. Each fee a resident pays, such as the Basic Daily Fee or a Daily Accommodation Payment, is configured as an Agreement Item. The billing engine reads these items to generate invoices.
@@ -62,7 +66,7 @@ Select **Add Fee Item** to open the fee item panel, then work through two steps.
 
 Choose a Support Item from the lookup. The lookup is filtered so you cannot add a fee type that does not apply to the resident. Two filters combine:
 
-* **Fee arrangement.** Only fee types valid for the resident's fee arrangement are offered (see the table below).
+* **Fee arrangement.** Only fee types valid for the resident's fee arrangement are offered (see the table below). The same list is enforced when the item is saved, so a fee type the arrangement does not permit is refused.
 * **Price List.** Only Support Items that appear as an active entry on the Service Agreement's Price List are shown, so the item you pick is always one your organisation has priced for this agreement.
 
 A guidance message describes the fees you would typically configure for this resident.
@@ -73,7 +77,7 @@ A guidance message describes the fees you would typically configure for this res
 
 Enter the rate (in dollars per day) and the billing details, then save.
 
-The rate is entered by you, based on the Services Australia fee advice letter or the provider-set price. Maica does not read the rate from the letter automatically.
+The rate is entered by you, based on the Services Australia fee advice letter or the provider-set price. Maica does not read the rate from the letter automatically. Fees that are charged per day start with a billing method of **In Advance** and a frequency of **Month**, and other fees start with a frequency of **Day**. You can change these before saving, except where the fee type locks them, as described under RAD/RAC Retention below.
 {% endstep %}
 {% endstepper %}
 
@@ -85,18 +89,30 @@ Only one active item per fee type is allowed at a time, with two exceptions: a r
 
 The fee types you can add depend on the resident's fee arrangement.
 
-| Fee arrangement          | Available fee types                                                                                                                                                                             |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Post 1 November 2025** | Basic Daily Fee, Hotelling Contribution, Non-Clinical Care Contribution, Daily Accommodation Payment, Daily Accommodation Contribution, Higher Everyday Living Fee                              |
-| **1 July 2014**          | Basic Daily Fee, Means Tested Care Fee, Daily Accommodation Payment, Daily Accommodation Contribution, Extra Service Fee, Additional Service Fee, Higher Everyday Living Fee, RAD/RAC Retention |
-| **Pre-1 July 2014**      | Basic Daily Fee, Income Tested Fee, Daily Accommodation Payment, Daily Accommodation Contribution, Extra Service Fee, RAD/RAC Retention                                                         |
+| Fee arrangement          | Available fee types                                                                                                                                                                   |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Post 1 November 2025** | Basic Daily Fee, Hotelling Contribution, Non-Clinical Care Contribution, Daily Accommodation Payment, Daily Accommodation Contribution, Higher Everyday Living Fee, RAD/RAC Retention |
+| **1 July 2014**          | Basic Daily Fee, Means Tested Care Fee, Daily Accommodation Payment, Daily Accommodation Contribution, Extra Service Fee, Additional Service Fee, Higher Everyday Living Fee          |
+| **Pre-1 July 2014**      | Basic Daily Fee, Income Tested Fee, Accommodation Charge, Extra Service Fee, RAD/RAC Retention                                                                                        |
 
 {% hint style="info" %}
 A respite resident is offered a narrowed set regardless of arrangement: Basic Daily Fee, Higher Everyday Living Fee, and an optional one-off Booking Fee only. Accommodation, means tested, and income tested fees do not apply during respite, because the government pays the respite accommodation supplement directly to the provider for the stay.
 {% endhint %}
 
 {% hint style="info" %}
-When you add a Daily Accommodation Payment, the rate is pre-filled from the agreed room price and the interest rate at the time the agreement was signed. You can override it. An Automatic RAD Drawdown option also appears for residents who pay by lump sum, which lets the billing engine draw fees from the deposit balance.
+When you add a Daily Accommodation Payment, the rate is pre-filled from the agreed room price and the interest rate at the time the agreement was signed. You can override it. For a Post 1 November 2025 Daily Accommodation Payment, the pre-filled rate includes the index factor, and the item cannot be added while the Billing Setting cannot be read. An Automatic RAD Drawdown option also appears for residents who pay by lump sum, which lets the billing engine draw fees from the deposit balance.
+{% endhint %}
+
+### RAD/RAC Retention
+
+A RAD/RAC Retention item is created with locked terms, on add and on edit:
+
+* **Billing method and frequency.** The item bills **In Arrears** and by **Month**. It bills after each month ends.
+* **Post 1 November 2025.** The rate is the annual retention rate held in the **RAC Retention Rate** setting on the RACS Configuration tab, shown as a percentage. The item cannot be added while that setting is blank, and editing the item keeps its existing rate.
+* **Pre-1 July 2014.** The rate is the agreed fixed monthly bond amount that you enter, charged pro rata by calendar month.
+
+{% hint style="info" %}
+When a resident's lump sum account is set up, the retention item is created for you. See **Managing RAD/RAC Accommodation Deposits**.
 {% endhint %}
 
 ## Checking fee rates against Services Australia

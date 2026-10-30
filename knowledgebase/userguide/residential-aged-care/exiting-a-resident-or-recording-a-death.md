@@ -60,7 +60,7 @@ The final billing, retention, and refund do not run unless Services Australia ac
 
 Once the submission succeeds, Maica runs the resident's financial closure automatically. This involves several actions in sequence:
 
-1. **Final billing** is run up to and including the departure date, for the fees that still apply on that day (see the section on the departure day below).
+1. **Final billing** is run up to and including the departure date, for the fees that still apply on that day (see the section on the departure day below). A fee that bills in arrears is billed up to the departure date only, so a part month is not billed in full.
 2. **Departure credits** are issued where a fee that bills in advance had already been charged beyond the departure date, so the resident is not left paying for days after they left (see below).
 3. **Final retention** is deducted from the lump sum deposit, calculated proportionally up to the departure date.
 4. A **refund transaction** is recorded against the lump sum deposit for the balance that remains.
@@ -72,6 +72,10 @@ When the closure finishes, a summary panel shows the departure date and reason, 
 
 {% hint style="success" %}
 If the resident holds a lump sum deposit, the summary panel reminds you to return to the **Manage Departure** action once you have paid the refund, so you can record the refund date and any interest owed.
+{% endhint %}
+
+{% hint style="info" %}
+The base interest rate is read from your RACS settings. Where it has not been set, the departure still completes and the base interest rate on the deposit is left blank. Ask your administrator to set it on the RACS Configuration tab.
 {% endhint %}
 {% endstep %}
 {% endstepper %}
@@ -128,6 +132,11 @@ Maica applies these rules automatically during the final billing run, so the con
 Some fees bill **in advance**, meaning a charge for a period may already have been raised before the resident departed. When a resident leaves part way through a period that was billed ahead, they would otherwise be left paying for days after their departure.
 
 To prevent this, the departure processor issues a **Departure Credit** for the days beyond the departure date on any in-advance fee item that was billed past that date. Each credit is calculated pro-rata for the unused days, is derived only from the original advance charge raised by the billing engine (not from later adjustments), and is attached to the resident's final invoice so it offsets the amount already charged.
+
+* An in-advance fee that has already been billed through the departure date is not billed again at departure. Only the days after the departure are credited.
+* Where a rate changed part way through a billed period, the days after the departure are credited at the rate each part of the period was billed at.
+* A fee that was indexed or changed during the stay is treated as billed through the same date as the fee it replaced, so days already billed are not billed again.
+* A fee that starts after the departure date is closed on its own start date and is not billed.
 
 {% hint style="info" %}
 Departure credits are produced automatically as part of the closure run; there is no separate action to trigger them. They appear as credit lines on the final invoice, distinguishable from other charges by their source. You do not need to calculate or raise them by hand.

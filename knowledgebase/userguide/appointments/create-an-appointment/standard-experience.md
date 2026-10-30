@@ -59,7 +59,9 @@ Search for active Resources by name, or click the filter icon to open **Find Res
 
 Beneath the list, **Required Resources** shows how many Resources the Appointment needs, and can be changed in the same way as Required Participants.
 
-Where a Resource carries a warning, such as a possible conflict with their availability, the warning is shown in amber on that Resource. Click it to confirm that the Resource should still be allocated.
+Where a Resource carries a warning, such as a possible conflict with their availability, the warning is shown in amber on that Resource. The warning names the cause for that Resource, together with the date and time that was checked, for example that no availability covers the period, that the Resource is on leave, or that their availability is at a different Location. Click it to confirm that the Resource should still be allocated.
+
+Availability is checked again whenever the Appointment's Location changes, including when the Location is picked, cleared or filled in from the Participant, so a Location mismatch is shown even when the Resource was added first.
 
 ### Services
 
@@ -109,6 +111,30 @@ Set the start and end dates, how often the Appointment repeats and at what inter
 A schedule can create up to 730 occurrences.
 
 Once added, the row shows a one-line summary of the recurrence. To remove the schedule, click **Remove Schedule** (the X on the row).
+
+#### A schedule that starts in the past
+
+A new schedule creates the Appointment you are saving, and then only the occurrences dated after today that are not on leave. Dates earlier than today are never created. For a new schedule whose start date is on or before today, the Schedule row therefore shows the number of Appointments that will actually be created, rather than the number of dates in the schedule, together with a message that:
+
+* Names the dates that will not be created, up to ten, followed by the number of any further dates
+* Says from which date Appointments are generated, or that only this Appointment will be created
+
+The skipped dates are left out of the **Cost Breakdown**, its CSV download and the cost on the Summary, so the totals cover only the Appointments that are created. When you click save, Maica asks you to confirm the dates that will not be created before it saves.
+
+The count and message are read in the Appointment's time zone, and refresh when you change the Appointment's start, end or time zone. A recurring Unavailability shows the same count and message, without the confirmation.
+
+#### Removing a schedule
+
+When you remove the schedule from an Appointment that belongs to a series and save, Maica asks you to confirm in a **Remove Schedule** dialog. The dialog shows how many future Appointments, or Shifts, will be deleted. These are the Appointments on the same Schedule that start in the future and are still in the default status. Maica then deletes them and the Schedule record.
+
+The following are kept, with the Schedule removed from them:
+
+* The Appointment you are editing
+* The first Appointment in the Schedule, which is the Master Appointment
+* Past Appointments
+* Appointments that are no longer in the default status, such as Completed or Cancelled
+
+Select **Cancel** to return to the Appointment with the schedule still removed, or click **Add Schedule** to restore the original schedule.
 
 ### Other details
 

@@ -85,16 +85,16 @@ This setting is measured in **days** and is visible in Travel Management setting
 
 When the Travel Mechanism is set to **Sequential**, Maica automatically links each appointment to the one before and after it in a worker's schedule, and calculates travel between those linked appointments using [Google Maps](location.md#google-maps-integration). This removes the need for manual origin/destination management and ensures travel predictions stay accurate as the schedule changes.
 
-Travel is calculated only **between** appointments in a sequence — no travel is calculated to the first appointment of the day or from the last.
+Travel is calculated only **between** appointments in a sequence and is recorded against the Appointment it leads to. The first Appointment in a sequence has no travel, and travel from an Appointment is not recorded.
 
 {% hint style="info" %}
 This aligns with industry standard conditions where travel to and from the start and end of a worker's day is not billable or payable.
 {% endhint %}
 
-When a schedule change occurs — for example, an appointment is added, moved, or cancelled — Maica automatically recalculates the affected travel legs in the background. Because this runs asynchronously, a Planner refresh may be needed to see updated values.
+When a schedule change occurs, for example an appointment is added, moved, or cancelled, Maica automatically recalculates the affected travel legs in the background. Because this runs asynchronously, a Planner refresh may be needed to see updated values.
 
 {% hint style="success" %}
-When Sequential is active, travel values on individual appointments are read-only and cannot be manually overridden.
+When Sequential is active, the predicted travel values on individual appointments are calculated by Maica and cannot be edited directly. Care workers can propose corrected travel to an Appointment at checkout, and a Coordinator decides whether the predicted or the proposed values are used when the Appointment is completed. See **Reviewing Proposed Travel**.
 {% endhint %}
 
 {% hint style="info" %}
@@ -106,7 +106,7 @@ A Google Maps API key must be configured in **Settings → Maps Management** for
 
 The `Travel Sequence Gap (Hours)` setting is visible only when the Sequential mechanism is selected. It defines the **maximum time gap** between two consecutive appointments for Maica to treat them as part of the same sequence.
 
-If the gap between two appointments exceeds this value, they are treated as separate sequences — meaning no travel is calculated between them, and the later appointment is treated as the first of a new sequence (with no incoming travel).
+If the gap between two appointments exceeds this value, they are treated as separate sequences, meaning no travel is calculated between them, and the later appointment is treated as the first of a new sequence (with no incoming travel).
 
 This allows a single worker to have **multiple sequences in one day**. For example, if the gap is set to 2 hours and a worker has a morning block and an afternoon block with a 3-hour break between them, each block is treated as its own independent sequence.\
 \
@@ -116,6 +116,8 @@ To configure your Travel Sequence Gap, head to [Travel Management](https://app.g
 #### How Sequential travel is linked and maintained
 
 * **No neighbour, no travel.** An Appointment with no neighbour in Sequential mode carries no travel, so the first Appointment of a day has none.
+* **First Appointment in a sequence.** The first Appointment in a sequence, a standalone Appointment included, has no travel paid or charged. No travel Expense, Timesheet Entry or travel Delivery Activity is created for it. Its travel inputs are locked with the note that travel to the first Appointment in a sequence is not paid or charged, any stored travel is shown read-only, and any proposal made at checkout is dropped. Shifts are outside Sequential travel and keep their travel.
+* **Travel to an Appointment only.** Only travel to an Appointment is recorded. The split between travel to and from is locked at 100% To, **From Appointment** is locked at checkout, and a stored total that carries a From share opens as its To share. Travel from an Appointment is never charged, paid or counted toward overtime, whatever **Chargeable Travel** and **Payable Travel** are set to.
 * **Origin and destination options.** In Sequential mode, the Location picker offers only the **Previous Appointment** and **Next Appointment** legs. A **Primary Location** or manual address already saved on the record is still listed, so that an address change can recalculate it. Shifts are outside Sequential travel and keep every option.
 * **Saved choices.** A saved travel choice is kept when the editor opens. It is dropped only where it is the neighbouring Appointment's leg and that neighbour no longer exists. An empty picker, for example where no Maps key is configured, does not clear it.
 * **Completed and cancelled neighbours.** A **Completed** Appointment within the **Travel Sequence Gap (Hours)** is a genuine link, because the worker was there, so its travel is paid. Only a **Cancelled** Appointment drops out of the sequence. Travel on a **Completed** Appointment is never rewritten when the sequence is maintained.

@@ -72,6 +72,14 @@ The **Resource Pool**, **Ranking Criteria** and **Settings** panels are mutually
 * **Reset** returns the pool to the one the window opened with.
 * The **Current Pool** count includes criteria on related fields, for example a criterion on a Resource's User or Primary Location. The count uses your own field access, so a criterion on a field you cannot read counts zero Resources.
 
+### Saved Resource Pool filters
+
+The **Resource Pool** panel has its own **Your Filters** box, so a pool you use often can be saved and picked again. It works in the same way as saved Planner filters, with **Save**, **Save As**, **Find Filter**, a prompt to discard unsaved changes, and **Reset**. See **Saved Planner Filters**.
+
+* A saved Resource Pool filter stores only the pool criteria. It does not store the Ranking Criteria or the Settings.
+* Where a criterion uses a field you cannot read, that row is left out when the filter loads, with a notice.
+* Resource Pool filters and Planner filters are kept apart. This window lists only Resource Pool filters, and the Planner never lists them.
+
 ## Only matched Resources
 
 With **Only matched Resources** turned on in **Settings**, Maica removes Resources that do not meet your Required criteria before it scores the rest.
