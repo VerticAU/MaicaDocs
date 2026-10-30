@@ -15,7 +15,7 @@ The service produces a single adjustment for the retrospective window, which run
 * **An additional charge**, when the rate increased, or
 * **A credit**, when the rate decreased or the fee ceased.
 
-The adjustment is recorded as an invoice line item marked as a **Rate Adjustment**, raised against the resident's service agreement through the shared adjustment invoice process. It does not alter the original invoices.
+The adjustment is recorded as an invoice line item marked as a **Rate Adjustment**, raised against the resident's service agreement through the shared adjustment invoice process. It does not alter the original invoices. The adjustment invoice records the retrospective window as its billing period, and the line is dated the day the adjustment is raised.
 
 {% hint style="warning" %}
 The adjustment quantity is derived from the existing invoice line items in the window, not recalculated from calendar days. The original line items already reflect any leave adjustments, pro-rata splits, or cap limits applied when they were billed, so reusing them keeps the adjustment consistent with the original charge.
@@ -37,17 +37,25 @@ For how rate changes are detected and applied, see [Fee detection and rate updat
 
 When a provider records a rate change in the **Manage RACS Agreement** component and the new agreement item's start date is earlier than the period last billed on the previous item, the save handler invokes the same adjustment service. This lets providers generate adjustments from manually entered rate changes, not only from changes detected from Services Australia.
 
+### Follow-up adjustments
+
+Where a second rate change falls on a window an earlier adjustment has already corrected, a follow-up adjustment is raised for the additional difference. The earlier adjustment has already netted any Statement Reconciliation in the window, so the follow-up does not net it again.
+
 ## How the adjustment is calculated
 
 The calculation follows a consistent sequence:
 
-1. **Determine the window.** The window starts at the new rate's start date (or the cessation date) and ends at the last period billed on the previous agreement item. If nothing was billed in that window, the service exits cleanly and no adjustment is created.
-2. **Find the affected line items.** The service reads the existing line items on the previous agreement item that fall within the window. Line items already marked as a Rate Adjustment are excluded, so a period is never adjusted twice.
-3. **Work out the adjustable quantity.** For each line item, the service uses the billed quantity, splitting it proportionally where a billing period straddles the window start so that only the in-window days are adjusted.
+1. **Determine the window.** The window starts at the new rate's start date (or the cessation date) and ends at the last period billed on the previous agreement item. If nothing was billed in that window, or the new item starts after the last billed period, the service exits cleanly and no adjustment is created.
+2. **Find the affected line items.** The service reads the existing line items on the previous agreement item that fall within the window. Line items already marked as a Rate Adjustment or a Statement Reconciliation are excluded, so a period is never adjusted twice.
+3. **Work out the adjustable quantity.** Each line item records the **Billing Period Start** of the period it billed, and its service date is the period end. The service uses that billed period, whatever the fee's current frequency, so a period cut short by the fee's start or end date is counted exactly. Where a billed period straddles the window start, the billed quantity is split proportionally so that only the days on or after the window start are adjusted. Where a line has no usable period start, the period is rebuilt from the calendar: a month is the whole month of the service date, a week is the seven days ending on it, and a day or one-off is the single day.
 4. **Apply the rate difference.** The adjustment uses the difference between the new and old rate. For a cessation, the new rate is zero, so the difference is the full old rate as a credit.
-5. **Deduplicate against statement reconciliation.** Before creating the adjustment, the service checks for existing **Statement Reconciliation** line items covering the same agreement item and period. If reconciliation has already corrected some or all of the difference, only the residual amount is generated.
+5. **Deduplicate against statement reconciliation.** Before creating the adjustment, the service checks for existing **Statement Reconciliation** line items covering the same agreement item and period. If reconciliation has already corrected some or all of the difference, only the residual amount is generated. Where a prior reconciliation has already over-corrected in the opposite direction, no adjustment is raised, so a deliberate manual correction is not reversed.
 
 If, after these steps, there is nothing left to adjust (the rate is unchanged, the quantity is zero, or reconciliation already covered it), no adjustment invoice is created.
+
+{% hint style="info" %}
+The departure process reads billed periods the same way, so a departure credit after a mid-period rate change credits each part of the period at the rate it was billed at.
+{% endhint %}
 
 {% hint style="success" %}
 Because the service excludes prior Rate Adjustment line items and nets off existing Statement Reconciliation line items, it is safe for the same rate change to be processed by both the detection path and the reconciliation path without double-charging or double-crediting the resident.

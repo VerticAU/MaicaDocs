@@ -1,6 +1,12 @@
+---
+description: >-
+  Understand how the residential billing engine is structured and how a billing
+  run works
+---
+
 # Billing Engine Architecture
 
-The residential billing engine is the scheduled process that turns each resident's configured fees into invoice lines, invoices and accommodation drawdowns every day, without manual intervention. It is implemented as the `RAC_BillingEngine` Apex class and is the heart of residential aged care billing in Maica.
+The residential billing engine is the scheduled process that turns each resident's configured fees into invoice lines, invoices and accommodation drawdowns every day, without manual intervention. It is the heart of residential aged care billing in Maica.
 
 This article explains how the engine is structured: what it processes, the services it orchestrates, and the lifecycle of a single billing run. The rules it applies are covered in the companion articles on [Next Billing Date and Catch-Up Chains](next-billing-date-and-catch-up-chains.md) and [Fee Type Processing Rules](fee-type-processing-rules.md).
 
@@ -8,11 +14,12 @@ This article explains how the engine is structured: what it processes, the servi
 
 The engine is a daily, scheduled, batched orchestrator. On each run it walks every in-scope residential Agreement Item that is due, derives the period to bill, evaluates caps, calculates retention, creates the resulting invoice line items, resolves the invoice each Service Agreement bills onto, performs automatic accommodation drawdown where eligible, and advances each item's billing cursor.
 
-Technically, `RAC_BillingEngine` is a Salesforce `Batchable`, `Schedulable`, and `Stateful` class. A few properties follow from that design:
+The engine is a scheduled, batched and stateful process. A few properties follow from that design:
 
 * **Scheduled and batched.** A daily scheduled run starts a fresh batch. The batch processes Agreement Items in chunks of **1** at a time, each chunk with its own governor limits.
 * **Callout-free.** The engine never calls Services Australia. Fee rate callouts are a separate scheduled job (see [Fee Detection and Rate Updates](fee-detection-and-rate-updates.md)).
 * **Stateful counters.** The engine keeps running totals across all chunks so the run can report a rollup at the end: items completed, items failed, Agreement Item updates actually committed, chain depth, and the number of Service Agreements that fell back to an engine-built invoice header.
+* **One source of settings.** The engine reads its rates, caps and retention duration from the single active Billing Setting that the RACS Configuration tab edits. See **How RACS Billing Finds Its Settings**.
 
 {% hint style="info" %}
 Only Agreement Items whose Funding has a Funding Source of `Residential Aged Care` are in scope. The engine does not touch Home Care Package or NDIS funding.
@@ -43,20 +50,22 @@ The engine is a general-purpose Agreement Item processor: it does not contain fe
 
 Each Agreement Item carries the fields the engine needs to bill it:
 
-| Field                                                       | Role in billing                                                                                                            |
-| ----------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **Rate** and **Quantity**                                   | The base inputs to the charge amount.                                                                                      |
-| **Billing Method**                                          | `In Advance` or `In Arrears`. Defers the first period for an in-arrears item, and drives the in-advance horizon guardrail. |
-| **Service Frequency**                                       | `Day`, `Week`, `Month`, or `One` (one-off). Drives the length of each billing period.                                      |
-| **Start Date** and **End Date**                             | The lifecycle window. Periods are clamped so they never fall outside this window.                                          |
-| **Next Billing Date**                                       | The cursor that determines when the item is next due. A blank cursor is invisible to the engine.                           |
-| **Last Billed Period Start** and **Last Billed Period End** | The period just billed. Last Billed Period End prevents re-billing the same days.                                          |
-| **Last Billed Date**                                        | The run date on which the item was last billed, which differs from the period dates on a catch-up run.                     |
-| **Cumulative Amount (FY)**                                  | The running total used for annual cap evaluation.                                                                          |
-| **Cap Reached**                                             | Set when a cap is engaged. A capped item drops out of the engine's scope.                                                  |
-| **Automatic RAD Drawdown**                                  | Whether eligible charges trigger a drawdown against the lump sum.                                                          |
-| **Billing Status**                                          | `Initialised`, `Complete`, or `Failed`.                                                                                    |
-| **Fee Type** (on the linked Support Item)                   | Tells the engine which processing rules apply.                                                                             |
+| Field                                                       | Role in billing                                                                                                                                                                                  |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Rate** and **Quantity**                                   | The base inputs to the charge amount.                                                                                                                                                            |
+| **Billing Method**                                          | `In Advance` or `In Arrears`. Defers the first period for an in-arrears item, and drives the in-advance horizon guardrail. A `Month` item that bills in arrears is billed after each month ends. |
+| **Service Frequency**                                       | `Day`, `Week`, `Month`, or `One` (one-off). Drives the length of each billing period.                                                                                                            |
+| **Start Date** and **End Date**                             | The lifecycle window. Periods are clamped so they never fall outside this window.                                                                                                                |
+| **Next Billing Date**                                       | The cursor that determines when the item is next due. A blank cursor is invisible to the engine.                                                                                                 |
+| **Last Billed Period Start** and **Last Billed Period End** | The period just billed. Last Billed Period End prevents re-billing the same days.                                                                                                                |
+| **Last Billed Date**                                        | The run date on which the item was last billed, which differs from the period dates on a catch-up run.                                                                                           |
+| **Cumulative Amount (FY)**                                  | The running total used for annual cap evaluation.                                                                                                                                                |
+| **Cap Reached**                                             | Set when a cap is engaged. A capped item drops out of the engine's scope.                                                                                                                        |
+| **Automatic RAD Drawdown**                                  | Whether eligible charges trigger a drawdown against the lump sum.                                                                                                                                |
+| **Billing Status**                                          | `Initialised`, `Complete`, or `Failed`.                                                                                                                                                          |
+| **Fee Type** (on the linked Support Item)                   | Tells the engine which processing rules apply.                                                                                                                                                   |
+
+Each invoice line the engine raises also records the **Billing Period Start** of the period it bills, alongside a service date of the period end. Rate adjustments and departure credits use it to work out exactly which days a line covered.
 
 {% hint style="info" %}
 **Active Item** is a formula that is true when today falls within the item's dates and the parent agreement is active. The billing engine does not use it to decide eligibility, for the reasons given under [Selecting what is due](./#selecting-what-is-due). Other components, including the Manage RACS Agreement screens and the accommodation service, do rely on it.
@@ -119,7 +128,7 @@ Resolve the parent Service Agreement, Funding and Lump Sum Account from the reco
 {% step %}
 ### Derive the billing period
 
-An empty period is a legitimate skip that leaves the cursor untouched; a breach of the in-advance horizon fails the item.
+An empty period is a legitimate skip that leaves the cursor untouched and writes a Warning; a breach of the in-advance horizon fails the item.
 {% endstep %}
 
 {% step %}
@@ -143,7 +152,7 @@ Take the invoice for the period from the chunk's pre-resolved map and widen its 
 {% step %}
 ### Stage the Invoice Line Item
 
-The line carries the derived quantity and unit price, a service date of the period end, and a line item source of `Billing Engine`.
+The line carries the derived quantity and unit price, a service date of the period end, the period start, and a line item source of `Billing Engine`.
 {% endstep %}
 
 {% step %}
@@ -169,15 +178,16 @@ All database writes are staged and committed once per chunk as bulk operations, 
 
 #### Periods that produce no charge
 
-Three outcomes at the fee type rules step end the item's turn early, and they are deliberately different from each other:
+Four outcomes at the fee type rules step end the item's turn early, and they are deliberately different from each other:
 
 | Outcome                                                                       | What happens                                                                                                                                                                                                          |
 | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | A cap engages and leaves nothing chargeable                                   | **Cap Reached** is ticked and **Billing Status** is set to `Complete`. No line is created and the cursor is **not** advanced, because a capped item is finished.                                                      |
 | The period is legitimately worth nothing, from a zero rate or a zero quantity | The cursor **is** advanced and **Billing Status** is set to `Complete`. No line is created. The item consumed its period, so leaving the cursor would make it permanently due and every catch-up hop would replay it. |
 | The derived line quantity is blank or not positive                            | The item is failed and logged. A line with a quantity of zero or less is rejected by validation at commit time and would take the whole chunk down with it.                                                           |
+| A due item's billing period is empty                                          | The item is left unchanged, not advanced and not failed, and the run writes one `Warning` naming the item and the reason. See [Fee Type Processing Rules](fee-type-processing-rules.md).                              |
 
-A retention item whose last deduction falls inside its cadence window is a fourth case: the Retention Service signals a reschedule, the engine pushes the cursor forward to the rescheduled date, stamps `Complete`, and creates no line.
+A retention item whose last deduction falls inside its cadence window is a further case: the Retention Service signals a reschedule, the engine pushes the cursor forward to the rescheduled date, stamps `Complete`, and creates no line.
 
 ### Outputs of a run
 
@@ -223,10 +233,17 @@ When a single item fails, its **Billing Status** is set to `Failed`, a Log recor
 When a chunk loses its commit phase, the batch job still reports as completed with no errors, because the engine handles the failure rather than letting it escape. The Log record is the only signal. It names every Agreement Item in the chunk, states whether they were successfully re-stamped as `Failed` and are therefore out of scope pending triage, or whether the re-stamp itself failed and they remain in scope and need escalation.
 {% endhint %}
 
+Two further records are worth reading after a run:
+
+* **Warning, a due item was not billed.** A due item whose current period has nothing to bill is left unchanged and named in a `Warning`, once for each nightly run. Items already billed to their End Date write none.
+* **Error, caps not set.** While the NCCC lifetime cap or either MTCF cap is blank or zero, each Non-Clinical Care Contribution and Means Tested Care Fee item is held back and writes one `Error` for the run.
+
 Log records carry Service Agreement, Funding, Participant and Support Item lookups where they can be resolved, so billing operations can triage from the Log list view.
 
 ## Automatic and manual runs
 
 The engine normally runs on its daily schedule. An administrator can also trigger an ad-hoc run from the Maica Settings area, which returns the job so progress can be followed. Either way, the same pipeline executes; the only difference is what starts it. An ad-hoc run always executes in the running user's own security context.
+
+A billing run that starts while the Indexation Engine is queued or running selects no items and writes one operational `Warning`, so a fee is not billed while indexation is ending it. Billing resumes on the next run after indexation finishes. Likewise, an indexation run is refused while billing is running.
 
 For scheduling, see [Scheduling RACS Background Jobs](scheduling-racs-background-jobs.md); for manual rate changes, see [Scheduling and Manual Rate Changes](scheduling-and-manual-rate-changes.md).

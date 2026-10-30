@@ -12,6 +12,18 @@ Both services depend on the objects described in [The Lump Sum Account Model](ht
 
 Retention is the portion of a Refundable Accommodation Deposit that a provider is permitted to keep over time, at a legislated annual rate. Maica calculates it with the `RAC_RetentionService`, a stateless, read-only service that performs no database writes of its own. It returns a calculated amount and a pre-built transaction; the billing engine is responsible for committing the records.
 
+### Where the retention rate comes from
+
+For the Post 1 November 2025 arrangement, the annual retention rate is held in the **RAC Retention Rate** setting on the RACS Configuration tab, as a whole percent (for example, 2 for 2% per annum). When **Set Up Lump Sum Account** or **Add Fee Item** creates a retention item, it reads the setting and stores the rate on the item as the annual decimal (2% is stored as 0.02).
+
+* A retention item cannot be created while the setting is blank. The error names the setting
+* The rate on an existing item is not changed by a later change to the setting. Editing an item keeps the rate it was created with
+* The retention duration, which sets the Retention Expiry Date on the account, comes from the **RAC Retention Duration (Years)** setting
+
+{% hint style="info" %}
+The retention terms on a retention item are locked once it is created, so the rate and cadence cannot be edited on the record. See [Caps and Duration Settings](../the-racs-configuration-tab/caps-and-duration-settings.md) for the settings.
+{% endhint %}
+
 ### Daily-balance segmentation
 
 Retention is not a flat monthly figure. Because a resident's balance can change part way through a period (an additional payment, a draw-down, a refund), the service segments the billing period at every balance-changing transaction and charges each segment at the balance that applied during it.

@@ -93,6 +93,7 @@
 * [Care Recipient Sync](support-at-home/care-recipient-sync-1.md)
 * [Budget Trend Analysis](support-at-home/budget-trend-analysis.md)
 * [Multiple Service Provider ID Support](support-at-home/multiple-service-provider-id-support.md)
+* [Support at Home Statement Generation](support-at-home/support-at-home-statement-generation.md)
 
 ## Residential Aged Care
 
@@ -105,6 +106,7 @@
   * [Caps and Duration Settings](residential-aged-care/the-racs-configuration-tab/caps-and-duration-settings.md)
   * [Rate Configuration](residential-aged-care/the-racs-configuration-tab/rate-configuration.md)
   * [Automation Toggles](residential-aged-care/the-racs-configuration-tab/automation-toggles.md)
+  * [How RACs Billing Finds Its Settings](residential-aged-care/the-racs-configuration-tab/how-racs-billing-finds-its-settings.md)
 * [Billing Engine Architecture](residential-aged-care/billing-engine-architecture/README.md)
   * [Fee Type Processing Rules](residential-aged-care/billing-engine-architecture/fee-type-processing-rules.md)
   * [Next Billing Date and Catch up Chains](residential-aged-care/billing-engine-architecture/next-billing-date-and-catch-up-chains.md)

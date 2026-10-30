@@ -2,10 +2,10 @@
 
 The **Combination** payment method is for residents who pay part of their accommodation as a lump sum and the rest as a daily payment. The lump sum sits in their Lump Sum Account; the daily part is charged through a Daily Accommodation Payment (DAP) fee item. Because the two are linked, any change to the lump sum balance must change the daily DAP the resident owes. Maica keeps the two in step through the **DAP portion** and its recalculation logic.
 
-This article explains how the Combination method is wired, how the DAP portion is calculated, when it is recalculated, and the important difference in where the interest rate comes from depending on what triggered the change. It is written for administrators and power users.
+This article explains how the Combination method is wired, how the DAP portion is calculated, when it is recalculated, and how the two trigger paths differ. It is written for administrators and power users.
 
 {% hint style="info" %}
-This article builds on [The Lump Sum Account Model](./) and the draw-down behaviour described in [Retention and Drawdown Logic](/broken/pages/bcafc15aa4f4efe6509bbf894d03d5767ec80f79).
+This article builds on [The Lump Sum Account Model](./) and the draw-down behaviour described in [Retention and Drawdown Logic](retention-and-drawdown-logic.md).
 {% endhint %}
 
 ## What the Combination method represents
@@ -34,10 +34,14 @@ A Daily Accommodation Payment fee item must be configured on the Fees tab before
 The daily DAP for a Combination resident is held in the **DAP Portion** field (`maica_cc__DAP_Portion__c`) on the account. It is the daily interest cost on the part of the room price the lump sum does not cover:
 
 ```
-DAP portion = (agreed room price - current balance) x MPIR / 100 / 365
+DAP portion = (agreed room price - current balance - retention add-back) x MPIR / 100 / 365
 ```
 
-The result is clamped at zero. When the balance covers the full room price (or more), the uncovered remainder is zero or negative, so the DAP portion is zero; there is nothing to charge daily.
+The result is rounded to the cent and clamped at zero. When the balance covers the full room price (or more), the uncovered remainder is zero or negative, so the DAP portion is zero; there is nothing to charge daily.
+
+**Retention add-back.** For the **Post 1 November 2025** fee arrangement, the cumulative retention already deducted counts as still paid, so it is added back before the uncovered amount is worked out. For every other fee arrangement the add-back is zero.
+
+**Indexation.** Where the linked DAP item has already been indexed, the recalculated rate keeps the indexation factor already applied to it, so an indexed DAP is not reset to its un-indexed rate.
 
 {% hint style="info" %}
 The division by 100 is deliberate. The interest rate is stored as a Salesforce Percent field, which holds the displayed percentage number itself (an administrator enters 7.78 for 7.78%, and the value stored is 7.78, not 0.0778). The formula normalises that to a true rate before applying it.
@@ -71,29 +75,36 @@ For a Combination resident whose deposit is a RAC or Accommodation Bond, recordi
 
 ### Automatic draw-downs by the billing engine
 
-When the billing engine performs an automatic RAD draw-down, it recalculates the DAP portion itself as a follow-up step, and unlike the user-led path it writes the result through to the fee item. The recalculation updates three places:
+When the billing engine performs an automatic RAD draw-down on a Combination RAD account, it recalculates the DAP portion itself as a follow-up step, and unlike the user-led path it applies the result to billing. It does this by **stepping** the DAP fee item rather than editing its rate in place:
 
-* The **Rate** on the DAP Agreement Item, so the next billing run charges the correct daily amount.
-* The **DAP Portion** on the Lump Sum Account.
-* The **DAP Rate After Transaction** field on the draw-down transaction that triggered it, giving a full audit history of rate changes over time.
+* The original DAP Agreement Item keeps its rate and ends on the last day of the period the draw-down settles, because that day was already billed at the old rate.
+* A **successor** DAP Agreement Item starts the day after, carrying the recalculated rate and the original item's end date. The Lump Sum Account links to the successor.
+* The **DAP Portion** on the Lump Sum Account and the **DAP Rate After Transaction** on the draw-down transaction that triggered it carry the successor's rate, giving a full audit history of rate changes over time.
+
+Because the successor starts after the last billed day, no billed period is re-rated and no retrospective adjustment line is raised.
 
 This step is non-blocking. It runs in its own protected block so that if it fails, the draw-down that already succeeded is not rolled back. On failure the engine writes an error log (with the account and the originating invoice context) rather than raising an error to the resident's billing.
 
 {% hint style="warning" %}
-Because the engine updates the DAP fee item rate automatically but user-led operations only prompt for it, the two paths differ. After a manual balance change, the fee item rate is only correct once a user applies the advisory. After an automatic draw-down, it is updated for you.
+Because the engine steps the DAP fee item automatically but user-led operations only prompt for it, the two paths differ. After a manual balance change, the fee item rate is only correct once a user applies the advisory. After an automatic draw-down, a successor item carrying the new rate is created for you.
 {% endhint %}
+
+### Accounts where nothing is recalculated
+
+The automatic recalculation does nothing, and writes no log, for a Full Lump Sum account that still has a DAP linked, for a Combination account paying a RAC or legacy Accommodation Bond, and for an account with no linked DAP.
 
 ## Where the interest rate comes from
 
-The two paths also read the interest rate from different places. This is the most important nuance to understand when supporting Combination residents, because it determines which rate value drives a recalculation.
+Both trigger paths use the **MPIR at Agreement** (`maica_cc__MPIR_at_Agreement__c`) on the Service Agreement: the rate captured for the resident when they signed their agreement. The automatic draw-down path does not use the organisation-wide **RAC Current MPIR** setting, so the two paths produce the same DAP portion for the same resident and balance.
 
-| Trigger path                              | MPIR source                                                                       | Notes                                                                                                                                         |
-| ----------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| User-led operation on the RAD/RAC tab     | **MPIR at Agreement** (`maica_cc__MPIR_at_Agreement__c`) on the Service Agreement | The rate captured for the resident at the time they signed their agreement. Fixed to that resident.                                           |
-| Automatic draw-down by the billing engine | **RAC Current MPIR** (`maica_cc__RAC_Current_MPIR__c`) on Setting                 | The live, organisation-wide rate held in RACS settings. The engine reads the first Setting record carrying a value and caches it for the run. |
-
-{% hint style="danger" %}
-The user-led path uses the per-resident rate stored on the agreement, while the engine's automatic draw-down path uses the current organisation-wide rate from Setting. Where these two values differ, the DAP portion produced by a manual operation and by an automatic draw-down can differ for the same resident. Confirm the intended source with your implementation team if exact alignment between the two paths is required, and keep the RAC Current MPIR setting up to date so engine recalculations stay correct.
+{% hint style="info" %}
+The **RAC Current MPIR** setting is still used elsewhere, for example for the interest on a refund that is paid late. It does not drive a DAP recalculation.
 {% endhint %}
 
-If the engine cannot find an MPIR value on any Setting record, it does not fail the draw-down. It skips the DAP recalculation and writes a log noting that the rate is not configured, so the draw-down still completes and the gap is visible to administrators.
+### When the recalculation is skipped
+
+The automatic recalculation does not fail the draw-down when it cannot run. It skips the recalculation, changes nothing, and writes one log naming the reason, so the gap is visible to administrators:
+
+* The Service Agreement has no **MPIR at Agreement**
+* The Lump Sum Account has no **Agreed Room Price**. The recalculation never steps the DAP to $0.00 on a missing price
+* There is no draw-down transaction to date the new rate from

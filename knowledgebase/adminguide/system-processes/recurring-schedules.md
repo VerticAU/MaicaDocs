@@ -8,8 +8,10 @@ description: Learn about recurring schedules within Maica and how to manage thes
 
 Maica support the management of recurring schedules supporting the ongoing generation of either Appointments, Shifts, Unavailabilities, or Rosters. The following configuration options are available when managing Recurring Schedules.
 
-{% hint style="info" %}
-It’s important to note that Recurring Schedules cannot be set to begin in the past. They must start either today or on a future date.
+{% hint style="warning" %}
+A Recurring Schedule can be given a Start Date in the past, but Maica does not create Appointments or Shifts for dates before today. A schedule with a past Start Date creates its Master Appointment and the occurrences dated after today. The earlier dates are dropped and are not created later.
+
+When a user saves a schedule with a past Start Date, the create and manage screens say how many dates fall before today and ask the user to confirm before saving. Generation is not changed by the confirmation.
 {% endhint %}
 
 <figure><img src="https://293583916-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F9selzjEx6KX7RYEawAVr%2Fuploads%2FMgxboINTe26vIdIz0xbk%2Fimage.png?alt=media&#x26;token=cd0d4031-4763-4642-8742-7249fc0c6f57" alt=""><figcaption><p>Recurring Schedule Configuration available for Appointments, Shifts, and Unavailabilities.</p></figcaption></figure>
@@ -308,7 +310,7 @@ As a result:
 
 Maica recommends **not setting a default value** on the Schedule Status field.
 
-Maica automatically manages schedule statuses as part of its workflow, and default values on this field can interfere with recurring evaluation logic.
+Maica automatically manages schedule statuses as part of the process, and default values on this field can interfere with recurring evaluation logic.
 
 Removing the default value ensures:
 

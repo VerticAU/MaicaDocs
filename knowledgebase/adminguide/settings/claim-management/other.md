@@ -44,11 +44,17 @@ The **Type** field is a restricted picklist offering the following options:
 The process can also be run on-demand for a single `Service Agreement`, for example to correct a prior run, fill a gap, or generate a final statement for a participant who has exited.
 {% endhint %}
 
+{% hint style="warning" %}
+Generating a **Support at Home - Monthly** statement for a month that already has statements recalculates that month in place. The Generate Service Agreement Statements notice states this. Other statement types keep the existing-statement exclusion.
+{% endhint %}
+
 ### What Maica Does When You Run It?
 
 {% hint style="info" %}
 Please note, the steps below describe the generation logic for the **Support at Home - Monthly** statement type. For the **Residential Aged Care - Monthly** logic, see [Residential Aged Care Statement Generation](../../residential-aged-care/residential-aged-care-statement-generation.md).
 {% endhint %}
+
+The packaged **Generate Support at Home Statements** flow runs the statement engine, and a flow of your own that calls it receives the same results. The whole run for a Service Agreement either completes or leaves nothing behind: if it fails, no partial Statement Header or Statement Lines remain.
 
 Once submitted, Maica works through the following steps for each eligible `Service Agreement`.
 
@@ -64,7 +70,7 @@ Maica then processes each returned `Service Agreement` one at a time.
 
 #### 2. Identify active Funding Items
 
-For each `Service Agreement`, Maica retrieves all `Funding Item` records linked to the participant's funding that were active for any part of the statement month. A Funding Item is in scope if its date range overlaps the statement period by at least one day.
+For each `Service Agreement`, Maica retrieves all `Funding Item` records linked to the participant's funding that were active for any part of the statement month. A Funding Item is in scope if its date range overlaps the statement period by at least one day. A budget with no start date is included.
 
 {% hint style="info" %}
 These are the individual budget streams, for example an Ongoing quarterly budget, a Short-Term Restorative Care pathway, or an Assistive Technology and Home Modifications allocation, each of which produces its own Statement Line.
@@ -72,10 +78,12 @@ These are the individual budget streams, for example an Ongoing quarterly budget
 
 #### 3. Retrieve Budget Usage records
 
-Maica retrieves two sets of `Budget Usage` records. Both sets must not already be linked to an existing Statement Line:
+Maica retrieves the `Budget Usage` records for each Funding Item in two sets:
 
 * **Current-period records**: Budget Usage with a delivery date falling within the statement month.
 * **Prior-period records**: Budget Usage with a delivery date outside the statement month, or belonging to Funding Items whose periods have already expired. These are included on the current statement as prior-period lines, ensuring no Budget Usage record is ever left without a statement.
+
+Usage that is already linked to a Statement Line is read again on every run, together with any newly linked usage, so a line is always rebuilt from all of its usage rather than added to.
 
 {% hint style="info" %}
 Budget Usage records from Services Australia are the authoritative source for all statement content. The presence of a Budget Usage record confirms that a claim has been processed by Services Australia. Unprocessed or pending activity does not produce Budget Usage records and will not appear on a statement.\
@@ -83,34 +91,52 @@ Budget Usage records from Services Australia are the authoritative source for al
 The delivery date on a Budget Usage record reflects when Services Australia acknowledged the service, not the provider's internal service date.
 {% endhint %}
 
+{% hint style="info" %}
+Usage whose invoice line is already reported on another Support at Home statement, for example one produced by a flow that pre-dates the statement engine, is linked to that statement and left out of the month. It is not counted again as prior period spend or contributions.
+{% endhint %}
+
 #### 4. Create (or locate) the Statement Header
 
 Maica checks whether a Statement Header already exists for this agreement and period.
 
 * **If none exists**: a new Statement Header is created as the parent record for the month. It stores the statement period, status, and the relationship back to the `Service Agreement`.
-* **If one exists**: Maica operates in amendment mode. Only missing Statement Lines are added and only previously unlinked Budget Usage records are linked. Existing balances are not changed.
+* **If one exists**: Maica recalculates it in place. Every Statement Line that the engine owns is rebuilt from all of its linked usage, any newly available Budget Usage is linked, and missing Statement Lines are added. No second header and no duplicate lines are created, and running the same month again produces identical figures.
 
 {% hint style="success" %}
 There can be multiple Statement Lines under a single Statement Header, one per active Funding Item for the period.
+{% endhint %}
+
+{% hint style="info" %}
+A monthly Statement Header produced by a flow that pre-dates the statement engine ends on the first day of the following month. Maica recognises that header as the same month, reuses it, and sets the header and its lines to end on the last day of the month.
 {% endhint %}
 
 #### 5. Create Statement Lines and calculate balances
 
 One Statement Line is created for each Funding Item in scope, including any prior-period Funding Items identified in Step 3. For each Statement Line, Maica calculates and populates the following fields:
 
-<table><thead><tr><th width="265.142578125">Field</th><th>How the value is derived</th></tr></thead><tbody><tr><td><code>Period Opening Balance</code></td><td>If this is the first statement for the Funding Item: the full Approved Amount on the Funding Item record. If prior statements exist: the <code>Period Closing Balance</code> from the most recent prior Statement Line for that Funding Item, ordered by the parent Statement Header's period end date.</td></tr><tr><td><code>Period Closing Balance</code></td><td>Opening Balance + SUM of all current-period Budget Usage amounts for this Funding Item. Budget Usage amounts are stored as negative numbers by Services Australia, so this is equivalent to Opening Balance minus the absolute drawdown. For example: Opening Balance = $7,348.82, period drawdown = $990.00 → Closing Balance = $6,358.82.</td></tr><tr><td><code>Total Claimable Expenditure</code></td><td>The absolute value of all current-period Budget Usage amounts linked to this Statement Line. Represents total drawdown for the statement month. Set to $0.00 for prior-period lines and lines with no activity.</td></tr><tr><td><code>Is Prior Period Line</code></td><td>Set to true where the Statement Line relates to a Funding Item whose period does not overlap with the current statement month. Used by document generation to group and label prior-period items separately.</td></tr><tr><td><code>Prior Period Budget Type</code></td><td>Populated when <code>Is Prior Period Line</code> is true. Records the budget type code of the prior-period Funding Item (for example, ON or CM) so document generation can label prior-period lines without re-querying the Funding Item.</td></tr><tr><td><code>Issue Date</code></td><td>Set to the date the statement generation run was executed.</td></tr><tr><td><code>Status</code></td><td>Set to Generated on creation.</td></tr></tbody></table>
+<table><thead><tr><th width="265.142578125">Field</th><th>How the value is derived</th></tr></thead><tbody><tr><td><code>Period Opening Balance</code></td><td>If this is the first statement for the Funding Item: the full Approved Amount on the Funding Item record. If prior statements exist: the <code>Period Closing Balance</code> from the most recent prior Statement Line for that Funding Item, ordered by the parent Statement Header's period end date.</td></tr><tr><td><code>Period Closing Balance</code></td><td>Opening Balance + SUM of all Budget Usage amounts delivered up to the period end for this Funding Item, so that it matches the next statement's opening balance. Budget Usage amounts are stored as negative numbers by Services Australia, so this is equivalent to Opening Balance minus the absolute drawdown. For example: Opening Balance = $7,348.82, period drawdown = $990.00 → Closing Balance = $6,358.82.</td></tr><tr><td><code>Total Claimable Expenditure</code></td><td>The absolute value of all current-period Budget Usage amounts linked to this Statement Line. Represents total drawdown for the statement month. Set to $0.00 for prior-period lines and lines with no activity.</td></tr><tr><td><code>Total Budget Funding</code></td><td>The funding for the budget, taken from its Entitlements. Where the budget has no Entitlements, the Approved Amount is used, and where it has neither the value is $0.00.</td></tr><tr><td><code>Total Prior Period Expenses</code></td><td>The expenses on the budget delivered before the statement month.</td></tr><tr><td><code>Total Client Contributions</code></td><td>The care recipient contributions on the invoice lines linked to the line, counted once for each invoice line. Where one invoice line is paid from more than one of this plan's budgets, its contribution is divided between their lines in proportion to each budget's share of the invoice line's usage, with any remaining cent on the largest share.</td></tr><tr><td><code>Is Prior Period Line</code></td><td>Set to true where the Statement Line relates to a Funding Item whose period does not overlap with the current statement month. Used by document generation to group and label prior-period items separately.</td></tr><tr><td><code>Prior Period Budget Type</code></td><td>Populated when <code>Is Prior Period Line</code> is true. Records the budget type code of the prior-period Funding Item (for example, ON or CM) so document generation can label prior-period lines without re-querying the Funding Item.</td></tr><tr><td><code>Issue Date</code></td><td>Set to the date the statement generation run was executed.</td></tr><tr><td><code>Status</code></td><td>Set to Generated on creation.</td></tr></tbody></table>
 
 {% hint style="info" %}
 If a Funding Item was active during the period but has no Budget Usage activity, a Statement Line is still created with equal opening and closing balances and $0.00 total claimable expenditure. This ensures the budget stream is represented on the statement even when no services were delivered.
 {% endhint %}
 
+The Statement Header also carries **Total Care Management Quantity**, the hours of Care Management delivered in the month, counted once for each invoice line.
+
 #### 6. Link Budget Usage records to Statement Lines
 
-Each Budget Usage record from both the current-period and prior-period sets is linked to its corresponding Statement Line. Once linked, a Budget Usage record is excluded from all future statement runs, which prevents any activity from appearing on more than one statement. All linking is performed as a bulk operation.
+Each Budget Usage record from both the current-period and prior-period sets is linked to its corresponding Statement Line. Once linked, a Budget Usage record belongs to that statement and is not added to another, which prevents any activity from appearing on more than one statement. All linking is performed as a bulk operation.
 
 {% hint style="info" %}
 To trace from a Statement Line back to individual service charges, navigate: Statement Line → Budget Usage → Invoice Line Item.
 {% endhint %}
+
+#### 7. Attribute Care Management usage
+
+Care Management budgets are pooled at the provider level, so their usage is attributed to a statement separately. After the lines are built, Maica attributes provider Care Management usage, by way of the invoice line, its Agreement Item and its Service Agreement, to the Statement Header that covers its delivery date. Where a delivery falls on the first day of a month, it is attributed to the header that starts that day. Usage already reported on another statement is skipped.
+
+Each Statement Header has one Care Management line. Its fees and the hours, counted once for each invoice line, are rebuilt from all of the usage attributed to it, on the line and on the header, so a re-run leaves them identical.
+
+Attribution runs in batches of up to 2,000 rows. It runs under its own savepoint, so if it fails, only the attribution is rolled back, an **Error** Log is written, and the statement is still generated. Where a run reaches its row cap, an **Info** Log points to the **Care Management Attribution** Temporary Job, which attributes any remaining usage. See **Temporary Jobs**.
 
 ### The Resulting Structure
 
@@ -121,6 +147,22 @@ After a run completes, each participant's monthly statement is made up of:
 **Statement Lines**: one per active Funding Item (budget type) for the period. Each line holds the opening balance, closing balance, and total claimable expenditure for that specific budget. Prior-period lines are flagged separately so they can be grouped and labelled accordingly in the generated document.
 
 **Budget Usage records**: linked to their Statement Line, these provide the full itemised service delivery detail. To trace from a Statement Line back to individual service charges, navigate: Statement Line → Budget Usage → Invoice Line Item.
+
+**Funding Item Usage detail**: each usage record shows the **Quantity**, **Unit Price**, **Unit of Measurement**, **Care Recipient Contribution Amount** and **Delivered by Third Party** of its invoice line, read-only.
+
+### Permissions
+
+The packaged flow writes statements in user mode. Users who generate statements, or retry a statement Log, need:
+
+* **Service Agreement Statement** Create Access and Edit Access
+* **Funding Item Usage** Edit Access
+* Read Access to Funding, Funding Item, Entitlement and Invoice Line Item
+
+Where access is granted through profiles or cloned permission sets, the equivalent object and field access applies, including the statement totals and the Funding **Service Provider** field.
+
+### Failed runs
+
+A run that fails is logged as **Failed**. This includes a failure reported by a flow that fills a Text output named `Flow_Fault_Message`.
 
 ***
 

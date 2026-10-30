@@ -34,10 +34,10 @@ The process is **linear** and consists of the following stages:
 7. [**Retrieve Payment Item Details** for Invoice Line Items](claiming-process.md#id-7.-retrieve-payment-item-details-for-invoice-line-items)
 8. [**Refresh Care Recipient Budget data**](claiming-process.md#id-8.-refresh-care-recipient-budgets)
 
-Each stage of this process is covered in detail in this article.&#x20;
+Each stage of this process is covered in detail in this article.
 
 {% hint style="success" %}
-To watch a full Video Demonstration of this process, click [here](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/support-at-home/claiming-overview#video-demonstration).&#x20;
+To watch a full Video Demonstration of this process, click [here](https://app.gitbook.com/s/hehRshYIRk6XUlay9L3b/support-at-home/claiming-overview#video-demonstration).
 {% endhint %}
 
 ***
@@ -64,7 +64,7 @@ The modal captures:
 * **Service Provider**: Multi-select lookup field.
 * **Funding Type**: Picklist field.
 * **Include Failed Items** – Checkbox allowing inclusion of invoice line items with a `Claim Status` of _Submission Failed_ if they fall within the selected date range.
-* **Service Provider ID**: This selection determines **which invoices are eligible** for inclusion in the batch.&#x20;
+* **Service Provider ID**: This selection determines **which invoices are eligible** for inclusion in the batch.
 
 The modal provides flexibility to configure submission parameters for targeted claim batch generation.
 
@@ -72,7 +72,7 @@ The modal provides flexibility to configure submission parameters for targeted c
 
 ***
 
-#### Service Provider ID Selection&#x20;
+#### Service Provider ID Selection
 
 When generating a Claim Batch for **Support at Home**, claims are created under a specific **Service Provider ID**. This ensures invoices are grouped and submitted in the correct provider context.
 
@@ -137,7 +137,7 @@ User clicks the **Submit Claim** button in the Quick Action
 
 * A confirmation message is to be displayed to the user
 
-Once done, the modal will update and alert the user that the Claim has been submitted.&#x20;
+Once done, the modal will update and alert the user that the Claim has been submitted.
 
 ***
 
@@ -160,7 +160,7 @@ Using the **Invoices API**, Maica:
     * Services Australia Invoice Item ID =`maica_cc__Invoice_Line_Item__c`.`maica_cc__Aged_Care_Invoice_Item_ID__c`
 
 {% hint style="info" %}
-Validation exists to control when Invoices and Invoice Line Items can be modified based on `Claim Status`. Invoices are now editable **only** when the `Claim Status` is **Open** or **Submission Failed**.
+Validation exists to control when Invoices and Invoice Line Items can be modified based on `Claim Status`. Invoices are editable **only** when the `Claim Status` is **Open** or **Submission Failed**.
 
 **Key behaviours:**
 
@@ -224,7 +224,7 @@ Initiate the submission of the Claim Record associated with the batch to **Servi
 
 No direct user interaction. This step is automatically initiated as part of the **Submit Claim** quick action previously selected.
 
-#### System Action&#x20;
+#### System Action
 
 Using the **Claim API**, the system:
 
@@ -232,7 +232,7 @@ Using the **Claim API**, the system:
 * Upon successful creation, receives a **Services Australia Claim ID**.
 * Uploads an array of associated **Invoice IDs** linked to the Claim, matching them to the submitted Invoices in Services Australia's system (mapping below)
 
-& also:&#x20;
+& also:
 
 * Updates all related **Payment Requests** to reflect the outcome of the submission.
 
@@ -261,7 +261,7 @@ Using the **Claim API**, the system:
 
 * A **Claim Record** is created and linked to the Invoices in Services Australia.
 * The returned **Claim ID** is stored for visibility and future updates.
-* A **financial summary for a Claim Batch** is displayed&#x20;
+* A **financial summary for a Claim Batch** is displayed
 
 ***
 
@@ -277,10 +277,10 @@ As part of the Claim submission process, Maica updates all related **Payment Req
 **2. Manage Status Updates**
 
 * `Payment Request` → `Status` **(**`maica__Status__c`**)** as follows:
-  * **If successfully submitted for claiming**&#x20;
+  * **If successfully submitted for claiming**
     * Set `Status` = `Awaiting Approval`
       * API Value = `7`
-  * **If submission fails or is rejected (validation errors, Service Australia logic failure, etc.)**&#x20;
+  * **If submission fails or is rejected (validation errors, Service Australia logic failure, etc.)**
     * `Status` = `Failed`
       * API Value = `Failed`
 
@@ -318,12 +318,12 @@ There is validation within the `Claim Status` field on the `Claim Batch` object 
 **Key behaviours:**
 
 * `Claim Status` can only progress forward through its lifecycle.
-* Backward status changes are no longer permitted.
-* **Cancelled** and **Completed** are now treated as final states and cannot be changed once set.
+* Backward status changes are not permitted.
+* **Cancelled** and **Completed** are treated as final states and cannot be changed once set.
 
 **Why this matters:** This protects submitted and processed claims from accidental modification or re-claiming, improving data integrity and compliance with the Aged Care claiming process.\
 \
-To see the Validation Rule detail and logic, refer to the expandable below.&#x20;
+To see the Validation Rule detail and logic, refer to the expandable below.
 {% endhint %}
 
 <details>
@@ -338,7 +338,7 @@ To see the Validation Rule detail and logic, refer to the expandable below.&#x20
 
 #### Claim API → Claim Response – Field Mapping
 
-<table><thead><tr><th width="133.2318115234375">Payload Field</th><th width="277.7430419921875">Mapping</th><th>Notes</th></tr></thead><tbody><tr><td><code>status</code></td><td><code>maica_cc__Claim_Status__c</code></td><td>- <code>BeingCalculated</code> = The claim is being calculated <br>- <code>PendingApproval</code> = The claim is pending approval <br>- <code>Cancelled</code> = The claim has been cancelled/rejected <br>- <code>Approved</code> = The claim has been approved for payment <br>- <code>Completed</code> = The claim is paid</td></tr><tr><td><code>paymentDate</code></td><td><code>maica_cc__Claim_Paid_Date__c</code></td><td>Only populated when <code>maica_cc__Claim_Status__c = Approved</code></td></tr></tbody></table>
+<table><thead><tr><th width="133.2318115234375">Payload Field</th><th width="277.7430419921875">Mapping</th><th>Notes</th></tr></thead><tbody><tr><td><code>status</code></td><td><code>maica_cc__Claim_Status__c</code></td><td>- <code>BeingCalculated</code> = The claim is being calculated<br>- <code>PendingApproval</code> = The claim is pending approval<br>- <code>Cancelled</code> = The claim has been cancelled/rejected<br>- <code>Approved</code> = The claim has been approved for payment<br>- <code>Completed</code> = The claim is paid</td></tr><tr><td><code>paymentDate</code></td><td><code>maica_cc__Claim_Paid_Date__c</code></td><td>Only populated when <code>maica_cc__Claim_Status__c = Approved</code></td></tr></tbody></table>
 
 ***
 
@@ -418,7 +418,7 @@ Retrieve detailed payment information for each `Invoice Line Item` linked to the
   * All `Invoice` records related to the `Claim Batch` are retrieved.
   * The system then iterates through each related `Invoice Line Item` and matches on `ItemId = maica_cc__Invoice_Line_Item__c`.`maica_cc__Aged_Care_Invoice_Item_ID__c`.
 * Retrieved data is used to update `Payment Request` records in Maica.
-* The `Aged Care Reference` (`maica_cc__Aged_Care_Reference__c`) is now included in the Payment Item mapping for clearer traceability between claim items and their corresponding Services Australia reference.
+* The `Aged Care Reference` (`maica_cc__Aged_Care_Reference__c`) is included in the Payment Item mapping for clearer traceability between claim items and their corresponding Services Australia reference.
 * Relevant claim and contribution fields are mapped and stored as shown below.
 
 #### Payment Item Reporting API → Payment Request Mapping
@@ -437,24 +437,25 @@ Retrieve detailed payment information for each `Invoice Line Item` linked to the
 
 #### Purpose
 
-As part of the finalisation of the claims process, this step ensures your care recipients’ budget data is refreshed and aligned with the completed and paid claim.
+As part of the finalisation of the claims process, this step ensures your care recipients’ and your provider's budget data is refreshed and aligned with the completed and paid claim.
 
 #### System Action
 
-* Triggered automatically once **Step 7** completes successfully.
-* The system:
-  * Identifies all **unique** care recipient IDs from the claim items in the batch.
-  * For each unique care recipient ID:
-    * Executes a call to the **Budgets API** endpoint.
-    * Retrieves current budgets and creates or updates related `Plan Budget` and `Entitlement` records.
-    * Only budgets where the `End Date` is within 60 days of today are included.
+* Triggered automatically once **Step 7** completes successfully, as the **Update Budgets** step of **Claim Batch Check Status**.
+* One server call starts a single job chain, and the existing batch progress follows it from one job. The chain runs in this order:
+  * **Participant budgets.** The system identifies all **unique** care recipient IDs from the claim items in the batch. For each unique care recipient ID it executes a call to the **Budgets API** endpoint, retrieves current budgets and creates or updates the related `Funding Item` and `Entitlement` records. Only budgets where the `End Date` is within 60 days of today are included.
+  * **Provider Care Management budgets.** For the connection settings that match the claim batch's Service Provider ID and are linked to a provider Account, the system refreshes the provider's Care Management budgets on the provider plan. See [Care Management Budget Sync](care-management-budget-sync.md).
+
+{% hint style="info" %}
+A user who cannot read connection settings still has the participant budgets refreshed. The provider Care Management sync is skipped for that user.
+{% endhint %}
 
 #### Outcome
 
 You can now **dispatch invoices** for any remaining client contribution amounts that were not covered in the submitted claim.
 
 {% hint style="success" %}
-To download the full schema, with all mappings and validations for this process, [click here](https://docs.google.com/spreadsheets/d/1Uy_XUpFUAvG-8CpkdLFx_Aa-Hi0TPRiSS1zufD48oig/edit?usp=sharing).&#x20;
+To download the full schema, with all mappings and validations for this process, [click here](https://docs.google.com/spreadsheets/d/1Uy_XUpFUAvG-8CpkdLFx_Aa-Hi0TPRiSS1zufD48oig/edit?usp=sharing).
 {% endhint %}
 
 <div data-full-width="true"><figure><img src="../.gitbook/assets/Flow.png" alt="" width="409"><figcaption></figcaption></figure></div>
